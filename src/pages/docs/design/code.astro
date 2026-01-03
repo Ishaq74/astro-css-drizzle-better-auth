@@ -6,7 +6,7 @@ import TableBody from "@components/ui/Table/TableBody.astro";
 import TableRow from "@components/ui/Table/TableRow.astro";
 import TableHead from "@components/ui/Table/TableHead.astro";
 import TableCell from "@components/ui/Table/TableCell.astro";
-import { Code } from "astro:components";
+import { Code as CodeBlock } from "astro:components";
 
 const exampleJavaScript = `function greet(name) {
   console.log(\`Hello, \${name}!\`);
@@ -63,7 +63,7 @@ const exampleCSS = `.card {
   
   <p>Le composant est disponible directement depuis <code class="inline-code">astro:components</code> :</p>
 
-  <Code 
+  <CodeBlock 
     code={`import { Code } from "astro:components";`}
     lang="typescript"
   />
@@ -125,28 +125,28 @@ const exampleCSS = `.card {
 
   <h3 id="basic-usage">Usage de base</h3>
   
-  <Code 
+  <CodeBlock 
     code={exampleJavaScript}
     lang="javascript"
   />
 
   <h3 id="typescript">TypeScript</h3>
   
-  <Code 
+  <CodeBlock 
     code={exampleTypeScript}
     lang="typescript"
   />
 
   <h3 id="html">HTML</h3>
   
-  <Code 
+  <CodeBlock 
     code={exampleHTML}
     lang="html"
   />
 
   <h3 id="css">CSS</h3>
   
-  <Code 
+  <CodeBlock 
     code={exampleCSS}
     lang="css"
   />
@@ -154,34 +154,34 @@ const exampleCSS = `.card {
   <h3 id="inline-code">Code inline</h3>
   
   <p>
-    Utilisez <Code code="const x = 42" lang="javascript" inline /> pour du code inline.
+    Utilisez <CodeBlock code="const x = 42" lang="javascript" inline /> pour du code inline.
   </p>
 
   <h3 id="themes">Thèmes Shiki</h3>
   
   <h4>GitHub Dark (défaut)</h4>
-  <Code 
+  <CodeBlock 
     code={exampleJavaScript}
     lang="javascript"
     theme="github-dark"
   />
 
   <h4>GitHub Light</h4>
-  <Code 
+  <CodeBlock 
     code={exampleJavaScript}
     lang="javascript"
     theme="github-light"
   />
 
   <h4>Dracula</h4>
-  <Code 
+  <CodeBlock 
     code={exampleJavaScript}
     lang="javascript"
     theme="dracula"
   />
 
   <h4>Nord</h4>
-  <Code 
+  <CodeBlock 
     code={exampleJavaScript}
     lang="javascript"
     theme="nord"
@@ -189,7 +189,7 @@ const exampleCSS = `.card {
 
   <h3 id="line-wrapping">Retour à la ligne</h3>
   
-  <Code 
+  <CodeBlock 
     code={exampleJavaScript}
     lang="javascript"
     wrap={true}

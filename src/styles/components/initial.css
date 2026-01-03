@@ -866,3 +866,32 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   from { transform: translateX(400px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
+
+/* ============================================
+   BREADCRUMB - Navigation fil d'Ariane
+   ============================================ */
+
+.breadcrumb {
+  --breadcrumb-font-size: 0.875rem;
+  --breadcrumb-gap: 0.5rem;
+  
+  --breadcrumb-link-color: var(--text-muted);
+  --breadcrumb-link-hover-color: var(--text-default);
+  
+  --breadcrumb-current-color: var(--text-default);
+  --breadcrumb-separator-color: var(--text-subtle);
+  
+  padding: var(--space-3) 0;
+}
+
+.breadcrumb.primary .breadcrumb-page {
+  color: var(--color-primary);
+}
+
+.breadcrumb.secondary .breadcrumb-page {
+  color: var(--color-secondary);
+}
+
+.breadcrumb.accent .breadcrumb-page {
+  color: var(--color-accent);
+}

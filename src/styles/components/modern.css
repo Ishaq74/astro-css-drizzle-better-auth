@@ -355,3 +355,41 @@ a.button.modern.accent {
               0 2px 0 0 color-mix(in srgb, var(--button-accent-bg) 80%, #000);
 }
 
+
+/* ============================================
+   BREADCRUMB - Variant Modern
+   ============================================ */
+
+.breadcrumb.modern {
+  --breadcrumb-font-size: 0.813rem;
+  --breadcrumb-gap: 0.625rem;
+  
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-subtle);
+  border-radius: var(--border-radius-full);
+  backdrop-filter: blur(10px);
+}
+
+.breadcrumb.modern .breadcrumb-link {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.breadcrumb.modern .breadcrumb-link:hover {
+  transform: translateY(-1px);
+}
+
+.breadcrumb.modern .breadcrumb-separator {
+  opacity: 0.5;
+}
+
+.breadcrumb.modern.primary .breadcrumb-page {
+  color: var(--color-primary);
+}
+
+.breadcrumb.modern.secondary .breadcrumb-page {
+  color: var(--color-secondary);
+}
+
+.breadcrumb.modern.accent .breadcrumb-page {
+  color: var(--color-accent);
+}

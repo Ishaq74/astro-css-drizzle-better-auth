@@ -27,6 +27,7 @@ export const docNavConfig = [
     title: 'Components',
     items: [
       { label: 'Avatar', href: '/docs/components/avatar' },
+      { label: 'Breadcrumb', href: '/docs/components/breadcrumb' },
       { label: 'Pagination', href: '/docs/components/pagination' },
     ]
   },

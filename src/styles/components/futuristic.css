@@ -406,3 +406,73 @@ a.button.futuristic.accent {
   text-shadow: 0 0 5px var(--button-accent-bg);
 }
 
+
+/* ============================================
+   BREADCRUMB - Variant Futuristic
+   ============================================ */
+
+.breadcrumb.futuristic {
+  --breadcrumb-font-size: 0.75rem;
+  --breadcrumb-gap: 0.75rem;
+  
+  padding: var(--space-2) var(--space-4);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--font-mono);
+  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.breadcrumb.futuristic .breadcrumb-link {
+  color: var(--color-primary);
+  text-shadow: 0 0 5px rgba(var(--color-primary-rgb), 0.5);
+  transition: all 0.3s;
+}
+
+.breadcrumb.futuristic .breadcrumb-link:hover {
+  text-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.8);
+}
+
+.breadcrumb.futuristic .breadcrumb-separator {
+  color: var(--color-primary);
+  opacity: 0.6;
+}
+
+.breadcrumb.futuristic .breadcrumb-page {
+  color: var(--color-primary);
+  text-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.6);
+}
+
+.breadcrumb.futuristic.primary {
+  border-color: var(--color-primary);
+}
+
+.breadcrumb.futuristic.primary .breadcrumb-link,
+.breadcrumb.futuristic.primary .breadcrumb-separator,
+.breadcrumb.futuristic.primary .breadcrumb-page {
+  color: var(--color-primary);
+}
+
+.breadcrumb.futuristic.secondary {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 10px rgba(var(--color-secondary-rgb), 0.3);
+}
+
+.breadcrumb.futuristic.secondary .breadcrumb-link,
+.breadcrumb.futuristic.secondary .breadcrumb-separator,
+.breadcrumb.futuristic.secondary .breadcrumb-page {
+  color: var(--color-secondary);
+}
+
+.breadcrumb.futuristic.accent {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 10px rgba(var(--color-accent-rgb), 0.3);
+}
+
+.breadcrumb.futuristic.accent .breadcrumb-link,
+.breadcrumb.futuristic.accent .breadcrumb-separator,
+.breadcrumb.futuristic.accent .breadcrumb-page {
+  color: var(--color-accent);
+}

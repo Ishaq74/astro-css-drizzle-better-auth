@@ -20,15 +20,6 @@ interface Props {
   favicon32x32?: string;
   favicon16x16?: string;
   dir?: string;
-  breadcrumb?: {
-    excludeLevels?: string[];
-    showIcons?: boolean;
-    homeIcon?: string;
-    overrides?: Record<string, string>;
-    hideOnEntities?: boolean;
-    hideOnDetails?: boolean;
-    hide?: boolean;
-  };
 }
 
 const props = Astro.props as Props;
@@ -51,7 +42,6 @@ const {
   favicon32x32,
   favicon16x16,
   dir,
-  breadcrumb = {},
 } = props;
 
 // Titre: NomDuSite > NomDeLaPage
@@ -62,6 +52,7 @@ const pageTitle = rawTitle ? `${siteTitle} > ${rawTitle}` : siteTitle;
 const htmlLang = lang ?? "fr";
 const htmlDir = dir ?? (htmlLang === "ar" ? "rtl" : "ltr");
 const faviconName = favicon ?? "test.ico";
+
 ---
 
 <!doctype html>
@@ -146,7 +137,7 @@ const faviconName = favicon ?? "test.ico";
     {cssFiles.map((file) => <link rel="stylesheet" href={file} />)}
 
     <!-- Scripts -->
-    {jsFiles.map((file) => (file ? <script async src={file} /> : null))}
+    {jsFiles.map((file) => (file ? <script is:inline async src={file} /> : null))}
 
     <!-- Favicons -->
     <link rel="icon" href={`images/${faviconName}`} type="image/x-icon" />
