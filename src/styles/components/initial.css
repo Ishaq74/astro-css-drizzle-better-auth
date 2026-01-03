@@ -707,6 +707,13 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
 
 /* TOOLTIP */
 .tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: help;
+}
+
+.tooltiptext {
   position: absolute;
   z-index: 9999;
   padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
@@ -717,26 +724,73 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   box-shadow: var(--shadow-md);
   pointer-events: none;
   white-space: nowrap;
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, visibility 0.2s;
 }
-.tooltip.show { opacity: 1; }
-.tooltip::after {
+
+.tooltip:hover .tooltiptext,
+.tooltip:focus-within .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltiptext::after {
   content: '';
   position: absolute;
-  border: 4px solid transparent;
+  border: 5px solid transparent;
 }
-.tooltip[data-placement="top"]::after {
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-top-color: var(--tooltip-bg);
+
+/* Couleurs des tooltips */
+.tooltip.primary .tooltiptext {
+  background: var(--color-primary);
+  color: white;
 }
-.tooltip[data-placement="bottom"]::after {
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-bottom-color: var(--tooltip-bg);
+.tooltip.primary.tooltip-top .tooltiptext::after {
+  border-top-color: var(--color-primary);
+}
+.tooltip.primary.tooltip-bottom .tooltiptext::after {
+  border-bottom-color: var(--color-primary);
+}
+.tooltip.primary.tooltip-left .tooltiptext::after {
+  border-left-color: var(--color-primary);
+}
+.tooltip.primary.tooltip-right .tooltiptext::after {
+  border-right-color: var(--color-primary);
+}
+
+.tooltip.secondary .tooltiptext {
+  background: var(--color-secondary);
+  color: white;
+}
+.tooltip.secondary.tooltip-top .tooltiptext::after {
+  border-top-color: var(--color-secondary);
+}
+.tooltip.secondary.tooltip-bottom .tooltiptext::after {
+  border-bottom-color: var(--color-secondary);
+}
+.tooltip.secondary.tooltip-left .tooltiptext::after {
+  border-left-color: var(--color-secondary);
+}
+.tooltip.secondary.tooltip-right .tooltiptext::after {
+  border-right-color: var(--color-secondary);
+}
+
+.tooltip.accent .tooltiptext {
+  background: var(--color-accent);
+  color: white;
+}
+.tooltip.accent.tooltip-top .tooltiptext::after {
+  border-top-color: var(--color-accent);
+}
+.tooltip.accent.tooltip-bottom .tooltiptext::after {
+  border-bottom-color: var(--color-accent);
+}
+.tooltip.accent.tooltip-left .tooltiptext::after {
+  border-left-color: var(--color-accent);
+}
+.tooltip.accent.tooltip-right .tooltiptext::after {
+  border-right-color: var(--color-accent);
 }
 
 /* POPOVER */

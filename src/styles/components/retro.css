@@ -229,10 +229,22 @@ a.button.retro.accent { background-color: var(--button-accent-bg); color: var(--
 }
 
 /* TOOLTIP RETRO */
-.tooltip.retro {
+.tooltip.retro .tooltiptext {
   border-radius: 0;
   border: var(--retro-border-width) solid var(--text-default);
   box-shadow: 2px 2px 0 var(--retro-shadow-color);
+}
+
+.tooltip.retro.primary .tooltiptext {
+  border-color: var(--color-primary);
+}
+
+.tooltip.retro.secondary .tooltiptext {
+  border-color: var(--color-secondary);
+}
+
+.tooltip.retro.accent .tooltiptext {
+  border-color: var(--color-accent);
 }
 
 /* POPOVER RETRO */

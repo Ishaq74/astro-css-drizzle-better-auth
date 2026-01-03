@@ -20,6 +20,7 @@ export const docNavConfig = [
       { label: 'Code', href: '/docs/design/code' },     
       { label: 'Kbd', href: '/docs/design/kbd' },
       { label: 'Table', href: '/docs/design/table' },
+      { label: 'Tooltip', href: '/docs/design/tooltip' },
     ]
   },
   {

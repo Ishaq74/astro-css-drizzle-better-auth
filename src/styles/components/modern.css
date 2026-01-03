@@ -271,9 +271,21 @@ a.button.modern.accent {
 }
 
 /* TOOLTIP MODERN */
-.tooltip.modern {
+.tooltip.modern .tooltiptext {
   backdrop-filter: blur(10px);
   background: color-mix(in srgb, var(--tooltip-bg) 90%, transparent);
+}
+
+.tooltip.modern.primary .tooltiptext {
+  background: color-mix(in srgb, var(--color-primary) 90%, transparent);
+}
+
+.tooltip.modern.secondary .tooltiptext {
+  background: color-mix(in srgb, var(--color-secondary) 90%, transparent);
+}
+
+.tooltip.modern.accent .tooltiptext {
+  background: color-mix(in srgb, var(--color-accent) 90%, transparent);
 }
 
 /* POPOVER MODERN */
