@@ -22,6 +22,10 @@ export const docNavConfig = [
       { label: 'Table', href: '/docs/design/table' },
       { label: 'Tooltip', href: '/docs/design/tooltip' },
       { label: 'Switch', href: '/docs/design/switch' },
+      { label: 'Video', href: '/docs/design/video' },
+      { label: 'Dialog', href: '/docs/design/dialog' },
+      { label: 'Toast', href: '/docs/design/toast' },
+      { label: 'Dropdown', href: '/docs/design/dropdown' },
     ]
   },
   {
@@ -31,8 +35,10 @@ export const docNavConfig = [
       { label: 'Avatar', href: '/docs/components/avatar' },
       { label: 'Breadcrumb', href: '/docs/components/breadcrumb' },
       { label: 'Pagination', href: '/docs/components/pagination' },
-            { label: 'Progressbar', href: '/docs/components/progressbar' },
-                  { label: 'Skeleton', href: '/docs/components/skeleton' },
+      { label: 'Progressbar', href: '/docs/components/progressbar' },
+      { label: 'Skeleton', href: '/docs/components/skeleton' },
+      { label: 'Gallery', href: '/docs/components/gallery' },
+      { label: 'Timeline', href: '/docs/components/timeline' },
     ]
   },
   {
@@ -43,5 +49,11 @@ export const docNavConfig = [
       { label: 'Modern', href: '/docs/variants/modern' },
       { label: 'Futuristic', href: '/docs/variants/futuristic' },
     ]
-  }
+  },
+  {
+  title: 'Layouts',
+  items: [
+    { label: 'BaseLayout', href: '/docs/layouts/base' },
+  ]
+}
 ];
