@@ -952,3 +952,77 @@ a.button.modern.accent {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* ===========================================
+   DROPDOWN - Modern Variant
+   =========================================== */
+
+.dropdown.modern .dropdown-trigger {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown.modern .dropdown-trigger:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown.modern .dropdown-state:checked ~ .dropdown-trigger {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown.modern .dropdown-content {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown.modern .dropdown-item {
+  border-radius: var(--radius-md);
+}
+
+.dropdown.modern .dropdown-item:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.dropdown.modern .dropdown-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+}
+
+/* Submenu Modern */
+.dropdown.modern .dropdown-item.has-submenu {
+  padding-right: 2.5rem;
+}
+
+.dropdown.modern .submenu-arrow {
+  opacity: 0.8;
+  color: var(--color-primary);
+}
+
+.dropdown.modern .submenu-state:checked + .has-submenu .submenu-arrow {
+  transform: rotate(90deg);
+}
+
+.dropdown.modern .submenu-content .dropdown-content {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .dropdown.modern .submenu-content .dropdown-content {
+    border: none;
+    border-left: 2px solid rgba(var(--color-primary-rgb), 0.5);
+    box-shadow: none;
+    background: transparent;
+  }
+}

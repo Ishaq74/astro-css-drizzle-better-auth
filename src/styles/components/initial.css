@@ -1927,3 +1927,312 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
     min-width: 200px;
   }
 }
+
+/* ===========================================
+   DROPDOWN - Initial Variant (CSS ONLY)
+   =========================================== */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Cacher la checkbox */
+.dropdown-state {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+/* Trigger Button */
+.dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.dropdown-trigger:hover {
+  background: var(--color-background);
+  border-color: var(--color-primary);
+}
+
+.dropdown-state:checked ~ .dropdown-trigger {
+  background: var(--color-background);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.trigger-icon {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.trigger-arrow {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-state:checked ~ .dropdown-trigger .trigger-arrow {
+  transform: rotate(180deg);
+}
+
+/* Backdrop */
+.dropdown-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  cursor: default;
+}
+
+.dropdown-state:checked ~ .dropdown-backdrop {
+  display: block;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  z-index: 1000;
+  margin-top: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-state:checked ~ .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  min-width: 200px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+}
+
+/* Dropdown Item */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: all 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover:not(.disabled) {
+  background: var(--color-background);
+  color: var(--color-primary);
+}
+
+.dropdown-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.item-icon {
+  font-size: 1.125rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.item-label {
+  flex: 1;
+}
+
+/* Positions */
+.position-bottom-left {
+  top: 100%;
+  left: 0;
+}
+
+.position-bottom-right {
+  top: 100%;
+  right: 0;
+}
+
+.position-top-left {
+  bottom: 100%;
+  left: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  transform: translateY(10px);
+}
+
+.dropdown-state:checked ~ .dropdown-menu.position-top-left {
+  transform: translateY(0);
+}
+
+.position-top-right {
+  bottom: 100%;
+  right: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  transform: translateY(10px);
+}
+
+.dropdown-state:checked ~ .dropdown-menu.position-top-right {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dropdown-content {
+    min-width: 180px;
+  }
+
+  .dropdown-menu {
+    max-width: calc(100vw - 2rem);
+  }
+
+  .position-bottom-right,
+  .position-top-right {
+    right: 0;
+    left: auto;
+  }
+
+  .position-bottom-left,
+  .position-top-left {
+    left: 0;
+    right: auto;
+  }
+}
+
+/* ===========================================
+   SUBMENU RECURSIF (CSS ONLY)
+   =========================================== */
+
+/* Submenu Wrapper */
+.dropdown-submenu {
+  position: relative;
+}
+
+/* Cacher checkbox/radio submenu */
+.submenu-state {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+/* Item avec submenu */
+.dropdown-item.has-submenu {
+  position: relative;
+  padding-right: 2.5rem;
+}
+
+/* Flèche indicateur submenu */
+.submenu-arrow {
+  position: absolute;
+  right: 0.875rem;
+  font-size: 0.625rem;
+  transition: transform 0.2s ease;
+  opacity: 0.6;
+}
+
+/* Radio buttons fonctionnent comme checkbox avec :checked */
+.submenu-state:checked + .has-submenu .submenu-arrow {
+  transform: rotate(90deg);
+}
+
+/* Contenu submenu */
+.submenu-content {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin-left: 0.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-10px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  z-index: 1001;
+}
+
+.submenu-state:checked ~ .submenu-content {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+/* Sous-dropdown content */
+.submenu-content .dropdown-content {
+  min-width: 180px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Support multi-niveaux */
+.submenu-content .dropdown-submenu .submenu-content {
+  left: 100%;
+  top: 0;
+  margin-left: 0.25rem;
+}
+
+/* Responsive - Sur mobile, empiler verticalement */
+@media (max-width: 768px) {
+  .submenu-content {
+    position: static;
+    margin-left: 0;
+    margin-top: 0;
+    padding-left: 0;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .submenu-state:checked ~ .submenu-content {
+    transform: none;
+  }
+
+  .submenu-content .dropdown-content {
+    border: none;
+    box-shadow: none;
+    padding: 0 0 0 1rem;
+    background: transparent;
+    border-left: 2px solid var(--color-border);
+    margin-top: 0.25rem;
+  }
+
+  .submenu-content .dropdown-item {
+    padding-left: 1rem;
+  }
+
+  .dropdown-item.has-submenu {
+    padding-right: 2.5rem;
+  }
+
+  .submenu-arrow {
+    right: 0.875rem;
+  }
+
+  .submenu-state:checked + .has-submenu .submenu-arrow {
+    transform: rotate(90deg);
+  }
+}

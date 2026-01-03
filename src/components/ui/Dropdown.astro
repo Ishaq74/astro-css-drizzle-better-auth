@@ -1,0 +1,146 @@
+---
+interface MenuItem {
+  label: string;
+  value?: string;
+  icon?: string;
+  disabled?: boolean;
+  href?: string;
+  children?: MenuItem[];
+}
+
+interface Props {
+  items: MenuItem[];
+  variant?: "initial" | "retro" | "modern" | "futuristic";
+  position?: "bottom-left" | "bottom-right" | "top-left" | "top-right";
+  triggerLabel?: string;
+  triggerIcon?: string;
+  class?: string;
+}
+
+const {
+  items,
+  variant = "initial",
+  position = "bottom-left",
+  triggerLabel = "Menu",
+  triggerIcon,
+  class: className,
+} = Astro.props;
+
+const dropdownId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
+const dropdownClass = [
+  "dropdown",
+  variant !== "initial" && variant,
+  className,
+].filter(Boolean).join(" ");
+
+// Name pour les radio buttons de chaque niveau
+const level1RadioName = `${dropdownId}-level1`;
+const getLevel2RadioName = (parentId: string) => `${dropdownId}-level2-${parentId}`;
+---
+
+<div class={dropdownClass}>
+  <input type="checkbox" id={dropdownId} class="dropdown-state" />
+  
+  <label for={dropdownId} class="dropdown-trigger">
+    {triggerIcon && <span class="trigger-icon">{triggerIcon}</span>}
+    <span class="trigger-label">{triggerLabel}</span>
+    <span class="trigger-arrow">▼</span>
+  </label>
+  
+  <label for={dropdownId} class="dropdown-backdrop"></label>
+  
+  <div class={`dropdown-menu position-${position}`}>
+    <div class="dropdown-content">
+      {items.map((item) => {
+        const itemId = `${dropdownId}-${item.value || item.label.replace(/\s+/g, '-').toLowerCase()}`;
+        const hasChildren = item.children && item.children.length > 0;
+        
+        if (hasChildren) {
+          return (
+            <div class="dropdown-submenu">
+              <input type="radio" name={level1RadioName} id={itemId} class="submenu-state" />
+              <label for={itemId} class={item.disabled ? "dropdown-item has-submenu disabled" : "dropdown-item has-submenu"}>
+                {item.icon && <span class="item-icon">{item.icon}</span>}
+                <span class="item-label">{item.label}</span>
+                <span class="submenu-arrow">▶</span>
+              </label>
+              <div class="submenu-content">
+                <div class="dropdown-content">
+                  {item.children!.map((child) => {
+                    const childId = `${itemId}-${child.value || child.label.replace(/\s+/g, '-').toLowerCase()}`;
+                    const hasGrandChildren = child.children && child.children.length > 0;
+                    
+                    if (hasGrandChildren) {
+                      return (
+                        <div class="dropdown-submenu">
+                          <input type="radio" name={getLevel2RadioName(itemId)} id={childId} class="submenu-state" />
+                          <label for={childId} class={child.disabled ? "dropdown-item has-submenu disabled" : "dropdown-item has-submenu"}>
+                            {child.icon && <span class="item-icon">{child.icon}</span>}
+                            <span class="item-label">{child.label}</span>
+                            <span class="submenu-arrow">▶</span>
+                          </label>
+                          <div class="submenu-content">
+                            <div class="dropdown-content">
+                              {child.children!.map((grandChild) => {
+                                if (grandChild.href) {
+                                  return (
+                                    <a href={grandChild.href} class={grandChild.disabled ? "dropdown-item disabled" : "dropdown-item"}>
+                                      {grandChild.icon && <span class="item-icon">{grandChild.icon}</span>}
+                                      <span class="item-label">{grandChild.label}</span>
+                                    </a>
+                                  );
+                                }
+                                return (
+                                  <label for={dropdownId} class={grandChild.disabled ? "dropdown-item disabled" : "dropdown-item"}>
+                                    {grandChild.icon && <span class="item-icon">{grandChild.icon}</span>}
+                                    <span class="item-label">{grandChild.label}</span>
+                                  </label>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                    
+                    if (child.href) {
+                      return (
+                        <a href={child.href} class={child.disabled ? "dropdown-item disabled" : "dropdown-item"}>
+                          {child.icon && <span class="item-icon">{child.icon}</span>}
+                          <span class="item-label">{child.label}</span>
+                        </a>
+                      );
+                    }
+                    
+                    return (
+                      <label for={dropdownId} class={child.disabled ? "dropdown-item disabled" : "dropdown-item"}>
+                        {child.icon && <span class="item-icon">{child.icon}</span>}
+                        <span class="item-label">{child.label}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          );
+        }
+        
+        if (item.href) {
+          return (
+            <a href={item.href} class={item.disabled ? "dropdown-item disabled" : "dropdown-item"}>
+              {item.icon && <span class="item-icon">{item.icon}</span>}
+              <span class="item-label">{item.label}</span>
+            </a>
+          );
+        }
+        
+        return (
+          <label for={dropdownId} class={item.disabled ? "dropdown-item disabled" : "dropdown-item"}>
+            {item.icon && <span class="item-icon">{item.icon}</span>}
+            <span class="item-label">{item.label}</span>
+          </label>
+        );
+      })}
+    </div>
+  </div>
+</div>
