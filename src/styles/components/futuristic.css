@@ -405,3 +405,4 @@ a.button.futuristic.accent {
               inset 0 0 10px color-mix(in srgb, var(--button-accent-bg) 15%, transparent);
   text-shadow: 0 0 5px var(--button-accent-bg);
 }
+

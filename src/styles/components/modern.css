@@ -354,3 +354,4 @@ a.button.modern.accent {
   box-shadow: 0 1px 2px 0 color-mix(in srgb, var(--button-accent-bg) 40%, transparent),
               0 2px 0 0 color-mix(in srgb, var(--button-accent-bg) 80%, #000);
 }
+
