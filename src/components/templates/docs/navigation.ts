@@ -21,14 +21,18 @@ export const docNavConfig = [
       { label: 'Kbd', href: '/docs/design/kbd' },
       { label: 'Table', href: '/docs/design/table' },
       { label: 'Tooltip', href: '/docs/design/tooltip' },
+      { label: 'Switch', href: '/docs/design/switch' },
     ]
   },
   {
     title: 'Components',
     items: [
+      { label: 'Accordion', href: '/docs/components/accordion' },
       { label: 'Avatar', href: '/docs/components/avatar' },
       { label: 'Breadcrumb', href: '/docs/components/breadcrumb' },
       { label: 'Pagination', href: '/docs/components/pagination' },
+            { label: 'Progressbar', href: '/docs/components/progressbar' },
+                  { label: 'Skeleton', href: '/docs/components/skeleton' },
     ]
   },
   {

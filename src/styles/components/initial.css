@@ -169,25 +169,40 @@ input[type="checkbox"]:checked::after {
 input[role="switch"] { 
   width: var(--switch-width); 
   height: var(--switch-height); 
-  border-radius: 99px; 
+  border-radius: var(--switch-height); 
   background: var(--switch-bg-off); 
   position: relative; 
-  border: none; 
+  border: 2px solid rgba(0, 0, 0, 0.1); 
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 input[role="switch"]::after { 
   content: ''; 
   position: absolute; 
-  top: 2px; 
-  left: 2px; 
-  width: var(--switch-handle-size); 
-  height: var(--switch-handle-size); 
+  top: 50%; 
+  left: 3px; 
+  width: calc(var(--switch-height) - 8px); 
+  height: calc(var(--switch-height) - 8px); 
   border-radius: 50%; 
   background: var(--switch-handle-color); 
-  transition: transform 0.2s; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%);
+  transition: all 0.3s ease; 
 }
-input[role="switch"]:checked { background: var(--switch-bg-on); }
+input[role="switch"]:checked { 
+  background: var(--switch-bg-on); 
+  border-color: var(--switch-bg-on);
+}
 input[role="switch"]:checked::after { 
-  transform: translateX(calc(var(--switch-width) - var(--switch-handle-size) - 4px)); 
+  left: calc(100% - var(--switch-height) + 5px);
+  transform: translateY(-50%);
+}
+input[role="switch"]:hover:not(:disabled) {
+  opacity: 0.9;
+}
+input[role="switch"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Radio buttons */
@@ -640,6 +655,134 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ACCORDION */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--accordion-gap);
+  --accordion-accent: var(--text-default);
+  --accordion-accent-bg: color-mix(in srgb, var(--text-default) 5%, transparent);
+  --accordion-accent-text: var(--text-default);
+}
+
+.accordion[class*="primary"] { 
+  --accordion-accent: var(--color-primary); 
+  --accordion-accent-bg: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  --accordion-accent-text: var(--color-primary);
+}
+.accordion[class*="secondary"] { 
+  --accordion-accent: var(--color-secondary); 
+  --accordion-accent-bg: color-mix(in srgb, var(--color-secondary) 8%, transparent);
+  --accordion-accent-text: var(--color-secondary);
+}
+.accordion[class*="accent"] { 
+  --accordion-accent: var(--color-accent); 
+  --accordion-accent-bg: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  --accordion-accent-text: var(--color-accent);
+}
+
+.accordion-item {
+  width: 100%;
+  border: var(--accordion-border-width) solid var(--accordion-border-color);
+  width: 100%;
+  border-radius: var(--accordion-border-radius);
+  background: var(--accordion-bg);
+  box-shadow: var(--accordion-shadow);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.accordion-item[open] {
+  border-color: color-mix(in srgb, var(--accordion-accent) 50%, var(--accordion-border-color));
+  border: none;
+  appearance: none;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accordion-accent) 15%, transparent), var(--accordion-shadow);
+}
+
+.accordion-item[data-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.accordion-trigger {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--accordion-trigger-padding-y) var(--accordion-trigger-padding-x);
+  width: 100%;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  color: var(--accordion-heading-color);
+  background: transparent;
+}
+
+.accordion-trigger::-webkit-details-marker { display: none; }
+.accordion-trigger::marker { display: none; }
+
+.accordion-trigger:focus-visible {
+  outline: 2px solid var(--accordion-accent);
+  outline-offset: 4px;
+}
+
+.accordion-item[data-disabled="true"] .accordion-trigger {
+  pointer-events: none;
+}
+
+.accordion-title {
+  flex: 1;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.accordion-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--accordion-icon-size);
+  height: var(--accordion-icon-size);
+  color: var(--text-muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+  margin-left: auto;
+}
+
+.accordion-indicator::before {
+  content: '';
+  display: block;
+  width: 0.55em;
+  height: 0.55em;
+  border: 2px solid currentColor;
+  border-left: 0;
+  border-top: 0;
+  transform: rotate(45deg);
+}
+
+.accordion-item[open] .accordion-indicator {
+  transform: rotate(180deg);
+  color: var(--accordion-accent);
+}
+
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+}
+
+.accordion-item[open] > .accordion-content {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content-inner {
+  overflow: hidden;
+  padding: var(--space-3) var(--accordion-body-padding-x) var(--accordion-body-padding-bottom);
+  border-top: 1px solid var(--border-default);
+  color: var(--accordion-body-color);
+  background: var(--accordion-bg);
+}
+
 /* PAGINATION */
 .pagination { display: flex; gap: 0.25rem; list-style: none; padding: 0; }
 .pagination-item { 
@@ -894,4 +1037,201 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
 
 .breadcrumb.accent .breadcrumb-page {
   color: var(--color-accent);
+}
+
+/* ===========================================
+   PROGRESSBAR - Initial Variant
+   =========================================== */
+
+.progress-bar {
+  --progress-height: 1rem;
+  --progress-border-radius: var(--radius-md);
+  --progress-bg: var(--color-surface);
+  --progress-fill-bg: var(--color-primary);
+  --progress-border: 1px solid var(--color-border);
+  
+  width: 100%;
+  position: relative;
+}
+
+.progress-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-default);
+}
+
+.progress-track {
+  width: 100%;
+  height: var(--progress-height);
+  background: var(--progress-bg);
+  border: var(--progress-border);
+  border-radius: var(--progress-border-radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--progress-fill-bg);
+  transition: width 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.progress-label-inner {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  mix-blend-mode: difference;
+}
+
+/* Tailles */
+.progress-bar.size-sm {
+  --progress-height: 0.5rem;
+}
+
+.progress-bar.size-sm .progress-label-inner {
+  font-size: 0.625rem;
+}
+
+.progress-bar.size-lg {
+  --progress-height: 1.5rem;
+}
+
+.progress-bar.size-lg .progress-label-inner {
+  font-size: 0.875rem;
+}
+
+/* Couleurs */
+.progress-bar.primary {
+  --progress-fill-bg: var(--color-primary);
+}
+
+.progress-bar.secondary {
+  --progress-fill-bg: var(--color-secondary);
+}
+
+.progress-bar.accent {
+  --progress-fill-bg: var(--color-accent);
+}
+
+/* Rayures */
+.progress-bar.striped .progress-fill {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+/* Animation */
+.progress-bar.animated .progress-fill {
+  animation: progress-stripes 1s linear infinite;
+}
+
+@keyframes progress-stripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1rem 0;
+  }
+}
+
+/* ===========================================
+   SKELETON - Initial Variant
+   =========================================== */
+
+.skeleton {
+  --skeleton-bg: rgba(0, 0, 0, 0.1);
+  --skeleton-highlight: rgba(255, 255, 255, 0.1);
+  --skeleton-shine: rgba(255, 255, 255, 0.3);
+  
+  display: block;
+  width: 100%;
+  height: 1rem;
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-bg),
+    var(--skeleton-highlight),
+    var(--skeleton-bg)
+  );
+  background-size: 200% 100%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skeleton.circle {
+  border-radius: 50%;
+}
+
+.skeleton.rounded {
+  border-radius: var(--radius-lg);
+}
+
+/* Animation de pulsation */
+.skeleton.animated {
+  animation: skeleton-pulse 1.5s ease-in-out infinite, skeleton-gradient 2s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes skeleton-gradient {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Animation de shimmer */
+.skeleton.animated::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--skeleton-shine),
+    transparent
+  );
+  animation: skeleton-shimmer 2s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }

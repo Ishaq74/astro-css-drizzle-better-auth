@@ -58,16 +58,66 @@ input[type="checkbox"].futuristic:checked {
 
 /* SWITCH FUTURISTIC */
 input[role="switch"].futuristic { 
-  border-radius: 0; 
-  background: transparent; 
-  border: 1px solid var(--color-primary); 
+  border-radius: 2px; 
+  background: rgba(0, 0, 0, 0.3); 
+  border: 2px solid rgba(99, 102, 241, 0.5); 
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 10px rgba(99, 102, 241, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+input[role="switch"].futuristic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(99, 102, 241, 0.03) 2px,
+    rgba(99, 102, 241, 0.03) 4px
+  );
+  pointer-events: none;
 }
 input[role="switch"].futuristic::after { 
-  background: var(--color-primary); 
-  border-radius: 0; 
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: 1px; 
+  box-shadow: 
+    0 0 10px rgba(99, 102, 241, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 3px;
+  width: calc(var(--switch-height) - 10px);
+  height: calc(var(--switch-height) - 10px);
 }
 input[role="switch"].futuristic:checked { 
-  box-shadow: 0 0 10px var(--futuristic-switch-glow); 
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--color-primary);
+  box-shadow: 
+    0 0 20px rgba(99, 102, 241, 0.5),
+    0 0 40px rgba(99, 102, 241, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+input[role="switch"].futuristic:checked::after {
+  left: calc(100% - var(--switch-height) + 7px);
+  transform: translateY(-50%);
+  box-shadow: 
+    0 0 15px rgba(99, 102, 241, 0.8),
+    0 0 25px rgba(99, 102, 241, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+input[role="switch"].futuristic:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  box-shadow: 
+    0 0 15px rgba(99, 102, 241, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* SLIDER FUTURISTIC */
@@ -274,6 +324,44 @@ a.button.futuristic.accent {
   text-shadow: 0 0 5px currentColor; 
 }
 
+/* ACCORDION FUTURISTIC */
+.accordion.futuristic .accordion-item {
+  border-radius: 0;
+  clip-path: var(--futuristic-clip-path);
+  border: none;
+  background: color-mix(in srgb, var(--futuristic-card-bg) 90%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accordion-accent) 60%, var(--futuristic-card-border-color)), inset 0 0 12px color-mix(in srgb, var(--accordion-accent) 25%, transparent);
+}
+
+.accordion.futuristic .accordion-item[open] {
+  box-shadow: inset 0 0 0 1px var(--accordion-accent), inset 0 0 20px color-mix(in srgb, var(--accordion-accent) 40%, transparent), 0 0 20px color-mix(in srgb, var(--accordion-accent) 30%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accordion-accent) 15%, transparent), color-mix(in srgb, var(--futuristic-card-bg) 90%, transparent));
+}
+
+.accordion.futuristic .accordion-trigger {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid color-mix(in srgb, var(--accordion-accent) 35%, transparent);
+}
+
+.accordion.futuristic .accordion-item[open] .accordion-trigger {
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accordion-accent) 60%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--accordion-accent) 70%, transparent);
+}
+
+.accordion.futuristic .accordion-indicator {
+  color: var(--accordion-accent);
+}
+
+.accordion.futuristic .accordion-indicator::before {
+  box-shadow: 0 0 6px currentColor;
+}
+
+.accordion.futuristic .accordion-content-inner {
+  background: color-mix(in srgb, var(--futuristic-card-bg) 80%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--accordion-accent) 40%, transparent);
+}
+
 /* PAGINATION FUTURISTIC */
 .pagination.futuristic .pagination-item { 
   border: 1px solid transparent; 
@@ -476,3 +564,252 @@ a.button.futuristic.accent {
 .breadcrumb.futuristic.accent .breadcrumb-page {
   color: var(--color-accent);
 }
+
+/* PROGRESSBAR FUTURISTIC */
+.progress-bar.futuristic {
+  --progress-border-radius: var(--radius-md);
+  --progress-border: 1px solid var(--futuristic-border-color);
+}
+
+.progress-bar.futuristic .progress-track {
+  background: var(--futuristic-glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--futuristic-border-color);
+  box-shadow: 
+    0 0 20px rgba(var(--color-primary-rgb, 99, 102, 241), 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar.futuristic .progress-track::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+  animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.progress-bar.futuristic .progress-fill {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-primary-light, var(--color-primary)),
+    var(--color-primary)
+  );
+  box-shadow: 
+    0 0 30px rgba(99, 102, 241, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  border-right: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.progress-bar.futuristic .progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.progress-bar.futuristic.primary .progress-fill {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light, var(--color-primary)), var(--color-primary));
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.progress-bar.futuristic.primary .progress-track::before {
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+}
+
+.progress-bar.futuristic.secondary .progress-fill {
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-secondary-light, var(--color-secondary)), var(--color-secondary));
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.progress-bar.futuristic.secondary .progress-track::before {
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+}
+
+.progress-bar.futuristic.accent .progress-fill {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light, var(--color-accent)), var(--color-accent));
+  box-shadow: 0 0 30px rgba(236, 72, 153, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.progress-bar.futuristic.accent .progress-track::before {
+  background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.1), transparent);
+}
+
+.progress-bar.futuristic .progress-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.progress-bar.futuristic .progress-label-inner {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+/* SKELETON FUTURISTIC */
+.skeleton.futuristic {
+  --skeleton-primary: rgba(99, 102, 241, 0.25);
+  --skeleton-secondary: rgba(139, 92, 246, 0.2);
+  --skeleton-glow: rgba(99, 102, 241, 0.4);
+  
+  background: linear-gradient(
+    135deg,
+    var(--skeleton-primary) 0%,
+    var(--skeleton-secondary) 50%,
+    var(--skeleton-primary) 100%
+  );
+  background-size: 200% 200%;
+  backdrop-filter: blur(12px);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  box-shadow: 
+    0 0 30px var(--skeleton-glow),
+    0 0 60px rgba(99, 102, 241, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bordure néon animée */
+.skeleton.futuristic {
+  background-clip: padding-box;
+  border: 2px solid;
+  border-image: linear-gradient(
+    90deg,
+    rgba(99, 102, 241, 0.5),
+    rgba(139, 92, 246, 0.5),
+    rgba(236, 72, 153, 0.5),
+    rgba(99, 102, 241, 0.5)
+  ) 1;
+}
+
+.skeleton.futuristic.circle {
+  border-radius: 50%;
+  border-image: none;
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.skeleton.futuristic.rounded {
+  border-radius: var(--radius-lg);
+}
+
+/* Grille cyber en arrière-plan */
+.skeleton.futuristic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(99, 102, 241, 0.05) 2px,
+      rgba(99, 102, 241, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(99, 102, 241, 0.05) 2px,
+      rgba(99, 102, 241, 0.05) 4px
+    );
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Effet holographique */
+.skeleton.futuristic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  z-index: 2;
+}
+
+.skeleton.futuristic.animated {
+  animation: 
+    skeleton-futuristic-glow 3s ease-in-out infinite,
+    skeleton-futuristic-gradient 4s ease-in-out infinite;
+}
+
+@keyframes skeleton-futuristic-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px var(--skeleton-glow),
+      0 0 60px rgba(99, 102, 241, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(99, 102, 241, 0.6),
+      0 0 80px rgba(99, 102, 241, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes skeleton-futuristic-gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Scan line laser */
+.skeleton.futuristic.animated::after {
+  animation: skeleton-futuristic-scan 3s linear infinite;
+}
+
+@keyframes skeleton-futuristic-scan {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+    opacity: 0;
+  }
+}
+
