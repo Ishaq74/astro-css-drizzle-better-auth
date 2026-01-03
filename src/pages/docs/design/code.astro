@@ -1,5 +1,11 @@
 ---
 import DocLayout from "@layouts/DocLayout.astro";
+import Table from "@components/ui/Table/Table.astro";
+import TableHeader from "@components/ui/Table/TableHeader.astro";
+import TableBody from "@components/ui/Table/TableBody.astro";
+import TableRow from "@components/ui/Table/TableRow.astro";
+import TableHead from "@components/ui/Table/TableHead.astro";
+import TableCell from "@components/ui/Table/TableCell.astro";
 import { Code } from "astro:components";
 
 const exampleJavaScript = `function greet(name) {
@@ -65,54 +71,54 @@ const exampleCSS = `.card {
   <h2 id="props">Props</h2>
 
   <div class="props-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Défaut</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="inline-code">code</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Code à afficher (requis)</td>
-        </tr>
-        <tr>
-          <td><code class="inline-code">lang</code></td>
-          <td>string</td>
-          <td>plaintext</td>
-          <td>Langage de programmation</td>
-        </tr>
-        <tr>
-          <td><code class="inline-code">theme</code></td>
-          <td>string</td>
-          <td>github-dark</td>
-          <td>Thème Shiki</td>
-        </tr>
-        <tr>
-          <td><code class="inline-code">wrap</code></td>
-          <td>boolean</td>
-          <td>false</td>
-          <td>Activer le retour à la ligne</td>
-        </tr>
-        <tr>
-          <td><code class="inline-code">inline</code></td>
-          <td>boolean</td>
-          <td>false</td>
-          <td>Affichage inline</td>
-        </tr>
-        <tr>
-          <td><code class="inline-code">transformers</code></td>
-          <td>array</td>
-          <td>[]</td>
-          <td>Transformers Shiki</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table striped>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code class="inline-code">code</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Code à afficher (requis)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code class="inline-code">lang</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>plaintext</TableCell>
+          <TableCell>Langage de programmation</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code class="inline-code">theme</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>github-dark</TableCell>
+          <TableCell>Thème Shiki</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code class="inline-code">wrap</code></TableCell>
+          <TableCell>boolean</TableCell>
+          <TableCell>false</TableCell>
+          <TableCell>Activer le retour à la ligne</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code class="inline-code">inline</code></TableCell>
+          <TableCell>boolean</TableCell>
+          <TableCell>false</TableCell>
+          <TableCell>Affichage inline</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code class="inline-code">transformers</code></TableCell>
+          <TableCell>array</TableCell>
+          <TableCell>[]</TableCell>
+          <TableCell>Transformers Shiki</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </div>
 
   <h2 id="examples">Exemples</h2>

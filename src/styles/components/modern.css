@@ -109,16 +109,68 @@ input[type="range"].modern::-webkit-slider-thumb {
 .alert.modern[data-status="danger"] { color: var(--color-danger); }
 
 /* TABLE MODERN */
-table.modern th { 
-  background: transparent; 
-  border-bottom: 2px solid var(--border-default); 
-  text-transform: uppercase; 
-  font-size: 0.75rem; 
-  letter-spacing: 0.05em; 
-  color: var(--text-muted); 
+.table-container.modern {
+  border-radius: var(--modern-radius);
+  border: 1px solid var(--modern-input-border-color);
+  box-shadow: var(--shadow-sm);
 }
-table.modern tr:nth-child(even) { 
-  background: var(--modern-table-stripe-bg); 
+
+.table-container.modern {
+  border: 1px solid color-mix(in srgb, var(--border-default) 30%, transparent);
+  border-radius: var(--border-radius-lg);
+  background: var(--bg-default);
+}
+
+.table-container.modern .table-header {
+  background: transparent;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.table-container.modern .table-head {
+  background: transparent;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: var(--text-default);
+  font-weight: 600;
+  padding: var(--space-3) var(--space-4);
+}
+
+.table-container.modern .table-body .table-row {
+  border-bottom: 1px solid color-mix(in srgb, var(--border-default) 20%, transparent);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.table-container.modern .table-body .table-row:last-child {
+  border-bottom: none;
+}
+
+.table-container.modern .table-body .table-row:hover {
+  background: color-mix(in srgb, var(--bg-subtle) 30%, transparent);
+}
+
+.table-container.modern .table-cell {
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-default);
+}
+
+.table-container.modern .table-foot {
+  background: color-mix(in srgb, var(--bg-subtle) 40%, transparent);
+  border-top: 1px solid var(--border-default);
+  font-weight: 500;
+}
+
+.table-container.modern .table-foot .table-cell {
+  padding: var(--space-3) var(--space-4);
+  font-weight: 600;
+}
+
+/* Striped pour modern */
+.table-container.modern.striped .table-body .table-row:nth-child(odd) {
+  background: color-mix(in srgb, var(--bg-subtle) 20%, transparent);
+}
+
+.table-container.modern.striped .table-body .table-row:nth-child(odd):hover {
+  background: color-mix(in srgb, var(--bg-subtle) 40%, transparent);
 }
 
 /* LINK MODERN */
@@ -249,4 +301,44 @@ a.button.modern.accent {
 .toast.modern {
   backdrop-filter: blur(20px);
   background: color-mix(in srgb, var(--toast-bg) 95%, transparent);
+}
+
+/* KBD MODERN */
+.kbd-modern {
+  border-radius: var(--modern-radius);
+  border: 1px solid var(--modern-input-border-color);
+  background: var(--modern-input-bg);
+  color: var(--modern-input-text-color);
+  box-shadow: 0 1px 2px 0 color-mix(in srgb, var(--border-default) 30%, transparent),
+              0 2px 0 0 var(--modern-input-border-color);
+  font-weight: 500;
+}
+
+.kbd-modern:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 1px 0 color-mix(in srgb, var(--border-default) 20%, transparent);
+}
+
+.kbd-modern.primary {
+  background: var(--button-primary-bg);
+  color: var(--button-primary-color);
+  border-color: var(--button-primary-bg);
+  box-shadow: 0 1px 2px 0 color-mix(in srgb, var(--button-primary-bg) 40%, transparent),
+              0 2px 0 0 color-mix(in srgb, var(--button-primary-bg) 80%, #000);
+}
+
+.kbd-modern.secondary {
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-color);
+  border-color: var(--button-secondary-bg);
+  box-shadow: 0 1px 2px 0 color-mix(in srgb, var(--button-secondary-bg) 40%, transparent),
+              0 2px 0 0 color-mix(in srgb, var(--button-secondary-bg) 80%, #000);
+}
+
+.kbd-modern.accent {
+  background: var(--button-accent-bg);
+  color: var(--button-accent-color);
+  border-color: var(--button-accent-bg);
+  box-shadow: 0 1px 2px 0 color-mix(in srgb, var(--button-accent-bg) 40%, transparent),
+              0 2px 0 0 color-mix(in srgb, var(--button-accent-bg) 80%, #000);
 }

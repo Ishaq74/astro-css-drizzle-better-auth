@@ -16,13 +16,15 @@ export const docNavConfig = [
       { label: 'Badge', href: '/docs/design/badge' },
       { label: 'Alert', href: '/docs/design/alert' },
       { label: 'Form', href: '/docs/design/form' },
+      { label: 'Tabs', href: '/docs/design/tabs' },
+      { label: 'Code', href: '/docs/design/code' },     
+      { label: 'Kbd', href: '/docs/design/kbd' },
+      { label: 'Table', href: '/docs/design/table' },
     ]
   },
   {
     title: 'Components',
     items: [
-      { label: 'Table', href: '/docs/components/table' },
-      { label: 'Tabs', href: '/docs/components/tabs' },
       { label: 'Avatar', href: '/docs/components/avatar' },
       { label: 'Pagination', href: '/docs/components/pagination' },
     ]

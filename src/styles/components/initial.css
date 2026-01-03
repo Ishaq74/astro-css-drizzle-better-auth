@@ -342,12 +342,106 @@ input[type="range"]::-webkit-slider-thumb {
 
 
 /* TABLE */
-table { width: 100%; border-collapse: collapse; border: 1px solid var(--table-border-color); }
-thead { background: var(--table-header-bg); }
-tbody tr { background: var(--table-row-bg); }
-tbody tr:hover { background: var(--table-row-hover-bg); }
-th, td { padding: var(--table-cell-padding); text-align: left; border: 1px solid var(--table-border-color); }
-th { background: var(--table-header-bg); color: var(--table-header-color); font-weight: 600; }
+/* Container scrollable */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--table-border-color);
+  background: var(--bg-default);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+/* Caption */
+.table-caption {
+  padding: var(--space-3);
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  caption-side: bottom;
+}
+
+/* Header */
+.table-header {
+  background: var(--table-header-bg);
+  border-bottom: 2px solid var(--table-border-color);
+}
+
+.table-head {
+  padding: var(--table-cell-padding);
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--table-header-color);
+  background: var(--table-header-bg);
+  border-bottom: 1px solid var(--table-border-color);
+  white-space: nowrap;
+}
+
+/* Body */
+.table-body .table-row {
+  background: var(--table-row-bg);
+  border-bottom: 1px solid var(--table-border-color);
+  transition: background-color 0.15s ease;
+}
+
+.table-body .table-row:hover {
+  background: var(--table-row-hover-bg);
+}
+
+.table-body .table-row:last-child {
+  border-bottom: none;
+}
+
+.table-cell {
+  padding: var(--table-cell-padding);
+  text-align: left;
+  color: var(--text-default);
+}
+
+/* Striped rows (optionnel) */
+.table-container.striped .table-body .table-row:nth-child(odd) {
+  background: var(--table-stripe-bg);
+}
+
+.table-container.striped .table-body .table-row:nth-child(odd):hover {
+  background: var(--table-row-hover-bg);
+}
+
+/* Footer */
+.table-foot {
+  background: var(--table-header-bg);
+  border-top: 2px solid var(--table-border-color);
+  font-weight: 600;
+}
+
+.table-foot .table-cell {
+  font-weight: 600;
+  color: var(--table-header-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .table-container {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .table {
+    font-size: 0.8125rem;
+  }
+  
+  .table-head,
+  .table-cell {
+    padding: var(--space-2) var(--space-3);
+  }
+}
 
 /* LINK */
 .link, a.link {
@@ -389,8 +483,100 @@ a.button.primary { background-color: var(--button-primary-bg); color: var(--butt
 a.button.secondary { background-color: var(--button-secondary-bg); color: var(--button-secondary-color); border-color: transparent; }
 a.button.accent { background-color: var(--button-accent-bg); color: var(--button-accent-color); border-color: transparent; }
 
-/* TABS */
-.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--border-default); }
+/* KBD - Keyboard Key */
+.kbd {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  line-height: 1.5;
+  color: var(--text-default);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 0 0 var(--border-default), 
+              0 3px 0 0 color-mix(in srgb, var(--border-default) 50%, transparent);
+  font-weight: 600;
+  white-space: nowrap;
+  vertical-align: middle;
+  transition: all 0.1s ease;
+}
+
+.kbd:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 0 var(--border-default);
+}
+
+/* Sizes */
+.kbd-sm {
+  padding: 0.0625rem 0.375rem;
+  font-size: 0.75em;
+  border-radius: 0.25rem;
+}
+
+.kbd-lg {
+  padding: 0.25rem 0.75rem;
+  font-size: 1em;
+  border-radius: 0.5rem;
+}
+
+/* Combinations de touches */
+.kbd + .kbd {
+  margin-left: 0.25rem;
+}
+
+/* Colors */
+.kbd.primary {
+  background: var(--button-primary-bg);
+  color: var(--button-primary-color);
+  border-color: var(--button-primary-bg);
+  box-shadow: 0 2px 0 0 color-mix(in srgb, var(--button-primary-bg) 80%, #000),
+              0 3px 0 0 color-mix(in srgb, var(--button-primary-bg) 40%, transparent);
+}
+
+.kbd.secondary {
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-color);
+  border-color: var(--button-secondary-bg);
+  box-shadow: 0 2px 0 0 color-mix(in srgb, var(--button-secondary-bg) 80%, #000),
+              0 3px 0 0 color-mix(in srgb, var(--button-secondary-bg) 40%, transparent);
+}
+
+.kbd.accent {
+  background: var(--button-accent-bg);
+  color: var(--button-accent-color);
+  border-color: var(--button-accent-bg);
+  box-shadow: 0 2px 0 0 color-mix(in srgb, var(--button-accent-bg) 80%, #000),
+              0 3px 0 0 color-mix(in srgb, var(--button-accent-bg) 40%, transparent);
+}
+
+/* TABS - CSS ONLY (ZERO SCRIPT) */
+/* Masquer les radios */
+.tab-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Container des tabs */
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Liste des tabs */
+.tabs { 
+  display: flex; 
+  gap: 2px; 
+  border-bottom: 1px solid var(--border-default);
+  margin: 0;
+  padding: 0;
+}
+
+/* Style de chaque tab */
 .tab { 
   padding: var(--tab-padding-y) var(--tab-padding-x); 
   font-size: var(--tab-font-size); 
@@ -399,14 +585,60 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   cursor: pointer; 
   color: var(--tab-inactive-color); 
   transition: all 0.2s; 
-  border-bottom: 2px solid transparent; 
+  border-bottom: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
 }
-.tab[aria-selected="true"], .tab.active { 
+
+.tab:hover {
+  background: var(--bg-subtle);
+}
+
+/* Tab actif quand le radio est checked */
+.tab-radio:checked + .tab {
   color: var(--tab-active-color); 
   border-bottom-color: var(--tab-active-border-color); 
   font-weight: 500; 
 }
-.tab:hover:not([aria-selected="true"]) { background: var(--bg-subtle); }
+
+/* Container des panels */
+.tabs-panels {
+  width: 100%;
+}
+
+/* Masquer tous les panels par défaut */
+.tab-panel {
+  display: none;
+  padding: var(--space-6) 0;
+  animation: fadeIn 0.2s ease-in;
+}
+
+/* Approche générique : matcher position du radio avec position du panel */
+/* Supporte jusqu'à 15 tabs - extensible si besoin */
+.tab-radio:nth-of-type(1):checked ~ .tabs-panels > .tab-panel:nth-of-type(1),
+.tab-radio:nth-of-type(2):checked ~ .tabs-panels > .tab-panel:nth-of-type(2),
+.tab-radio:nth-of-type(3):checked ~ .tabs-panels > .tab-panel:nth-of-type(3),
+.tab-radio:nth-of-type(4):checked ~ .tabs-panels > .tab-panel:nth-of-type(4),
+.tab-radio:nth-of-type(5):checked ~ .tabs-panels > .tab-panel:nth-of-type(5),
+.tab-radio:nth-of-type(6):checked ~ .tabs-panels > .tab-panel:nth-of-type(6),
+.tab-radio:nth-of-type(7):checked ~ .tabs-panels > .tab-panel:nth-of-type(7),
+.tab-radio:nth-of-type(8):checked ~ .tabs-panels > .tab-panel:nth-of-type(8),
+.tab-radio:nth-of-type(9):checked ~ .tabs-panels > .tab-panel:nth-of-type(9),
+.tab-radio:nth-of-type(10):checked ~ .tabs-panels > .tab-panel:nth-of-type(10),
+.tab-radio:nth-of-type(11):checked ~ .tabs-panels > .tab-panel:nth-of-type(11),
+.tab-radio:nth-of-type(12):checked ~ .tabs-panels > .tab-panel:nth-of-type(12),
+.tab-radio:nth-of-type(13):checked ~ .tabs-panels > .tab-panel:nth-of-type(13),
+.tab-radio:nth-of-type(14):checked ~ .tabs-panels > .tab-panel:nth-of-type(14),
+.tab-radio:nth-of-type(15):checked ~ .tabs-panels > .tab-panel:nth-of-type(15) {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* PAGINATION */
 .pagination { display: flex; gap: 0.25rem; list-style: none; padding: 0; }

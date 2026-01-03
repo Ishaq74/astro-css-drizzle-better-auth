@@ -9,6 +9,12 @@ import CardDescription from "@components/ui/Card/CardDescription.astro";
 import CardFooter from "@components/ui/Card/CardFooter.astro";
 import LinkComponent from "@components/ui/Link.astro";
 import { Code } from "astro:components";
+import Table from "@components/ui/Table/Table.astro";
+import TableHeader from "@components/ui/Table/TableHeader.astro";
+import TableBody from "@components/ui/Table/TableBody.astro";
+import TableRow from "@components/ui/Table/TableRow.astro";
+import TableHead from "@components/ui/Table/TableHead.astro";
+import TableCell from "@components/ui/Table/TableCell.astro";
 ---
 
 <DocLayout 
@@ -43,188 +49,188 @@ import CardFooter from '@components/ui/Card/CardFooter.astro';`}
   <h3 id="card-props">Card</h3>
 
   <div class="props-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Défaut</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>variant</code></td>
-          <td>initial | retro | modern | futuristic</td>
-          <td>initial</td>
-          <td>Style visuel de la carte</td>
-        </tr>
-        <tr>
-          <td><code>elevation</code></td>
-          <td>none | sm | md | lg | xl</td>
-          <td>md</td>
-          <td>Niveau d'ombre portée</td>
-        </tr>
-        <tr>
-          <td><code>interactive</code></td>
-          <td>boolean</td>
-          <td>false</td>
-          <td>Active les effets hover/focus</td>
-        </tr>
-        <tr>
-          <td><code>className</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Classes CSS personnalisées</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table striped>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>variant</code></TableCell>
+          <TableCell>initial | retro | modern | futuristic</TableCell>
+          <TableCell>initial</TableCell>
+          <TableCell>Style visuel de la carte</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>elevation</code></TableCell>
+          <TableCell>none | sm | md | lg | xl</TableCell>
+          <TableCell>md</TableCell>
+          <TableCell>Niveau d'ombre portée</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>interactive</code></TableCell>
+          <TableCell>boolean</TableCell>
+          <TableCell>false</TableCell>
+          <TableCell>Active les effets hover/focus</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>className</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Classes CSS personnalisées</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </div>
 
   <h3 id="cardimage-props">CardImage</h3>
 
   <div class="props-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Défaut</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>src</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>URL de l'image (requis)</td>
-        </tr>
-        <tr>
-          <td><code>alt</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Texte alternatif (requis)</td>
-        </tr>
-        <tr>
-          <td><code>aspectRatio</code></td>
-          <td>16/9 | 4/3 | 1/1 | auto</td>
-          <td>16/9</td>
-          <td>Ratio de l'image</td>
-        </tr>
-        <tr>
-          <td><code>objectFit</code></td>
-          <td>cover | contain | fill | none</td>
-          <td>cover</td>
-          <td>Mode d'ajustement de l'image</td>
-        </tr>
-        <tr>
-          <td><code>className</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Classes CSS personnalisées</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table striped>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>src</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>URL de l'image (requis)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>alt</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Texte alternatif (requis)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>aspectRatio</code></TableCell>
+          <TableCell>16/9 | 4/3 | 1/1 | auto</TableCell>
+          <TableCell>16/9</TableCell>
+          <TableCell>Ratio de l'image</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>objectFit</code></TableCell>
+          <TableCell>cover | contain | fill | none</TableCell>
+          <TableCell>cover</TableCell>
+          <TableCell>Mode d'ajustement de l'image</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>className</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Classes CSS personnalisées</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </div>
 
   <h3 id="cardmeta-props">CardMeta</h3>
 
   <div class="props-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Défaut</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>items</code></td>
-          <td>Array&lt;{`{icon?, text, label?}`}&gt;</td>
-          <td>[]</td>
-          <td>Liste des métadonnées</td>
-        </tr>
-        <tr>
-          <td><code>className</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Classes CSS personnalisées</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table striped>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>items</code></TableCell>
+          <TableCell>Array&lt;{`{icon?, text, label?}`}&gt;</TableCell>
+          <TableCell>[]</TableCell>
+          <TableCell>Liste des métadonnées</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>className</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Classes CSS personnalisées</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </div>
 
   <h3 id="carddescription-props">CardDescription</h3>
 
   <div class="props-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Défaut</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>text</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Texte de la description</td>
-        </tr>
-        <tr>
-          <td><code>truncate</code></td>
-          <td>boolean</td>
-          <td>false</td>
-          <td>Tronquer le texte</td>
-        </tr>
-        <tr>
-          <td><code>lines</code></td>
-          <td>number</td>
-          <td>3</td>
-          <td>Nombre de lignes maximum</td>
-        </tr>
-        <tr>
-          <td><code>className</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Classes CSS personnalisées</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table striped>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>text</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Texte de la description</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>truncate</code></TableCell>
+          <TableCell>boolean</TableCell>
+          <TableCell>false</TableCell>
+          <TableCell>Tronquer le texte</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>lines</code></TableCell>
+          <TableCell>number</TableCell>
+          <TableCell>3</TableCell>
+          <TableCell>Nombre de lignes maximum</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>className</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Classes CSS personnalisées</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </div>
 
   <h3 id="cardfooter-props">CardFooter</h3>
 
   <div class="props-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Défaut</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>align</code></td>
-          <td>left | center | right | between</td>
-          <td>between</td>
-          <td>Alignement du contenu</td>
-        </tr>
-        <tr>
-          <td><code>className</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Classes CSS personnalisées</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table striped>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>align</code></TableCell>
+          <TableCell>left | center | right | between</TableCell>
+          <TableCell>between</TableCell>
+          <TableCell>Alignement du contenu</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>className</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Classes CSS personnalisées</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </div>
 
   <h2 id="exemples-basiques">Exemples basiques</h2>

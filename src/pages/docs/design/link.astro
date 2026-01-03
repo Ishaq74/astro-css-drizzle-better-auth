@@ -2,6 +2,12 @@
 import DocLayout from "@layouts/DocLayout.astro";
 import LinkComponent from "@components/ui/Link.astro";
 import { Code } from "astro:components";
+import Table from "@components/ui/Table/Table.astro";
+import TableHeader from "@components/ui/Table/TableHeader.astro";
+import TableBody from "@components/ui/Table/TableBody.astro";
+import TableRow from "@components/ui/Table/TableRow.astro";
+import TableHead from "@components/ui/Table/TableHead.astro";
+import TableCell from "@components/ui/Table/TableCell.astro";
 ---
 
 <DocLayout 
@@ -28,84 +34,84 @@ import { Code } from "astro:components";
   <h2 id="props">Props</h2>
 
   <div class="props-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Défaut</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>tag</code></td>
-          <td>a | button</td>
-          <td>a</td>
-          <td>Élément HTML à rendre</td>
-        </tr>
-        <tr>
-          <td><code>href</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>URL de destination</td>
-        </tr>
-        <tr>
-          <td><code>type</code></td>
-          <td>button | submit | reset</td>
-          <td>button</td>
-          <td>Type du bouton (si tag="button")</td>
-        </tr>
-        <tr>
-          <td><code>variant</code></td>
-          <td>initial | retro | modern | futuristic</td>
-          <td>initial</td>
-          <td>Style visuel</td>
-        </tr>
-        <tr>
-          <td><code>style</code></td>
-          <td>link | button</td>
-          <td>link</td>
-          <td>Apparence (lien ou bouton)</td>
-        </tr>
-        <tr>
-          <td><code>color</code></td>
-          <td>default | primary | secondary | accent</td>
-          <td>default</td>
-          <td>Couleur du composant</td>
-        </tr>
-        <tr>
-          <td><code>external</code></td>
-          <td>boolean</td>
-          <td>false</td>
-          <td>Ouvre dans nouvel onglet</td>
-        </tr>
-        <tr>
-          <td><code>text</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Texte du lien</td>
-        </tr>
-        <tr>
-          <td><code>icon</code></td>
-          <td>object</td>
-          <td>-</td>
-          <td>Icône (name et side: left | right)</td>
-        </tr>
-        <tr>
-          <td><code>ariaLabel</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Label d'accessibilité</td>
-        </tr>
-        <tr>
-          <td><code>className</code></td>
-          <td>string</td>
-          <td>-</td>
-          <td>Classes CSS supplémentaires</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table striped>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>tag</code></TableCell>
+          <TableCell>a | button</TableCell>
+          <TableCell>a</TableCell>
+          <TableCell>Élément HTML à rendre</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>href</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>URL de destination</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>type</code></TableCell>
+          <TableCell>button | submit | reset</TableCell>
+          <TableCell>button</TableCell>
+          <TableCell>Type du bouton (si tag="button")</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>variant</code></TableCell>
+          <TableCell>initial | retro | modern | futuristic</TableCell>
+          <TableCell>initial</TableCell>
+          <TableCell>Style visuel</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>style</code></TableCell>
+          <TableCell>link | button</TableCell>
+          <TableCell>link</TableCell>
+          <TableCell>Apparence (lien ou bouton)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>color</code></TableCell>
+          <TableCell>default | primary | secondary | accent</TableCell>
+          <TableCell>default</TableCell>
+          <TableCell>Couleur du composant</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>external</code></TableCell>
+          <TableCell>boolean</TableCell>
+          <TableCell>false</TableCell>
+          <TableCell>Ouvre dans nouvel onglet</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>text</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Texte du lien</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>icon</code></TableCell>
+          <TableCell>object</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Icône (name et side: left | right)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>ariaLabel</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Label d'accessibilité</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>className</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Classes CSS supplémentaires</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </div>
 
   <h2 id="exemples-basiques">Exemples Basiques</h2>
