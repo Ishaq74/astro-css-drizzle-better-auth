@@ -1,0 +1,558 @@
+---
+import DocLayout from "@layouts/DocLayout.astro";
+import Button from "@components/ui/Button.astro";
+import { Code } from "astro:components";
+---
+
+<DocLayout 
+  title="Button Component" 
+  description="Documentation complète du composant Button avec tous les variants et exemples"
+  variant="initial"
+>
+  <h1 id="button-component">Button Component</h1>
+  
+  <p>
+    Le composant <code class="inline-code">Button</code> est un bouton réutilisable qui supporte 4 variants visuels, 
+    plusieurs couleurs, des icônes et une accessibilité totale.
+  </p>
+
+  <h2 id="installation">Installation</h2>
+  
+  <p>Le composant est disponible dans <code class="inline-code">src/components/ui/Button.astro</code></p>
+  
+  <Code
+    lang="typescript"
+    code={`import Button from '@components/ui/Button.astro';`}
+  />
+
+  <h2 id="props">Props</h2>
+
+  <div class="props-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Prop</th>
+          <th>Type</th>
+          <th>Défaut</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="inline-code">type</code></td>
+          <td>button | submit | reset</td>
+          <td>button</td>
+          <td>Type du bouton HTML</td>
+        </tr>
+        <tr>
+          <td><code class="inline-code">variant</code></td>
+          <td>initial | retro | modern | futuristic</td>
+          <td>initial</td>
+          <td>Style visuel du bouton</td>
+        </tr>
+        <tr>
+          <td><code class="inline-code">color</code></td>
+          <td>default | primary | secondary | accent</td>
+          <td>default</td>
+          <td>Couleur du bouton</td>
+        </tr>
+        <tr>
+          <td><code class="inline-code">disabled</code></td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Désactive le bouton</td>
+        </tr>
+        <tr>
+          <td><code class="inline-code">icon</code></td>
+          <td>object</td>
+          <td>-</td>
+          <td>Icône (name et side: left | right)</td>
+        </tr>
+        <tr>
+          <td><code class="inline-code">ariaLabel</code></td>
+          <td>string</td>
+          <td>-</td>
+          <td>Label d'accessibilité ARIA</td>
+        </tr>
+        <tr>
+          <td><code class="inline-code">className</code></td>
+          <td>string</td>
+          <td>-</td>
+          <td>Classes CSS supplémentaires</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="variants">Les 4 Variants</h2>
+
+  <h3>Initial (Défaut)</h3>
+  <div class="example-section">
+    <div class="button-group">
+      <Button variant="initial">Default</Button>
+      <Button variant="initial" color="primary">Primary</Button>
+      <Button variant="initial" color="secondary">Secondary</Button>
+      <Button variant="initial" color="accent">Accent</Button>
+      <Button variant="initial" disabled>Disabled</Button>
+    </div>
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<Button variant="initial">Default</Button>
+<Button variant="initial" color="primary">Primary</Button>
+<Button variant="initial" color="secondary">Secondary</Button>
+<Button variant="initial" color="accent">Accent</Button>
+<Button variant="initial" disabled>Disabled</Button>`}
+  />
+
+  <h3>Retro</h3>
+  <div class="example-section">
+    <div class="button-group">
+      <Button variant="retro">Default</Button>
+      <Button variant="retro" color="primary">Primary</Button>
+      <Button variant="retro" color="secondary">Secondary</Button>
+      <Button variant="retro" color="accent">Accent</Button>
+      <Button variant="retro" disabled>Disabled</Button>
+    </div>
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<Button variant="retro">Default</Button>
+<Button variant="retro" color="primary">Primary</Button>`}
+  />
+
+  <h3>Modern</h3>
+  <div class="example-section">
+    <div class="button-group">
+      <Button variant="modern">Default</Button>
+      <Button variant="modern" color="primary">Primary</Button>
+      <Button variant="modern" color="secondary">Secondary</Button>
+      <Button variant="modern" color="accent">Accent</Button>
+      <Button variant="modern" disabled>Disabled</Button>
+    </div>
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<Button variant="modern">Default</Button>
+<Button variant="modern" color="primary">Primary</Button>`}
+  />
+
+  <h3>Futuristic</h3>
+  <div class="example-section">
+    <div class="button-group">
+      <Button variant="futuristic">Default</Button>
+      <Button variant="futuristic" color="primary">Primary</Button>
+      <Button variant="futuristic" color="secondary">Secondary</Button>
+      <Button variant="futuristic" color="accent">Accent</Button>
+      <Button variant="futuristic" disabled>Disabled</Button>
+    </div>
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<Button variant="futuristic">Default</Button>
+<Button variant="futuristic" color="primary">Primary</Button>`}
+  />
+
+  <h2 id="types">Types de boutons</h2>
+
+  <div class="example-section">
+    <div class="button-group">
+      <Button type="button" color="primary">Type: Button</Button>
+      <Button type="submit" color="secondary">Type: Submit</Button>
+      <Button type="reset" color="accent">Type: Reset</Button>
+    </div>
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<Button type="button">Type: Button</Button>
+<Button type="submit">Type: Submit</Button>
+<Button type="reset">Type: Reset</Button>`}
+  />
+
+  <h2 id="icons">Boutons avec icônes</h2>
+
+  <h3>Icône à gauche</h3>
+  <div class="example-section">
+    <div class="button-group">
+      <Button 
+        variant="initial" 
+        color="primary"
+        icon={{ name: 'mdi:download', side: 'left' }}
+      >
+        Télécharger
+      </Button>
+      
+      <Button 
+        variant="retro" 
+        color="secondary"
+        icon={{ name: 'mdi:upload', side: 'left' }}
+      >
+        Uploader
+      </Button>
+      
+      <Button 
+        variant="modern" 
+        color="accent"
+        icon={{ name: 'mdi:heart', side: 'left' }}
+      >
+        J'aime
+      </Button>
+      
+      <Button 
+        variant="futuristic" 
+        color="primary"
+        icon={{ name: 'mdi:rocket-launch', side: 'left' }}
+      >
+        Lancer
+      </Button>
+    </div>
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<Button 
+  variant="initial" 
+  color="primary"
+  icon={{ name: 'mdi:download', side: 'left' }}
+>
+  Télécharger
+</Button>`}
+  />
+
+  <h3>Icône à droite</h3>
+  <div class="example-section">
+    <div class="button-group">
+      <Button 
+        variant="initial" 
+        color="primary"
+        icon={{ name: 'mdi:arrow-right', side: 'right' }}
+      >
+        Suivant
+      </Button>
+      
+      <Button 
+        variant="retro" 
+        color="secondary"
+        icon={{ name: 'mdi:chevron-right', side: 'right' }}
+      >
+        Continuer
+      </Button>
+      
+      <Button 
+        variant="modern" 
+        color="accent"
+        icon={{ name: 'mdi:send', side: 'right' }}
+      >
+        Envoyer
+      </Button>
+      
+      <Button 
+        variant="futuristic" 
+        color="primary"
+        icon={{ name: 'mdi:lightning-bolt', side: 'right' }}
+      >
+        Activer
+      </Button>
+    </div>
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<Button 
+  variant="initial" 
+  color="primary"
+  icon={{ name: 'mdi:arrow-right', side: 'right' }}
+>
+  Suivant
+</Button>`}
+  />
+
+  <h3>Bouton icône seule</h3>
+  <div class="example-section">
+    <div class="button-group">
+      <Button 
+        variant="initial" 
+        icon={{ name: 'mdi:close' }}
+        ariaLabel="Fermer"
+      />
+      
+      <Button 
+        variant="retro" 
+        color="primary"
+        icon={{ name: 'mdi:pencil' }}
+        ariaLabel="Éditer"
+      />
+      
+      <Button 
+        variant="modern" 
+        color="secondary"
+        icon={{ name: 'mdi:delete' }}
+        ariaLabel="Supprimer"
+      />
+      
+      <Button 
+        variant="futuristic" 
+        color="accent"
+        icon={{ name: 'mdi:cog' }}
+        ariaLabel="Paramètres"
+      />
+    </div>
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<Button 
+  variant="initial" 
+  icon={{ name: 'mdi:close' }}
+  ariaLabel="Fermer"
+/>`}
+  />
+
+  <h2 id="states">États des boutons</h2>
+
+  <h3>Disabled</h3>
+  <div class="example-section">
+    <div class="button-group">
+      <Button variant="initial" color="primary" disabled>Initial Disabled</Button>
+      <Button variant="retro" color="primary" disabled>Retro Disabled</Button>
+      <Button variant="modern" color="primary" disabled>Modern Disabled</Button>
+      <Button variant="futuristic" color="primary" disabled>Futuristic Disabled</Button>
+    </div>
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<Button variant="initial" color="primary" disabled>
+  Bouton désactivé
+</Button>`}
+  />
+
+  <h2 id="examples">Exemples d'usage</h2>
+
+  <h3>Formulaire de connexion</h3>
+  <div class="example-section">
+    <form style="max-width: 400px;">
+      <div style="margin-bottom: 1rem;">
+        <label for="email-example" style="display: block; margin-bottom: 0.5rem;">Email</label>
+        <input id="email-example" type="email" placeholder="vous@exemple.com" style="width: 100%;" />
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <label for="password-example" style="display: block; margin-bottom: 0.5rem;">Mot de passe</label>
+        <input id="password-example" type="password" placeholder="••••••••" style="width: 100%;" />
+      </div>
+      <div style="display: flex; gap: 0.5rem;">
+        <Button type="submit" variant="initial" color="primary">
+          Se connecter
+        </Button>
+        <Button type="reset" variant="initial">
+          Réinitialiser
+        </Button>
+      </div>
+    </form>
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<form>
+  <Button type="submit" variant="initial" color="primary">
+    Se connecter
+  </Button>
+  <Button type="reset" variant="initial">
+    Réinitialiser
+  </Button>
+</form>`}
+  />
+
+  <h3>Boutons d'action</h3>
+  <div class="example-section">
+    <div class="button-group">
+      <Button 
+        variant="modern" 
+        color="primary"
+        icon={{ name: 'mdi:plus', side: 'left' }}
+      >
+        Créer
+      </Button>
+      
+      <Button 
+        variant="modern" 
+        color="secondary"
+        icon={{ name: 'mdi:pencil', side: 'left' }}
+      >
+        Modifier
+      </Button>
+      
+      <Button 
+        variant="modern" 
+        color="accent"
+        icon={{ name: 'mdi:delete', side: 'left' }}
+      >
+        Supprimer
+      </Button>
+    </div>
+  </div>
+
+  <h3>Boutons de navigation</h3>
+  <div class="example-section">
+    <div class="button-group">
+      <Button 
+        variant="retro"
+        icon={{ name: 'mdi:arrow-left', side: 'left' }}
+      >
+        Précédent
+      </Button>
+      
+      <Button 
+        variant="retro" 
+        color="primary"
+        icon={{ name: 'mdi:arrow-right', side: 'right' }}
+      >
+        Suivant
+      </Button>
+    </div>
+  </div>
+
+  <h2 id="accessibility">Accessibilité</h2>
+
+  <ul>
+    <li><strong>Attribut type</strong>: Spécifier le type approprié (button/submit/reset)</li>
+    <li><strong>ariaLabel</strong>: Obligatoire pour boutons icône seule</li>
+    <li><strong>disabled</strong>: Désactive le bouton et le rend inaccessible</li>
+    <li><strong>Focus visible</strong>: États de focus clairs sur tous les variants</li>
+    <li><strong>Contraste</strong>: Respect des ratios WCAG AA</li>
+  </ul>
+
+  <Code
+    lang="astro"
+    code={`<Button 
+  icon={{ name: 'mdi:close' }}
+  ariaLabel="Fermer la fenêtre"
+/>`}
+  />
+
+  <h2 id="best-practices">Meilleures pratiques</h2>
+
+  <ul>
+    <li>Utiliser <code class="inline-code">type="submit"</code> pour les boutons de soumission de formulaire</li>
+    <li>Toujours fournir <code class="inline-code">ariaLabel</code> pour les boutons sans texte</li>
+    <li>Utiliser les couleurs de manière cohérente (primary pour action principale, etc.)</li>
+    <li>Éviter trop d'icônes, utiliser avec parcimonie</li>
+    <li>Garder le même variant dans toute l'interface</li>
+    <li>Désactiver les boutons plutôt que de les masquer pendant les actions</li>
+  </ul>
+
+  <h2 id="css">Personnalisation CSS</h2>
+
+  <p>
+    Le composant utilise les tokens CSS définis dans le design system. 
+    Les styles sont définis dans <code class="inline-code">src/styles/components/</code> pour chaque variant.
+  </p>
+
+  <h3>Variables CSS utilisées</h3>
+  <ul>
+    <li><code class="inline-code">--button-padding-y</code></li>
+    <li><code class="inline-code">--button-padding-x</code></li>
+    <li><code class="inline-code">--button-border-radius</code></li>
+    <li><code class="inline-code">--button-font-size</code></li>
+    <li><code class="inline-code">--button-primary-bg</code></li>
+    <li><code class="inline-code">--button-primary-color</code></li>
+    <li>Et plus...</li>
+  </ul>
+
+  <h2>Comparaison avec Link</h2>
+
+  <p>
+    Le composant <code class="inline-code">Button</code> est similaire à <code class="inline-code">Link</code> 
+    mais toujours rendu comme un élément <code class="inline-code">&lt;button&gt;</code>. 
+    Utilisez <code class="inline-code">Link</code> avec <code class="inline-code">style="button"</code> 
+    pour des boutons qui sont en réalité des liens de navigation.
+  </p>
+
+  <div class="comparison-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Cas d'usage</th>
+          <th>Composant à utiliser</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Soumettre un formulaire</td>
+          <td><code class="inline-code">Button type="submit"</code></td>
+        </tr>
+        <tr>
+          <td>Action JavaScript</td>
+          <td><code class="inline-code">Button</code></td>
+        </tr>
+        <tr>
+          <td>Navigation vers une page</td>
+          <td><code class="inline-code">Link style="button"</code></td>
+        </tr>
+        <tr>
+          <td>Lien externe</td>
+          <td><code class="inline-code">Link external</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocLayout>
+
+<style>
+  .props-table {
+    overflow-x: auto;
+    margin: var(--space-4) 0;
+  }
+
+  .props-table table,
+  .comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .props-table th,
+  .props-table td,
+  .comparison-table th,
+  .comparison-table td {
+    text-align: left;
+    padding: var(--space-3);
+    border: 1px solid var(--border-default);
+  }
+
+  .props-table th,
+  .comparison-table th {
+    background: var(--bg-inset);
+    font-weight: 600;
+  }
+
+  .example-section {
+    background: var(--bg-inset);
+    padding: var(--space-6);
+    border-radius: var(--border-radius-md);
+    margin: var(--space-4) 0;
+  }
+
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  .inline-code {
+    background: var(--bg-inset);
+    padding: 0.125rem 0.375rem;
+    border-radius: var(--border-radius-sm);
+    font-family: monospace;
+    font-size: 0.9em;
+  }
+
+  .comparison-table {
+    margin: var(--space-4) 0;
+  }
+</style>

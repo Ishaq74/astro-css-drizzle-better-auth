@@ -1,0 +1,221 @@
+/* Components - Variant Retro */
+
+/* BUTTON RETRO */
+button.retro {
+  border-radius: 0;
+  border: var(--retro-border-width) solid var(--retro-button-border-color);
+  background-color: var(--retro-button-bg); 
+  color: var(--retro-button-color);
+  box-shadow: var(--retro-shadow-offset) var(--retro-shadow-offset) 0 0 var(--retro-shadow-color);
+}
+button.retro:hover { 
+  background-color: var(--retro-button-hover-bg); 
+  transform: translate(-1px, -1px); 
+  box-shadow: calc(var(--retro-shadow-offset) + 1px) calc(var(--retro-shadow-offset) + 1px) 0 0 var(--retro-shadow-color); 
+}
+button.retro:active { 
+  transform: translate(var(--retro-shadow-offset), var(--retro-shadow-offset)); 
+  box-shadow: none; 
+  background-color: var(--retro-button-active-bg); 
+}
+button.retro.primary { background-color: var(--button-primary-bg); color: var(--button-primary-color); border-color: var(--retro-button-border-color); }
+button.retro.secondary { background-color: var(--button-secondary-bg); color: var(--button-secondary-color); border-color: var(--retro-button-border-color); }
+button.retro.accent { background-color: var(--button-accent-bg); color: var(--button-accent-color); border-color: var(--retro-button-border-color); }
+
+/* INPUT RETRO */
+input.retro:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select.retro, textarea.retro {
+  border-radius: 0;
+  border: var(--retro-border-width) solid var(--retro-input-border-color);
+  background-color: var(--retro-input-bg); 
+  color: var(--retro-input-text-color);
+  box-shadow: 2px 2px 0 var(--retro-shadow-color);
+}
+input.retro:focus, select.retro:focus, textarea.retro:focus { 
+  background-color: var(--retro-input-focus-bg); 
+  outline: none; 
+}
+
+/* CHECKBOX RETRO */
+input[type="checkbox"].retro { 
+  border-radius: 0; 
+  border: var(--retro-border-width) solid var(--text-default); 
+  background: var(--retro-checkbox-bg); 
+  box-shadow: 2px 2px 0 var(--retro-shadow-color); 
+}
+
+/* SWITCH RETRO */
+input[role="switch"].retro { 
+  border-radius: 0; 
+  border: var(--retro-border-width) solid var(--text-default); 
+  background: var(--retro-switch-bg-off); 
+  box-shadow: 2px 2px 0 var(--retro-shadow-color); 
+}
+input[role="switch"].retro::after { 
+  border-radius: 0; 
+  border: 1px solid black; 
+}
+input[role="switch"].retro:checked { 
+  background: var(--retro-switch-bg-on); 
+}
+
+/* SLIDER RETRO */
+input[type="range"].retro::-webkit-slider-runnable-track { 
+  background: var(--retro-slider-track-bg); 
+  border: var(--retro-border-width) solid var(--text-default); 
+  border-radius: 0; 
+  height: calc(var(--slider-track-height) * 2); 
+}
+input[type="range"].retro::-webkit-slider-thumb { 
+  border-radius: 0; 
+  background: var(--retro-slider-thumb-color); 
+  border: var(--retro-border-width) solid var(--text-default); 
+  box-shadow: 2px 2px 0 var(--retro-shadow-color); 
+  width: calc(var(--slider-thumb-size) * 0.8); 
+  height: calc(var(--slider-thumb-size) * 1.2); 
+  margin-top: -6px; 
+}
+
+/* CARD RETRO */
+.card.retro {
+  border-radius: 0;
+  border: var(--retro-border-width) solid var(--retro-card-border-color);
+  background-color: var(--retro-card-bg); 
+  color: var(--retro-card-color);
+  box-shadow: var(--retro-shadow-offset) var(--retro-shadow-offset) 0 var(--retro-shadow-color);
+}
+
+/* BADGE RETRO */
+.badge.retro { 
+  border-radius: 0; 
+  border: 1px solid currentColor; 
+  background: var(--retro-badge-bg); 
+  box-shadow: 2px 2px 0 var(--retro-shadow-color); 
+}
+.badge.retro.primary { color: var(--badge-primary-bg); border-color: var(--badge-primary-bg); }
+.badge.retro.secondary { color: var(--badge-secondary-bg); border-color: var(--badge-secondary-bg); }
+.badge.retro.accent { color: var(--badge-accent-bg); border-color: var(--badge-accent-bg); }
+
+/* ALERT RETRO */
+.alert.retro { 
+  border-radius: 0; 
+  border: var(--retro-border-width) solid currentColor; 
+  background: var(--retro-alert-bg); 
+  box-shadow: 4px 4px 0 var(--retro-shadow-color); 
+}
+
+/* TABLE RETRO */
+table.retro th { 
+  background: var(--retro-table-header-bg); 
+  color: var(--retro-table-header-color); 
+  border: var(--retro-border-width) solid var(--retro-table-border-color); 
+}
+table.retro td { 
+  border: var(--retro-border-width) solid var(--retro-table-border-color); 
+}
+
+/* LINK RETRO */
+.link.retro, a.link-retro {
+  color: var(--retro-link-color);
+  text-decoration: none;
+  border-bottom: var(--retro-link-border-width) solid var(--retro-link-border-color);
+  font-weight: var(--retro-link-font-weight);
+  transition: var(--retro-link-transition);
+}
+.link.retro:hover, a.link-retro:hover {
+  color: var(--retro-link-hover-color);
+  transform: translate(var(--retro-link-shadow-offset), calc(-1 * var(--retro-link-shadow-offset)));
+  box-shadow: var(--retro-link-shadow-offset) var(--retro-link-shadow-offset) 0 var(--retro-link-shadow-color);
+}
+
+/* LINK BUTTON RETRO */
+a.button.retro {
+  border-radius: 0;
+  border: var(--retro-link-button-border-width) solid var(--retro-link-button-border-color);
+  background-color: var(--retro-link-button-bg); 
+  color: var(--retro-link-button-color);
+  box-shadow: var(--retro-link-button-shadow-offset) var(--retro-link-button-shadow-offset) 0 0 var(--retro-link-button-shadow-color);
+}
+a.button.retro:hover { 
+  background-color: var(--retro-link-button-hover-bg); 
+  transform: translate(-1px, -1px); 
+  box-shadow: calc(var(--retro-link-button-shadow-offset) + 1px) calc(var(--retro-link-button-shadow-offset) + 1px) 0 0 var(--retro-link-button-shadow-color); 
+}
+a.button.retro.primary { background-color: var(--button-primary-bg); color: var(--button-primary-color); border-color: var(--retro-link-button-border-color); }
+a.button.retro.secondary { background-color: var(--button-secondary-bg); color: var(--button-secondary-color); border-color: var(--retro-link-button-border-color); }
+a.button.retro.accent { background-color: var(--button-accent-bg); color: var(--button-accent-color); border-color: var(--retro-link-button-border-color); }
+
+/* TABS RETRO */
+.tabs.retro { 
+  gap: 4px; 
+  border-bottom: none; 
+}
+.tabs.retro .tab { 
+  border: var(--retro-border-width) solid transparent; 
+  border-bottom: none; 
+  background: var(--bg-default); 
+}
+.tabs.retro .tab[aria-selected="true"], .tabs.retro .tab.active { 
+  background: var(--retro-tab-active-bg); 
+  border-color: currentColor; 
+  color: var(--bg-default); 
+}
+
+/* PAGINATION RETRO */
+.pagination.retro .pagination-item { 
+  border-radius: 0; 
+  border: var(--retro-border-width) solid transparent; 
+}
+.pagination.retro .pagination-item.active { 
+  background-color: var(--retro-pagination-active-bg); 
+  color: var(--retro-pagination-bg); 
+  border-color: currentColor; 
+  box-shadow: 2px 2px 0 var(--retro-shadow-color); 
+}
+
+/* BREADCRUMB RETRO */
+.breadcrumb.retro .breadcrumb-item::after { 
+  content: var(--retro-breadcrumb-separator); 
+}
+
+/* AVATAR RETRO */
+.avatar.retro {
+  border-radius: 0;
+  border: var(--retro-border-width) solid var(--retro-avatar-border-color);
+  box-shadow: var(--retro-shadow-offset) var(--retro-shadow-offset) 0 var(--retro-shadow-color);
+}
+
+/* TOOLTIP RETRO */
+.tooltip.retro {
+  border-radius: 0;
+  border: var(--retro-border-width) solid var(--text-default);
+  box-shadow: 2px 2px 0 var(--retro-shadow-color);
+}
+
+/* POPOVER RETRO */
+.popover.retro {
+  border-radius: 0;
+  border: var(--retro-border-width) solid var(--text-default);
+  box-shadow: 4px 4px 0 var(--retro-shadow-color);
+}
+
+/* SKELETON RETRO */
+.skeleton.retro {
+  border-radius: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--skeleton-bg),
+    var(--skeleton-bg) 10px,
+    color-mix(in srgb, var(--skeleton-bg) 80%, transparent) 10px,
+    color-mix(in srgb, var(--skeleton-bg) 80%, transparent) 20px
+  );
+}
+.skeleton.retro::after { 
+  display: none; 
+}
+
+/* TOAST RETRO */
+.toast.retro {
+  border-radius: 0;
+  border: var(--retro-border-width) solid var(--text-default);
+  box-shadow: 4px 4px 0 var(--retro-shadow-color);
+}

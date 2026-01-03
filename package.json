@@ -1,0 +1,32 @@
+{
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/vercel": "^8.0.4",
+    "@iconify-json/circle-flags": "^1.2.10",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/openmoji": "^1.2.19",
+    "astro": "^5.16.6",
+    "astro-font": "^1.1.0",
+    "astro-icon": "^1.1.5",
+    "better-auth": "^1.4.10",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.1",
+    "nodemailer": "^7.0.12",
+    "pg": "^8.16.3",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^7.0.4",
+    "@types/pg": "^8.16.0",
+    "drizzle-kit": "^0.31.8"
+  }
+}

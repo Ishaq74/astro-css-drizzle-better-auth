@@ -1,0 +1,252 @@
+/* Components - Variant Modern */
+
+/* BUTTON MODERN */
+button.modern {
+  border-radius: var(--modern-radius);
+  border: 1px solid var(--modern-button-border-color);
+  background-color: var(--modern-button-bg); 
+  color: var(--modern-button-color);
+  box-shadow: var(--shadow-sm);
+}
+button.modern:hover { 
+  transform: translateY(-1px); 
+  box-shadow: var(--modern-button-hover-shadow); 
+}
+button.modern.primary { 
+  background-color: var(--button-primary-bg); 
+  color: var(--button-primary-color); 
+  box-shadow: 0 4px 6px -1px color-mix(in srgb, var(--button-primary-bg) 50%, transparent); 
+}
+button.modern.secondary { 
+  background-color: var(--button-secondary-bg); 
+  color: var(--button-secondary-color); 
+}
+button.modern.accent { 
+  background-color: var(--button-accent-bg); 
+  color: var(--button-accent-color); 
+}
+
+/* INPUT MODERN */
+input.modern:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select.modern, textarea.modern {
+  border-radius: var(--input-border-radius);
+  border: 1px solid var(--modern-input-border-color);
+  background-color: var(--modern-input-bg); 
+  color: var(--modern-input-text-color);
+  box-shadow: var(--shadow-sm);
+}
+input.modern:focus, select.modern:focus, textarea.modern:focus { 
+  border-color: var(--input-border-color-focus); 
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--input-border-color-focus) 20%, transparent); 
+}
+
+/* CHECKBOX MODERN */
+input[type="checkbox"].modern { 
+  border-radius: 99px; 
+  background: var(--bg-subtle); 
+  border-color: var(--border-default); 
+}
+input[type="checkbox"].modern:checked { 
+  background: var(--modern-checkbox-checked-bg); 
+}
+
+/* SWITCH MODERN */
+input[role="switch"].modern { 
+  background: var(--modern-switch-bg-off); 
+}
+input[role="switch"].modern:checked { 
+  background: var(--modern-switch-bg-on); 
+}
+
+/* SLIDER MODERN */
+input[type="range"].modern::-webkit-slider-runnable-track { 
+  height: 4px; 
+}
+input[type="range"].modern::-webkit-slider-thumb { 
+  box-shadow: 0 0 0 4px var(--bg-default), var(--shadow-md); 
+}
+
+/* CARD MODERN */
+.card.modern {
+  border-radius: var(--modern-radius);
+  background-color: var(--modern-card-bg); 
+  color: var(--modern-card-color);
+  border: 1px solid var(--modern-card-border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/* BADGE MODERN */
+.badge.modern { 
+  border-radius: 99px; 
+  background: var(--modern-badge-bg); 
+  border: 1px solid transparent; 
+}
+.badge.modern.primary { 
+  background: color-mix(in srgb, var(--badge-primary-bg) 15%, transparent); 
+  color: var(--badge-primary-bg); 
+  border-color: color-mix(in srgb, var(--badge-primary-bg) 20%, transparent); 
+}
+.badge.modern.secondary { 
+  background: color-mix(in srgb, var(--badge-secondary-bg) 15%, transparent); 
+  color: var(--badge-secondary-bg); 
+  border-color: color-mix(in srgb, var(--badge-secondary-bg) 20%, transparent); 
+}
+.badge.modern.accent { 
+  background: color-mix(in srgb, var(--badge-accent-bg) 15%, transparent); 
+  color: var(--badge-accent-bg); 
+  border-color: color-mix(in srgb, var(--badge-accent-bg) 20%, transparent); 
+}
+
+/* ALERT MODERN */
+.alert.modern { 
+  border-radius: var(--border-radius-md); 
+  background: var(--modern-alert-bg); 
+  border-left: 4px solid currentColor; 
+  box-shadow: var(--shadow-sm); 
+}
+.alert.modern[data-status="info"] { color: var(--color-secondary); }
+.alert.modern[data-status="success"] { color: var(--color-success); }
+.alert.modern[data-status="warning"] { color: var(--color-warning); }
+.alert.modern[data-status="danger"] { color: var(--color-danger); }
+
+/* TABLE MODERN */
+table.modern th { 
+  background: transparent; 
+  border-bottom: 2px solid var(--border-default); 
+  text-transform: uppercase; 
+  font-size: 0.75rem; 
+  letter-spacing: 0.05em; 
+  color: var(--text-muted); 
+}
+table.modern tr:nth-child(even) { 
+  background: var(--modern-table-stripe-bg); 
+}
+
+/* LINK MODERN */
+.link.modern, a.link-modern {
+  color: var(--modern-link-color);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+}
+.link.modern::after, a.link-modern::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: var(--modern-link-underline-height);
+  background: var(--modern-link-underline-color);
+  transition: width var(--modern-link-transition) ease;
+}
+.link.modern:hover, a.link-modern:hover {
+  color: var(--modern-link-hover-color);
+}
+.link.modern:hover::after, a.link-modern:hover::after {
+  width: 100%;
+}
+
+/* LINK BUTTON MODERN */
+a.button.modern {
+  border-radius: var(--modern-link-button-radius);
+  border: 1px solid var(--modern-link-button-border-color);
+  background-color: var(--modern-link-button-bg); 
+  color: var(--modern-link-button-color);
+  box-shadow: var(--shadow-sm);
+}
+a.button.modern:hover { 
+  transform: translateY(-1px); 
+  box-shadow: var(--modern-link-button-hover-shadow); 
+}
+a.button.modern.primary { 
+  background-color: var(--button-primary-bg); 
+  color: var(--button-primary-color); 
+  box-shadow: 0 4px 6px -1px color-mix(in srgb, var(--button-primary-bg) 50%, transparent); 
+}
+a.button.modern.secondary { 
+  background-color: var(--button-secondary-bg); 
+  color: var(--button-secondary-color); 
+}
+a.button.modern.accent { 
+  background-color: var(--button-accent-bg); 
+  color: var(--button-accent-color); 
+}
+
+/* TABS MODERN */
+.tabs.modern { 
+  background: var(--bg-subtle); 
+  padding: 4px; 
+  border-radius: 99px; 
+  gap: 0; 
+  border-bottom: none; 
+}
+.tabs.modern .tab { 
+  border-radius: 99px; 
+  border: none; 
+  padding: 8px 16px; 
+}
+.tabs.modern .tab[aria-selected="true"], .tabs.modern .tab.active { 
+  background: white; 
+  box-shadow: var(--shadow-sm); 
+  color: var(--modern-tab-active-color); 
+  font-weight: 600; 
+}
+
+/* PAGINATION MODERN */
+.pagination.modern .pagination-item.active { 
+  background-color: transparent; 
+  color: var(--modern-pagination-active-color); 
+  font-weight: bold; 
+  border-bottom: 2px solid currentColor; 
+  border-radius: 0; 
+}
+
+/* BREADCRUMB MODERN */
+.breadcrumb.modern .breadcrumb-item a { 
+  color: var(--modern-breadcrumb-color); 
+  text-decoration: underline; 
+  text-decoration-color: transparent; 
+  transition: all 0.2s; 
+}
+.breadcrumb.modern .breadcrumb-item a:hover { 
+  text-decoration-color: currentColor; 
+}
+
+/* AVATAR MODERN */
+.avatar.modern {
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--bg-default);
+  outline: 1px solid var(--border-default);
+}
+
+/* TOOLTIP MODERN */
+.tooltip.modern {
+  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--tooltip-bg) 90%, transparent);
+}
+
+/* POPOVER MODERN */
+.popover.modern {
+  backdrop-filter: blur(20px);
+  background: color-mix(in srgb, var(--popover-bg) 95%, transparent);
+  box-shadow: var(--shadow-xl);
+}
+
+/* SKELETON MODERN */
+.skeleton.modern {
+  background: linear-gradient(90deg, var(--skeleton-bg) 0%, color-mix(in srgb, var(--skeleton-bg) 90%, white) 50%, var(--skeleton-bg) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-modern 1.5s infinite;
+}
+.skeleton.modern::after { 
+  display: none; 
+}
+@keyframes skeleton-modern {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* TOAST MODERN */
+.toast.modern {
+  backdrop-filter: blur(20px);
+  background: color-mix(in srgb, var(--toast-bg) 95%, transparent);
+}
