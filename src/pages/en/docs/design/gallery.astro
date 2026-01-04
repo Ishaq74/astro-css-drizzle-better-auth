@@ -1,0 +1,466 @@
+---
+import DocLayout from "@layouts/DocLayout.astro";
+import { Code } from "astro:components";
+import GalleryComponent from "@components/ui/Gallery.astro";
+
+const sampleImages = [
+  { src: "https://picsum.photos/400/400?random=1", alt: "Image 1", caption: "Beautiful Landscape" },
+  { src: "https://picsum.photos/400/400?random=2", alt: "Image 2", caption: "City Lights" },
+  { src: "https://picsum.photos/400/400?random=3", alt: "Image 3", caption: "Nature Scene" },
+  { src: "https://picsum.photos/400/400?random=4", alt: "Image 4", caption: "Abstract Art" },
+  { src: "https://picsum.photos/400/400?random=5", alt: "Image 5", caption: "Sunset View" },
+  { src: "https://picsum.photos/400/400?random=6", alt: "Image 6", caption: "Mountain Peak" },
+];
+
+const productImages = [
+  { 
+    src: "https://picsum.photos/800/600?random=10", 
+    thumb: "https://picsum.photos/100/100?random=10",
+    alt: "Product View 1" 
+  },
+  { 
+    src: "https://picsum.photos/800/600?random=11", 
+    thumb: "https://picsum.photos/100/100?random=11",
+    alt: "Product View 2" 
+  },
+  { 
+    src: "https://picsum.photos/800/600?random=12", 
+    thumb: "https://picsum.photos/100/100?random=12",
+    alt: "Product View 3" 
+  },
+  { 
+    src: "https://picsum.photos/800/600?random=13", 
+    thumb: "https://picsum.photos/100/100?random=13",
+    alt: "Product View 4" 
+  },
+];
+
+const masonryImages = [
+  { src: "https://picsum.photos/400/300?random=20", alt: "Masonry 1", caption: "Portrait" },
+  { src: "https://picsum.photos/400/600?random=21", alt: "Masonry 2", caption: "Tall Image" },
+  { src: "https://picsum.photos/400/400?random=22", alt: "Masonry 3", caption: "Square" },
+  { src: "https://picsum.photos/400/500?random=23", alt: "Masonry 4", caption: "Medium" },
+  { src: "https://picsum.photos/400/350?random=24", alt: "Masonry 5", caption: "Wide" },
+  { src: "https://picsum.photos/400/450?random=25", alt: "Masonry 6", caption: "Landscape" },
+];
+---
+
+<DocLayout 
+  title="Gallery Component" 
+  description="Image gallery component with 4 modes and pure CSS variants (ZERO JavaScript)" 
+  variant="initial"
+>
+  <h1 id="gallery-component">Gallery Component</h1>
+
+  <p>
+    The <code class="inline-code">Gallery</code> component offers 4 different modes with pure CSS:
+    <strong>Grid</strong>, <strong>Masonry</strong>, <strong>Product</strong> (with checkbox hack), and <strong>Enhanced</strong>.
+  </p>
+
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#grid">Grid Mode</a></li>
+      <li><a href="#masonry">Masonry Mode</a></li>
+      <li><a href="#product">Product Mode (Checkbox Hack)</a></li>
+      <li><a href="#enhanced">Enhanced Mode</a></li>
+      <li><a href="#variants">Variants</a></li>
+      <li><a href="#api">API Reference</a></li>
+    </ul>
+  </div>
+
+  <h2 id="installation">Installation</h2>
+
+  <Code
+    lang="astro"
+    code={`import Gallery from '@components/ui/Gallery.astro';`}
+  />
+
+  <h2 id="grid">Grid Mode</h2>
+  <p>Classic grid with equal columns and uniform aspect ratio.</p>
+
+  <div class="demo-section">
+    <GalleryComponent 
+      images={sampleImages}
+      mode="grid"
+      columns={3}
+      aspectRatio="1/1"
+      showCaptions={true}
+    />
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<GalleryComponent 
+  images={sampleImages}
+  mode="grid"
+  columns={3}
+  aspectRatio="1/1"
+  showCaptions={true}
+/>`}
+  />
+
+  <h2 id="masonry">Masonry Mode</h2>
+  <p>Column layout with variable heights (like Pinterest).</p>
+
+  <div class="demo-section">
+    <GalleryComponent 
+      images={masonryImages}
+      mode="masonry"
+      columns={3}
+      showCaptions={true}
+    />
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<GalleryComponent 
+  images={masonryImages}
+  mode="masonry"
+  columns={3}
+  showCaptions={true}
+/>`}
+  />
+
+  <h2 id="product">Product Mode (Checkbox Hack - Pure CSS)</h2>
+  <p>
+    Product gallery with main image and thumbnails.
+    <strong>ZERO JavaScript</strong> - uses the checkbox hack with hidden <code class="inline-code">&lt;input type=\"radio\"&gt;</code> and <code class="inline-code">&lt;label&gt;</code>.
+  </p>
+
+  <div class="demo-section">
+    <GalleryComponent 
+      images={productImages}
+      mode="product"
+    />
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<GalleryComponent 
+  images={productImages}
+  mode="product"
+/>`}
+  />
+
+  <h2 id="enhanced">Enhanced Mode</h2>
+  <p>Grid with hover overlay showing a zoom icon and caption.</p>
+
+  <div class="demo-section">
+    <GalleryComponent 
+      images={sampleImages}
+      mode="enhanced"
+      columns={3}
+      showCaptions={true}
+    />
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<GalleryComponent 
+  images={sampleImages}
+  mode="enhanced"
+  columns={3}
+  showCaptions={true}
+/>`}
+  />
+
+  <h2 id="variants">Variants</h2>
+
+  <h3>Retro Variant</h3>
+  <div class="demo-section">
+    <GalleryComponent 
+      images={sampleImages.slice(0, 4)}
+      variant="retro"
+      mode="grid"
+      columns={2}
+    />
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<GalleryComponent 
+  images={sampleImages}
+  variant="retro"
+  mode="grid"
+  columns={2}
+/>`}
+  />
+
+  <h3>Modern Variant</h3>
+  <div class="demo-section">
+    <GalleryComponent 
+      images={sampleImages.slice(0, 4)}
+      variant="modern"
+      mode="grid"
+      columns={2}
+    />
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<GalleryComponent 
+  images={sampleImages}
+  variant="modern"
+  mode="grid"
+  columns={2}
+/>`}
+  />
+
+  <h3>Futuristic Variant</h3>
+  <div class="demo-section">
+    <GalleryComponent 
+      images={sampleImages.slice(0, 4)}
+      variant="futuristic"
+      mode="grid"
+      columns={2}
+    />
+  </div>
+
+  <Code
+    lang="astro"
+    code={`<GalleryComponent 
+  images={sampleImages}
+  variant="futuristic"
+  mode="grid"
+  columns={2}
+/>`}
+  />
+
+  <h3>Product Gallery with Variants</h3>
+  <div class="demo-section">
+    <h4>Retro Product</h4>
+    <GalleryComponent 
+      images={productImages}
+      variant="retro"
+      mode="product"
+    />
+  </div>
+
+  <div class="demo-section">
+    <h4>Modern Product</h4>
+    <GalleryComponent 
+      images={productImages}
+      variant="modern"
+      mode="product"
+    />
+  </div>
+
+  <div class="demo-section">
+    <h4>Futuristic Product</h4>
+    <GalleryComponent 
+      images={productImages}
+      variant="futuristic"
+      mode="product"
+    />
+  </div>
+
+  <h2 id="api">API Reference</h2>
+
+  <h3>Props</h3>
+
+  <div class="props-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Prop</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>images</code></td>
+          <td><code>GalleryImage[]</code></td>
+          <td><code>[]</code></td>
+          <td>Array of images to display</td>
+        </tr>
+        <tr>
+          <td><code>variant</code></td>
+          <td><code>"initial" | "retro" | "modern" | "futuristic"</code></td>
+          <td><code>"initial"</code></td>
+          <td>Visual style of the gallery</td>
+        </tr>
+        <tr>
+          <td><code>mode</code></td>
+          <td><code>"grid" | "masonry" | "product" | "enhanced"</code></td>
+          <td><code>"grid"</code></td>
+          <td>Gallery display mode</td>
+        </tr>
+        <tr>
+          <td><code>columns</code></td>
+          <td><code>2 | 3 | 4 | 5 | 6</code></td>
+          <td><code>3</code></td>
+          <td>Number of columns (grid/masonry)</td>
+        </tr>
+        <tr>
+          <td><code>gap</code></td>
+          <td><code>string</code></td>
+          <td><code>"1rem"</code></td>
+          <td>Spacing between images</td>
+        </tr>
+        <tr>
+          <td><code>aspectRatio</code></td>
+          <td><code>string</code></td>
+          <td><code>"1/1"</code></td>
+          <td>Image ratio (grid/enhanced)</td>
+        </tr>
+        <tr>
+          <td><code>showCaptions</code></td>
+          <td><code>boolean</code></td>
+          <td><code>true</code></td>
+          <td>Show captions</td>
+        </tr>
+        <tr>
+          <td><code>class</code></td>
+          <td><code>string</code></td>
+          <td>-</td>
+          <td>Additional CSS classes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>GalleryImage Interface</h3>
+
+  <Code
+    lang="typescript"
+    code={`interface GalleryImage {
+  src: string;        // Image URL
+  alt?: string;       // Alt text
+  caption?: string;   // Image caption
+  thumb?: string;     // Thumbnail URL (for product mode)
+}`}
+  />
+
+  <h2>Pure CSS Architecture</h2>
+
+  <p>
+    The <strong>product</strong> mode uses the <strong>checkbox hack</strong> to change images without JavaScript:
+  </p>
+
+  <ul>
+    <li><code>&lt;input type="radio"&gt;</code> hidden to store state (active image)</li>
+    <li><code>&lt;label for="..."&gt;</code> on each thumbnail to change the radio</li>
+    <li>CSS selector <code>:checked</code> to show the corresponding image</li>
+    <li>CSS transitions for smooth animations</li>
+  </ul>
+
+  <Code
+    lang="css"
+    code={`/* Cacher les radios */
+.gallery-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Afficher l'image quand radio cochée */
+.gallery-radio:nth-of-type(1):checked ~ .main-image .main-img-0 {
+  opacity: 1;
+}
+
+/* Style actif sur la miniature */
+.gallery-radio:nth-of-type(1):checked ~ .thumbnails .thumb-label:nth-of-type(1) {
+  border-color: var(--color-primary);
+}`}
+  />
+
+  <div class="note">
+    <strong>Note:</strong> ZERO JavaScript! Everything works with hidden radios and the <code>:checked</code> selector.
+  </div>
+</DocLayout>
+
+<style>
+  .demo-section {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .demo-section h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .props-table {
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .props-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .props-table th,
+  .props-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid var(--color-border);
+  }
+
+  .props-table th {
+    background: var(--color-background);
+    font-weight: 600;
+  }
+
+  .props-table code {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+  }
+
+  .toc {
+    background: var(--color-background);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    margin: 2rem 0;
+  }
+
+  .toc h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+  }
+
+  .toc ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .toc li {
+    margin: 0.5rem 0;
+  }
+
+  .toc a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .toc a:hover {
+    text-decoration: underline;
+  }
+
+  .note {
+    background: rgba(var(--color-primary-rgb), 0.1);
+    border-left: 4px solid var(--color-primary);
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius-sm);
+  }
+
+  .inline-code {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+</style>

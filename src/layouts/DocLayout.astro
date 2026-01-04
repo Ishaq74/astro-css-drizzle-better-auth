@@ -2,7 +2,6 @@
 import BaseLayout from "./BaseLayout.astro";
 import Sidebar from "@components/templates/docs/Sidebar.astro";
 import MainDoc from "@components/templates/docs/MainDoc.astro";
-import { docNavConfig } from "@templates/docs/navigation";
 
 export interface Props {
   title: string;
@@ -30,7 +29,7 @@ try {
 
 <BaseLayout title={title} description={description}>
   <div class={`doc-layout ${variant}`}>
-    <Sidebar navigation={docNavConfig} currentPath={Astro.url.pathname} variant={variant} />
+    <Sidebar currentPath={Astro.url.pathname} variant={variant} />
     
     <MainDoc variant={variant}>
       <slot />

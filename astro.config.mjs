@@ -1,10 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import vercel from '@astrojs/vercel';
-import icon from 'astro-icon';
+import Icon from 'astro-icon';
 
 export default defineConfig({
-integrations: [icon()],
+integrations: [Icon()],
 output: 'server',
 adapter: vercel(),
 redirects: {

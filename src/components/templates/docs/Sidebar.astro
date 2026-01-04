@@ -1,23 +1,23 @@
 ---
 import Link from '@components/ui/Link.astro';
-
-interface NavItem {
-  label: string;
-  href: string;
-}
-
-interface NavSection {
-  title: string;
-  items: NavItem[];
-}
+import { getDocNavConfig } from './navigation';
 
 interface Props {
-  navigation: NavSection[];
   currentPath?: string;
   variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
 }
 
-const { navigation, currentPath, variant = 'initial' } = Astro.props;
+const { currentPath, variant = 'initial' } = Astro.props;
+
+// Get current locale
+const currentLocale = Astro.currentLocale || 'fr';
+
+// Import translations
+const translations = await import(`../../../i18n/${currentLocale}.json`);
+const t = translations.default;
+
+// Generate navigation with current locale
+const navigation = getDocNavConfig(currentLocale, t);
 ---
 
 <aside class={`doc-sidebar variant-${variant}`}>

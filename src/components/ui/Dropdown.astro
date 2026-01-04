@@ -55,7 +55,7 @@ const getLevel2RadioName = (parentId: string) => `${dropdownId}-level2-${parentI
   <div class={`dropdown-menu position-${position}`}>
     <div class="dropdown-content">
       {items.map((item) => {
-        const itemId = `${dropdownId}-${item.value || item.label.replace(/\s+/g, '-').toLowerCase()}`;
+        const itemId = `${dropdownId}-${item.value || (item.label ? item.label.replace(/\s+/g, '-').toLowerCase() : 'item')}`;
         const hasChildren = item.children && item.children.length > 0;
         
         if (hasChildren) {
@@ -80,7 +80,7 @@ const getLevel2RadioName = (parentId: string) => `${dropdownId}-level2-${parentI
               <div class="submenu-content">
                 <div class="dropdown-content">
                   {item.children!.map((child) => {
-                    const childId = `${itemId}-${child.value || child.label.replace(/\s+/g, '-').toLowerCase()}`;
+                    const childId = `${itemId}-${child.value || (child.label ? child.label.replace(/\s+/g, '-').toLowerCase() : 'child')}`;
                     const hasGrandChildren = child.children && child.children.length > 0;
                     
                     if (hasGrandChildren) {
