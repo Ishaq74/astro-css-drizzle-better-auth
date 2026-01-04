@@ -62,11 +62,21 @@ const getLevel2RadioName = (parentId: string) => `${dropdownId}-level2-${parentI
           return (
             <div class="dropdown-submenu">
               <input type="radio" name={level1RadioName} id={itemId} class="submenu-state" />
-              <label for={itemId} class={item.disabled ? "dropdown-item has-submenu disabled" : "dropdown-item has-submenu"}>
-                {item.icon && <span class="item-icon">{item.icon}</span>}
-                <span class="item-label">{item.label}</span>
-                <span class="submenu-arrow">▶</span>
-              </label>
+              {item.href ? (
+                <a href={item.href} class={item.disabled ? "dropdown-item has-submenu has-link disabled" : "dropdown-item has-submenu has-link"}>
+                  {item.icon && <span class="item-icon">{item.icon}</span>}
+                  <span class="item-label">{item.label}</span>
+                  <label for={itemId} class="submenu-arrow-trigger">
+                    <span class="submenu-arrow">▶</span>
+                  </label>
+                </a>
+              ) : (
+                <label for={itemId} class={item.disabled ? "dropdown-item has-submenu disabled" : "dropdown-item has-submenu"}>
+                  {item.icon && <span class="item-icon">{item.icon}</span>}
+                  <span class="item-label">{item.label}</span>
+                  <span class="submenu-arrow">▶</span>
+                </label>
+              )}
               <div class="submenu-content">
                 <div class="dropdown-content">
                   {item.children!.map((child) => {
@@ -77,11 +87,21 @@ const getLevel2RadioName = (parentId: string) => `${dropdownId}-level2-${parentI
                       return (
                         <div class="dropdown-submenu">
                           <input type="radio" name={getLevel2RadioName(itemId)} id={childId} class="submenu-state" />
-                          <label for={childId} class={child.disabled ? "dropdown-item has-submenu disabled" : "dropdown-item has-submenu"}>
-                            {child.icon && <span class="item-icon">{child.icon}</span>}
-                            <span class="item-label">{child.label}</span>
-                            <span class="submenu-arrow">▶</span>
-                          </label>
+                          {child.href ? (
+                            <a href={child.href} class={child.disabled ? "dropdown-item has-submenu has-link disabled" : "dropdown-item has-submenu has-link"}>
+                              {child.icon && <span class="item-icon">{child.icon}</span>}
+                              <span class="item-label">{child.label}</span>
+                              <label for={childId} class="submenu-arrow-trigger">
+                                <span class="submenu-arrow">▶</span>
+                              </label>
+                            </a>
+                          ) : (
+                            <label for={childId} class={child.disabled ? "dropdown-item has-submenu disabled" : "dropdown-item has-submenu"}>
+                              {child.icon && <span class="item-icon">{child.icon}</span>}
+                              <span class="item-label">{child.label}</span>
+                              <span class="submenu-arrow">▶</span>
+                            </label>
+                          )}
                           <div class="submenu-content">
                             <div class="dropdown-content">
                               {child.children!.map((grandChild) => {
@@ -148,7 +168,7 @@ const getLevel2RadioName = (parentId: string) => `${dropdownId}-level2-${parentI
   </div>
 </div>
 
-<script define:vars={{ dropdownId, openOnHover }}>
+<script is:inline define:vars={{ dropdownId, openOnHover }}>
   // Script pour la détection de collision avec les bords de l'écran
   if (typeof window !== 'undefined') {
     const dropdown = document.querySelector(`#${dropdownId}`)?.closest('.dropdown');

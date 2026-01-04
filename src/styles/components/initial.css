@@ -2148,6 +2148,29 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   padding-right: 2.5rem;
 }
 
+/* Item avec submenu ET lien cliquable */
+.dropdown-item.has-submenu.has-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 0.875rem;
+}
+
+.submenu-arrow-trigger {
+  padding: 0.5rem 0.875rem;
+  margin: -0.5rem -0.875rem -0.5rem 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+  border-radius: var(--radius-sm);
+}
+
+.submenu-arrow-trigger:hover {
+  background: var(--dropdown-item-hover-bg);
+}
+
 /* Flèche indicateur submenu */
 .submenu-arrow {
   position: absolute;
@@ -2157,8 +2180,14 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   opacity: 0.6;
 }
 
+.has-link .submenu-arrow {
+  position: relative;
+  right: auto;
+}
+
 /* Radio buttons fonctionnent comme checkbox avec :checked */
-.submenu-state:checked + .has-submenu .submenu-arrow {
+.submenu-state:checked + .has-submenu .submenu-arrow,
+.submenu-state:checked + .has-link .submenu-arrow {
   transform: rotate(90deg);
 }
 
@@ -2464,7 +2493,7 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   width: 100%;
   background: var(--bg-default);
   border-top: 1px solid var(--border-default);
-  padding: var(--space-10) 0 var(--space-6);
+  padding: var(--space-6) 0 var(--space-6);
 }
 
 .footer-container {
@@ -2476,8 +2505,8 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-8);
-  margin-bottom: var(--space-8);
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
 }
 
 .footer-section {
