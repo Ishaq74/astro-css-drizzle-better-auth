@@ -2307,6 +2307,104 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   font-weight: 600;
 }
 
+/* Navigation Dropdown Wrapper */
+.nav-dropdown-wrapper {
+  display: inline-flex;
+}
+.nav-dropdown-wrapper .dropdown-trigger {
+  padding: var(--space-2) var(--space-4);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius-md);
+  color: var(--text-muted);
+}
+.nav-dropdown-wrapper .dropdown-trigger:hover {
+  color: var(--color-primary);
+  background: var(--bg-inset);
+}
+
+/* ===========================================
+   DROPDOWN HOVER MODE - Stable & Pro
+   =========================================== */
+
+/* Hover mode activé via classe .dropdown-hover */
+.dropdown-hover:hover .dropdown-menu,
+.dropdown-hover .dropdown-trigger:hover ~ .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  /* Ajout d'un délai pour éviter la fermeture accidentelle */
+  transition-delay: 0s;
+}
+
+.dropdown-hover .dropdown-menu {
+  /* Délai avant de fermer pour éviter les fermetures accidentelles */
+  transition: opacity 0.2s ease 0.15s, 
+              visibility 0.2s ease 0.15s, 
+              transform 0.2s ease 0.15s;
+}
+
+/* Zone de sécurité entre trigger et menu pour éviter la fermeture */
+.dropdown-hover .dropdown-menu::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
+.dropdown-hover:hover .dropdown-trigger .trigger-arrow {
+  transform: rotate(180deg);
+}
+
+/* Hover-based submenu avec délai */
+.dropdown-hover .dropdown-submenu:hover > .submenu-content {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+  transition-delay: 0s;
+}
+
+.dropdown-hover .submenu-content {
+  transition: opacity 0.2s ease 0.1s, 
+              visibility 0.2s ease 0.1s, 
+              transform 0.2s ease 0.1s;
+}
+
+/* Zone de sécurité pour submenu */
+.dropdown-hover .submenu-content::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+}
+
+.dropdown-hover .dropdown-submenu:hover > .has-submenu .submenu-arrow {
+  transform: rotate(90deg);
+}
+
+/* Garde le menu ouvert quand on survole le contenu */
+.dropdown-hover .dropdown-menu:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.dropdown-hover .submenu-content:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+  transition-delay: 0s;
+}
+
 /* THEME SWITCH */
 .theme-switch {
   width: 40px;

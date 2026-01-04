@@ -1,0 +1,34 @@
+{
+  "welcome": "Bienvenue",
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact",
+    "docs": "Docs"
+  },
+  "services": {
+    "consulting": "Conseil",
+    "development": "Développement",
+    "design": "Design"
+  },
+  "blog": {
+    "news": "Actualités",
+    "tutorials": "Tutoriels",
+    "releases": "Versions"
+  },
+  "docs": {
+    "ui": "UI",
+    "components": "Composants",
+    "data": "Data",
+    "layouts": "Layouts",
+    "entities": "Entités",
+    "design": "Design",
+    "colors": "Couleurs",
+    "typography": "Typographie",
+    "spacing": "Espacement",
+    "shadows": "Ombres",
+    "borders": "Bordures"
+  }
+}

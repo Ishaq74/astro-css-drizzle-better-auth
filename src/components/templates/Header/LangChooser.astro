@@ -1,5 +1,6 @@
 ---
 import Dropdown from '@components/ui/Dropdown.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 interface Props {
   variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
@@ -11,18 +12,27 @@ const {
   class: className = '',
 } = Astro.props;
 
+// Detect current locale from URL
+const currentLocale = Astro.currentLocale || 'fr';
+
+// Get current path without locale prefix
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(fr|en|ar|es)(\/|$)/, '/');
+
 const languages = [
-  { label: 'Français', icon: '🇫🇷', href: '?lang=fr', value: 'fr' },
-  { label: 'English', icon: '🇬🇧', href: '?lang=en', value: 'en' },
-  { label: 'Español', icon: '🇪🇸', href: '?lang=es', value: 'es' },
+  { label: 'Français', icon: '🇫🇷', href: getRelativeLocaleUrl('fr', pathWithoutLocale), value: 'fr' },
+  { label: 'English', icon: '🇬🇧', href: getRelativeLocaleUrl('en', pathWithoutLocale), value: 'en' },
+  { label: 'العربية', icon: '🇸🇦', href: getRelativeLocaleUrl('ar', pathWithoutLocale), value: 'ar' },
+  { label: 'Español', icon: '🇪🇸', href: getRelativeLocaleUrl('es', pathWithoutLocale), value: 'es' },
 ];
+
+// Determine current language display
+const currentLang = languages.find(lang => lang.value === currentLocale) || languages[0];
 ---
 
 <Dropdown
   items={languages}
   variant={variant}
   position="bottom-right"
-  triggerLabel="FR"
-  triggerIcon="🇫🇷"
+  triggerLabel={currentLang.icon}
   class={className}
 />

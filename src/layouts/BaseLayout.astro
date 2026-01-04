@@ -49,9 +49,12 @@ const {
 const siteTitle = "Default Title";
 const pageTitle = rawTitle ? `${siteTitle} > ${rawTitle}` : siteTitle;
 
+// Get current locale from Astro
+const currentLocale = Astro.currentLocale || 'fr';
+
 // Safe fallbacks from site identity
-const htmlLang = lang ?? "fr";
-const htmlDir = dir ?? (htmlLang === "ar" ? "rtl" : "ltr");
+const htmlLang = lang ?? currentLocale;
+const htmlDir = dir ?? (currentLocale === "ar" ? "rtl" : "ltr");
 const faviconName = favicon ?? "test.ico";
 
 ---

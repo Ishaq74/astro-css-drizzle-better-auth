@@ -14,6 +14,7 @@ interface Props {
   position?: "bottom-left" | "bottom-right" | "top-left" | "top-right";
   triggerLabel?: string;
   triggerIcon?: string;
+  openOnHover?: boolean;
   class?: string;
 }
 
@@ -23,12 +24,14 @@ const {
   position = "bottom-left",
   triggerLabel = "Menu",
   triggerIcon,
+  openOnHover = false,
   class: className,
 } = Astro.props;
 
 const dropdownId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
 const dropdownClass = [
   "dropdown",
+  openOnHover && "dropdown-hover",
   variant !== "initial" && variant,
   className,
 ].filter(Boolean).join(" ");
@@ -144,3 +147,107 @@ const getLevel2RadioName = (parentId: string) => `${dropdownId}-level2-${parentI
     </div>
   </div>
 </div>
+
+<script define:vars={{ dropdownId, openOnHover }}>
+  // Script pour la détection de collision avec les bords de l'écran
+  if (typeof window !== 'undefined') {
+    const dropdown = document.querySelector(`#${dropdownId}`)?.closest('.dropdown');
+    if (!dropdown) return;
+    
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const submenus = dropdown.querySelectorAll('.submenu-content');
+    
+    function checkCollision(element) {
+      if (!element) return;
+      
+      const rect = element.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      // Check si le submenu sort à droite
+      if (rect.right > viewportWidth - 20) {
+        element.style.left = 'auto';
+        element.style.right = '100%';
+        element.style.marginLeft = '0';
+        element.style.marginRight = '0.25rem';
+      }
+      
+      // Check si le submenu sort en bas
+      if (rect.bottom > viewportHeight - 20) {
+        element.style.top = 'auto';
+        element.style.bottom = '0';
+      }
+    }
+    
+    // Observer pour détecter quand les menus s'ouvrent
+    const observer = new MutationObserver(() => {
+      if (menu && menu.style.visibility === 'visible' || getComputedStyle(menu).visibility === 'visible') {
+        checkCollision(menu);
+        
+        // Check tous les submenus visibles
+        submenus.forEach(submenu => {
+          if (submenu.style.visibility === 'visible' || getComputedStyle(submenu).visibility === 'visible') {
+            checkCollision(submenu);
+          }
+        });
+      }
+    });
+    
+    observer.observe(dropdown, { 
+      attributes: true, 
+      subtree: true, 
+      attributeFilter: ['style', 'class']
+    });
+    
+    // Check initial au hover pour les dropdowns hover
+    if (openOnHover) {
+      dropdown.addEventListener('mouseenter', () => {
+        setTimeout(() => {
+          checkCollision(menu);
+          submenus.forEach(submenu => {
+            if (getComputedStyle(submenu).visibility === 'visible') {
+              checkCollision(submenu);
+            }
+          });
+        }, 50);
+      });
+      
+      // Re-check sur submenu hover
+      const submenuTriggers = dropdown.querySelectorAll('.dropdown-submenu');
+      submenuTriggers.forEach(trigger => {
+        trigger.addEventListener('mouseenter', () => {
+          setTimeout(() => {
+            const submenu = trigger.querySelector('.submenu-content');
+            checkCollision(submenu);
+          }, 50);
+        });
+      });
+    } else {
+      // Pour le mode click, check après l'ouverture
+      const checkbox = dropdown.querySelector('.dropdown-state');
+      if (checkbox) {
+        checkbox.addEventListener('change', () => {
+          if (checkbox.checked) {
+            setTimeout(() => {
+              checkCollision(menu);
+            }, 50);
+          }
+        });
+      }
+      
+      // Check sur radio change pour submenus
+      const radioButtons = dropdown.querySelectorAll('.submenu-state');
+      radioButtons.forEach(radio => {
+        radio.addEventListener('change', () => {
+          if (radio.checked) {
+            setTimeout(() => {
+              const parent = radio.closest('.dropdown-submenu');
+              const submenu = parent?.querySelector('.submenu-content');
+              checkCollision(submenu);
+            }, 50);
+          }
+        });
+      });
+    }
+  }
+</script>

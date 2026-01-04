@@ -1,0 +1,34 @@
+{
+  "welcome": "مرحبا",
+  "nav": {
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "services": "الخدمات",
+    "blog": "المدونة",
+    "contact": "اتصل بنا",
+    "docs": "التوثيق"
+  },
+  "services": {
+    "consulting": "الاستشارات",
+    "development": "التطوير",
+    "design": "التصميم"
+  },
+  "blog": {
+    "news": "الأخبار",
+    "tutorials": "دروس",
+    "releases": "الإصدارات"
+  },
+  "docs": {
+    "ui": "الواجهة",
+    "components": "المكونات",
+    "data": "البيانات",
+    "layouts": "التخطيطات",
+    "entities": "الكيانات",
+    "design": "التصميم",
+    "colors": "الألوان",
+    "typography": "الطباعة",
+    "spacing": "التباعد",
+    "shadows": "الظلال",
+    "borders": "الحدود"
+  }
+}
