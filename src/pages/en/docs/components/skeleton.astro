@@ -12,8 +12,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 
 <DocLayout 
   title="Skeleton Component" 
-  description="Placeholders de chargement avec variants et animations" 
-    description="Loading placeholders with variants and animations" 
+  description="Loading placeholders with variants and animations" 
   variant="initial"
 >
   <h1 id="skeleton-component">Skeleton Component</h1>
@@ -29,13 +28,13 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     <ul>
       <li><a href="#installation">Installation</a></li>
       <li><a href="#props">Props</a></li>
-      <li><a href="#basic">Utilisation basique</a></li>
+      <li><a href="#basic">Basic usage</a></li>
       <li><a href="#variants">Variants</a></li>
-      <li><a href="#shapes">Formes</a></li>
-      <li><a href="#sizes">Tailles personnalisées</a></li>
-      <li><a href="#multiple">Multiples skeletons</a></li>
+      <li><a href="#shapes">Shapes</a></li>
+      <li><a href="#sizes">Custom sizes</a></li>
+      <li><a href="#multiple">Multiple skeletons</a></li>
       <li><a href="#compositions">Compositions</a></li>
-      <li><a href="#accessibility">Accessibilité</a></li>
+      <li><a href="#accessibility">Accessibility</a></li>
     </ul>
   </div>
 
@@ -109,7 +108,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     </TableBody>
   </Table>
 
-  <h2 id="basic">Utilisation basique</h2>
+  <h2 id="basic">Basic usage</h2>
 
   <div class="demo-section">
     <SkeletonComponent />
@@ -166,9 +165,9 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<SkeletonComponent variant="futuristic" height="60px" />`}
   />
 
-  <h2 id="shapes">Formes</h2>
+  <h2 id="shapes">Shapes</h2>
 
-  <h3>Rectangulaire (par défaut)</h3>
+  <h3>Rectangular (default)</h3>
   <div class="demo-section">
     <SkeletonComponent width="200px" height="100px" />
   </div>
@@ -178,7 +177,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<SkeletonComponent width="200px" height="100px" />`}
   />
 
-  <h3>Circulaire</h3>
+  <h3>Circular</h3>
   <div class="demo-section" style="display: flex; gap: 1rem; align-items: center;">
     <SkeletonComponent circle width="50px" height="50px" />
     <SkeletonComponent circle width="80px" height="80px" />
@@ -192,7 +191,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <SkeletonComponent circle width="120px" height="120px" />`}
   />
 
-  <h3>Arrondi</h3>
+  <h3>Rounded</h3>
   <div class="demo-section">
     <SkeletonComponent rounded width="200px" height="100px" />
   </div>
@@ -202,7 +201,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<SkeletonComponent rounded width="200px" height="100px" />`}
   />
 
-  <h2 id="sizes">Tailles personnalisées</h2>
+  <h2 id="sizes">Custom sizes</h2>
 
   <div class="demo-section">
     <SkeletonComponent width="100%" height="20px" />
@@ -219,7 +218,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <SkeletonComponent width="200px" height="150px" />`}
   />
 
-  <h2 id="multiple">Multiples skeletons</h2>
+  <h2 id="multiple">Multiple skeletons</h2>
 
   <p>
       Use the <code class="inline-code">count</code> prop to quickly generate
@@ -318,7 +317,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 ))}`}
   />
 
-  <h3>Sans animation</h3>
+  <h3>Without animation</h3>
   <div class="demo-section">
     <SkeletonComponent animated={false} height="40px" />
   </div>
@@ -328,7 +327,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<SkeletonComponent animated={false} height="40px" />`}
   />
 
-  <h2 id="accessibility">Accessibilité</h2>
+  <h2 id="accessibility">Accessibility</h2>
 
   <p>
       The <code class="inline-code">Skeleton</code> component includes appropriate ARIA attributes:

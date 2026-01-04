@@ -21,28 +21,28 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 
 <DocLayout 
   title="Breadcrumb Component" 
-  description="Documentation du composant Breadcrumb pour la navigation fil d'Ariane"
+  description="Breadcrumb component documentation for breadcrumb navigation"
   variant="initial"
 >
   <h1 id="breadcrumb-component">Breadcrumb Component</h1>
   
   <p>
-    Le composant <code class="inline-code">Breadcrumb</code> affiche un fil d'Ariane permettant
-    aux utilisateurs de comprendre leur position dans la hiérarchie du site et de naviguer facilement.
+    The <code class="inline-code">Breadcrumb</code> component displays a breadcrumb trail allowing
+    users to understand their position in the site hierarchy and navigate easily.
   </p>
 
   <div class="toc">
-    <h2>Table des matières</h2>
+    <h2>Table of contents</h2>
     <ul>
       <li><a href="#installation">Installation</a></li>
       <li><a href="#api">API Reference</a></li>
-      <li><a href="#basic">Utilisation basique</a></li>
+      <li><a href="#basic">Basic usage</a></li>
       <li><a href="#variants">Variants</a></li>
-      <li><a href="#colors">Couleurs</a></li>
-      <li><a href="#icons">Avec icons</a></li>
-      <li><a href="#separators">Séparateurs personnalisés</a></li>
-      <li><a href="#ellipsis">Avec ellipsis</a></li>
-      <li><a href="#accessibility">Accessibilité</a></li>
+      <li><a href="#colors">Colors</a></li>
+      <li><a href="#icons">With icons</a></li>
+      <li><a href="#separators">Custom separators</a></li>
+      <li><a href="#ellipsis">With ellipsis</a></li>
+      <li><a href="#accessibility">Accessibility</a></li>
     </ul>
   </div>
 
@@ -64,7 +64,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
   <h2 id="api">API Reference</h2>
 
   <h3>Breadcrumb</h3>
-  <p>Le composant racine de navigation qui contient tous les éléments breadcrumb.</p>
+  <p>The root navigation component that contains all breadcrumb elements.</p>
 
   <div class="props-table">
     <Table striped>
@@ -72,7 +72,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
         <TableRow>
           <TableHead>Prop</TableHead>
           <TableHead>Type</TableHead>
-          <TableHead>Défaut</TableHead>
+          <TableHead>Default</TableHead>
           <TableHead>Description</TableHead>
         </TableRow>
       </TableHeader>
@@ -81,32 +81,32 @@ import TableCell from "@components/ui/Table/TableCell.astro";
           <TableCell><code class="inline-code">variant</code></TableCell>
           <TableCell>initial | retro | modern | futuristic</TableCell>
           <TableCell>initial</TableCell>
-          <TableCell>Style visuel du breadcrumb</TableCell>
+          <TableCell>Visual style of the breadcrumb</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">color</code></TableCell>
           <TableCell>default | primary | secondary | accent</TableCell>
           <TableCell>default</TableCell>
-          <TableCell>Couleur de la page courante</TableCell>
+          <TableCell>Current page color</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">className</code></TableCell>
           <TableCell>string</TableCell>
           <TableCell>""</TableCell>
-          <TableCell>Classes CSS additionnelles</TableCell>
+          <TableCell>Additional CSS classes</TableCell>
         </TableRow>
       </TableBody>
     </Table>
   </div>
 
   <h3>BreadcrumbList</h3>
-  <p>Un conteneur qui affiche une liste ordonnée pour les items breadcrumb.</p>
+  <p>A container that displays an ordered list for breadcrumb items.</p>
 
   <h3>BreadcrumbItem</h3>
-  <p>Un composant représentant chaque item dans la navigation breadcrumb.</p>
+  <p>A component representing each item in the breadcrumb navigation.</p>
 
   <h3>BreadcrumbLink</h3>
-  <p>Un composant pour les liens cliquables qui naviguent vers les niveaux précédents.</p>
+  <p>A component for clickable links that navigate to previous levels.</p>
 
   <div class="props-table">
     <Table striped>
@@ -121,33 +121,33 @@ import TableCell from "@components/ui/Table/TableCell.astro";
         <TableRow>
           <TableCell><code class="inline-code">href</code></TableCell>
           <TableCell>string</TableCell>
-          <TableCell>URL de destination (requis)</TableCell>
+          <TableCell>Destination URL (required)</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">className</code></TableCell>
           <TableCell>string</TableCell>
-          <TableCell>Classes CSS additionnelles</TableCell>
+          <TableCell>Additional CSS classes</TableCell>
         </TableRow>
       </TableBody>
     </Table>
   </div>
 
   <h3>BreadcrumbPage</h3>
-  <p>Représente la page courante dans le fil d'Ariane (dernier élément).</p>
+  <p>Represents the current page in the breadcrumb (last element).</p>
 
   <h3>BreadcrumbSeparator</h3>
-  <p>Séparateur visuel entre les items breadcrumb.</p>
+  <p>Visual separator between breadcrumb items.</p>
 
   <h3>BreadcrumbEllipsis</h3>
-  <p>Indique des items tronqués, utilisé quand il y a beaucoup de niveaux.</p>
+  <p>Indicates truncated items, used when there are many levels.</p>
 
-  <h2 id="basic">Utilisation basique</h2>
+  <h2 id="basic">Basic usage</h2>
 
   <div class="example-section">
     <BreadcrumbComponent>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
@@ -182,20 +182,20 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 
   <h2 id="variants">Variants</h2>
 
-  <h3>Initial (défaut)</h3>
+  <h3>Initial (default)</h3>
   <div class="example-section">
     <BreadcrumbComponent variant="initial">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/products">Produits</BreadcrumbLink>
+          <BreadcrumbLink href="/products">Products</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>Détails</BreadcrumbPage>
+          <BreadcrumbPage>Details</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </BreadcrumbComponent>
@@ -206,15 +206,15 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     <BreadcrumbComponent variant="retro">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/products">Produits</BreadcrumbLink>
+          <BreadcrumbLink href="/products">Products</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>Détails</BreadcrumbPage>
+          <BreadcrumbPage>Details</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </BreadcrumbComponent>
@@ -225,15 +225,15 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     <BreadcrumbComponent variant="modern">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/products">Produits</BreadcrumbLink>
+          <BreadcrumbLink href="/products">Products</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>Détails</BreadcrumbPage>
+          <BreadcrumbPage>Details</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </BreadcrumbComponent>
@@ -244,15 +244,15 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     <BreadcrumbComponent variant="futuristic">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/products">Produits</BreadcrumbLink>
+          <BreadcrumbLink href="/products">Products</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>Détails</BreadcrumbPage>
+          <BreadcrumbPage>Details</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </BreadcrumbComponent>
@@ -266,9 +266,9 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <BreadcrumbComponent variant="futuristic">...</BreadcrumbComponent>`}
   />
 
-  <h2 id="colors">Couleurs</h2>
+  <h2 id="colors">Colors</h2>
 
-  <p>Les couleurs s'appliquent à la page courante :</p>
+  <p>Colors apply to the current page:</p>
 
   <div class="example-section">
     <div style="display: flex; flex-direction: column; gap: 2rem;">
@@ -277,11 +277,11 @@ import TableCell from "@components/ui/Table/TableCell.astro";
         <BreadcrumbComponent color="default">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Page courante</BreadcrumbPage>
+              <BreadcrumbPage>Current page</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </BreadcrumbComponent>
@@ -292,11 +292,11 @@ import TableCell from "@components/ui/Table/TableCell.astro";
         <BreadcrumbComponent color="primary">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Page courante</BreadcrumbPage>
+              <BreadcrumbPage>Current page</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </BreadcrumbComponent>
@@ -307,11 +307,11 @@ import TableCell from "@components/ui/Table/TableCell.astro";
         <BreadcrumbComponent color="secondary">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Page courante</BreadcrumbPage>
+              <BreadcrumbPage>Current page</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </BreadcrumbComponent>
@@ -322,11 +322,11 @@ import TableCell from "@components/ui/Table/TableCell.astro";
         <BreadcrumbComponent color="accent">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Page courante</BreadcrumbPage>
+              <BreadcrumbPage>Current page</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </BreadcrumbComponent>
@@ -342,7 +342,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <BreadcrumbComponent color="accent">...</BreadcrumbComponent>`}
   />
 
-  <h2 id="icons">Avec icons</h2>
+  <h2 id="icons">With icons</h2>
 
   <div class="example-section">
     <BreadcrumbComponent variant="modern" color="primary">
@@ -350,7 +350,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
         <BreadcrumbItem>
           <BreadcrumbLink href="/">
             <Icon name="mdi:home" class="size-4" />
-            <span>Accueil</span>
+            <span>Home</span>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
@@ -398,16 +398,16 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 </BreadcrumbComponent>`}
   />
 
-  <h2 id="separators">Séparateurs personnalisés</h2>
+  <h2 id="separators">Custom separators</h2>
 
-  <p>Le composant <code class="inline-code">BreadcrumbSeparator</code> peut contenir n'importe quel contenu :</p>
+  <p>The <code class="inline-code">BreadcrumbSeparator</code> component can contain any content:</p>
 
-  <h3>Séparateur par défaut (/)</h3>
+  <h3>Default separator (/)</h3>
   <div class="example-section">
     <BreadcrumbComponent>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
@@ -417,12 +417,12 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     </BreadcrumbComponent>
   </div>
 
-  <h3>Avec chevron</h3>
+  <h3>With chevron</h3>
   <div class="example-section">
     <BreadcrumbComponent variant="modern">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <span>›</span>
@@ -434,12 +434,12 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     </BreadcrumbComponent>
   </div>
 
-  <h3>Avec icon</h3>
+  <h3>With icon</h3>
   <div class="example-section">
     <BreadcrumbComponent variant="modern" color="primary">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <Icon name="mdi:chevron-right" class="size-4" />
@@ -457,12 +457,12 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     </BreadcrumbComponent>
   </div>
 
-  <h3>Avec flèche double</h3>
+  <h3>With double arrow</h3>
   <div class="example-section">
     <BreadcrumbComponent variant="retro">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <span>»</span>
@@ -474,12 +474,12 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     </BreadcrumbComponent>
   </div>
 
-  <h3>Avec point</h3>
+  <h3>With dot</h3>
   <div class="example-section">
     <BreadcrumbComponent>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <span>•</span>
@@ -499,39 +499,39 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 
   <Code
     lang="astro"
-    code={`<!-- Séparateur par défaut -->
+    code={`<!-- Default separator -->
 <BreadcrumbSeparator />
 
-<!-- Avec texte personnalisé -->
+<!-- With custom text -->
 <BreadcrumbSeparator>
   <span>›</span>
 </BreadcrumbSeparator>
 
-<!-- Avec icon -->
+<!-- With icon -->
 <BreadcrumbSeparator>
   <Icon name="mdi:chevron-right" class="size-4" />
 </BreadcrumbSeparator>
 
-<!-- Avec double flèche -->
+<!-- With double arrow -->
 <BreadcrumbSeparator>
   <span>»</span>
 </BreadcrumbSeparator>
 
-<!-- Avec point -->
+<!-- With dot -->
 <BreadcrumbSeparator>
   <span>•</span>
 </BreadcrumbSeparator>`}
   />
 
-  <h2 id="ellipsis">Avec ellipsis</h2>
+  <h2 id="ellipsis">With ellipsis</h2>
 
-  <p>Utilisez <code class="inline-code">BreadcrumbEllipsis</code> pour indiquer des niveaux masqués :</p>
+  <p>Use <code class="inline-code">BreadcrumbEllipsis</code> to indicate hidden levels:</p>
 
   <div class="example-section">
     <BreadcrumbComponent>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
@@ -554,7 +554,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<BreadcrumbComponent>
   <BreadcrumbList>
     <BreadcrumbItem>
-      <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
     </BreadcrumbItem>
     <BreadcrumbSeparator />
     <BreadcrumbItem>
@@ -572,24 +572,24 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 </BreadcrumbComponent>`}
   />
 
-  <h2 id="accessibility">Accessibilité</h2>
+  <h2 id="accessibility">Accessibility</h2>
 
   <ul>
-    <li><strong>Navigation sémantique :</strong> Utilise <code class="inline-code">&lt;nav aria-label="Breadcrumb"&gt;</code></li>
-    <li><strong>Liste ordonnée :</strong> <code class="inline-code">&lt;ol&gt;</code> pour la hiérarchie</li>
-    <li><strong>Page courante :</strong> <code class="inline-code">aria-current="page"</code> sur BreadcrumbPage</li>
-    <li><strong>Séparateurs :</strong> <code class="inline-code">role="presentation"</code> et <code class="inline-code">aria-hidden="true"</code></li>
-    <li><strong>Keyboard :</strong> Navigation Tab standard</li>
+    <li><strong>Semantic navigation:</strong> Uses <code class="inline-code">&lt;nav aria-label="Breadcrumb"&gt;</code></li>
+    <li><strong>Ordered list:</strong> <code class="inline-code">&lt;ol&gt;</code> for hierarchy</li>
+    <li><strong>Current page:</strong> <code class="inline-code">aria-current="page"</code> on BreadcrumbPage</li>
+    <li><strong>Separators:</strong> <code class="inline-code">role="presentation"</code> and <code class="inline-code">aria-hidden="true"</code></li>
+    <li><strong>Keyboard:</strong> Standard Tab navigation</li>
   </ul>
 
-  <h2>Meilleures pratiques</h2>
+  <h2>Best practices</h2>
 
   <ul>
-    <li><strong>Cohérence :</strong> Utilisez le même variant que votre design system</li>
-    <li><strong>Hiérarchie claire :</strong> Montrez uniquement les niveaux pertinents</li>
-    <li><strong>Tronquer intelligemment :</strong> Utilisez BreadcrumbEllipsis pour les chemins longs</li>
-    <li><strong>Mobile :</strong> Le breadcrumb s'adapte automatiquement avec flex-wrap</li>
-    <li><strong>Performance :</strong> Les composants sont statiques (pas de JavaScript)</li>
+    <li><strong>Consistency:</strong> Use the same variant as your design system</li>
+    <li><strong>Clear hierarchy:</strong> Show only relevant levels</li>
+    <li><strong>Smart truncation:</strong> Use BreadcrumbEllipsis for long paths</li>
+    <li><strong>Mobile:</strong> The breadcrumb automatically adapts with flex-wrap</li>
+    <li><strong>Performance:</strong> Components are static (no JavaScript)</li>
   </ul>
 
   <h2>Exemple complet</h2>

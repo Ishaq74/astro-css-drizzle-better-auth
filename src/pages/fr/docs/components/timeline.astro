@@ -2,6 +2,12 @@
 import DocLayout from "@layouts/DocLayout.astro";
 import { Code } from "astro:components";
 import TimelineComponent from "@components/ui/Timeline.astro";
+import Table from "@components/ui/Table/Table.astro";
+import TableHeader from "@components/ui/Table/TableHeader.astro";
+import TableRow from "@components/ui/Table/TableRow.astro";
+import TableHead from "@components/ui/Table/TableHead.astro";
+import TableBody from "@components/ui/Table/TableBody.astro";
+import TableCell from "@components/ui/Table/TableCell.astro";
 
 const timelineEvents = [
   {
@@ -268,48 +274,48 @@ const shortEvents = timelineEvents.slice(0, 3);
   <h3>Props</h3>
 
   <div class="props-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Défaut</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>events</code></td>
-          <td><code>TimelineEvent[]</code></td>
-          <td>-</td>
-          <td>Tableau d'événements à afficher</td>
-        </tr>
-        <tr>
-          <td><code>variant</code></td>
-          <td><code>"initial" | "retro" | "modern" | "futuristic"</code></td>
-          <td><code>"initial"</code></td>
-          <td>Style visuel de la timeline</td>
-        </tr>
-        <tr>
-          <td><code>orientation</code></td>
-          <td><code>"vertical" | "horizontal" | "alternate"</code></td>
-          <td><code>"vertical"</code></td>
-          <td>Orientation de la timeline</td>
-        </tr>
-        <tr>
-          <td><code>iconShape</code></td>
-          <td><code>"circle" | "square" | "diamond" | "hexagon"</code></td>
-          <td><code>"circle"</code></td>
-          <td>Forme des icônes</td>
-        </tr>
-        <tr>
-          <td><code>class</code></td>
-          <td><code>string</code></td>
-          <td>-</td>
-          <td>Classes CSS supplémentaires</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table striped>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code class="inline-code">events</code></TableCell>
+          <TableCell>TimelineEvent[]</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Tableau d'événements à afficher</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code class="inline-code">variant</code></TableCell>
+          <TableCell>"initial" | "retro" | "modern" | "futuristic"</TableCell>
+          <TableCell>"initial"</TableCell>
+          <TableCell>Style visuel de la timeline</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code class="inline-code">orientation</code></TableCell>
+          <TableCell>"vertical" | "horizontal" | "alternate"</TableCell>
+          <TableCell>"vertical"</TableCell>
+          <TableCell>Orientation de la timeline</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code class="inline-code">iconShape</code></TableCell>
+          <TableCell>"circle" | "square" | "diamond" | "hexagon"</TableCell>
+          <TableCell>"circle"</TableCell>
+          <TableCell>Forme des icônes</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code class="inline-code">class</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Classes CSS supplémentaires</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </div>
 
   <h3>TimelineEvent Interface</h3>

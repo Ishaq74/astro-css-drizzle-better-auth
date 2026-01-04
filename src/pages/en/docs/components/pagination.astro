@@ -12,27 +12,27 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 
 <DocLayout 
   title="Pagination Component" 
-  description="Documentation du composant Pagination pour la navigation entre pages"
+  description="Pagination component documentation for page navigation"
   variant="initial"
 >
   <h1 id="pagination-component">Pagination Component</h1>
   
   <p>
-    Le composant <code class="inline-code">Pagination</code> permet de naviguer entre plusieurs pages de contenu
-    avec une gestion intelligente de l'affichage des numéros et des boutons de navigation.
+    The <code class="inline-code">Pagination</code> component allows navigation between multiple content pages
+    with smart handling of page numbers and navigation buttons.
   </p>
 
   <div class="toc">
-    <h2>Table des matières</h2>
+    <h2>Table of contents</h2>
     <ul>
       <li><a href="#installation">Installation</a></li>
       <li><a href="#props">Props</a></li>
-      <li><a href="#basic">Utilisation basique</a></li>
+      <li><a href="#basic">Basic usage</a></li>
       <li><a href="#variants">Variants</a></li>
-      <li><a href="#colors">Couleurs</a></li>
-      <li><a href="#sizes">Tailles</a></li>
-      <li><a href="#options">Options avancées</a></li>
-      <li><a href="#accessibility">Accessibilité</a></li>
+      <li><a href="#colors">Colors</a></li>
+      <li><a href="#sizes">Sizes</a></li>
+      <li><a href="#options">Advanced options</a></li>
+      <li><a href="#accessibility">Accessibility</a></li>
     </ul>
   </div>
 
@@ -51,7 +51,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
         <TableRow>
           <TableHead>Prop</TableHead>
           <TableHead>Type</TableHead>
-          <TableHead>Défaut</TableHead>
+          <TableHead>Default</TableHead>
           <TableHead>Description</TableHead>
         </TableRow>
       </TableHeader>
@@ -60,69 +60,69 @@ import TableCell from "@components/ui/Table/TableCell.astro";
           <TableCell><code class="inline-code">currentPage</code></TableCell>
           <TableCell>number</TableCell>
           <TableCell>-</TableCell>
-          <TableCell>Page actuelle (1-based, requis)</TableCell>
+          <TableCell>Current page (1-based, required)</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">totalPages</code></TableCell>
           <TableCell>number</TableCell>
           <TableCell>-</TableCell>
-          <TableCell>Nombre total de pages (requis)</TableCell>
+          <TableCell>Total number of pages (required)</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">baseUrl</code></TableCell>
           <TableCell>string</TableCell>
           <TableCell>"#"</TableCell>
-          <TableCell>URL de base pour les liens</TableCell>
+          <TableCell>Base URL for links</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">variant</code></TableCell>
           <TableCell>initial | retro | modern | futuristic</TableCell>
           <TableCell>initial</TableCell>
-          <TableCell>Style visuel de la pagination</TableCell>
+          <TableCell>Visual style of the pagination</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">color</code></TableCell>
           <TableCell>default | primary | secondary | accent</TableCell>
           <TableCell>default</TableCell>
-          <TableCell>Couleur de la page active</TableCell>
+          <TableCell>Active page color</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">size</code></TableCell>
           <TableCell>sm | md | lg</TableCell>
           <TableCell>md</TableCell>
-          <TableCell>Taille des boutons</TableCell>
+          <TableCell>Button size</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">showPrevNext</code></TableCell>
           <TableCell>boolean</TableCell>
           <TableCell>true</TableCell>
-          <TableCell>Afficher les boutons précédent/suivant</TableCell>
+          <TableCell>Show previous/next buttons</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">showFirstLast</code></TableCell>
           <TableCell>boolean</TableCell>
           <TableCell>false</TableCell>
-          <TableCell>Afficher les boutons première/dernière page</TableCell>
+          <TableCell>Show first/last page buttons</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">siblingCount</code></TableCell>
           <TableCell>number</TableCell>
           <TableCell>1</TableCell>
-          <TableCell>Nombre de pages de chaque côté de la page courante</TableCell>
+          <TableCell>Number of pages on each side of the current page</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">className</code></TableCell>
           <TableCell>string</TableCell>
           <TableCell>""</TableCell>
-          <TableCell>Classes CSS additionnelles</TableCell>
+          <TableCell>Additional CSS classes</TableCell>
         </TableRow>
       </TableBody>
     </Table>
   </div>
 
-  <h2 id="basic">Utilisation basique</h2>
+  <h2 id="basic">Basic usage</h2>
 
-  <p>Exemple simple avec 10 pages, page 5 active :</p>
+  <p>Simple example with 10 pages, page 5 active:</p>
 
   <div class="example-section">
     <PaginationComponent currentPage={5} totalPages={10} />
@@ -133,26 +133,26 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<PaginationComponent currentPage={5} totalPages={10} />`}
   />
 
-  <h3>Gestion automatique des cas limites</h3>
+  <h3>Automatic edge case handling</h3>
 
-  <p>Page 1 (pas de bouton précédent) :</p>
+  <p>Page 1 (no previous button):</p>
   <div class="example-section">
     <PaginationComponent currentPage={1} totalPages={10} />
   </div>
 
-  <p>Page 10 (pas de bouton suivant) :</p>
+  <p>Page 10 (no next button):</p>
   <div class="example-section">
     <PaginationComponent currentPage={10} totalPages={10} />
   </div>
 
-  <p>Page unique (pas de navigation) :</p>
+  <p>Single page (no navigation):</p>
   <div class="example-section">
     <PaginationComponent currentPage={1} totalPages={1} />
   </div>
 
   <Code
     lang="astro"
-    code={`<!-- Désactivation automatique selon le contexte -->
+    code={`<!-- Automatic disabling based on context -->
 <PaginationComponent currentPage={1} totalPages={10} />
 <PaginationComponent currentPage={10} totalPages={10} />
 <PaginationComponent currentPage={1} totalPages={1} />`}
@@ -188,9 +188,9 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <PaginationComponent variant="futuristic" currentPage={3} totalPages={10} />`}
   />
 
-  <h2 id="colors">Couleurs</h2>
+  <h2 id="colors">Colors</h2>
 
-  <p>Les couleurs s'appliquent à la page active :</p>
+  <p>Colors apply to the active page:</p>
 
   <div class="example-section">
     <div style="display: flex; flex-direction: column; gap: 2rem;">
@@ -224,7 +224,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <PaginationComponent color="accent" currentPage={5} totalPages={10} />`}
   />
 
-  <h2 id="sizes">Tailles</h2>
+  <h2 id="sizes">Sizes</h2>
 
   <div class="example-section">
     <div style="display: flex; flex-direction: column; gap: 2rem;">
@@ -234,7 +234,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
       </div>
       
       <div>
-        <p style="margin-bottom: 0.5rem; font-weight: 600;">Medium (défaut)</p>
+        <p style="margin-bottom: 0.5rem; font-weight: 600;">Medium (default)</p>
         <PaginationComponent size="md" currentPage={5} totalPages={10} />
       </div>
       
@@ -252,9 +252,9 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <PaginationComponent size="lg" currentPage={5} totalPages={10} />`}
   />
 
-  <h2 id="options">Options avancées</h2>
+  <h2 id="options">Advanced options</h2>
 
-  <h3>Avec boutons première/dernière page</h3>
+  <h3>With first/last page buttons</h3>
   <div class="example-section">
     <PaginationComponent currentPage={5} totalPages={20} showFirstLast={true} />
   </div>
@@ -264,7 +264,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<PaginationComponent currentPage={5} totalPages={20} showFirstLast={true} />`}
   />
 
-  <h3>Sans boutons précédent/suivant</h3>
+  <h3>Without previous/next buttons</h3>
   <div class="example-section">
     <PaginationComponent currentPage={5} totalPages={10} showPrevNext={false} />
   </div>
@@ -274,11 +274,11 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<PaginationComponent currentPage={5} totalPages={10} showPrevNext={false} />`}
   />
 
-  <h3>Plus de pages visibles (siblingCount)</h3>
+  <h3>More visible pages (siblingCount)</h3>
   <div class="example-section">
     <div style="display: flex; flex-direction: column; gap: 2rem;">
       <div>
-        <p style="margin-bottom: 0.5rem; font-weight: 600;">siblingCount={1} (défaut)</p>
+        <p style="margin-bottom: 0.5rem; font-weight: 600;">siblingCount={1} (default)</p>
         <PaginationComponent currentPage={10} totalPages={20} siblingCount={1} />
       </div>
       
@@ -301,72 +301,72 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <PaginationComponent currentPage={10} totalPages={20} siblingCount={3} />`}
   />
 
-  <h3>Affichage intelligent avec "..."</h3>
-  <p>Le composant affiche automatiquement "..." quand il y a beaucoup de pages :</p>
+  <h3>Smart display with "..."</h3>
+  <p>The component automatically displays "..." when there are many pages:</p>
   
   <div class="example-section">
     <div style="display: flex; flex-direction: column; gap: 2rem;">
       <div>
-        <p style="margin-bottom: 0.5rem; font-weight: 600;">Début (page 2)</p>
+        <p style="margin-bottom: 0.5rem; font-weight: 600;">Start (page 2)</p>
         <PaginationComponent currentPage={2} totalPages={50} />
       </div>
       
       <div>
-        <p style="margin-bottom: 0.5rem; font-weight: 600;">Milieu (page 25)</p>
+        <p style="margin-bottom: 0.5rem; font-weight: 600;">Middle (page 25)</p>
         <PaginationComponent currentPage={25} totalPages={50} />
       </div>
       
       <div>
-        <p style="margin-bottom: 0.5rem; font-weight: 600;">Fin (page 49)</p>
+        <p style="margin-bottom: 0.5rem; font-weight: 600;">End (page 49)</p>
         <PaginationComponent currentPage={49} totalPages={50} />
       </div>
     </div>
   </div>
 
-  <h3>URL personnalisée</h3>
+  <h3>Custom URL</h3>
   <Code
     lang="astro"
-    code={`<!-- Avec pattern [page] -->
+    code={`<!-- With pattern [page] -->
 <PaginationComponent 
   currentPage={5} 
   totalPages={10} 
   baseUrl="/blog/page/[page]" 
-/>
-<!-- Résultat: /blog/page/1, /blog/page/2, etc. -->
+/> 
+<!-- Result: /blog/page/1, /blog/page/2, etc. -->
 
-<!-- Avec concaténation simple -->
+<!-- With simple concatenation -->
 <PaginationComponent 
   currentPage={5} 
   totalPages={10} 
   baseUrl="/blog/page/" 
-/>
-<!-- Résultat: /blog/page/1, /blog/page/2, etc. -->`}
+/> 
+<!-- Result: /blog/page/1, /blog/page/2, etc. -->`}
   />
 
-  <h2 id="accessibility">Accessibilité</h2>
+  <h2 id="accessibility">Accessibility</h2>
 
   <ul>
-    <li><strong>Navigation sémantique :</strong> Utilise <code class="inline-code">&lt;nav&gt;</code> avec <code class="inline-code">aria-label="Pagination"</code></li>
-    <li><strong>État actuel :</strong> <code class="inline-code">aria-current="page"</code> sur la page active</li>
-    <li><strong>Désactivation :</strong> <code class="inline-code">aria-disabled</code> et <code class="inline-code">tabindex="-1"</code> sur les liens désactivés</li>
-    <li><strong>Labels clairs :</strong> <code class="inline-code">aria-label</code> sur tous les liens (Première page, Page 5, etc.)</li>
-    <li><strong>Keyboard :</strong> Navigation complète au clavier avec Tab</li>
-    <li><strong>Gestion intelligente :</strong> Désactivation automatique si totalPages = 0, 1, ou si currentPage est invalide</li>
+    <li><strong>Semantic navigation:</strong> Uses <code class="inline-code">&lt;nav&gt;</code> with <code class="inline-code">aria-label="Pagination"</code></li>
+    <li><strong>Current state:</strong> <code class="inline-code">aria-current="page"</code> on the active page</li>
+    <li><strong>Disabling:</strong> <code class="inline-code">aria-disabled</code> and <code class="inline-code">tabindex="-1"</code> on disabled links</li>
+    <li><strong>Clear labels:</strong> <code class="inline-code">aria-label</code> on all links (First page, Page 5, etc.)</li>
+    <li><strong>Keyboard:</strong> Full keyboard navigation with Tab</li>
+    <li><strong>Smart handling:</strong> Automatic disabling if totalPages = 0, 1, or if currentPage is invalid</li>
   </ul>
 
-  <h2>Logique intelligente</h2>
+  <h2>Smart logic</h2>
 
   <ul>
-    <li><strong>0 pages :</strong> Rien ne s'affiche</li>
-    <li><strong>1 page :</strong> Affiche seulement la page 1 (pas de navigation)</li>
-    <li><strong>≤ 7 pages :</strong> Affiche toutes les pages</li>
-    <li><strong>&gt; 7 pages :</strong> Utilise "..." intelligemment</li>
-    <li><strong>Validation :</strong> currentPage est automatiquement normalisé entre 1 et totalPages</li>
-    <li><strong>Bouton précédent :</strong> Désactivé automatiquement sur la page 1</li>
-    <li><strong>Bouton suivant :</strong> Désactivé automatiquement sur la dernière page</li>
+    <li><strong>0 pages:</strong> Nothing is displayed</li>
+    <li><strong>1 page:</strong> Only page 1 is shown (no navigation)</li>
+    <li><strong>≤ 7 pages:</strong> All pages are shown</li>
+    <li><strong>&gt; 7 pages:</strong> Uses "..." smartly</li>
+    <li><strong>Validation:</strong> currentPage is automatically normalized between 1 and totalPages</li>
+    <li><strong>Previous button:</strong> Automatically disabled on page 1</li>
+    <li><strong>Next button:</strong> Automatically disabled on the last page</li>
   </ul>
 
-  <h2>Exemple complet</h2>
+  <h2>Full example</h2>
 
   <div class="example-section">
     <PaginationComponent 
@@ -394,7 +394,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 />`}
   />
 
-  <h2>Utilisation avec Astro</h2>
+  <h2>Usage with Astro</h2>
 
   <Code
     lang="astro"

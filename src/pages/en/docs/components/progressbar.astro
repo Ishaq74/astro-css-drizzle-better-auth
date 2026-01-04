@@ -23,17 +23,17 @@ import TableCell from "@components/ui/Table/TableCell.astro";
   </p>
 
   <div class="toc">
-    <h2>Table des matières</h2>
+    <h2>Table of contents</h2>
     <ul>
       <li><a href="#installation">Installation</a></li>
       <li><a href="#props">Props</a></li>
-      <li><a href="#basic">Utilisation basique</a></li>
+      <li><a href="#basic">Basic usage</a></li>
       <li><a href="#variants">Variants</a></li>
-      <li><a href="#colors">Couleurs</a></li>
-      <li><a href="#sizes">Tailles</a></li>
-      <li><a href="#labels">Avec labels</a></li>
-      <li><a href="#striped">Rayures et animations</a></li>
-      <li><a href="#accessibility">Accessibilité</a></li>
+      <li><a href="#colors">Colors</a></li>
+      <li><a href="#sizes">Sizes</a></li>
+      <li><a href="#labels">With labels</a></li>
+      <li><a href="#striped">Stripes and animations</a></li>
+      <li><a href="#accessibility">Accessibility</a></li>
     </ul>
   </div>
     <h2 id="installation">Installation</h2>
@@ -130,7 +130,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     </TableBody>
   </Table>
 
-  <h2 id="basic">Utilisation basique</h2>
+  <h2 id="basic">Basic usage</h2>
 
   <div class="demo-section">
     <ProgressBar value={30} />
@@ -187,7 +187,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<ProgressBar variant="futuristic" value={65} />`}
   />
 
-  <h2 id="colors">Couleurs</h2>
+  <h2 id="colors">Colors</h2>
 
   <div class="demo-section">
     <ProgressBar color="default" value={50} />
@@ -204,7 +204,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <ProgressBar color="accent" value={50} />`}
   />
 
-  <h2 id="sizes">Tailles</h2>
+  <h2 id="sizes">Sizes</h2>
 
   <div class="demo-section">
     <ProgressBar size="sm" value={60} />
@@ -219,9 +219,9 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <ProgressBar size="lg" value={60} />`}
   />
 
-  <h2 id="labels">Avec labels</h2>
+  <h2 id="labels">With labels</h2>
 
-  <h3>Pourcentage automatique</h3>
+  <h3>Automatic percentage</h3>
   <div class="demo-section">
     <ProgressBar value={75} showLabel />
   </div>
@@ -231,10 +231,10 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<ProgressBar value={75} showLabel />`}
   />
 
-  <h3>Label personnalisé</h3>
+  <h3>Custom label</h3>
   <div class="demo-section">
-    <ProgressBar value={45} label="45 sur 100 fichiers" />
-    <ProgressBar value={3} max={10} label="3 / 10 étapes" />
+    <ProgressBar value={45} label="45 of 100 files" />
+    <ProgressBar value={3} max={10} label="3 / 10 steps" />
   </div>
 
   <Code
@@ -243,9 +243,9 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 <ProgressBar value={3} max={10} label="3 / 10 étapes" />`}
   />
 
-  <h2 id="striped">Rayures et animations</h2>
+  <h2 id="striped">Stripes and animations</h2>
 
-  <h3>Avec rayures</h3>
+  <h3>With stripes</h3>
   <div class="demo-section">
     <ProgressBar value={70} striped />
   </div>
@@ -255,7 +255,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<ProgressBar value={70} striped />`}
   />
 
-  <h3>Rayures animées</h3>
+  <h3>Animated stripes</h3>
   <div class="demo-section">
     <ProgressBar value={70} striped animated />
   </div>
@@ -265,7 +265,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     code={`<ProgressBar value={70} striped animated />`}
   />
 
-  <h3>Combinaisons</h3>
+  <h3>Combinations</h3>
   <div class="demo-section">
     <ProgressBar 
       variant="modern" 
@@ -282,7 +282,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
       size="lg"
       striped 
       animated 
-      label="Téléchargement en cours..."
+      label="Downloading..."
     />
   </div>
 
@@ -307,28 +307,28 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 />`}
   />
 
-  <h2 id="accessibility">Accessibilité</h2>
+  <h2 id="accessibility">Accessibility</h2>
 
   <p>
-    Le composant <code class="inline-code">ProgressBar</code> utilise le rôle ARIA
-    <code class="inline-code">progressbar</code> et inclut les attributs nécessaires :
+    The <code class="inline-code">ProgressBar</code> component uses the ARIA role
+    <code class="inline-code">progressbar</code> and includes the required attributes:
   </p>
 
   <ul>
     <li>
-      <code class="inline-code">role="progressbar"</code> : indique qu'il s'agit d'une barre de progression
+      <code class="inline-code">role="progressbar"</code>: indicates a progress bar
     </li>
     <li>
-      <code class="inline-code">aria-valuenow</code> : la valeur actuelle
+      <code class="inline-code">aria-valuenow</code>: the current value
     </li>
     <li>
-      <code class="inline-code">aria-valuemin</code> : la valeur minimale (0)
+      <code class="inline-code">aria-valuemin</code>: the minimum value (0)
     </li>
     <li>
-      <code class="inline-code">aria-valuemax</code> : la valeur maximale
+      <code class="inline-code">aria-valuemax</code>: the maximum value
     </li>
     <li>
-      <code class="inline-code">aria-label</code> : description textuelle de la progression
+      <code class="inline-code">aria-label</code>: textual description of the progress
     </li>
   </ul>
 
@@ -336,7 +336,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     lang="astro"
     code={`<ProgressBar 
   value={75} 
-  ariaLabel="Téléchargement du fichier: 75% complété"
+  ariaLabel="File download: 75% complete"
 />`}
   />
 </DocLayout>
