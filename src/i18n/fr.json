@@ -30,5 +30,21 @@
     "spacing": "Espacement",
     "shadows": "Ombres",
     "borders": "Bordures"
+  },
+  "footer": {
+    "company": "Astro CSS Drizzle",
+    "description": "Plateforme de design system moderne avec Astro, CSS et Drizzle.",
+    "siret": "SIRET : à compléter",
+    "contact": "Contact",
+    "email": "contact@example.com",
+    "phone": "+33 1 23 45 67 89",
+    "address": "Adresse",
+    "street": "123 Rue de la République",
+    "city": "75001 Paris, France",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "followUs": "Suivez-nous",
+    "copyright": "Tous droits réservés."
   }
 }

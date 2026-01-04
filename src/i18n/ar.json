@@ -30,5 +30,21 @@
     "spacing": "التباعد",
     "shadows": "الظلال",
     "borders": "الحدود"
+  },
+  "footer": {
+    "company": "أسترو سي إس إس دريزل",
+    "description": "منصة نظام تصميم حديثة مع Astro و CSS و Drizzle.",
+    "siret": "معرف الشركة: للإكمال",
+    "contact": "اتصل بنا",
+    "email": "contact@example.com",
+    "phone": "+33 1 23 45 67 89",
+    "address": "العنوان",
+    "street": "123 شارع الجمهورية",
+    "city": "75001 باريس، فرنسا",
+    "legal": "الإشعار القانوني",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الاستخدام",
+    "followUs": "تابعنا",
+    "copyright": "جميع الحقوق محفوظة."
   }
 }
