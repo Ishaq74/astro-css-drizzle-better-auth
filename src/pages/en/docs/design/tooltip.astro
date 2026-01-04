@@ -14,21 +14,21 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 
 <DocLayout 
   title="Tooltip Component" 
-  description="Documentation for the Tooltip component to display contextual tooltips on hover"
+  description="Tooltip component documentation for displaying contextual tooltips on hover"
   variant="initial"
-<p>
-  Status: 
-  <TooltipComponent text="Account active since 2024" position="right">
-    <Badge color="primary">Active</Badge>
-  </TooltipComponent>
-</p>`}
+>
+  <h1 id="tooltip-component">Tooltip Component</h1>
+  
+  <p>
+    The <code class="inline-code">Tooltip</code> component displays a contextual tooltip on hover or focus of an element to provide additional information.
+  </p>
 
   <div class="toc">
-    <h2>Table of contents</h2>
+    <h2>Table of Contents</h2>
     <ul>
       <li><a href="#installation">Installation</a></li>
       <li><a href="#props">Props</a></li>
-      <li><a href="#basic">Basic usage</a></li>
+      <li><a href="#basic">Basic Usage</a></li>
       <li><a href="#positions">Positions</a></li>
       <li><a href="#variants">Variants</a></li>
       <li><a href="#colors">Colors</a></li>
@@ -91,7 +91,7 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     </Table>
   </div>
 
-  <h2 id="basic">Basic usage</h2>
+  <h2 id="basic">Basic Usage</h2>
 
   <p>Wrap any content in a Tooltip to display a tooltip on hover:</p>
 
@@ -128,19 +128,19 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 
   <div class="example-section">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; padding: 3rem;">
-      <TooltipComponent text="Position top" position="top">
+      <TooltipComponent text="Top position" position="top">
         <Button>Top</Button>
       </TooltipComponent>
       
-      <TooltipComponent text="Position bottom" position="bottom">
+      <TooltipComponent text="Bottom position" position="bottom">
         <Button>Bottom</Button>
       </TooltipComponent>
       
-      <TooltipComponent text="Position left" position="left">
+      <TooltipComponent text="Left position" position="left">
         <Button>Left</Button>
       </TooltipComponent>
       
-      <TooltipComponent text="Position right" position="right">
+      <TooltipComponent text="Right position" position="right">
         <Button>Right</Button>
       </TooltipComponent>
     </div>
@@ -148,19 +148,19 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 
   <Code
     lang="astro"
-    code={`<TooltipComponent text="Position top" position="top">
+    code={`<TooltipComponent text="Top position" position="top">
   <Button>Top</Button>
 </TooltipComponent>
 
-<TooltipComponent text="Position bottom" position="bottom">
+<TooltipComponent text="Bottom position" position="bottom">
   <Button>Bottom</Button>
 </TooltipComponent>
 
-<TooltipComponent text="Position left" position="left">
+<TooltipComponent text="Left position" position="left">
   <Button>Left</Button>
 </TooltipComponent>
 
-<TooltipComponent text="Position right" position="right">
+<TooltipComponent text="Right position" position="right">
   <Button>Right</Button>
 </TooltipComponent>`}
   />
@@ -197,19 +197,19 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 
   <Code
     lang="astro"
-    code={`<TooltipComponent variant="initial" text="Tooltip with initial variant">
+    code={`<TooltipComponent variant="initial" text="Tooltip initial">
   <Button variant="initial">Initial</Button>
 </TooltipComponent>
 
-<TooltipComponent variant="retro" text="Pixelated tooltip, 80s style">
+<TooltipComponent variant="retro" text="Tooltip retro">
   <Button variant="retro">Retro</Button>
 </TooltipComponent>
 
-<TooltipComponent variant="modern" text="Minimalist tooltip with backdrop blur">
+<TooltipComponent variant="modern" text="Tooltip modern">
   <Button variant="modern">Modern</Button>
 </TooltipComponent>
 
-<TooltipComponent variant="futuristic" text="Cyberpunk tooltip with neon effect">
+<TooltipComponent variant="futuristic" text="Tooltip futuristic">
   <Button variant="futuristic">Futuristic</Button>
 </TooltipComponent>`}
   />
@@ -292,30 +292,28 @@ import TableCell from "@components/ui/Table/TableCell.astro";
 </TooltipComponent>`}
   />
 
-  <h2 id="accessibility">Accessibilité</h2>
+  <h2 id="accessibility">Accessibility</h2>
 
   <ul>
     <li><strong>ARIA Role:</strong> The tooltip uses <code class="inline-code">role="tooltip"</code></li>
     <li><strong>Keyboard:</strong> Shows on focus (Tab) and hides on blur</li>
     <li><strong>Hover & Focus:</strong> Works with mouse and keyboard</li>
-    <li><strong>Cursor:</strong> Cursor help to indicate the presence of information</li>
-    <li><strong>Z-index:</strong> Displays above all other content (z-index: 9999)</li>
-    <li><strong>Pointer-events:</strong> The tooltip does not interfere with interactions</li>
+    <li><strong>Cursor:</strong> Help cursor to indicate information is available</li>
+    <li><strong>High z-index:</strong> Displays above all other content (z-index: 9999)</li>
+    <li><strong>Pointer-events:</strong> Tooltip does not interfere with interactions</li>
   </ul>
 
-
-  <h2>Best practices</h2>
+  <h2>Best Practices</h2>
 
   <ul>
     <li><strong>Short text:</strong> Limit the text to one or two sentences</li>
-    <li><strong>Supplementary information:</strong> Do not put critical information only in a tooltip</li>
+    <li><strong>Supplementary info:</strong> Do not put critical information only in a tooltip</li>
     <li><strong>Smart position:</strong> Choose the position to avoid going off-screen</li>
     <li><strong>Consistency:</strong> Use the same variant as your other components</li>
-    <li><strong>Mobile:</strong> On mobile, prefer alternative solutions (tooltips on hover do not work well)</li>
+    <li><strong>Mobile:</strong> On mobile, prefer alternative solutions (hover tooltips do not work well)</li>
   </ul>
 
-
-  <h2>Full example</h2>
+  <h2>Full Example</h2>
 
   <div class="example-section">
     <div style="display: flex; flex-direction: column; gap: 2rem; max-width: 600px;">

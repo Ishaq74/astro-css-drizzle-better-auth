@@ -78,25 +78,25 @@ const recursiveMenu = [
 
 <DocLayout 
   title="Dropdown Component" 
-  description="Menu déroulant avec positionnement intelligent et gestion responsive (ZERO JavaScript)" 
+  description="Dropdown menu with smart positioning and responsive handling (ZERO JavaScript)" 
   variant="initial"
 >
+
   <h1 id="dropdown-component">Dropdown Component</h1>
 
   <p>
-    Le composant <code class="inline-code">Dropdown</code> utilise le checkbox hack CSS pour créer
-    des menus déroulants sans JavaScript. Gestion intelligente du positionnement et du responsive.
+    The <code class="inline-code">Dropdown</code> component uses the CSS checkbox hack to create dropdown menus without JavaScript. Smart positioning and responsive handling.
   </p>
 
   <div class="toc">
-    <h2>Table des matières</h2>
+    <h2>Table of Contents</h2>
     <ul>
       <li><a href="#installation">Installation</a></li>
-      <li><a href="#basic">Utilisation basique</a></li>
-      <li><a href="#recursive">Menus récursifs</a></li>
+      <li><a href="#basic">Basic Usage</a></li>
+      <li><a href="#recursive">Recursive Menus</a></li>
       <li><a href="#positions">Positions</a></li>
       <li><a href="#variants">Variants</a></li>
-      <li><a href="#features">Fonctionnalités</a></li>
+      <li><a href="#features">Features</a></li>
       <li><a href="#api">API Reference</a></li>
     </ul>
   </div>
@@ -108,7 +108,7 @@ const recursiveMenu = [
     code={`import Dropdown from '@components/ui/Dropdown.astro';`}
   />
 
-  <h2 id="basic">Utilisation basique</h2>
+  <h2 id="basic">Basic Usage</h2>
 
   <div class="demo-section">
     <DropdownComponent 
@@ -127,10 +127,9 @@ const recursiveMenu = [
 />`}
   />
 
-  <h2 id="recursive">Menus récursifs (multi-niveaux)</h2>
+  <h2 id="recursive">Recursive Menus (multi-level)</h2>
   <p>
-    Les dropdowns supportent les sous-menus imbriqués à plusieurs niveaux sans JavaScript. 
-    Chaque sous-menu a sa propre checkbox pour l'état d'ouverture/fermeture.
+    Dropdowns support nested submenus at multiple levels without JavaScript. Each submenu has its own checkbox for open/close state.
   </p>
 
   <div class="demo-section">
@@ -181,20 +180,20 @@ const recursiveMenu = [
   { label: "Logout", value: "logout", icon: "🚪" },
 ];
 
-<DropdownComponent items={recursiveMenu} triggerLabel="Menu Multi-niveaux" />`}
+  <DropdownComponent items={recursiveMenu} triggerLabel="Multi-level Menu" />`}
   />
 
   <div class="note">
-    <strong>ZERO JavaScript :</strong> Chaque sous-menu utilise une checkbox cachée + label pour gérer son état.
-    Les sous-menus s'ouvrent à droite (desktop) ou en empilé (mobile). Support illimité de niveaux d'imbrication !
+    <strong>ZERO JavaScript:</strong> Each submenu uses a hidden checkbox + label to manage its state.
+    Submenus open to the right (desktop) or stack (mobile). Unlimited nesting levels supported!
   </div>
 
   <h2 id="positions">Positions</h2>
-  <p>Le dropdown peut être positionné de 4 façons différentes par rapport au trigger.</p>
+  <p>The dropdown can be positioned in 4 different ways relative to the trigger.</p>
 
   <div class="demo-section" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: space-between;">
     <div>
-      <h4>Bottom Left (défaut)</h4>
+      <h4>Bottom Left (default)</h4>
       <DropdownComponent 
         items={shortMenu}
         triggerLabel="Bottom Left"
@@ -240,7 +239,7 @@ const recursiveMenu = [
 
   <h2 id="variants">Variants</h2>
 
-  <h3>Variant Retro</h3>
+  <h3>Retro Variant</h3>
   <div class="demo-section">
     <DropdownComponent 
       items={menuItems}
@@ -259,7 +258,7 @@ const recursiveMenu = [
 />`}
   />
 
-  <h3>Variant Modern</h3>
+  <h3>Modern Variant</h3>
   <div class="demo-section">
     <DropdownComponent 
       items={menuItems}
@@ -278,7 +277,7 @@ const recursiveMenu = [
 />`}
   />
 
-  <h3>Variant Futuristic</h3>
+  <h3>Futuristic Variant</h3>
   <div class="demo-section">
     <DropdownComponent 
       items={menuItems}
@@ -297,10 +296,10 @@ const recursiveMenu = [
 />`}
   />
 
-  <h2 id="features">Fonctionnalités</h2>
+  <h2 id="features">Features</h2>
 
-  <h3>Menu avec liens</h3>
-  <p>Les items peuvent avoir des attributs <code class="inline-code">href</code> pour créer des liens.</p>
+  <h3>Menu with links</h3>
+  <p>Items can have <code class="inline-code">href</code> attributes to create links.</p>
 
   <div class="demo-section">
     <DropdownComponent 
@@ -321,7 +320,7 @@ const recursiveMenu = [
 <DropdownComponent items={menuWithLinks} triggerLabel="Navigation" />`}
   />
 
-  <h3>Items désactivés</h3>
+  <h3>Disabled items</h3>
 
   <div class="demo-section">
     <DropdownComponent 
@@ -340,8 +339,8 @@ const recursiveMenu = [
 ];`}
   />
 
-  <h3>Menu long avec scroll</h3>
-  <p>Les menus longs ont un scroll automatique avec une hauteur max de 400px.</p>
+  <h3>Long menu with scroll</h3>
+  <p>Long menus have automatic scrolling with a max height of 400px.</p>
 
   <div class="demo-section">
     <DropdownComponent 
@@ -411,39 +410,33 @@ const recursiveMenu = [
   <Code
     lang="typescript"
     code={`interface MenuItem {
-  label: string;         // Texte affiché
-  value?: string;        // Valeur de l'item
-  icon?: string;         // Emoji ou icône
-  disabled?: boolean;    // Item désactivé
-  href?: string;         // Lien (devient un <a>)
-  children?: MenuItem[]; // Sous-menu récursif (multi-niveaux)
+  label: string;         // Displayed text
+  value?: string;        // Item value
+  icon?: string;         // Emoji or icon
+  disabled?: boolean;    // Disabled item
+  href?: string;         // Link (becomes an <a>)
+  children?: MenuItem[]; // Recursive submenu (multi-level)
 }`}
   />
 
   <h2>Responsive & Smart Positioning</h2>
-
-  <p>Le dropdown gère automatiquement :</p>
-
+  <p>The dropdown automatically handles:</p>
   <ul>
-    <li><strong>Débordement d'écran</strong> : Sur mobile, position automatique centrée</li>
-    <li><strong>Hauteur max</strong> : 400px desktop, 300px mobile avec scroll</li>
-    <li><strong>Largeur adaptative</strong> : max-width sur mobile pour éviter le débordement</li>
-    <li><strong>Backdrop</strong> : Click en dehors ferme le menu</li>
-    <li><strong>Scrollbar custom</strong> : Style minimaliste sur les navigateurs webkit</li>
+    <li><strong>Screen overflow</strong>: On mobile, automatic centered position</li>
+    <li><strong>Max height</strong>: 400px desktop, 300px mobile with scroll</li>
+    <li><strong>Adaptive width</strong>: max-width on mobile to avoid overflow</li>
+    <li><strong>Backdrop</strong>: Click outside closes the menu</li>
+    <li><strong>Custom scrollbar</strong>: Minimal style on webkit browsers</li>
   </ul>
-
   <div class="note">
-    <strong>Note :</strong> ZERO JavaScript ! Tout fonctionne avec une checkbox cachée et le sélecteur <code>:checked</code>.
-    Le backdrop utilise une <code>&lt;label&gt;</code> invisible pour fermer au click.
+    <strong>Note:</strong> ZERO JavaScript! Everything works with a hidden checkbox and the <code>:checked</code> selector.
+    The backdrop uses an invisible <code>&lt;label&gt;</code> to close on click.
   </div>
-
-  <h2>Architecture CSS Pure</h2>
-
-  <p>Structure HTML claire et logique pour un menu dropdown avec sous-menus :</p>
-
+  <h2>Pure CSS Architecture</h2>
+  <p>Clear and logical HTML structure for a dropdown menu with submenus:</p>
   <Code
     lang="html"
-    code={`<!-- Menu principal -->
+    code={`<!-- Main menu -->
 <div class="dropdown">
   <input type="checkbox" id="menu" class="dropdown-state" />
   <label for="menu" class="dropdown-trigger">Menu</label>
@@ -451,10 +444,10 @@ const recursiveMenu = [
   
   <div class="dropdown-menu position-bottom-left">
     <div class="dropdown-content">
-      <!-- Item simple -->
+      <!-- Simple item -->
       <label for="menu" class="dropdown-item">Dashboard</label>
       
-      <!-- Item avec sous-menu -->
+      <!-- Item with submenu -->
       <div class="dropdown-submenu">
         <input type="checkbox" id="products" class="submenu-state" />
         <label for="products" class="dropdown-item has-submenu">
@@ -463,7 +456,7 @@ const recursiveMenu = [
         <div class="submenu-content">
           <div class="dropdown-content">
             <label for="menu" class="dropdown-item">All Products</label>
-            <!-- Peut imbriquer jusqu'à 3 niveaux -->
+            <!-- Can nest up to 3 levels -->
           </div>
         </div>
       </div>
@@ -471,34 +464,33 @@ const recursiveMenu = [
   </div>
 </div>`}
   />
-
   <Code
     lang="css"
-    code={`/* Checkbox caché pour l'état du menu principal */
+    code={`/* Hidden checkbox for main menu state */
 .dropdown-state {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-/* Ouvrir le menu quand checkbox cochée */
+/* Open menu when checkbox is checked */
 .dropdown-state:checked ~ .dropdown-menu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-/* Backdrop transparent pour fermer au clic extérieur */
+/* Transparent backdrop to close on outside click */
 .dropdown-state:checked ~ .dropdown-backdrop {
   display: block;
 }
 
-/* Sous-menus avec leur propre checkbox */
+/* Submenus with their own checkbox */
 .submenu-state:checked ~ .submenu-content {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-}`}
+}`} 
   />
 </DocLayout>
 
