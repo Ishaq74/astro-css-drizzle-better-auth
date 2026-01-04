@@ -14,19 +14,18 @@ import { Code } from "astro:components";
 
 <DocLayout 
   title="Avatar Component" 
-  description="Documentation du composant Avatar pour afficher des images de profil utilisateur avec fallback aux initiales"
+  description="Avatar component documentation for displaying user profile images with initials fallback"
   variant="initial"
 >
   <h1 id="avatar-component">Avatar Component</h1>
   
   <p>
-    Le composant <code class="inline-code">Avatar</code> permet d'afficher des images de profil 
-    avec gestion automatique des initiales en cas d'absence d'image.
+    The <code class="inline-code">Avatar</code> component displays profile images with automatic initials fallback if no image is provided.
   </p>
 
   <h2 id="installation">Installation</h2>
   
-  <p>Les composants sont disponibles dans <code class="inline-code">src/components/ui/Avatar/</code></p>
+  <p>The components are available in <code class="inline-code">src/components/ui/Avatar/</code></p>
   
   <Code
     lang="typescript"
@@ -43,7 +42,7 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
         <TableRow>
           <TableHead>Prop</TableHead>
           <TableHead>Type</TableHead>
-          <TableHead>Défaut</TableHead>
+          <TableHead>Default</TableHead>
           <TableHead>Description</TableHead>
         </TableRow>
       </TableHeader>
@@ -52,31 +51,31 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
           <TableCell><code class="inline-code">variant</code></TableCell>
           <TableCell>initial | retro | modern | futuristic</TableCell>
           <TableCell>initial</TableCell>
-          <TableCell>Style visuel de l'avatar</TableCell>
+          <TableCell>Visual style of the avatar</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">src</code></TableCell>
           <TableCell>string</TableCell>
           <TableCell>-</TableCell>
-          <TableCell>URL de l'image</TableCell>
+          <TableCell>Image URL</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">alt</code></TableCell>
           <TableCell>string</TableCell>
           <TableCell>Avatar</TableCell>
-          <TableCell>Texte alternatif de l'image</TableCell>
+          <TableCell>Alternative text for the image</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">fallback</code></TableCell>
           <TableCell>string</TableCell>
           <TableCell>-</TableCell>
-          <TableCell>Nom pour générer les initiales (si pas d'image)</TableCell>
+          <TableCell>Name to generate initials (if no image)</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">size</code></TableCell>
           <TableCell>sm | md | lg | xl</TableCell>
           <TableCell>md</TableCell>
-          <TableCell>Taille de l'avatar</TableCell>
+          <TableCell>Avatar size</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code class="inline-code">className</code></TableCell>
@@ -88,9 +87,9 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
     </Table>
   </div>
 
-  <h2 id="exemples-basiques">Exemples basiques</h2>
+  <h2 id="basic-examples">Basic examples</h2>
 
-  <h3 id="avec-image">Avec image</h3>
+  <h3 id="with-image">With image</h3>
   
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <AvatarComponent src="https://i.pravatar.cc/150?img=1" alt="User 1" />
@@ -103,7 +102,7 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
     code={`<AvatarComponent src="https://i.pravatar.cc/150?img=1" alt="User 1" />`}
   />
 
-  <h3 id="avec-initiales">Avec initiales (fallback)</h3>
+  <h3 id="with-initials">With initials (fallback)</h3>
   
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <AvatarComponent fallback="John Doe" />
@@ -118,9 +117,9 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
 <AvatarComponent fallback="A" />`}
   />
 
-  <h2 id="tailles">Tailles</h2>
+  <h2 id="sizes">Sizes</h2>
 
-  <p>Quatre tailles sont disponibles : <code class="inline-code">sm</code>, <code class="inline-code">md</code> (défaut), <code class="inline-code">lg</code>, et <code class="inline-code">xl</code>.</p>
+  <p>Four sizes are available: <code class="inline-code">sm</code>, <code class="inline-code">md</code> (default), <code class="inline-code">lg</code>, and <code class="inline-code">xl</code>.</p>
 
   <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
     <AvatarComponent size="sm" fallback="SM" />
@@ -191,9 +190,9 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
 <AvatarComponent variant="futuristic" fallback="Future User" />`}
   />
 
-  <h2 id="avatar-group">AvatarGroup - Groupes d'avatars chevauchés</h2>
+  <h2 id="avatar-group">AvatarGroup - Overlapping avatars</h2>
 
-  <p>Utilisez <code class="inline-code">AvatarGroup</code> pour afficher des avatars qui se chevauchent (style moderne 2025).</p>
+  <p>Use <code class="inline-code">AvatarGroup</code> to display overlapping avatars (modern 2025 style).</p>
 
   <AvatarGroup>
     <AvatarComponent src="https://i.pravatar.cc/150?img=8" size="lg" />
@@ -214,9 +213,9 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
 </AvatarGroup>`}
   />
 
-  <h3 id="avatar-group-variants">AvatarGroup avec variants</h3>
+  <h3 id="avatar-group-variants">AvatarGroup with variants</h3>
 
-  <p>Variant <strong>retro</strong></p>
+  <p><strong>retro</strong> variant</p>
   <AvatarGroup>
     <AvatarComponent variant="retro" src="https://i.pravatar.cc/150?img=1" />
     <AvatarComponent variant="retro" src="https://i.pravatar.cc/150?img=2" />
@@ -224,7 +223,7 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
     <AvatarComponent variant="retro" fallback="AB" />
   </AvatarGroup>
 
-  <p>Variant <strong>modern</strong></p>
+  <p><strong>modern</strong> variant</p>
   <AvatarGroup>
     <AvatarComponent variant="modern" src="https://i.pravatar.cc/150?img=4" />
     <AvatarComponent variant="modern" src="https://i.pravatar.cc/150?img=5" />
@@ -232,7 +231,7 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
     <AvatarComponent variant="modern" fallback="+3" />
   </AvatarGroup>
 
-  <p>Variant <strong>futuristic</strong></p>
+  <p><strong>futuristic</strong> variant</p>
   <AvatarGroup>
     <AvatarComponent variant="futuristic" src="https://i.pravatar.cc/150?img=13" />
     <AvatarComponent variant="futuristic" src="https://i.pravatar.cc/150?img=14" />
@@ -248,9 +247,9 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
 </AvatarGroup>`}
   />
 
-  <h2 id="avatar-card">AvatarCard - Carte de profil</h2>
+  <h2 id="avatar-card">AvatarCard - Profile card</h2>
 
-  <p>Utilisez <code class="inline-code">AvatarCard</code> pour créer des cartes de profil élégantes.</p>
+  <p>Use <code class="inline-code">AvatarCard</code> to create elegant profile cards.</p>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
     <AvatarCard
@@ -290,9 +289,9 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
 />`}
   />
 
-  <h2 id="cas-usage">Cas d'usage</h2>
+  <h2 id="usage-cases">Usage cases</h2>
 
-  <h3 id="profil-utilisateur">Profil utilisateur</h3>
+  <h3 id="user-profile">User profile</h3>
   
   <div style="display: flex; align-items: center; gap: 1rem;">
     <AvatarComponent variant="modern" src="https://i.pravatar.cc/150?img=22" size="xl" />
@@ -313,7 +312,7 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
 </div>`}
   />
 
-  <h3 id="liste-utilisateurs">Liste d'utilisateurs</h3>
+  <h3 id="user-list">User list</h3>
   
   <div style="display: flex; flex-direction: column; gap: 0.75rem;">
     <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -338,7 +337,7 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
 </div>`}
   />
 
-  <h3 id="commentaires">Système de commentaires</h3>
+  <h3 id="comments">Comments system</h3>
   
   <div style="border: 1px solid var(--color-outline); border-radius: var(--radius-md); padding: 1rem;">
     <div style="display: flex; gap: 1rem;">
@@ -346,7 +345,7 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
       <div>
         <strong>Marie Curie</strong>
         <p style="margin: 0.25rem 0 0 0; opacity: 0.8;">
-          Excellent travail ! J'adore le design du composant.
+          Excellent work! I love the component design.
         </p>
       </div>
     </div>
@@ -363,23 +362,23 @@ import AvatarCard from '@components/ui/Avatar/AvatarCard.astro';`}
 </div>`}
   />
 
-  <h2 id="accessibilite">Accessibilité</h2>
+  <h2 id="accessibility">Accessibility</h2>
 
   <ul>
-    <li>L'attribut <code class="inline-code">alt</code> est requis pour les images</li>
-    <li>Les initiales sont générées automatiquement depuis le fallback</li>
-    <li>Le texte alternatif est lisible par les lecteurs d'écran</li>
-    <li>Les contrastes de couleurs respectent les normes WCAG</li>
+    <li>The <code class="inline-code">alt</code> attribute is required for images</li>
+    <li>Initials are automatically generated from the fallback</li>
+    <li>Alternative text is readable by screen readers</li>
+    <li>Color contrasts follow WCAG standards</li>
   </ul>
 
-  <h2 id="bonnes-pratiques">Bonnes pratiques</h2>
+  <h2 id="best-practices">Best practices</h2>
 
   <ul>
-    <li>Utilisez toujours un <code class="inline-code">fallback</code> pour les avatars sans image</li>
-    <li>Fournissez un <code class="inline-code">alt</code> descriptif pour les images</li>
-    <li>Utilisez des tailles cohérentes dans un même contexte</li>
-    <li>Préférez des images carrées pour éviter les déformations</li>
-    <li>Les initiales sont limitées à 2 caractères maximum</li>
+    <li>Always use a <code class="inline-code">fallback</code> for avatars without an image</li>
+    <li>Provide a descriptive <code class="inline-code">alt</code> for images</li>
+    <li>Use consistent sizes in the same context</li>
+    <li>Prefer square images to avoid distortion</li>
+    <li>Initials are limited to 2 characters maximum</li>
   </ul>
 
 </DocLayout>
