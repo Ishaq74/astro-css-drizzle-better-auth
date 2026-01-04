@@ -1,0 +1,36 @@
+---
+import Brand from './Brand.astro';
+import Navigation from './Navigation.astro';
+import ThemeSwitch from './ThemeSwitch.astro';
+import LangChooser from './LangChooser.astro';
+
+interface Props {
+  variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
+  fixed?: boolean;
+  class?: string;
+}
+
+const {
+  variant = 'initial',
+  fixed = false,
+  class: className = '',
+} = Astro.props;
+
+const headerClass = [
+  'header',
+  variant !== 'initial' && variant,
+  fixed && 'header-fixed',
+  className
+].filter(Boolean).join(' ');
+---
+
+<header class={headerClass}>
+  <div class="header-container">
+    <Brand variant={variant} />
+    <Navigation variant={variant} />
+    <div class="header-actions">
+      <LangChooser variant={variant} />
+      <ThemeSwitch variant={variant} />
+    </div>
+  </div>
+</header>

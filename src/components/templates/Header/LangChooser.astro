@@ -1,0 +1,28 @@
+---
+import Dropdown from '@components/ui/Dropdown.astro';
+
+interface Props {
+  variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
+  class?: string;
+}
+
+const {
+  variant = 'initial',
+  class: className = '',
+} = Astro.props;
+
+const languages = [
+  { label: 'Français', icon: '🇫🇷', href: '?lang=fr', value: 'fr' },
+  { label: 'English', icon: '🇬🇧', href: '?lang=en', value: 'en' },
+  { label: 'Español', icon: '🇪🇸', href: '?lang=es', value: 'es' },
+];
+---
+
+<Dropdown
+  items={languages}
+  variant={variant}
+  position="bottom-right"
+  triggerLabel="FR"
+  triggerIcon="🇫🇷"
+  class={className}
+/>

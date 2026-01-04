@@ -1026,3 +1026,52 @@ a.button.modern.accent {
     background: transparent;
   }
 }
+
+/* HEADER MODERN */
+.header.modern {
+  background: rgba(var(--bg-default-rgb, 255, 255, 255), 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(var(--border-default-rgb, 226, 232, 240), 0.5);
+  box-shadow: var(--shadow-sm);
+}
+
+/* BRAND MODERN */
+.brand.modern {
+  font-family: var(--font-heading, sans-serif);
+}
+.brand.modern .brand-name {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.brand.modern:hover {
+  transform: translateY(-2px);
+}
+
+/* NAVIGATION MODERN */
+.nav-link.modern::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform: translateX(-50%);
+  transition: width 0.3s;
+}
+.nav-link.modern:hover::after,
+.nav-link.modern.active::after {
+  width: 80%;
+}
+
+/* THEME SWITCH MODERN */
+.theme-switch.modern {
+  backdrop-filter: blur(10px);
+  background: rgba(var(--bg-default-rgb, 255, 255, 255), 0.8);
+  border-color: rgba(var(--border-default-rgb, 226, 232, 240), 0.3);
+}
+.theme-switch.modern:hover {
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb, 234, 179, 8), 0.2);
+}

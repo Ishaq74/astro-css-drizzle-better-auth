@@ -237,6 +237,29 @@
   --scrollbar-thumb-bg: #cbd5e1;
   --scrollbar-thumb-hover-bg: #94a3b8;
 
+  /* Couleurs des dropdowns */
+  --dropdown-bg: white;
+  --dropdown-border-color: var(--border-default);
+  --dropdown-item-color: var(--text-default);
+  --dropdown-item-hover-bg: var(--bg-subtle);
+  --dropdown-trigger-bg: white;
+  --dropdown-trigger-hover-bg: var(--bg-subtle);
+
+  /* Couleurs des modals/dialogs */
+  --dialog-bg: white;
+  --dialog-overlay-bg: rgba(0, 0, 0, 0.5);
+
+  /* Couleurs des galleries */
+  --gallery-item-bg: white;
+  --gallery-thumb-bg: white;
+
+  /* Couleurs des timelines */
+  --timeline-icon-bg: white;
+  --timeline-content-bg: white;
+
+  /* Couleurs des switches */
+  --switch-handle-bg: white;
+
   /* Couleurs des liens */
   --link-color: var(--color-primary);
   --link-text-decoration-color: transparent;
@@ -285,128 +308,278 @@
   --futuristic-link-button-hover-glow: var(--futuristic-glow);
 }
 
-/* Mode sombre */
-.dark {
-  --bg-default: #1e1b4b;
-  --bg-subtle: #312e81;
-  --bg-inset: #020617;
-  --text-default: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-inverted: #000000;
-  --heading-color: #f8fafc;
+/* Dark Theme */
+:root[data-theme="dark"] {
+  /* Couleurs principales (identiques en dark) */
+  --color-primary: #eab308;
+  --color-secondary: #8b5cf6;
+  --color-accent: #ec4899;
+  --color-success: #16a34a;
+  --color-warning: #f97316;
+  --color-danger: #dc2626;
 
+  /* Couleurs de fond */
+  --bg-default: #0f172a;
+  --bg-subtle: #1e293b;
+  --bg-inset: #334155;
+
+  /* Couleurs de texte */
+  --text-default: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-inverted: #0f172a;
+  --heading-color: #f1f5f9;
+
+  /* Couleurs de bordure */
   --border-default: #334155;
   --border-strong: #475569;
 
+  /* Couleurs des boutons par défaut */
   --button-default-bg: var(--bg-subtle);
   --button-default-color: var(--text-default);
-  --button-default-border-color: var(--border-strong);
+  --button-default-border-color: var(--border-default);
   --button-default-bg-hover: var(--bg-inset);
+  --button-primary-bg: var(--color-primary);
+  --button-primary-color: #ffffff;
+  --button-secondary-bg: var(--color-secondary);
+  --button-secondary-color: #ffffff;
+  --button-accent-bg: var(--color-accent);
+  --button-accent-color: #ffffff;
 
+  /* Couleurs Retro */
   --retro-button-bg: var(--bg-default);
   --retro-button-color: var(--text-default);
   --retro-button-border-color: var(--text-default);
   --retro-button-hover-bg: var(--bg-inset);
   --retro-button-active-bg: var(--color-primary);
-  --retro-shadow-color: #ffffff;
-  --retro-input-bg: black;
-  --retro-input-color: white;
-  --retro-input-text-color: white;
-  --retro-input-border-color: white;
-  --retro-input-focus-bg: #222;
-  --retro-card-bg: #000;
-  --retro-card-color: #fff;
-  --retro-card-border-color: #fff;
-  --retro-badge-bg: black;
-  --retro-alert-bg: black;
-  --retro-switch-bg-off: black;
-  --retro-switch-bg-on: white;
-  --retro-checkbox-bg: black;
-  --retro-slider-track-bg: black;
-  --retro-slider-thumb-color: white;
-  --retro-table-header-bg: white;
-  --retro-table-header-color: black;
-  --retro-table-border-color: white;
-  --retro-avatar-border-color: white;
-  --retro-tab-active-bg: white;
-  --retro-pagination-bg: black;
-  --retro-pagination-active-bg: white;
-  --retro-toast-border-color: white;
+  --retro-shadow-color: rgba(255, 255, 255, 0.3);
+  --retro-input-bg: #1e293b;
+  --retro-input-color: #f1f5f9;
+  --retro-input-text-color: #f1f5f9;
+  --retro-input-border-color: #f1f5f9;
+  --retro-input-focus-bg: #334155;
+  --retro-card-bg: #1e293b;
+  --retro-card-color: #f1f5f9;
+  --retro-card-border-color: #f1f5f9;
+  --retro-badge-bg: #1e293b;
+  --retro-alert-bg: #1e293b;
+  --retro-switch-bg-off: #1e293b;
+  --retro-switch-bg-on: #f1f5f9;
+  --retro-checkbox-bg: #1e293b;
+  --retro-slider-track-bg: #1e293b;
+  --retro-slider-thumb-color: #f1f5f9;
+  --retro-table-header-bg: #f1f5f9;
+  --retro-table-header-color: #0f172a;
+  --retro-table-border-color: #f1f5f9;
+  --retro-avatar-border-color: #f1f5f9;
+  --retro-tab-active-bg: #f1f5f9;
+  --retro-pagination-bg: #1e293b;
+  --retro-pagination-active-bg: #f1f5f9;
+  --retro-toast-border-color: #f1f5f9;
 
+  /* Couleurs Modern */
   --modern-button-bg: var(--bg-subtle);
   --modern-button-color: var(--text-default);
+  --modern-button-border-color: transparent;
   --modern-button-hover-shadow: 0 10px 15px -3px rgba(0,0,0,0.5);
   --modern-input-bg: #1e293b;
   --modern-input-color: var(--text-default);
   --modern-input-text-color: var(--text-default);
-  --modern-input-border-color: var(--border-strong);
+  --modern-input-border-color: var(--border-default);
   --modern-card-bg: #1e293b;
   --modern-card-color: var(--text-default);
-  --modern-alert-bg: #0f172a;
-  --modern-switch-bg-off: #334155;
+  --modern-card-border-color: transparent;
+  --modern-badge-bg: var(--bg-subtle);
+  --modern-alert-bg: #1e293b;
+  --modern-switch-bg-off: #475569;
+  --modern-switch-bg-on: var(--color-primary);
+  --modern-checkbox-checked-bg: var(--color-primary);
   --modern-table-stripe-bg: #0f172a;
+  --modern-avatar-radius: 50%;
+  --modern-tab-active-color: var(--color-primary);
+  --modern-pagination-active-color: var(--color-primary);
+  --modern-breadcrumb-color: var(--color-primary);
+  --modern-toast-radius: var(--border-radius-lg);
 
+  /* Couleurs Futuristic */
+  --futuristic-glow: rgba(234, 179, 8, 0.5);
+  --futuristic-button-bg: rgba(234, 179, 8, 0.1);
+  --futuristic-button-color: var(--color-primary);
+  --futuristic-button-border-color: var(--color-primary);
+  --futuristic-button-hover-bg: rgba(234, 179, 8, 0.2);
+  --futuristic-button-hover-glow: var(--color-primary);
   --futuristic-input-bg: rgba(255,255,255,0.05);
-  --futuristic-card-bg: rgba(0,0,0,0.2);
+  --futuristic-input-color: var(--color-primary);
+  --futuristic-input-text-color: var(--text-default);
+  --futuristic-input-border-color: var(--color-primary);
+  --futuristic-input-focus-glow: var(--color-primary);
+  --futuristic-card-bg: rgba(0,0,0,0.3);
+  --futuristic-card-color: var(--text-default);
+  --futuristic-card-border-color: var(--color-primary);
+  --futuristic-badge-bg: transparent;
   --futuristic-alert-bg: rgba(0,0,0,0.5);
+  --futuristic-switch-glow: var(--color-primary);
+  --futuristic-checkbox-glow: var(--color-primary);
+  --futuristic-slider-glow: var(--color-primary);
+  --futuristic-table-glow: var(--color-primary);
+  --futuristic-avatar-glow: var(--color-primary);
   --futuristic-tab-bg: rgba(255,255,255,0.05);
+  --futuristic-pagination-glow: var(--color-primary);
+  --futuristic-breadcrumb-glow: var(--color-primary);
+  --futuristic-toast-glow: var(--color-primary);
   --futuristic-toast-bg: rgba(0,0,0,0.8);
+  --futuristic-popover-glow: var(--color-primary);
+  --futuristic-tooltip-glow: var(--color-primary);
 
+  /* Couleurs des inputs */
   --input-bg: var(--bg-inset);
   --input-color: var(--text-default);
-  --input-border-color: var(--border-strong);
+  --input-border-color: var(--border-default);
+  --input-border-color-focus: var(--color-primary);
 
+  /* Couleurs des cards */
   --card-bg: #1e293b;
   --card-color: var(--text-default);
-  --card-border-color: var(--border-strong);
+  --card-border-color: var(--border-default);
 
+  /* Couleurs des badges */
+  --badge-default-bg: #334155;
+  --badge-default-color: #f1f5f9;
+  --badge-bg: var(--badge-default-bg);
+  --badge-color: var(--badge-default-color);
+  --badge-border-color: transparent;
+  --badge-primary-bg: var(--color-primary);
+  --badge-primary-color: white;
+  --badge-secondary-bg: var(--color-secondary);
+  --badge-secondary-color: white;
+  --badge-accent-bg: var(--color-accent);
+  --badge-accent-color: white;
+
+  /* Couleurs des alertes */
+  --alert-bg: var(--alert-info-bg);
+  --alert-color: var(--alert-info-color);
+  --alert-border-color: var(--alert-info-border);
   --alert-info-bg: #172554;
   --alert-info-color: #bfdbfe;
+  --alert-info-border: #3b82f6;
   --alert-success-bg: #052e16;
   --alert-success-color: #bbf7d0;
+  --alert-success-border: #16a34a;
   --alert-warning-bg: #431407;
   --alert-warning-color: #fed7aa;
+  --alert-warning-border: #f97316;
   --alert-error-bg: #450a0a;
   --alert-error-color: #fecaca;
+  --alert-error-border: #dc2626;
   --alert-danger-bg: #450a0a;
   --alert-danger-color: #fecaca;
 
+  /* Couleurs des switches & checkboxes */
   --switch-bg-off: #475569;
+  --switch-bg-on: var(--color-primary);
+  --switch-handle-color: white;
   --checkbox-bg: #1e293b;
   --checkbox-border: #475569;
+  --checkbox-checked-bg: var(--color-primary);
+  --checkbox-check-color: white;
+
+  /* Couleurs des sliders */
   --slider-track-bg: #334155;
+  --slider-thumb-color: var(--color-primary);
 
+  /* Couleurs des tables */
+  --table-border-color: var(--border-default);
+  --table-row-bg: var(--bg-default);
+  --table-row-hover-bg: var(--bg-subtle);
+  --table-stripe-bg: color-mix(in srgb, var(--bg-subtle) 40%, transparent);
   --table-header-bg: #1e293b;
-  --table-stripe-bg: color-mix(in srgb, #1e293b 40%, transparent);
+  --table-header-color: var(--text-default);
+
+  /* Couleurs des avatars */
   --avatar-bg: #334155;
+  --avatar-color: var(--text-default);
+  --avatar-border-color: transparent;
 
-  --pagination-item-hover-bg: #1e293b;
+  /* Couleurs des tabs */
+  --tab-bg: transparent;
+  --tab-color: var(--text-muted);
+  --tab-active-bg: transparent;
+  --tab-hover-bg: var(--bg-subtle);
+  --tab-active-color: var(--color-primary);
+  --tab-inactive-color: #94a3b8;
+  --tab-active-border-color: var(--color-primary);
+  --tabs-border-color: var(--border-default);
+
+  /* Couleurs de la pagination */
+  --pagination-item-bg: var(--bg-default);
+  --pagination-item-color: var(--text-default);
+  --pagination-item-border: var(--border-default);
+  --pagination-item-hover-bg: var(--bg-subtle);
+  --pagination-active-bg: var(--color-primary);
+  --pagination-active-color: #ffffff;
+
+  /* Couleurs des breadcrumbs */
   --breadcrumb-separator-color: #64748b;
-  --breadcrumb-active-color: #f8fafc;
+  --breadcrumb-active-color: #f1f5f9;
+  --retro-breadcrumb-separator: "/";
 
+  /* Couleurs des toasts */
   --toast-bg: #1e293b;
   --toast-color: var(--text-default);
   --toast-border-color: #334155;
 
+  /* Couleurs des popovers */
   --popover-bg: #1e293b;
   --popover-color: var(--text-default);
   --popover-border-color: #334155;
+  --popover-item-color: var(--text-default);
   --popover-item-hover-bg: #0f172a;
 
-  --tooltip-bg: #f8fafc;
+  /* Couleurs des tooltips */
+  --tooltip-bg: #f1f5f9;
   --tooltip-color: #0f172a;
 
+  /* Couleurs des skeletons */
   --skeleton-bg: #334155;
   --skeleton-shimmer-color: rgba(255,255,255,0.1);
 
+  /* Couleurs de la scrollbar */
   --scrollbar-track-bg: #1e293b;
   --scrollbar-thumb-bg: #475569;
   --scrollbar-thumb-hover-bg: #64748b;
 
-  --link-color: var(--color-primary);
-  --link-hover-color: var(--color-primary);
-  --link-visited-color: #a78bfa;
+  /* Couleurs des dropdowns */
+  --dropdown-bg: #1e293b;
+  --dropdown-border-color: var(--border-default);
+  --dropdown-item-color: var(--text-default);
+  --dropdown-item-hover-bg: var(--bg-inset);
+  --dropdown-trigger-bg: #1e293b;
+  --dropdown-trigger-hover-bg: var(--bg-inset);
 
+  /* Couleurs des modals/dialogs */
+  --dialog-bg: #1e293b;
+  --dialog-overlay-bg: rgba(0, 0, 0, 0.8);
+
+  /* Couleurs des galleries */
+  --gallery-item-bg: #1e293b;
+  --gallery-thumb-bg: #1e293b;
+
+  /* Couleurs des timelines */
+  --timeline-icon-bg: #1e293b;
+  --timeline-content-bg: #1e293b;
+
+  /* Couleurs des switches */
+  --switch-handle-bg: white;
+
+  /* Couleurs des liens */
+  --link-color: var(--color-primary);
+  --link-text-decoration-color: transparent;
+  --link-hover-color: var(--color-primary);
+  --link-active-color: var(--color-primary);
+  --link-visited-color: #a78bfa;
+  --link-bg: transparent;
+  --link-border-color: transparent;
+
+  /* Couleurs des liens - variants */
   --retro-link-color: var(--color-primary);
   --retro-link-hover-color: var(--color-primary);
   --retro-link-shadow-color: var(--text-default);
@@ -416,11 +589,16 @@
   --modern-link-underline-color: var(--color-primary);
   --futuristic-link-color: var(--color-accent);
   --futuristic-link-hover-color: var(--color-accent);
+  --futuristic-link-glow: rgba(236, 72, 153, 0.5);
 
+  /* Couleurs des link buttons */
   --link-button-default-bg: var(--bg-subtle);
   --link-button-default-color: var(--text-default);
   --link-button-default-border-color: var(--border-default);
   --link-button-default-bg-hover: var(--bg-inset);
+  --link-button-primary-bg: var(--color-primary);
+  --link-button-secondary-bg: var(--color-secondary);
+  --link-button-accent-bg: var(--color-accent);
 
   --retro-link-button-bg: #451a03;
   --retro-link-button-color: #fef3c7;
@@ -433,5 +611,15 @@
   --modern-link-button-border-color: #334155;
   --modern-link-button-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 
-  --futuristic-link-button-hover-bg: rgba(79, 70, 229, 0.2);
+  --futuristic-link-button-bg: transparent;
+  --futuristic-link-button-color: var(--color-primary);
+  --futuristic-link-button-border-color: var(--color-primary);
+  --futuristic-link-button-hover-bg: rgba(234, 179, 8, 0.1);
+  --futuristic-link-button-hover-glow: var(--futuristic-glow);
+
+  /* RGB values for rgba usage */
+  --bg-default-rgb: 15, 23, 42;
+  --border-default-rgb: 51, 65, 85;
+  --color-primary-rgb: 234, 179, 8;
+  --color-accent-rgb: 236, 72, 153;
 }

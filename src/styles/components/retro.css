@@ -828,3 +828,55 @@ a.button.retro.accent { background-color: var(--button-accent-bg); color: var(--
     box-shadow: none;
   }
 }
+
+/* HEADER RETRO */
+.header.retro {
+  border-bottom: 4px solid var(--text-default);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* BRAND RETRO */
+.brand.retro {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+.brand.retro:hover {
+  transform: scale(1.05);
+}
+
+/* NAVIGATION RETRO */
+.nav-link.retro {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+  border: 2px solid transparent;
+  border-radius: 0;
+}
+.nav-link.retro:hover {
+  border-color: var(--text-default);
+  background: var(--color-primary);
+  color: var(--text-inverted);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 var(--retro-shadow-color);
+}
+.nav-link.retro.active {
+  border-color: var(--text-default);
+  background: var(--color-primary);
+  color: var(--text-inverted);
+}
+
+/* THEME SWITCH RETRO */
+.theme-switch.retro {
+  border: 2px solid var(--text-default);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--retro-shadow-color);
+}
+.theme-switch.retro:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0 var(--retro-shadow-color);
+}
+.theme-switch.retro:active {
+  transform: translateY(0);
+  box-shadow: 2px 2px 0 var(--retro-shadow-color);
+}

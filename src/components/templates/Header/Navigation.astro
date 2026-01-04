@@ -1,0 +1,42 @@
+---
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
+  items?: NavItem[];
+  class?: string;
+}
+
+const {
+  variant = 'initial',
+  items = [
+    { label: 'Accueil', href: '/' },
+    { label: 'Docs', href: '/docs' },
+    { label: 'Composants', href: '/docs/components' },
+  ],
+  class: className = '',
+} = Astro.props;
+
+const navClass = [
+  'nav',
+  variant !== 'initial' && variant,
+  className
+].filter(Boolean).join(' ');
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class={navClass}>
+  {items.map((item) => {
+    const isActive = currentPath === item.href || currentPath.startsWith(item.href + '/');
+    const linkClass = ['nav-link', isActive && 'active'].filter(Boolean).join(' ');
+    return (
+      <a href={item.href} class={linkClass} aria-current={isActive ? 'page' : undefined}>
+        {item.label}
+      </a>
+    );
+  })}
+</nav>

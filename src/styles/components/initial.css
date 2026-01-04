@@ -185,7 +185,7 @@ input[role="switch"]::after {
   width: calc(var(--switch-height) - 6px); 
   height: calc(var(--switch-height) - 6px); 
   border-radius: 50%; 
-  background: white; 
+  background: var(--switch-handle-bg); 
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: left 0.3s ease;
 }
@@ -1309,7 +1309,7 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
 
 .dialog-content {
   position: relative;
-  background: white;
+  background: var(--dialog-bg);
   border-radius: var(--radius-md);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   width: 100%;
@@ -1434,7 +1434,7 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   border-radius: var(--radius-md);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: white;
+  background: var(--gallery-item-bg);
 }
 
 .gallery-item img {
@@ -1547,7 +1547,7 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   border: 3px solid transparent;
   transition: border-color 0.3s ease, transform 0.3s ease;
   display: block;
-  background: white;
+  background: var(--gallery-thumb-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -1798,7 +1798,7 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
 .timeline-icon {
   width: 3rem;
   height: 3rem;
-  background: white;
+  background: var(--timeline-icon-bg);
   border: 3px solid var(--color-primary);
   display: flex;
   align-items: center;
@@ -1850,7 +1850,7 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
 
 /* Timeline Content */
 .timeline-content {
-  background: white;
+  background: var(--timeline-content-bg);
   padding: 1.5rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
@@ -1952,8 +1952,8 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: white;
-  border: 1px solid var(--color-border);
+  background: var(--dropdown-trigger-bg);
+  border: 1px solid var(--dropdown-border-color);
   border-radius: var(--radius-md);
   cursor: pointer;
   font-size: 0.875rem;
@@ -1964,12 +1964,12 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
 }
 
 .dropdown-trigger:hover {
-  background: var(--color-background);
+  background: var(--dropdown-trigger-hover-bg);
   border-color: var(--color-primary);
 }
 
 .dropdown-state:checked ~ .dropdown-trigger {
-  background: var(--color-background);
+  background: var(--dropdown-trigger-hover-bg);
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
 }
@@ -2023,8 +2023,8 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
 /* Dropdown Content */
 .dropdown-content {
   min-width: 200px;
-  background: white;
-  border: 1px solid var(--color-border);
+  background: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border-color);
   border-radius: var(--radius-md);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 0.5rem;
@@ -2047,7 +2047,7 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
 }
 
 .dropdown-item:hover:not(.disabled) {
-  background: var(--color-background);
+  background: var(--dropdown-item-hover-bg);
   color: var(--color-primary);
 }
 
@@ -2234,5 +2234,126 @@ a.button.accent { background-color: var(--button-accent-bg); color: var(--button
 
   .submenu-state:checked + .has-submenu .submenu-arrow {
     transform: rotate(90deg);
+  }
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  background: var(--bg-default);
+  border-bottom: 1px solid var(--border-default);
+}
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: 64px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* BRAND */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--text-default);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+}
+.brand:hover {
+  color: var(--color-primary);
+}
+.brand-logo {
+  height: 32px;
+  width: auto;
+}
+
+/* NAVIGATION */
+.nav {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+.nav-link {
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius-md);
+}
+.nav-link:hover {
+  color: var(--color-primary);
+  background: var(--bg-inset);
+}
+.nav-link.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* THEME SWITCH */
+.theme-switch {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-full);
+  border: 1px solid var(--border-default);
+  background: var(--bg-default);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0;
+}
+.theme-switch:hover {
+  background: var(--bg-inset);
+  border-color: var(--color-primary);
+}
+.theme-switch .icon-light,
+.theme-switch .icon-dark {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.theme-switch .icon-light {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+.theme-switch .icon-dark {
+  opacity: 0;
+  transform: rotate(-180deg) scale(0);
+}
+.theme-switch[data-theme="dark"] .icon-light {
+  opacity: 0;
+  transform: rotate(180deg) scale(0);
+}
+.theme-switch[data-theme="dark"] .icon-dark {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  .header-container {
+    padding: 0 var(--space-4);
   }
 }
