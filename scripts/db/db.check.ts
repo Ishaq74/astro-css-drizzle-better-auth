@@ -38,11 +38,12 @@ config();
     process.exit(1);
   }
 
+  const client = new Client({
+    connectionString: dbUrl,
+    ssl: dbUrl.includes('sslmode=require') ? { rejectUnauthorized: false } : undefined,
+  });
+
   try {
-    const client = new Client({
-      connectionString: dbUrl,
-      ssl: dbUrl.includes('sslmode=require') ? { rejectUnauthorized: false } : undefined,
-    });
     await client.connect();
     const res = await client.query('SELECT current_database(), current_user, inet_server_addr() as host');
     const env = useProd ? 'production (Neon)' : 'local/dev';
