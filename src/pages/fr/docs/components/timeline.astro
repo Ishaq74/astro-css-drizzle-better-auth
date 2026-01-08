@@ -2,6 +2,7 @@
 import DocLayout from "@layouts/DocLayout.astro";
 import { Code } from "astro:components";
 import TimelineComponent from "@components/ui/Timeline.astro";
+import AlertComponent from "@components/ui/Alert.astro";
 import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import Table from "@components/ui/Table/Table.astro";
 import TableHeader from "@components/ui/Table/TableHeader.astro";
@@ -344,9 +345,9 @@ const shortEvents = timelineEvents.slice(0, 3);
     <li><strong>Alternate</strong> : Devient vertical sur mobile (ligne à gauche)</li>
   </ul>
 
-  <div class="note">
+  <AlertComponent status="info">
     <strong>Note :</strong> ZERO JavaScript ! Toutes les animations utilisent uniquement CSS avec transitions et keyframes.
-  </div>
+  </AlertComponent>
 
   <h2>Exemples de données</h2>
 
