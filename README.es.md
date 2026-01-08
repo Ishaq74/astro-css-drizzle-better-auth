@@ -1,36 +1,36 @@
 # Astro CSS Drizzle Better Auth
 
-[**EN**](./README.md) | [FR](./README.fr.md) | [AR](./README.ar.md) | [ES](./README.es.md)
+[EN](./README.md) | [FR](./README.fr.md) | [AR](./README.ar.md) | [**ES**](./README.es.md)
 
-A modern web application built with Astro, CSS, Drizzle ORM, and Better Auth.
+Una aplicación web moderna construida con Astro, CSS, Drizzle ORM y Better Auth.
 
-_This README is auto-generated to provide comprehensive context for AI assistance._
+_Este README se genera automáticamente para proporcionar contexto completo a la IA._
 
-## Table of Contents
+## Índice
 
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Available Scripts](#available-scripts)
-- [Project Structure](#project-structure)
-- [Authentication](#authentication)
-- [Database](#database)
-- [Environment Variables](#environment-variables)
+- [Descripción general](#descripcion-general)
+- [Características](#caracteristicas)
+- [Stack tecnológico](#stack-tecnologico)
+- [Instalación](#instalacion)
+- [Scripts disponibles](#scripts-disponibles)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Autenticación](#autenticacion)
+- [Base de datos](#base-de-datos)
+- [Variables de entorno](#variables-de-entorno)
 
-## Overview
+## Descripción general
 
-This project demonstrates a full-stack web application using modern technologies.
+Este proyecto demuestra una aplicación web full-stack usando tecnologías modernas.
 
-## Features
+## Características
 
-⚡ **Astro** - Fast static site generation
-🎨 **CSS** - Modern styling
-🗄️ **Drizzle ORM** - Type-safe database queries
-🔐 **Better Auth** - Advanced authentication
-🌍 **i18n** - Multi-language support
+⚡ **Astro** - Generación rápida de sitios estáticos
+🎨 **CSS** - Estilo moderno
+🗄️ **Drizzle ORM** - Consultas de base de datos type-safe
+🔐 **Better Auth** - Autenticación avanzada
+🌍 **i18n** - Soporte multiidioma
 
-## Tech Stack
+## Stack tecnológico
 
 - **@astrojs/check**: `^0.9.6`
 - **@astrojs/vercel**: `^8.0.4`
@@ -47,14 +47,14 @@ This project demonstrates a full-stack web application using modern technologies
 - **pg**: `^8.16.3`
 - **typescript**: `^5.9.3`
 
-## Installation
+## Instalación
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Available Scripts
+## Scripts disponibles
 
 - `npm run dev`: astro dev
 - `npm run build`: astro build
@@ -62,9 +62,11 @@ npm run dev
 - `npm run astro`: astro
 - `npm run readme:generate`: tsx scripts/readme-generate.ts
 
-## Project Structure
+## Estructura del proyecto
 
 ```
+- README.ar.md
+- README.fr.md
 - README.md
 - astro.config.mjs
 - package-lock.json
@@ -281,15 +283,15 @@ npm run dev
 - tsconfig.json
 ```
 
-## Authentication
+## Autenticación
 
-Better Auth is configured with plugins for OAuth, session management, and more.
+Better Auth está configurado con plugins para OAuth, gestión de sesiones y más.
 
-## Database
+## Base de datos
 
 
 
-## Environment Variables
+## Variables de entorno
 
 _None_
 

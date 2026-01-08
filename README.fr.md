@@ -1,36 +1,36 @@
 # Astro CSS Drizzle Better Auth
 
-[**EN**](./README.md) | [FR](./README.fr.md) | [AR](./README.ar.md) | [ES](./README.es.md)
+[EN](./README.md) | [**FR**](./README.fr.md) | [AR](./README.ar.md) | [ES](./README.es.md)
 
-A modern web application built with Astro, CSS, Drizzle ORM, and Better Auth.
+Une application web moderne construite avec Astro, CSS, Drizzle ORM et Better Auth.
 
-_This README is auto-generated to provide comprehensive context for AI assistance._
+_Ce README est généré automatiquement pour fournir un contexte complet à l'IA._
 
-## Table of Contents
+## Sommaire
 
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
+- [Vue d'ensemble](#vue-densemble)
+- [Fonctionnalités](#fonctionnalites)
+- [Stack technique](#stack-technique)
 - [Installation](#installation)
-- [Available Scripts](#available-scripts)
-- [Project Structure](#project-structure)
-- [Authentication](#authentication)
-- [Database](#database)
-- [Environment Variables](#environment-variables)
+- [Scripts disponibles](#scripts-disponibles)
+- [Structure du projet](#structure-du-projet)
+- [Authentification](#authentification)
+- [Base de données](#base-de-donnees)
+- [Variables d'environnement](#variables-denvironnement)
 
-## Overview
+## Vue d'ensemble
 
-This project demonstrates a full-stack web application using modern technologies.
+Ce projet démontre une application web full-stack utilisant des technologies modernes.
 
-## Features
+## Fonctionnalités
 
-⚡ **Astro** - Fast static site generation
-🎨 **CSS** - Modern styling
-🗄️ **Drizzle ORM** - Type-safe database queries
-🔐 **Better Auth** - Advanced authentication
-🌍 **i18n** - Multi-language support
+⚡ **Astro** - Génération de sites statiques rapide
+🎨 **CSS** - Styling moderne
+🗄️ **Drizzle ORM** - Requêtes de base de données type-safe
+🔐 **Better Auth** - Authentification avancée
+🌍 **i18n** - Support multilingue
 
-## Tech Stack
+## Stack technique
 
 - **@astrojs/check**: `^0.9.6`
 - **@astrojs/vercel**: `^8.0.4`
@@ -54,7 +54,7 @@ npm install
 npm run dev
 ```
 
-## Available Scripts
+## Scripts disponibles
 
 - `npm run dev`: astro dev
 - `npm run build`: astro build
@@ -62,7 +62,7 @@ npm run dev
 - `npm run astro`: astro
 - `npm run readme:generate`: tsx scripts/readme-generate.ts
 
-## Project Structure
+## Structure du projet
 
 ```
 - README.md
@@ -281,15 +281,15 @@ npm run dev
 - tsconfig.json
 ```
 
-## Authentication
+## Authentification
 
-Better Auth is configured with plugins for OAuth, session management, and more.
+Better Auth est configuré avec des plugins pour OAuth, gestion de sessions, et plus.
 
-## Database
+## Base de données
 
 
 
-## Environment Variables
+## Variables d'environnement
 
 _None_
 
