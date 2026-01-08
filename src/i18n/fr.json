@@ -18,19 +18,6 @@
     "tutorials": "Tutoriels",
     "releases": "Versions"
   },
-  "docs": {
-    "ui": "UI",
-    "components": "Composants",
-    "data": "Data",
-    "layouts": "Layouts",
-    "entities": "Entités",
-    "design": "Design",
-    "colors": "Couleurs",
-    "typography": "Typographie",
-    "spacing": "Espacement",
-    "shadows": "Ombres",
-    "borders": "Bordures"
-  },
   "footer": {
     "company": "Astro CSS Drizzle",
     "description": "Plateforme de design system moderne avec Astro, CSS et Drizzle.",
@@ -50,10 +37,13 @@
   "docsSidebar": {
     "gettingStarted": "Démarrage",
     "introduction": "Introduction",
-    "designSystem": "Design System",
-    "components": "Composants",
+    "uiAtoms": "UI Atoms",
+    "uiBlocks": "UI Blocks",
+    "uiData": "UI Data",
+    "uiWithJavascript": "UI with JavaScript",
     "variants": "Variantes",
     "layouts": "Layouts",
+    "templates": "Templates",
     "link": "Lien",
     "button": "Bouton",
     "input": "Champ de saisie",
@@ -79,11 +69,16 @@
     "skeleton": "Squelette",
     "gallery": "Galerie",
     "timeline": "Chronologie",
+    "slider": "Slider",
     "initial": "Initial",
     "retro": "Rétro",
     "modern": "Moderne",
     "futuristic": "Futuriste",
-    "baseLayout": "Layout de base"
+    "baseLayout": "Layout de base",
+    "docLayout": "Layout de documentation",
+    "header": "En-tête",
+    "footer": "Pied de page",
+    "tableOfContents": "Table des matières"
   },
   "docs": {
     "common": {

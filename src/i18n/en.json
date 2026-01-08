@@ -50,10 +50,13 @@
   "docsSidebar": {
     "gettingStarted": "Getting Started",
     "introduction": "Introduction",
-    "designSystem": "Design System",
-    "components": "Components",
+    "uiAtoms": "UI Atoms",
+    "uiBlocks": "UI Blocks",
+    "uiData": "UI Data",
+    "uiWithJavascript": "UI with JavaScript",
     "variants": "Variants",
     "layouts": "Layouts",
+    "templates": "Templates",
     "link": "Link",
     "button": "Button",
     "input": "Input",
@@ -79,10 +82,15 @@
     "skeleton": "Skeleton",
     "gallery": "Gallery",
     "timeline": "Timeline",
+    "slider": "Slider",
     "initial": "Initial",
     "retro": "Retro",
     "modern": "Modern",
     "futuristic": "Futuristic",
-    "baseLayout": "Base Layout"
+    "baseLayout": "Base Layout",
+    "docLayout": "Documentation Layout",
+    "header": "Header",
+    "footer": "Footer",
+    "tableOfContents": "Table of Contents"
   }
 }

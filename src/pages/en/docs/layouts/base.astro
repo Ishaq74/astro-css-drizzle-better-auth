@@ -1,0 +1,456 @@
+---
+import DocLayout from "@layouts/DocLayout.astro";
+import { Code } from "astro:components";
+import Alert from "@components/ui/Alert.astro";
+import Card from "@components/ui/Card/Card.astro";
+import CardHeader from "@components/ui/Card/CardHeader.astro";
+import CardContent from "@components/ui/Card/CardContent.astro";
+---
+
+<DocLayout 
+  title="BaseLayout" 
+  description="Base layout for all site pages with Header, Footer and theme management" 
+  variant="initial"
+>
+  <h1 id="baselayout">BaseLayout</h1>
+
+  <p>
+    The <code class="inline-code">BaseLayout</code> is the main application layout. 
+    It provides the base HTML structure, theme management, SEO metadata, and includes Header and Footer.
+  </p>
+
+  <div class="toc">
+    <h2>Table des matières</h2>
+    <ul>
+      <li><a href="#utilisation">Utilisation</a></li>
+      <li><a href="#props">Props</a></li>
+      <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+      <li><a href="#exemple">Exemple</a></li>
+      <li><a href="#seo">SEO et Métadonnées</a></li>
+      <li><a href="#theme">Gestion du thème</a></li>
+    </ul>
+  </div>
+
+  <h2 id="utilisation">Utilisation</h2>
+
+  <Code
+    lang="astro"
+    code={`---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Ma Page"
+  description="Description de ma page"
+  lang="fr"
+>
+  <h1>Contenu de la page</h1>
+  <p>Votre contenu ici...</p>
+</BaseLayout>`}
+  />
+
+  <h2 id="props">Props</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prop</th>
+        <th>Type</th>
+        <th>Défaut</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>title</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Titre de la page (format: SiteTitle > PageTitle)</td>
+      </tr>
+      <tr>
+        <td><code>description</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Description meta pour SEO</td>
+      </tr>
+      <tr>
+        <td><code>keywords</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Mots-clés meta pour SEO</td>
+      </tr>
+      <tr>
+        <td><code>author</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Auteur de la page</td>
+      </tr>
+      <tr>
+        <td><code>ogImage</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Image Open Graph pour réseaux sociaux</td>
+      </tr>
+      <tr>
+        <td><code>canonicalUrl</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>URL canonique de la page</td>
+      </tr>
+      <tr>
+        <td><code>lang</code></td>
+        <td><code>string</code></td>
+        <td><code>currentLocale</code></td>
+        <td>Langue de la page (fr, en, es, ar)</td>
+      </tr>
+      <tr>
+        <td><code>dir</code></td>
+        <td><code>string</code></td>
+        <td><code>'ltr' | 'rtl'</code></td>
+        <td>Direction du texte (automatique selon locale)</td>
+      </tr>
+      <tr>
+        <td><code>robots</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Directives pour robots d'indexation</td>
+      </tr>
+      <tr>
+        <td><code>prefetchUrls</code></td>
+        <td><code>string[]</code></td>
+        <td><code>[]</code></td>
+        <td>URLs à précharger</td>
+      </tr>
+      <tr>
+        <td><code>cssFiles</code></td>
+        <td><code>string[]</code></td>
+        <td><code>[]</code></td>
+        <td>Fichiers CSS additionnels</td>
+      </tr>
+      <tr>
+        <td><code>jsFiles</code></td>
+        <td><code>string[]</code></td>
+        <td><code>[]</code></td>
+        <td>Fichiers JavaScript additionnels</td>
+      </tr>
+      <tr>
+        <td><code>favicon</code></td>
+        <td><code>string</code></td>
+        <td><code>'test.ico'</code></td>
+        <td>Nom du fichier favicon</td>
+      </tr>
+      <tr>
+        <td><code>manifest</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Chemin vers le manifest PWA</td>
+      </tr>
+      <tr>
+        <td><code>appleTouchIcon</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Icône Apple Touch</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="fonctionnalites">Fonctionnalités</h2>
+
+  <div class="feature-grid">
+    <Card>
+      <CardHeader>
+        <h3 style="margin: 0;">🎨 Gestion du thème</h3>
+      </CardHeader>
+      <CardContent>
+        <p>Switch automatique light/dark avec persistence localStorage et détection des préférences système.</p>
+      </CardContent>
+    </Card>
+
+    <Card>
+      <CardHeader>
+        <h3 style="margin: 0;">🌍 Multilingue</h3>
+      </CardHeader>
+      <CardContent>
+        <p>Support natif de 4 langues (FR, EN, ES, AR) avec direction RTL automatique pour l'arabe.</p>
+      </CardContent>
+    </Card>
+
+    <Card>
+      <CardHeader>
+        <h3 style="margin: 0;">🔍 SEO Optimisé</h3>
+      </CardHeader>
+      <CardContent>
+        <p>Métadonnées complètes, Open Graph, Twitter Cards, canonical URLs et structured data.</p>
+      </CardContent>
+    </Card>
+
+    <Card>
+      <CardHeader>
+        <h3 style="margin: 0;">⚡ Performance</h3>
+      </CardHeader>
+      <CardContent>
+        <p>Préchargement DNS, prefetch de ressources, fonts optimisées avec AstroFont.</p>
+      </CardContent>
+    </Card>
+
+    <Card>
+      <CardHeader>
+        <h3 style="margin: 0;">♿ Accessibilité</h3>
+      </CardHeader>
+      <CardContent>
+        <p>HTML sémantique, attributs ARIA, skip links, et navigation au clavier.</p>
+      </CardContent>
+    </Card>
+
+    <Card>
+      <CardHeader>
+        <h3 style="margin: 0;">📱 Responsive</h3>
+      </CardHeader>
+      <CardContent>
+        <p>Design entièrement responsive avec viewport optimisé et touch-friendly.</p>
+      </CardContent>
+    </Card>
+  </div>
+
+  <h2 id="exemple">Exemple complet</h2>
+
+  <Code
+    lang="astro"
+    code={`---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Mon Article"
+  description="Un article incroyable sur le design system"
+  keywords="design, ui, composants, astro"
+  author="John Doe"
+  ogImage="/images/article-og.jpg"
+  canonicalUrl="https://example.com/fr/blog/mon-article"
+  lang="fr"
+  robots="index, follow"
+  prefetchUrls={['/fr/blog', '/fr/about']}
+>
+  <main>
+    <article>
+      <h1>Mon Article</h1>
+      <p>Contenu de l'article...</p>
+    </article>
+  </main>
+</BaseLayout>`}
+  />
+
+  <h2 id="seo">SEO et Métadonnées</h2>
+
+  <p>Le BaseLayout génère automatiquement :</p>
+
+  <ul>
+    <li>✅ Balises meta essentielles (charset, viewport, description, keywords)</li>
+    <li>✅ Open Graph pour Facebook et LinkedIn</li>
+    <li>✅ Twitter Cards</li>
+    <li>✅ Canonical URL</li>
+    <li>✅ Directives robots</li>
+    <li>✅ Langue et direction du texte</li>
+    <li>✅ Favicons multiples (ico, png 16x16, 32x32)</li>
+    <li>✅ Apple Touch Icon</li>
+    <li>✅ Manifest PWA</li>
+  </ul>
+
+  <Alert variant="initial" status="info">
+    <strong>💡 Astuce SEO :</strong> Toujours définir un title et une description uniques pour chaque page. 
+    Le title est formaté automatiquement en "NomDuSite > TitreDeLaPage".
+  </Alert>
+
+  <h2 id="theme">Gestion du thème</h2>
+
+  <p>Le thème est géré via un script inline exécuté immédiatement pour éviter le flash :</p>
+
+  <Code
+    lang="javascript"
+    code={`// Script exécuté AVANT le rendu pour éviter le flash
+const theme = localStorage.getItem('theme') || 
+  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+document.documentElement.setAttribute('data-theme', theme);`}
+  />
+
+  <p>L'attribut <code class="inline-code">data-theme</code> sur <code class="inline-code">&lt;html&gt;</code> permet de cibler les styles :</p>
+
+  <Code
+    lang="css"
+    code={`:root {
+  --bg-default: #ffffff;
+  --text-default: #0f172a;
+}
+
+[data-theme="dark"] {
+  --bg-default: #0f172a;
+  --text-default: #f8fafc;
+}`}
+  />
+
+  <h2>Structure HTML</h2>
+
+  <p>Le BaseLayout génère la structure suivante :</p>
+
+  <Code
+    lang="html"
+    code={`<!doctype html>
+<html lang="fr" dir="ltr">
+  <head>
+    <!-- Script thème inline -->
+    <!-- Fonts AstroFont -->
+    <!-- Métadonnées SEO -->
+    <!-- Préchargement ressources -->
+    <!-- CSS global -->
+  </head>
+  <body>
+    <Header />
+    <slot /> <!-- Votre contenu ici -->
+    <Footer />
+  </body>
+</html>`}
+  />
+
+  <Alert variant="initial" status="warning">
+    <strong>📦 Composants inclus :</strong> Le BaseLayout inclut automatiquement le Header et Footer. 
+    Vous n'avez pas besoin de les importer séparément dans vos pages.
+  </Alert>
+
+  <h2>Polices</h2>
+
+  <p>Le layout charge automatiquement 2 familles de polices via AstroFont :</p>
+
+  <ul>
+    <li><strong>Bowlby One SC</strong> - Pour les titres (font-display: swap)</li>
+    <li><strong>Palanquin Dark</strong> - Pour le corps de texte (weights: 400, 500, 600, 700)</li>
+  </ul>
+
+  <Alert variant="initial" status="info">
+    <strong>⚡ Performance :</strong> Les polices sont préchargées avec font-display: swap pour éviter 
+    le blocage du rendu et améliorer les Core Web Vitals.
+  </Alert>
+</DocLayout>
+
+<style>
+  .toc {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md, 0.5rem);
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .toc h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+  }
+
+  .toc ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .toc li {
+    margin: 0.5rem 0;
+  }
+
+  .toc a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .toc a:hover {
+    text-decoration: underline;
+  }
+
+  .inline-code {
+    background: var(--bg-inset);
+    padding: 0.125rem 0.375rem;
+    border-radius: var(--radius-sm, 0.25rem);
+    font-family: monospace;
+    font-size: 0.9em;
+    border: 1px solid var(--border-default);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: var(--bg-default);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md, 0.5rem);
+    overflow: hidden;
+  }
+
+  thead {
+    background: var(--bg-subtle);
+  }
+
+  th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  th {
+    font-weight: 600;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: var(--bg-subtle);
+  }
+
+  code {
+    font-family: monospace;
+    font-size: 0.9em;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin: 3rem 0 1rem 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-default);
+  }
+
+  h2:first-of-type {
+    margin-top: 2rem;
+    border-top: none;
+  }
+
+  h3 {
+    margin: 2rem 0 1rem 0;
+  }
+
+  p {
+    margin: 1rem 0;
+    line-height: 1.6;
+  }
+
+  ul {
+    line-height: 1.8;
+  }
+
+  ul li {
+    margin: 0.5rem 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
