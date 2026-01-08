@@ -2,6 +2,7 @@
 import DocLayout from "@layouts/DocLayout.astro";
 import { Code } from "astro:components";
 import SwitchComponent from "@components/ui/Form/Switch.astro";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import Table from "@components/ui/Table/Table.astro";
 import TableHeader from "@components/ui/Table/TableHeader.astro";
 import TableBody from "@components/ui/Table/TableBody.astro";
@@ -23,20 +24,20 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     for optimal accessibility.
   </p>
 
-  <div class="toc">
-    <h2>Table of Contents</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#props">Props</a></li>
-      <li><a href="#basic">Basic usage</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#states">States</a></li>
-      <li><a href="#labels">With labels</a></li>
-      <li><a href="#disabled">Disabled state</a></li>
-      <li><a href="#error">Error handling</a></li>
-      <li><a href="#accessibility">Accessibility</a></li>
-    </ul>
-  </div>
+  <TableOfContents
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "Props", href: "#props" },
+      { label: "Basic usage", href: "#basic" },
+      { label: "Variants", href: "#variants" },
+      { label: "States", href: "#states" },
+      { label: "With labels", href: "#labels" },
+      { label: "Disabled state", href: "#disabled" },
+      { label: "Error handling", href: "#error" },
+      { label: "Accessibility", href: "#accessibility" },
+    ]}
+    title="Table of Contents"
+  />
 
   <h2 id="installation">Installation</h2>
 

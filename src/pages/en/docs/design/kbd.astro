@@ -4,6 +4,7 @@ import { Code } from "astro:components";
 import KbdComponent from "@components/ui/Kbd.astro";
 import Card from "@components/ui/Card/Card.astro";
 import CardContent from "@components/ui/Card/CardContent.astro";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import Table from "@components/ui/Table/Table.astro";
 import TableHeader from "@components/ui/Table/TableHeader.astro";
 import TableBody from "@components/ui/Table/TableBody.astro";
@@ -37,20 +38,20 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     </p>
   </div>
 
-  <nav class="toc">
-    <h2>Table of Contents</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#basic-usage">Basic usage</a></li>
-      <li><a href="#sizes">Sizes</a></li>
-      <li><a href="#shortcuts">Shortcuts</a></li>
-      <li><a href="#symbols">Symbols</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#colors">Colors</a></li>
-      <li><a href="#props">Props</a></li>
-      <li><a href="#examples">Usage examples</a></li>
-    </ul>
-  </nav>
+  <TableOfContents
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "Basic usage", href: "#basic-usage" },
+      { label: "Sizes", href: "#sizes" },
+      { label: "Shortcuts", href: "#shortcuts" },
+      { label: "Symbols", href: "#symbols" },
+      { label: "Variants", href: "#variants" },
+      { label: "Colors", href: "#colors" },
+      { label: "Props", href: "#props" },
+      { label: "Usage examples", href: "#examples" },
+    ]}
+    title="Table of Contents"
+  />
 
   <h2 id="installation">Installation</h2>
 

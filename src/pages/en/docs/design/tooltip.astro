@@ -4,6 +4,7 @@ import { Code } from "astro:components";
 import TooltipComponent from "@components/ui/Tooltip.astro";
 import Button from "@components/ui/Button.astro";
 import Badge from "@components/ui/Badge.astro";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import Table from "@components/ui/Table/Table.astro";
 import TableHeader from "@components/ui/Table/TableHeader.astro";
 import TableBody from "@components/ui/Table/TableBody.astro";
@@ -23,19 +24,19 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     The <code class="inline-code">Tooltip</code> component displays a contextual tooltip on hover or focus of an element to provide additional information.
   </p>
 
-  <div class="toc">
-    <h2>Table of Contents</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#props">Props</a></li>
-      <li><a href="#basic">Basic Usage</a></li>
-      <li><a href="#positions">Positions</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#colors">Colors</a></li>
-      <li><a href="#with-components">With other components</a></li>
-      <li><a href="#accessibility">Accessibility</a></li>
-    </ul>
-  </div>
+  <TableOfContents
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "Props", href: "#props" },
+      { label: "Basic Usage", href: "#basic" },
+      { label: "Positions", href: "#positions" },
+      { label: "Variants", href: "#variants" },
+      { label: "Colors", href: "#colors" },
+      { label: "With other components", href: "#with-components" },
+      { label: "Accessibility", href: "#accessibility" },
+    ]}
+    title="Table of Contents"
+  />
 
   <h2 id="installation">Installation</h2>
 

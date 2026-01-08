@@ -11,6 +11,7 @@ import {
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 } from "@components/ui/Breadcrumb";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import Table from "@components/ui/Table/Table.astro";
 import TableHeader from "@components/ui/Table/TableHeader.astro";
 import TableBody from "@components/ui/Table/TableBody.astro";
@@ -31,20 +32,20 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     users to understand their position in the site hierarchy and navigate easily.
   </p>
 
-  <div class="toc">
-    <h2>Table of contents</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#api">API Reference</a></li>
-      <li><a href="#basic">Basic usage</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#colors">Colors</a></li>
-      <li><a href="#icons">With icons</a></li>
-      <li><a href="#separators">Custom separators</a></li>
-      <li><a href="#ellipsis">With ellipsis</a></li>
-      <li><a href="#accessibility">Accessibility</a></li>
-    </ul>
-  </div>
+  <TableOfContents
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "API Reference", href: "#api" },
+      { label: "Basic usage", href: "#basic" },
+      { label: "Variants", href: "#variants" },
+      { label: "Colors", href: "#colors" },
+      { label: "With icons", href: "#icons" },
+      { label: "Custom separators", href: "#separators" },
+      { label: "With ellipsis", href: "#ellipsis" },
+      { label: "Accessibility", href: "#accessibility" },
+    ]}
+    title="Table of contents"
+  />
 
   <h2 id="installation">Installation</h2>
 

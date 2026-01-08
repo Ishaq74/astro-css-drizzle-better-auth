@@ -1,6 +1,14 @@
 ---
 import DocLayout from "@layouts/DocLayout.astro";
 import { Code } from "astro:components";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
+import Alert from "@components/ui/Alert.astro";
+import Table from "@components/ui/Table/Table.astro";
+import TableHead from "@components/ui/Table/TableHead.astro";
+import TableBody from "@components/ui/Table/TableBody.astro";
+import TableRow from "@components/ui/Table/TableRow.astro";
+import TableHeader from "@components/ui/Table/TableHeader.astro";
+import TableCell from "@components/ui/Table/TableCell.astro";
 import DropdownComponent from "@components/ui/Dropdown.astro";
 
 const menuItems = [
@@ -88,18 +96,18 @@ const recursiveMenu = [
     des menus déroulants sans JavaScript. Gestion intelligente du positionnement et du responsive.
   </p>
 
-  <div class="toc">
-    <h2>Table des matières</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#basic">Utilisation basique</a></li>
-      <li><a href="#recursive">Menus récursifs</a></li>
-      <li><a href="#positions">Positions</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#features">Fonctionnalités</a></li>
-      <li><a href="#api">API Reference</a></li>
-    </ul>
-  </div>
+  <TableOfContents
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "Utilisation basique", href: "#basic" },
+      { label: "Menus récursifs", href: "#recursive" },
+      { label: "Positions", href: "#positions" },
+      { label: "Variants", href: "#variants" },
+      { label: "Fonctionnalités", href: "#features" },
+      { label: "API Reference", href: "#api" },
+    ]}
+    title="Table des matières"
+  />
 
   <h2 id="installation">Installation</h2>
 
@@ -184,10 +192,10 @@ const recursiveMenu = [
 <DropdownComponent items={recursiveMenu} triggerLabel="Menu Multi-niveaux" />`}
   />
 
-  <div class="note">
+  <Alert variant="initial" status="info">
     <strong>ZERO JavaScript :</strong> Chaque sous-menu utilise une checkbox cachée + label pour gérer son état.
     Les sous-menus s'ouvrent à droite (desktop) ou en empilé (mobile). Support illimité de niveaux d'imbrication !
-  </div>
+  </Alert>
 
   <h2 id="positions">Positions</h2>
   <p>Le dropdown peut être positionné de 4 façons différentes par rapport au trigger.</p>
@@ -356,54 +364,54 @@ const recursiveMenu = [
   <h3>Props</h3>
 
   <div class="props-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Défaut</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>items</code></td>
-          <td><code>MenuItem[]</code></td>
-          <td>-</td>
-          <td>Tableau d'items du menu</td>
-        </tr>
-        <tr>
-          <td><code>variant</code></td>
-          <td><code>"initial" | "retro" | "modern" | "futuristic"</code></td>
-          <td><code>"initial"</code></td>
-          <td>Style visuel du dropdown</td>
-        </tr>
-        <tr>
-          <td><code>position</code></td>
-          <td><code>"bottom-left" | "bottom-right" | "top-left" | "top-right"</code></td>
-          <td><code>"bottom-left"</code></td>
-          <td>Position du menu par rapport au trigger</td>
-        </tr>
-        <tr>
-          <td><code>triggerLabel</code></td>
-          <td><code>string</code></td>
-          <td><code>"Menu"</code></td>
-          <td>Texte du bouton</td>
-        </tr>
-        <tr>
-          <td><code>triggerIcon</code></td>
-          <td><code>string</code></td>
-          <td>-</td>
-          <td>Icône du bouton</td>
-        </tr>
-        <tr>
-          <td><code>class</code></td>
-          <td><code>string</code></td>
-          <td>-</td>
-          <td>Classes CSS supplémentaires</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table variant="initial">
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>items</code></TableCell>
+          <TableCell><code>MenuItem[]</code></TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Tableau d'items du menu</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>variant</code></TableCell>
+          <TableCell><code>"initial" | "retro" | "modern" | "futuristic"</code></TableCell>
+          <TableCell><code>"initial"</code></TableCell>
+          <TableCell>Style visuel du dropdown</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>position</code></TableCell>
+          <TableCell><code>"bottom-left" | "bottom-right" | "top-left" | "top-right"</code></TableCell>
+          <TableCell><code>"bottom-left"</code></TableCell>
+          <TableCell>Position du menu par rapport au trigger</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>triggerLabel</code></TableCell>
+          <TableCell><code>string</code></TableCell>
+          <TableCell><code>"Menu"</code></TableCell>
+          <TableCell>Texte du bouton</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>triggerIcon</code></TableCell>
+          <TableCell><code>string</code></TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Icône du bouton</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>class</code></TableCell>
+          <TableCell><code>string</code></TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Classes CSS supplémentaires</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </div>
 
   <h3>MenuItem Interface</h3>
@@ -432,10 +440,10 @@ const recursiveMenu = [
     <li><strong>Scrollbar custom</strong> : Style minimaliste sur les navigateurs webkit</li>
   </ul>
 
-  <div class="note">
+  <Alert variant="initial" status="info">
     <strong>Note :</strong> ZERO JavaScript ! Tout fonctionne avec une checkbox cachée et le sélecteur <code>:checked</code>.
     Le backdrop utilise une <code>&lt;label&gt;</code> invisible pour fermer au click.
-  </div>
+  </Alert>
 
   <h2>Architecture CSS Pure</h2>
 

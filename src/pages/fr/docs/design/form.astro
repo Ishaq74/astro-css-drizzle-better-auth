@@ -14,6 +14,7 @@ import Switch from "@components/ui/Form/Switch.astro";
 import DatePicker from "@components/ui/Form/DatePicker.astro";
 import ButtonComponent from "@components/ui/Button.astro";
 import AlertComponent from "@components/ui/Alert.astro";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import Table from "@components/ui/Table/Table.astro";
 import TableHeader from "@components/ui/Table/TableHeader.astro";
 import TableBody from "@components/ui/Table/TableBody.astro";
@@ -34,22 +35,22 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     accessibilité totale (ARIA), gestion d'erreurs et réutilisation de composants.
   </p>
 
-  <nav class="toc">
-    <h2>Table des matières</h2>
-    <ul>
-      <li><a href="#formcard">FormCard</a></li>
-      <li><a href="#alert">Alert (Messages de validation)</a></li>
-      <li><a href="#input">Input</a></li>
-      <li><a href="#password">PasswordInput</a></li>
-      <li><a href="#textarea">Textarea</a></li>
-      <li><a href="#select">Select</a></li>
-      <li><a href="#checkbox">Checkbox</a></li>
-      <li><a href="#radio">Radio</a></li>
-      <li><a href="#switch">Switch</a></li>
-      <li><a href="#datepicker">DatePicker</a></li>
-      <li><a href="#accessibility">Accessibilité</a></li>
-    </ul>
-  </nav>
+  <TableOfContents
+    items={[
+      { label: "FormCard", href: "#formcard" },
+      { label: "Alert (Messages de validation)", href: "#alert" },
+      { label: "Input", href: "#input" },
+      { label: "PasswordInput", href: "#password" },
+      { label: "Textarea", href: "#textarea" },
+      { label: "Select", href: "#select" },
+      { label: "Checkbox", href: "#checkbox" },
+      { label: "Radio", href: "#radio" },
+      { label: "Switch", href: "#switch" },
+      { label: "DatePicker", href: "#datepicker" },
+      { label: "Accessibilité", href: "#accessibility" },
+    ]}
+    title="Table des matières"
+  />
 
   <h2 id="formcard">FormCard</h2>
   

@@ -2,6 +2,7 @@
 import DocLayout from "@layouts/DocLayout.astro";
 import { Code } from "astro:components";
 import SkeletonComponent from "@components/ui/Skeleton.astro";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import Table from "@components/ui/Table/Table.astro";
 import TableHeader from "@components/ui/Table/TableHeader.astro";
 import TableBody from "@components/ui/Table/TableBody.astro";
@@ -23,20 +24,20 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     visuel et en réduisant la perception du temps d'attente.
   </p>
 
-  <div class="toc">
-    <h2>Table des matières</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#props">Props</a></li>
-      <li><a href="#basic">Utilisation basique</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#shapes">Formes</a></li>
-      <li><a href="#sizes">Tailles personnalisées</a></li>
-      <li><a href="#multiple">Multiples skeletons</a></li>
-      <li><a href="#compositions">Compositions</a></li>
-      <li><a href="#accessibility">Accessibilité</a></li>
-    </ul>
-  </div>
+  <TableOfContents
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "Props", href: "#props" },
+      { label: "Utilisation basique", href: "#basic" },
+      { label: "Variants", href: "#variants" },
+      { label: "Formes", href: "#shapes" },
+      { label: "Tailles personnalisées", href: "#sizes" },
+      { label: "Multiples skeletons", href: "#multiple" },
+      { label: "Compositions", href: "#compositions" },
+      { label: "Accessibilité", href: "#accessibility" },
+    ]}
+    title="Table des matières"
+  />
 
   <h2 id="installation">Installation</h2>
 

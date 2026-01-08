@@ -1,6 +1,7 @@
 ---
 import DocLayout from "@layouts/DocLayout.astro";
 import { Code } from "astro:components";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import TableComponent from "@components/ui/Table/Table.astro";
 import TableHeader from "@components/ui/Table/TableHeader.astro";
 import TableBody from "@components/ui/Table/TableBody.astro";
@@ -59,21 +60,21 @@ import Badge from "@components/ui/Badge.astro";
     </TableComponent>
   </div>
 
-  <nav class="toc">
-    <h2>Table of contents</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#basic-usage">Basic usage</a></li>
-      <li><a href="#with-caption">With caption</a></li>
-      <li><a href="#with-footer">With footer</a></li>
-      <li><a href="#striped">Striped table</a></li>
-      <li><a href="#responsive">Responsive</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#components">Available components</a></li>
-      <li><a href="#accessibility">Accessibility</a></li>
-      <li><a href="#examples">Advanced examples</a></li>
-    </ul>
-  </nav>
+  <TableOfContents
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "Basic usage", href: "#basic-usage" },
+      { label: "With caption", href: "#with-caption" },
+      { label: "With footer", href: "#with-footer" },
+      { label: "Striped table", href: "#striped" },
+      { label: "Responsive", href: "#responsive" },
+      { label: "Variants", href: "#variants" },
+      { label: "Available components", href: "#components" },
+      { label: "Accessibility", href: "#accessibility" },
+      { label: "Advanced examples", href: "#examples" },
+    ]}
+    title="Table of contents"
+  />
 
   <h2 id="installation">Installation</h2>
   

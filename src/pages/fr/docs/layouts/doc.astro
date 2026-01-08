@@ -5,6 +5,13 @@ import Alert from "@components/ui/Alert.astro";
 import Card from "@components/ui/Card/Card.astro";
 import CardHeader from "@components/ui/Card/CardHeader.astro";
 import CardContent from "@components/ui/Card/CardContent.astro";
+import TOC from "@components/templates/docs/TableOfContents.astro";
+import Table from "@components/ui/Table/Table.astro";
+import TableBody from "@components/ui/Table/TableBody.astro";
+import TableCell from "@components/ui/Table/TableCell.astro";
+import TableHead from "@components/ui/Table/TableHead.astro";
+import TableHeader from "@components/ui/Table/TableHeader.astro";
+import TableRow from "@components/ui/Table/TableRow.astro";
 import Badge from "@components/ui/Badge.astro";
 ---
 
@@ -20,17 +27,17 @@ import Badge from "@components/ui/Badge.astro";
     Il étend BaseLayout et ajoute une sidebar de navigation, une table des matières dynamique et un style optimisé pour la lecture.
   </p>
 
-  <div class="toc">
-    <h2>Table des matières</h2>
-    <ul>
-      <li><a href="#utilisation">Utilisation</a></li>
-      <li><a href="#props">Props</a></li>
-      <li><a href="#fonctionnalites">Fonctionnalités</a></li>
-      <li><a href="#exemple">Exemple</a></li>
-      <li><a href="#sidebar">Sidebar de navigation</a></li>
-      <li><a href="#toc">Table des matières auto</a></li>
-    </ul>
-  </div>
+  <TOC
+    items={[
+      { label: "Utilisation", href: "#utilisation" },
+      { label: "Props", href: "#props" },
+      { label: "Fonctionnalités", href: "#fonctionnalites" },
+      { label: "Exemple complet", href: "#exemple" },
+      { label: "Sidebar de navigation", href: "#sidebar" },
+      { label: "Table des matières automatique", href: "#toc" },
+    ]}
+    title="Table des matières"
+  />
 
   <h2 id="utilisation">Utilisation</h2>
 
@@ -55,36 +62,36 @@ import DocLayout from '@layouts/DocLayout.astro';
 
   <h2 id="props">Props</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Prop</th>
-        <th>Type</th>
-        <th>Défaut</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>title</code></td>
-        <td><code>string</code></td>
-        <td><code>required</code></td>
-        <td>Titre de la page de documentation</td>
-      </tr>
-      <tr>
-        <td><code>description</code></td>
-        <td><code>string</code></td>
-        <td><code>undefined</code></td>
-        <td>Description meta de la page</td>
-      </tr>
-      <tr>
-        <td><code>variant</code></td>
-        <td><code>'initial' | 'retro' | 'modern' | 'futuristic'</code></td>
-        <td><code>'initial'</code></td>
-        <td>Style visuel de la documentation</td>
-      </tr>
-    </tbody>
-  </table>
+  <Table variant="initial">
+    <TableHeader>
+      <TableRow>
+        <TableHead>Prop</TableHead>
+        <TableHead>Type</TableHead>
+        <TableHead>Défaut</TableHead>
+        <TableHead>Description</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell><code>title</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>required</code></TableCell>
+        <TableCell>Titre de la page de documentation</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>description</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>undefined</code></TableCell>
+        <TableCell>Description meta de la page</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>variant</code></TableCell>
+        <TableCell><code>'initial' | 'retro' | 'modern' | 'futuristic'</code></TableCell>
+        <TableCell><code>'initial'</code></TableCell>
+        <TableCell>Style visuel de la documentation</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
 
   <Alert variant="initial" status="info">
     <strong>📝 Note :</strong> Le DocLayout hérite de toutes les props du BaseLayout (SEO, métadonnées, etc.).

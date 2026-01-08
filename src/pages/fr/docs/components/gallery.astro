@@ -2,6 +2,14 @@
 import DocLayout from "@layouts/DocLayout.astro";
 import { Code } from "astro:components";
 import GalleryComponent from "@components/ui/Gallery.astro";
+import TOC from "@components/templates/docs/TableOfContents.astro";
+import Alert from "@components/ui/Alert.astro";
+import Table from "@components/ui/Table/Table.astro";
+import TableBody from "@components/ui/Table/TableBody.astro";
+import TableCell from "@components/ui/Table/TableCell.astro";
+import TableHead from "@components/ui/Table/TableHead.astro";
+import TableHeader from "@components/ui/Table/TableHeader.astro";
+import TableRow from "@components/ui/Table/TableRow.astro";
 
 const sampleImages = [
   { src: "https://picsum.photos/400/400?random=1", alt: "Image 1", caption: "Beautiful Landscape" },
@@ -57,18 +65,18 @@ const masonryImages = [
     <strong>Grid</strong>, <strong>Masonry</strong>, <strong>Product</strong> (avec checkbox hack), et <strong>Enhanced</strong>.
   </p>
 
-  <div class="toc">
-    <h2>Table des matières</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#grid">Mode Grid</a></li>
-      <li><a href="#masonry">Mode Masonry</a></li>
-      <li><a href="#product">Mode Product (Checkbox Hack)</a></li>
-      <li><a href="#enhanced">Mode Enhanced</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#api">API Reference</a></li>
-    </ul>
-  </div>
+  <TOC
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "Mode Grid", href: "#grid" },
+      { label: "Mode Masonry", href: "#masonry" },
+      { label: "Mode Product (Checkbox Hack)", href: "#product" },
+      { label: "Mode Enhanced", href: "#enhanced" },
+      { label: "Variants", href: "#variants" },
+      { label: "API Reference", href: "#api" },
+    ]}
+    title="Table des matières"
+  />
 
   <h2 id="installation">Installation</h2>
 
@@ -261,66 +269,66 @@ const masonryImages = [
   <h3>Props</h3>
 
   <div class="props-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Défaut</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>images</code></td>
-          <td><code>GalleryImage[]</code></td>
-          <td><code>[]</code></td>
-          <td>Tableau d'images à afficher</td>
-        </tr>
-        <tr>
-          <td><code>variant</code></td>
-          <td><code>"initial" | "retro" | "modern" | "futuristic"</code></td>
-          <td><code>"initial"</code></td>
-          <td>Style visuel de la galerie</td>
-        </tr>
-        <tr>
-          <td><code>mode</code></td>
-          <td><code>"grid" | "masonry" | "product" | "enhanced"</code></td>
-          <td><code>"grid"</code></td>
-          <td>Mode d'affichage de la galerie</td>
-        </tr>
-        <tr>
-          <td><code>columns</code></td>
-          <td><code>2 | 3 | 4 | 5 | 6</code></td>
-          <td><code>3</code></td>
-          <td>Nombre de colonnes (grid/masonry)</td>
-        </tr>
-        <tr>
-          <td><code>gap</code></td>
-          <td><code>string</code></td>
-          <td><code>"1rem"</code></td>
-          <td>Espacement entre les images</td>
-        </tr>
-        <tr>
-          <td><code>aspectRatio</code></td>
-          <td><code>string</code></td>
-          <td><code>"1/1"</code></td>
-          <td>Ratio des images (grid/enhanced)</td>
-        </tr>
-        <tr>
-          <td><code>showCaptions</code></td>
-          <td><code>boolean</code></td>
-          <td><code>true</code></td>
-          <td>Afficher les légendes</td>
-        </tr>
-        <tr>
-          <td><code>class</code></td>
-          <td><code>string</code></td>
-          <td>-</td>
-          <td>Classes CSS supplémentaires</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table variant="initial">
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>images</code></TableCell>
+          <TableCell><code>GalleryImage[]</code></TableCell>
+          <TableCell><code>[]</code></TableCell>
+          <TableCell>Tableau d'images à afficher</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>variant</code></TableCell>
+          <TableCell><code>"initial" | "retro" | "modern" | "futuristic"</code></TableCell>
+          <TableCell><code>"initial"</code></TableCell>
+          <TableCell>Style visuel de la galerie</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>mode</code></TableCell>
+          <TableCell><code>"grid" | "masonry" | "product" | "enhanced"</code></TableCell>
+          <TableCell><code>"grid"</code></TableCell>
+          <TableCell>Mode d'affichage de la galerie</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>columns</code></TableCell>
+          <TableCell><code>2 | 3 | 4 | 5 | 6</code></TableCell>
+          <TableCell><code>3</code></TableCell>
+          <TableCell>Nombre de colonnes (grid/masonry)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>gap</code></TableCell>
+          <TableCell><code>string</code></TableCell>
+          <TableCell><code>"1rem"</code></TableCell>
+          <TableCell>Espacement entre les images</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>aspectRatio</code></TableCell>
+          <TableCell><code>string</code></TableCell>
+          <TableCell><code>"1/1"</code></TableCell>
+          <TableCell>Ratio des images (grid/enhanced)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>showCaptions</code></TableCell>
+          <TableCell><code>boolean</code></TableCell>
+          <TableCell><code>true</code></TableCell>
+          <TableCell>Afficher les légendes</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>class</code></TableCell>
+          <TableCell><code>string</code></TableCell>
+          <TableCell>-</TableCell>
+          <TableCell>Classes CSS supplémentaires</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </div>
 
   <h3>GalleryImage Interface</h3>
@@ -368,9 +376,9 @@ const masonryImages = [
 }`}
   />
 
-  <div class="note">
+  <Alert variant="initial" status="info">
     <strong>Note :</strong> ZERO JavaScript ! Tout fonctionne avec des radios cachés et le sélecteur <code>:checked</code>.
-  </div>
+  </Alert>
 </DocLayout>
 
 <style>

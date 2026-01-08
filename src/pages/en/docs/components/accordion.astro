@@ -3,6 +3,7 @@ import DocLayout from "@layouts/DocLayout.astro";
 import { Code } from "astro:components";
 import AccordionComponent from "@components/ui/Accordion/Accordion.astro";
 import AccordionItem from "@components/ui/Accordion/AccordionItem.astro";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import Table from "@components/ui/Table/Table.astro";
 import TableHeader from "@components/ui/Table/TableHeader.astro";
 import TableBody from "@components/ui/Table/TableBody.astro";
@@ -22,19 +23,19 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     The <code class="inline-code">Accordion</code> component is built entirely with HTML/CSS (no scripts) and relies on the native <code class="inline-code">&lt;details&gt;</code> element. It provides variants consistent with the design system and supports accent colors.
   </p>
 
-  <div class="toc">
-    <h2>Table of Contents</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#props">Props</a></li>
-      <li><a href="#basic">Basic Usage</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#colors">Colors</a></li>
-      <li><a href="#single">Single mode (only one open)</a></li>
-      <li><a href="#disabled">Disabled state</a></li>
-      <li><a href="#accessibility">Accessibility</a></li>
-    </ul>
-  </div>
+  <TableOfContents
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "Props", href: "#props" },
+      { label: "Basic Usage", href: "#basic" },
+      { label: "Variants", href: "#variants" },
+      { label: "Colors", href: "#colors" },
+      { label: "Single mode (only one open)", href: "#single" },
+      { label: "Disabled state", href: "#disabled" },
+      { label: "Accessibility", href: "#accessibility" },
+    ]}
+    title="Table of Contents"
+  />
 
   <h2 id="installation">Installation</h2>
 

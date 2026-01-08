@@ -1,6 +1,7 @@
 ---
 import DocLayout from "@layouts/DocLayout.astro";
 import { Code } from "astro:components";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import DialogComponent from "@/components/ui/Dialog/Dialog.astro";
 import DialogTrigger from "@/components/ui/Dialog/DialogTrigger.astro";
 import DialogContent from "@/components/ui/Dialog/DialogContent.astro";
@@ -25,18 +26,18 @@ import Button from "@components/ui/Button.astro";
     Architecture composable avec des sous-composants pour une flexibilité maximale.
   </p>
 
-  <div class="toc">
-    <h2>Table des matières</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#basic">Utilisation basique</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#sizes">Tailles</a></li>
-      <li><a href="#with-form">Avec formulaire</a></li>
-      <li><a href="#external-trigger">Trigger externe</a></li>
-      <li><a href="#api">API Reference</a></li>
-    </ul>
-  </div>
+  <TableOfContents
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "Utilisation basique", href: "#basic" },
+      { label: "Variants", href: "#variants" },
+      { label: "Tailles", href: "#sizes" },
+      { label: "Avec formulaire", href: "#with-form" },
+      { label: "Trigger externe", href: "#external-trigger" },
+      { label: "API Reference", href: "#api" },
+    ]}
+    title="Table des matières"
+  />
 
   <h2 id="installation">Installation</h2>
 

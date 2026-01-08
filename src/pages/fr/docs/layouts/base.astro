@@ -5,6 +5,13 @@ import Alert from "@components/ui/Alert.astro";
 import Card from "@components/ui/Card/Card.astro";
 import CardHeader from "@components/ui/Card/CardHeader.astro";
 import CardContent from "@components/ui/Card/CardContent.astro";
+import TOC from "@components/templates/docs/TableOfContents.astro";
+import Table from "@components/ui/Table/Table.astro";
+import TableBody from "@components/ui/Table/TableBody.astro";
+import TableCell from "@components/ui/Table/TableCell.astro";
+import TableHead from "@components/ui/Table/TableHead.astro";
+import TableHeader from "@components/ui/Table/TableHeader.astro";
+import TableRow from "@components/ui/Table/TableRow.astro";
 ---
 
 <DocLayout 
@@ -19,17 +26,17 @@ import CardContent from "@components/ui/Card/CardContent.astro";
     Il fournit la structure HTML de base, la gestion du thème, les métadonnées SEO, et inclut le Header et Footer.
   </p>
 
-  <div class="toc">
-    <h2>Table des matières</h2>
-    <ul>
-      <li><a href="#utilisation">Utilisation</a></li>
-      <li><a href="#props">Props</a></li>
-      <li><a href="#fonctionnalites">Fonctionnalités</a></li>
-      <li><a href="#exemple">Exemple</a></li>
-      <li><a href="#seo">SEO et Métadonnées</a></li>
-      <li><a href="#theme">Gestion du thème</a></li>
-    </ul>
-  </div>
+  <TOC
+    items={[
+      { label: "Utilisation", href: "#utilisation" },
+      { label: "Props", href: "#props" },
+      { label: "Fonctionnalités", href: "#fonctionnalites" },
+      { label: "Exemple", href: "#exemple" },
+      { label: "SEO et Métadonnées", href: "#seo" },
+      { label: "Gestion du thème", href: "#theme" },
+    ]}
+    title="Table des matières"
+  />
 
   <h2 id="utilisation">Utilisation</h2>
 
@@ -51,108 +58,108 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
   <h2 id="props">Props</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Prop</th>
-        <th>Type</th>
-        <th>Défaut</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>title</code></td>
-        <td><code>string</code></td>
-        <td><code>undefined</code></td>
-        <td>Titre de la page (format: SiteTitle > PageTitle)</td>
-      </tr>
-      <tr>
-        <td><code>description</code></td>
-        <td><code>string</code></td>
-        <td><code>undefined</code></td>
-        <td>Description meta pour SEO</td>
-      </tr>
-      <tr>
-        <td><code>keywords</code></td>
-        <td><code>string</code></td>
-        <td><code>undefined</code></td>
-        <td>Mots-clés meta pour SEO</td>
-      </tr>
-      <tr>
-        <td><code>author</code></td>
-        <td><code>string</code></td>
-        <td><code>undefined</code></td>
-        <td>Auteur de la page</td>
-      </tr>
-      <tr>
-        <td><code>ogImage</code></td>
-        <td><code>string</code></td>
-        <td><code>undefined</code></td>
-        <td>Image Open Graph pour réseaux sociaux</td>
-      </tr>
-      <tr>
-        <td><code>canonicalUrl</code></td>
-        <td><code>string</code></td>
-        <td><code>undefined</code></td>
-        <td>URL canonique de la page</td>
-      </tr>
-      <tr>
-        <td><code>lang</code></td>
-        <td><code>string</code></td>
-        <td><code>currentLocale</code></td>
-        <td>Langue de la page (fr, en, es, ar)</td>
-      </tr>
-      <tr>
-        <td><code>dir</code></td>
-        <td><code>string</code></td>
-        <td><code>'ltr' | 'rtl'</code></td>
-        <td>Direction du texte (automatique selon locale)</td>
-      </tr>
-      <tr>
-        <td><code>robots</code></td>
-        <td><code>string</code></td>
-        <td><code>undefined</code></td>
-        <td>Directives pour robots d'indexation</td>
-      </tr>
-      <tr>
-        <td><code>prefetchUrls</code></td>
-        <td><code>string[]</code></td>
-        <td><code>[]</code></td>
-        <td>URLs à précharger</td>
-      </tr>
-      <tr>
-        <td><code>cssFiles</code></td>
-        <td><code>string[]</code></td>
-        <td><code>[]</code></td>
-        <td>Fichiers CSS additionnels</td>
-      </tr>
-      <tr>
-        <td><code>jsFiles</code></td>
-        <td><code>string[]</code></td>
-        <td><code>[]</code></td>
-        <td>Fichiers JavaScript additionnels</td>
-      </tr>
-      <tr>
-        <td><code>favicon</code></td>
-        <td><code>string</code></td>
-        <td><code>'test.ico'</code></td>
-        <td>Nom du fichier favicon</td>
-      </tr>
-      <tr>
-        <td><code>manifest</code></td>
-        <td><code>string</code></td>
-        <td><code>undefined</code></td>
-        <td>Chemin vers le manifest PWA</td>
-      </tr>
-      <tr>
-        <td><code>appleTouchIcon</code></td>
-        <td><code>string</code></td>
-        <td><code>undefined</code></td>
-        <td>Icône Apple Touch</td>
-      </tr>
-    </tbody>
-  </table>
+  <Table variant="initial">
+    <TableHeader>
+      <TableRow>
+        <TableHead>Prop</TableHead>
+        <TableHead>Type</TableHead>
+        <TableHead>Défaut</TableHead>
+        <TableHead>Description</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell><code>title</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>undefined</code></TableCell>
+        <TableCell>Titre de la page (format: SiteTitle > PageTitle)</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>description</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>undefined</code></TableCell>
+        <TableCell>Description meta pour SEO</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>keywords</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>undefined</code></TableCell>
+        <TableCell>Mots-clés meta pour SEO</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>author</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>undefined</code></TableCell>
+        <TableCell>Auteur de la page</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>ogImage</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>undefined</code></TableCell>
+        <TableCell>Image Open Graph pour réseaux sociaux</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>canonicalUrl</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>undefined</code></TableCell>
+        <TableCell>URL canonique de la page</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>lang</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>currentLocale</code></TableCell>
+        <TableCell>Langue de la page (fr, en, es, ar)</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>dir</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>'ltr' | 'rtl'</code></TableCell>
+        <TableCell>Direction du texte (automatique selon locale)</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>robots</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>undefined</code></TableCell>
+        <TableCell>Directives pour robots d'indexation</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>prefetchUrls</code></TableCell>
+        <TableCell><code>string[]</code></TableCell>
+        <TableCell><code>[]</code></TableCell>
+        <TableCell>URLs à précharger</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>cssFiles</code></TableCell>
+        <TableCell><code>string[]</code></TableCell>
+        <TableCell><code>[]</code></TableCell>
+        <TableCell>Fichiers CSS additionnels</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>jsFiles</code></TableCell>
+        <TableCell><code>string[]</code></TableCell>
+        <TableCell><code>[]</code></TableCell>
+        <TableCell>Fichiers JavaScript additionnels</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>favicon</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>'test.ico'</code></TableCell>
+        <TableCell>Nom du fichier favicon</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>manifest</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>undefined</code></TableCell>
+        <TableCell>Chemin vers le manifest PWA</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><code>appleTouchIcon</code></TableCell>
+        <TableCell><code>string</code></TableCell>
+        <TableCell><code>undefined</code></TableCell>
+        <TableCell>Icône Apple Touch</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
 
   <h2 id="fonctionnalites">Fonctionnalités</h2>
 

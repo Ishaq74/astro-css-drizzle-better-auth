@@ -6,6 +6,7 @@ import TabComponent from "@components/ui/Tabs/Tab.astro";
 import TabPanelComponent from "@components/ui/Tabs/TabPanel.astro";
 import Card from "@components/ui/Card/Card.astro";
 import CardContent from "@components/ui/Card/CardContent.astro";
+import TableOfContents from "@/components/templates/docs/TableOfContents.astro";
 import Table from "@components/ui/Table/Table.astro";
 import TableHeader from "@components/ui/Table/TableHeader.astro";
 import TableBody from "@components/ui/Table/TableBody.astro";
@@ -125,16 +126,16 @@ import TableCell from "@components/ui/Table/TableCell.astro";
     </TabsComponent>
   </div>
 
-  <nav class="toc">
-    <h2>Table of contents</h2>
-    <ul>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#basic-usage">Basic usage</a></li>
-      <li><a href="#variants">Variants</a></li>
-      <li><a href="#icons">With icons</a></li>
-      <li><a href="#props">Props</a></li>
-    </ul>
-  </nav>
+  <TableOfContents
+    items={[
+      { label: "Installation", href: "#installation" },
+      { label: "Basic usage", href: "#basic-usage" },
+      { label: "Variants", href: "#variants" },
+      { label: "With icons", href: "#icons" },
+      { label: "Props", href: "#props" },
+    ]}
+    title="Table of contents"
+  />
 
   <h2 id="installation">Installation</h2>
   
