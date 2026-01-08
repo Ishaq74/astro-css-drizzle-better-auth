@@ -6,15 +6,16 @@
   "baseUrl": ".",
   "paths": {
     "@/*": ["src/*"],
+    "@database": ["src/database/*"],
     "@components/*": ["src/components/*"],
     "@layouts/*": ["src/layouts/*"],
-    "@lib/*": ["../lib/*"],
+    "@lib/*": ["src/lib/*"],
     "@styles/*": ["src/styles/*"],
     "@templates/*": ["src/components/templates/*"],
     "@assets/*": ["src/assets/*"],
-    "@database/*": ["../database/*"],
     "@api/*": ["src/pages/api/*"],
-    "@images/*": ["public/images/*"]
+    "@images/*": ["public/images/*"],
+    "@smtp/*": ["src/lib/smtp/*"]
   }
 }
 }

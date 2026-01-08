@@ -61,14 +61,25 @@ npm run dev
 - `npm run preview`: astro preview
 - `npm run astro`: astro
 - `npm run readme:generate`: tsx scripts/readme-generate.ts
+- `npm run db:check`: tsx scripts/database/checkdb.ts
+- `npm run db:compare`: tsx scripts/database/comparedb.ts
+- `npm run syncdb:dev-to-prod`: tsx scripts/database/syncdb.ts dev-to-prod
+- `npm run syncdb:prod-to-dev`: tsx scripts/database/syncdb.ts prod-to-dev
+- `npm run db:migrate`: tsx scripts/database/migrate.ts
+- `npm run db:generate`: tsx scripts/database/generate.ts
+- `npm run db:seed`: tsx scripts/database/seed.ts
+- `npm run smtp:check`: tsx src/lib/smtp/smtp.tests.ts
 
 ## Estructura del proyecto
 
 ```
 - README.ar.md
+- README.es.md
 - README.fr.md
 - README.md
 - astro.config.mjs
+- drizzle-dev.config.ts
+- drizzle-prod.config.ts
 - package-lock.json
 - package.json
 - **public**
@@ -83,6 +94,8 @@ npm run dev
       - PalanquinDark-SemiBold.ttf
   - **images**
 - **scripts**
+  - **db**
+    - db-check.ts
   - readme-generate.ts
 - **src**
   - **assets**
@@ -176,6 +189,14 @@ npm run dev
       - Timeline.astro
       - Tooltip.astro
       - Video.astro
+  - **database**
+    - **data**
+    - drizzle.ts
+    - **loaders**
+      - factory.ts
+    - **migrations**
+    - **schemas**
+    - schemas.ts
   - **i18n**
     - ar.json
     - en.json
@@ -184,6 +205,15 @@ npm run dev
   - **layouts**
     - BaseLayout.astro
     - DocLayout.astro
+  - **lib**
+    - **smtp**
+      - smtp.config.ts
+      - smtp.errors.ts
+      - smtp.send.ts
+      - smtp.tests.ts
+      - smtp.ts
+      - smtp.types.ts
+      - smtp.validate.ts
   - **pages**
     - **api**
     - **ar**
@@ -293,5 +323,16 @@ Better Auth está configurado con plugins para OAuth, gestión de sesiones y má
 
 ## Variables de entorno
 
-_None_
+- `USE_PROD_DB`
+- `DATABASE_URL_LOCAL`
+- `DATABASE_URL_PROD`
+- `BETTER_AUTH_SECRET`
+- `BETTER_AUTH_URL`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_SECURE`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `SMTP_FROM`
+- `PUBLIC_API_URL`
 

@@ -7,7 +7,15 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "readme:generate": "tsx scripts/readme-generate.ts"
+    "readme:generate": "tsx scripts/readme-generate.ts",
+    "db:check": "tsx scripts/db/db.check.ts",
+    "db:compare": "tsx scripts/db/db.compare.ts",
+    "syncdb:dev-to-prod": "tsx scripts/db/db.sync.ts dev-to-prod",
+    "syncdb:prod-to-dev": "tsx scripts/db/db.sync.ts prod-to-dev",
+    "db:migrate": "tsx scripts/db/db.migrate.ts",
+    "db:generate": "tsx scripts/db/db.generate.ts",
+    "db:seed": "tsx scripts/db/db.seed.ts",
+    "smtp:check": "tsx src/lib/smtp/smtp.tests.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
