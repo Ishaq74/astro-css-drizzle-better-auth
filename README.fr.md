@@ -16,6 +16,7 @@ _Ce README est généré automatiquement pour fournir un contexte complet à l'I
 - [Authentification](#authentification)
 - [Base de données](#base-de-données)
 - [Variables d'environnement](#variables-denvironnement)
+- [Tokens CSS and Styles](#tokens-css-and-styles)
 
 ## Vue d'ensemble
 
@@ -100,6 +101,7 @@ npm install
     - generateDeps.ts
     - generateScripts.ts
     - generateStructure.ts
+    - generateStyles.ts
     - helpers.ts
     - i18n.ts
     - utils.ts
@@ -382,3 +384,72 @@ Better Auth est configuré avec des plugins pour OAuth, gestion de sessions, et 
 - `SMTP_PASS`
 - `SMTP_FROM`
 - `PUBLIC_API_URL`
+
+## Tokens CSS and Styles
+
+### Tokens CSS
+
+#### Colors
+
+Variables: `244`
+
+```css
+--color-primary: #eab308;
+--color-secondary: #8b5cf6;
+--color-accent: #ec4899;
+--color-success: #16a34a;
+--color-warning: #f97316;
+/* ... 239 autres variables */
+```
+
+#### Spacing
+
+Variables: `28`
+
+```css
+--space-1: 0.25rem;
+--space-2: 0.5rem;
+--space-3: 0.75rem;
+--space-4: 1rem;
+--space-5: 1.25rem;
+/* ... 23 autres variables */
+```
+
+#### Typography
+
+Variables: `26`
+
+```css
+--font-family-sans: "Plus Jakarta Sans", "Inter", sans-serif;
+--font-family-display: "Space Grotesk", sans-serif;
+--font-family-mono: "Space Mono", monospace;
+--font-size-base: 1rem;
+--line-height-base: 1.5;
+/* ... 21 autres variables */
+```
+
+#### Components
+
+Variables: `78`
+
+```css
+--button-padding-y: var(--space-2);
+--button-padding-x: var(--space-4);
+--button-border-radius: var(--border-radius-md);
+--button-border-width: 1px;
+--button-bg: var(--button-default-bg);
+/* ... 73 autres variables */
+```
+
+### Composants de style
+
+Thèmes de styles disponibles :
+
+- **Initial** (`initial.css`)
+- **Modern** (`modern.css`)
+- **Retro** (`retro.css`)
+- **Futuristic** (`futuristic.css`)
+
+### Styles de base
+
+- `base.css`- `global.css`

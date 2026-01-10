@@ -4,6 +4,7 @@ import { generateStructure } from './readme/generateStructure';
 import { generateDatabase } from './readme/generateDatabase';
 import { generateScripts } from './readme/generateScripts';
 import { generateDeps, generateEnv, generateTsconfigAliases } from './readme/generateDeps';
+import { generateStyles } from './readme/generateStyles';
 import { githubSlug, getLangLinks } from './readme/helpers';
 import { LANGS, i18n } from './readme/i18n';
 import type { Lang } from './readme/i18n';
@@ -48,6 +49,8 @@ async function generateReadmeForLang(lang: Lang) {
 
   mainContent += `\n## ${t.sections.env[lang]}\n\n`;
   mainContent += await generateEnv(lang) + '\n';
+
+  mainContent += `\n${await generateStyles(lang, t)}`;
 
   // Génère dynamiquement le sommaire à partir des titres ## du contenu
   const tocTitle = `## ${t.toc[lang]}\n\n`;

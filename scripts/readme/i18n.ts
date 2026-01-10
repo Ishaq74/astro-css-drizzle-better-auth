@@ -36,6 +36,12 @@ export const i18n = {
     auth: { en: 'Authentication', fr: 'Authentification', ar: 'المصادقة', es: 'Autenticación' },
     database: { en: 'Database', fr: 'Base de données', ar: 'قاعدة البيانات', es: 'Base de datos' },
     env: { en: 'Environment Variables', fr: "Variables d'environnement", ar: 'متغيرات البيئة', es: 'Variables de entorno' },
+    styles: { en: 'CSS Tokens and Styles', fr: 'Tokens CSS and Styles', ar: 'رموز CSS والأنماط', es: 'Tokens CSS y Estilos' },
+  },
+  subsections: {
+    tokens: { en: 'CSS Tokens', fr: 'Tokens CSS', ar: 'رموز CSS', es: 'Tokens CSS' },
+    styleComponents: { en: 'Style Components', fr: 'Composants de style', ar: 'مكونات الأنماط', es: 'Componentes de estilo' },
+    baseStyles: { en: 'Base Styles', fr: 'Styles de base', ar: 'الأنماط الأساسية', es: 'Estilos base' },
   },
   overview: {
     en: 'This project demonstrates a full-stack web application using modern technologies.',

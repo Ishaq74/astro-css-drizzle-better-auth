@@ -16,6 +16,7 @@ _يتم إنشاء هذا الملف تلقائيًا لتوفير سياق شا
 - [المصادقة](#المصادقة)
 - [قاعدة البيانات](#قاعدة-البيانات)
 - [متغيرات البيئة](#متغيرات-البيئة)
+- [رموز CSS والأنماط](#رموز-css-والأنماط)
 
 ## نظرة عامة
 
@@ -100,6 +101,7 @@ npm install
     - generateDeps.ts
     - generateScripts.ts
     - generateStructure.ts
+    - generateStyles.ts
     - helpers.ts
     - i18n.ts
     - utils.ts
@@ -382,3 +384,72 @@ npm install
 - `SMTP_PASS`
 - `SMTP_FROM`
 - `PUBLIC_API_URL`
+
+## رموز CSS والأنماط
+
+### رموز CSS
+
+#### Colors
+
+المتغيرات: `244`
+
+```css
+--color-primary: #eab308;
+--color-secondary: #8b5cf6;
+--color-accent: #ec4899;
+--color-success: #16a34a;
+--color-warning: #f97316;
+/* ... 239 متغيرات أخرى */
+```
+
+#### Spacing
+
+المتغيرات: `28`
+
+```css
+--space-1: 0.25rem;
+--space-2: 0.5rem;
+--space-3: 0.75rem;
+--space-4: 1rem;
+--space-5: 1.25rem;
+/* ... 23 متغيرات أخرى */
+```
+
+#### Typography
+
+المتغيرات: `26`
+
+```css
+--font-family-sans: "Plus Jakarta Sans", "Inter", sans-serif;
+--font-family-display: "Space Grotesk", sans-serif;
+--font-family-mono: "Space Mono", monospace;
+--font-size-base: 1rem;
+--line-height-base: 1.5;
+/* ... 21 متغيرات أخرى */
+```
+
+#### Components
+
+المتغيرات: `78`
+
+```css
+--button-padding-y: var(--space-2);
+--button-padding-x: var(--space-4);
+--button-border-radius: var(--border-radius-md);
+--button-border-width: 1px;
+--button-bg: var(--button-default-bg);
+/* ... 73 متغيرات أخرى */
+```
+
+### مكونات الأنماط
+
+سمات الأنماط المتاحة:
+
+- **Initial** (`initial.css`)
+- **Modern** (`modern.css`)
+- **Retro** (`retro.css`)
+- **Futuristic** (`futuristic.css`)
+
+### الأنماط الأساسية
+
+- `base.css`- `global.css`
