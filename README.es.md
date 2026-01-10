@@ -97,8 +97,11 @@ npm install
     - db.sync.ts
   - **readme**
     - generateDatabase.ts
+    - generateDeps.ts
     - generateScripts.ts
     - generateStructure.ts
+    - helpers.ts
+    - i18n.ts
     - utils.ts
   - readme-generate.ts
 - **src**
