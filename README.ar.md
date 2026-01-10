@@ -12,7 +12,6 @@ _يتم إنشاء هذا الملف تلقائيًا لتوفير سياق شا
 - [الميزات](#الميزات)
 - [المجموعة التقنية](#المجموعة-التقنية)
 - [التثبيت](#التثبيت)
-- [السكريبتات المتاحة](#السكريبتات-المتاحة)
 - [هيكل المشروع](#هيكل-المشروع)
 - [المصادقة](#المصادقة)
 - [قاعدة البيانات](#قاعدة-البيانات)
@@ -51,10 +50,6 @@ _يتم إنشاء هذا الملف تلقائيًا لتوفير سياق شا
 
 ```bash
 npm install
-```
-
-## السكريبتات المتاحة
-
 - `npm run dev`: astro dev
 - `npm run build`: astro build
 - `npm run preview`: astro preview
@@ -68,6 +63,7 @@ npm install
 - `npm run db:generate`: tsx scripts/db/db.generate.ts
 - `npm run db:seed`: tsx scripts/db/db.seed.ts
 - `npm run smtp:check`: tsx src/lib/smtp/smtp.tests.ts
+```
 
 ## هيكل المشروع
 
@@ -99,6 +95,11 @@ npm install
     - db.migrate.ts
     - db.seed.ts
     - db.sync.ts
+  - **readme**
+    - generateDatabase.ts
+    - generateScripts.ts
+    - generateStructure.ts
+    - utils.ts
   - readme-generate.ts
 - **src**
   - **components**
@@ -196,8 +197,14 @@ npm install
     - **loaders**
       - factory.ts
     - **migrations**
+      - 0000_loving_blue_blade.sql
+      - 0001_famous_tarantula.sql
       - **meta**
+        - 0000_snapshot.json
+        - 0001_snapshot.json
         - _journal.json
+    - **schemas**
+      - auth-schema.ts
     - schemas.ts
   - env.d.ts
   - **i18n**
@@ -334,6 +341,29 @@ npm install
 تم تكوين Better Auth باستخدام المكونات الإضافية لـ OAuth وإدارة الجلسات والمزيد.
 
 ## قاعدة البيانات
+
+- **auth-schema.ts**
+  - Table _user_ (const _user_)
+    - Champ : _id_ `(text)`
+    - Champ : _name_ `(text)`
+    - Champ : _pseudo_ `(text)`
+    - Champ : _email_ `(text)`
+    - Champ : _emailVerified_ `(boolean)`
+    - Champ : _image_ `(text)`
+    - Champ : _createdAt_ `(timestamp)`
+    - Champ : _updatedAt_ `(timestamp)`
+  - Table _account_ (const _account_)
+    - Champ : _id_ `(text)`
+    - Champ : _accountId_ `(text)`
+    - Champ : _providerId_ `(text)`
+    - Champ : _userId_ `(text)`
+  - Table _verification_ (const _verification_)
+    - Champ : _id_ `(text)`
+    - Champ : _identifier_ `(text)`
+    - Champ : _value_ `(text)`
+    - Champ : _expiresAt_ `(timestamp)`
+    - Champ : _createdAt_ `(timestamp)`
+    - Champ : _updatedAt_ `(timestamp)`
 
 ## متغيرات البيئة
 
