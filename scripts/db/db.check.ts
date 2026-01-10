@@ -58,7 +58,18 @@ config();
     );
     const present = tablesRes.rows.map((r) => r.table_name);
     console.log('\n---\nTables présentes dans la base :');
-    for (const t of present) console.log(' -', t);
+    if (present.length === 0) {
+      // Couleurs ANSI
+      const red = '\x1b[31m';
+      const yellow = '\x1b[33m';
+      const reset = '\x1b[0m';
+      const bold = '\x1b[1m';
+      console.log(`  ${red}${bold}0 (aucune table trouvée)${reset}`);
+      console.log(`${reset} La base existe mais ne contient ${red}aucune table${reset}${yellow}${bold}`);
+      console.log(`${reset} Vous devriez lancer : ${bold}npm run db:migrate${reset}${yellow}${bold} ou ${bold}npm run db:generate${reset}${yellow}${bold}`);
+    } else {
+      for (const t of present) console.log(' -', t);
+    }
 
     // Affiche les contraintes principales
     const constraints = await client.query(`
@@ -72,8 +83,36 @@ config();
     for (const row of constraints.rows) {
       console.log(` - [${row.contype}] ${row.conname} sur ${row.table}`);
     }
-  } catch (e) {
-    console.error('Erreur de connexion à la base :', e);
+  } catch (e: any) {
+    // Couleurs ANSI
+    const red = '\x1b[31m';
+    const yellow = '\x1b[33m';
+    const cyan = '\x1b[36m';
+    const bold = '\x1b[1m';
+    const reset = '\x1b[0m';
+
+    if (e?.code === '3D000') {
+      // Base de données inexistante
+      console.error(`\n${red}${bold}❌ La base de données n'existe pas :${reset} ${yellow}${bold}${dbUrl}${reset}`);
+      console.error(`\n${yellow}Créez la base avec :${reset} ${cyan}createdb <nom_base>${reset}`);
+      console.error(`Ou vérifiez la variable DATABASE_URL dans votre .env`);
+    } else if (e?.code === '28P01') {
+      // Mauvais mot de passe
+      console.error(`\n${red}${bold}❌ Mot de passe ou utilisateur incorrect pour la base :${reset} ${yellow}${bold}${dbUrl}${reset}`);
+      console.error(`\n${yellow}Vérifiez vos identifiants dans le .env${reset}`);
+    } else {
+      // Autre erreur
+      console.error(`\n${red}${bold}❌ Erreur de connexion à la base :${reset} ${e.message || e}`);
+      if (e?.code) {
+        console.error(`${yellow}Code erreur PG :${reset} ${e.code}`);
+      }
+      if (e?.detail) {
+        console.error(`${yellow}Détail :${reset} ${e.detail}`);
+      }
+      if (e?.hint) {
+        console.error(`${yellow}Hint :${reset} ${e.hint}`);
+      }
+    }
     process.exit(1);
   } finally {
     await client.end();

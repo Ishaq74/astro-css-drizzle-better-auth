@@ -5,7 +5,7 @@ import { getPgClient } from "../../src/database/drizzle";
 
 type MigrationRecord = { id: string; sql: string };
 
-const MIGRATIONS_DIR = path.resolve(process.cwd(), "src/lib/database/migrations");
+const MIGRATIONS_DIR = path.resolve(process.cwd(), "src/database/migrations");
 const USE_PROD_DB = process.env.USE_PROD_DB === "true";
 const CONNECTION_LABEL = USE_PROD_DB ? "production" : "local/dev";
 
@@ -15,7 +15,16 @@ async function main() {
   const client = getPgClient();
 
   try {
-    console.log(`[migrate] Connexion ${CONNECTION_LABEL}…`);
+    // Couleurs ANSI
+    const green = '\x1b[32m';
+    const yellow = '\x1b[33m';
+    const cyan = '\x1b[36m';
+    const bold = '\x1b[1m';
+    const reset = '\x1b[0m';
+
+    console.log(`\n${cyan}${bold}═══════════════════════════════════════════════════════${reset}`);
+    console.log(`${cyan}${bold}   🚀 Migration Drizzle - Connexion ${CONNECTION_LABEL} 🚀${reset}`);
+    console.log(`${cyan}${bold}═══════════════════════════════════════════════════════${reset}\n`);
     await client.connect();
     await ensureMigrationsTable(client);
 
@@ -23,12 +32,29 @@ async function main() {
     const pending = collectMigrations(applied);
 
     if (pending.length === 0) {
-      console.log('[migrate] Aucune migration à appliquer.');
+      if (!existsSync(MIGRATIONS_DIR)) {
+        console.log(`\n${yellow}${bold}⚠️  Dossier de migrations introuvable.${reset}`);
+        console.log(`${cyan}Aucune migration à appliquer car le dossier de migrations n'existe pas.${reset}`);
+        console.log(`\n${bold}Pour activer les migrations, créez le dossier suivant :${reset}`);
+        console.log(`${cyan}src/lib/database/migrations${reset}`);
+        console.log(`\n${bold}Ajoutez vos schémas et générez des migrations avec :${reset} ${cyan}npm run db:generate${reset}\n`);
+      } else {
+        const files = readdirSync(MIGRATIONS_DIR).filter(f => f.endsWith('.sql'));
+        if (files.length === 0) {
+          console.log(`\n${yellow}${bold}⚠️  Dossier de migrations vide.${reset}`);
+          console.log(`${cyan}Aucune migration à appliquer car aucune migration n'a été générée.${reset}`);
+          console.log(`\n${bold}Créez des schémas et générez des migrations avec :${reset} ${cyan}npm run db:generate${reset}\n`);
+        } else {
+          console.log(`\n${yellow}${bold}✔️  Aucune migration à appliquer.${reset}`);
+          console.log(`${cyan}Toutes les migrations sont déjà appliquées.${reset}`);
+        }
+      }
+      console.log(`\n${cyan}${bold}═══════════════════════════════════════════════════════${reset}\n`);
       return;
     }
 
     for (const migration of pending) {
-      console.log(`[migrate] → ${migration.id}`);
+      console.log(`\n${green}${bold}[migrate] → ${migration.id}${reset}`);
       // Découpe le SQL en commandes individuelles (attention aux points-virgules dans les fonctions !)
       const statements = migration.sql.split(/;\s*\n/).map(s => s.trim()).filter(Boolean);
       let allOk = true;
@@ -41,10 +67,10 @@ async function main() {
         } catch (error: any) {
           await client.query('ROLLBACK');
           if (error?.code === '42P07' || error?.code === '42710' || error?.code === '42701') {
-            console.warn(`[migrate] ⚠️  Ignoré : ${error.message}`);
+            console.warn(`${yellow}[migrate] ⚠️  Ignoré : ${error.message}${reset}`);
           } else {
             allOk = false;
-            console.error(`[migrate] ❌ Erreur : ${error.message}`);
+            console.error(`${yellow}[migrate] ❌ Erreur : ${error.message}${reset}`);
             throw error;
           }
         }
@@ -56,7 +82,8 @@ async function main() {
         );
       }
     }
-    console.log('[migrate] Toutes les migrations ont été appliquées (en ignorant les objets déjà existants).');
+    console.log(`\n${green}${bold}✔️  Toutes les migrations ont été appliquées (en ignorant les objets déjà existants).${reset}\n`);
+    console.log(`${cyan}${bold}═══════════════════════════════════════════════════════${reset}\n`);
   } finally {
     await client.end();
   }

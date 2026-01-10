@@ -1,0 +1,18 @@
+{
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1768058156841,
+      "tag": "0000_loving_blue_blade",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1768058293974,
+      "tag": "0001_famous_tarantula",
+      "breakpoints": true
+    }
+  ]
+}

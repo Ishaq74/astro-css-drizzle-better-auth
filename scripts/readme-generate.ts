@@ -23,14 +23,14 @@ const PATHS = {
 } as const;
 
 function githubSlug(str: string): string {
+  // Génère un slug d'ancre compatible GitHub : accents conservés, apostrophes supprimées, espaces et ponctuation → tirets, tirets multiples fusionnés
   return str
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-zA-Z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .toLowerCase();
+    .trim()
+    .toLowerCase()
+    .replace(/'/g, '') // retire les apostrophes
+    .replace(/[\s!"#$%&()*+,./:;<=>?@\[\]^_`{|}~]+/gu, '-') // espaces et ponctuation (hors apostrophe) → tiret
+    .replace(/^-+|-+$/g, '') // retire tirets en début/fin
+    .replace(/-+/g, '-'); // tirets multiples fusionnés
 }
 
 async function readFile(path: string): Promise<string> {
@@ -144,7 +144,8 @@ async function generateReadmeForLang(lang: Lang) {
   const sections = ['overview', 'features', 'techStack', 'installation', 'scripts', 'structure', 'auth', 'database', 'env'] as const;
   for (const section of sections) {
     const title = t.sections[section][lang];
-    md += `- [${title}](#${githubSlug(title)})\n`;
+    const anchor = githubSlug(title);
+    md += `- [${title}](#${anchor})\n`;
   }
   md += '\n';
 
@@ -192,18 +193,38 @@ async function generateReadmeForLang(lang: Lang) {
   md += `## ${t.sections.installation[lang]}\n\n`;
   md += '```bash\n';
   md += 'npm install\n';
-  md += 'npm run dev\n';
+async function generateTsconfigAliases(): Promise<string> {
+  const tsconfigContent = await readFile(path.resolve(currentDir, '../tsconfig.json'));
+  if (!tsconfigContent) return '';
+  let tsconfig;
+  try {
+    tsconfig = JSON.parse(tsconfigContent);
+  } catch {
+    return '';
+  }
+  const paths = tsconfig.compilerOptions?.paths || {};
+  if (Object.keys(paths).length === 0) return '_None_';
+  return Object.entries(paths)
+    .map(([alias, targets]) => `- \`${alias}\` → \`${Array.isArray(targets) ? targets.join(', ') : targets}\``)
+    .join('\n');
+}
+
   md += '```\n\n';
 
   // Scripts
   md += `## ${t.sections.scripts[lang]}\n\n`;
   md += await generateScripts(lang) + '\n\n';
 
+
   // Project Structure
   md += `## ${t.sections.structure[lang]}\n\n`;
-  md += '```\n';
+  md += '```text\n';
   md += await listTree(PATHS.root);
-  md += '```\n\n';
+  md += '```\n';
+
+  // Aliases TSConfig
+  md += `\n### Alias TypeScript (tsconfig.json)\n\n`;
+  md += await generateTsconfigAliases() + '\n\n';
 
   // Authentication
   md += `## ${t.sections.auth[lang]}\n\n`;
@@ -215,11 +236,11 @@ async function generateReadmeForLang(lang: Lang) {
   // Database
   md += `## ${t.sections.database[lang]}\n\n`;
   const schemas = await listFiles(PATHS.schemas);
-  md += schemas.map(s => `- ${s}`).join('\n') + '\n\n';
+  md += schemas.map(s => `- ${s}`).join('\n');
 
   // Environment Variables
   md += `## ${t.sections.env[lang]}\n\n`;
-  md += await generateEnv(lang) + '\n\n';
+  md += await generateEnv(lang) + '\n';
 
   // Write file
   const suffix = lang === 'en' ? '' : `.${lang}`;

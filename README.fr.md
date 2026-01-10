@@ -9,13 +9,13 @@ _Ce README est généré automatiquement pour fournir un contexte complet à l'I
 ## Sommaire
 
 - [Vue d'ensemble](#vue-densemble)
-- [Fonctionnalités](#fonctionnalites)
+- [Fonctionnalités](#fonctionnalités)
 - [Stack technique](#stack-technique)
 - [Installation](#installation)
 - [Scripts disponibles](#scripts-disponibles)
 - [Structure du projet](#structure-du-projet)
 - [Authentification](#authentification)
-- [Base de données](#base-de-donnees)
+- [Base de données](#base-de-données)
 - [Variables d'environnement](#variables-denvironnement)
 
 ## Vue d'ensemble
@@ -51,7 +51,6 @@ Ce projet démontre une application web full-stack utilisant des technologies mo
 
 ```bash
 npm install
-npm run dev
 ```
 
 ## Scripts disponibles
@@ -61,22 +60,18 @@ npm run dev
 - `npm run preview`: astro preview
 - `npm run astro`: astro
 - `npm run readme:generate`: tsx scripts/readme-generate.ts
-- `npm run db:check`: tsx scripts/database/checkdb.ts
-- `npm run db:compare`: tsx scripts/database/comparedb.ts
-- `npm run syncdb:dev-to-prod`: tsx scripts/database/syncdb.ts dev-to-prod
-- `npm run syncdb:prod-to-dev`: tsx scripts/database/syncdb.ts prod-to-dev
-- `npm run db:migrate`: tsx scripts/database/migrate.ts
-- `npm run db:generate`: tsx scripts/database/generate.ts
-- `npm run db:seed`: tsx scripts/database/seed.ts
+- `npm run db:check`: tsx scripts/db/db.check.ts
+- `npm run db:compare`: tsx scripts/db/db.compare.ts
+- `npm run syncdb:dev-to-prod`: tsx scripts/db/db.sync.ts dev-to-prod
+- `npm run syncdb:prod-to-dev`: tsx scripts/db/db.sync.ts prod-to-dev
+- `npm run db:migrate`: tsx scripts/db/db.migrate.ts
+- `npm run db:generate`: tsx scripts/db/db.generate.ts
+- `npm run db:seed`: tsx scripts/db/db.seed.ts
 - `npm run smtp:check`: tsx src/lib/smtp/smtp.tests.ts
 
 ## Structure du projet
 
-```
-- README.ar.md
-- README.es.md
-- README.fr.md
-- README.md
+```text
 - astro.config.mjs
 - drizzle-dev.config.ts
 - drizzle-prod.config.ts
@@ -92,15 +87,27 @@ npm run dev
       - PalanquinDark-Medium.ttf
       - PalanquinDark-Regular.ttf
       - PalanquinDark-SemiBold.ttf
-  - **images**
+- README.ar.md
+- README.es.md
+- README.fr.md
+- README.md
 - **scripts**
   - **db**
-    - db-check.ts
+    - db.check.ts
+    - db.compare.ts
+    - db.generate.ts
+    - db.migrate.ts
+    - db.seed.ts
+    - db.sync.ts
   - readme-generate.ts
 - **src**
-  - **assets**
   - **components**
     - **templates**
+      - **docs**
+        - MainDoc.astro
+        - navigation.ts
+        - Sidebar.astro
+        - TableOfContents.astro
       - **Footer**
         - Footer.astro
       - **Header**
@@ -109,11 +116,6 @@ npm run dev
         - LangChooser.astro
         - Navigation.astro
         - ThemeSwitch.astro
-      - **docs**
-        - MainDoc.astro
-        - Sidebar.astro
-        - TableOfContents.astro
-        - navigation.ts
     - **ui**
       - **Accordion**
         - Accordion.astro
@@ -190,13 +192,14 @@ npm run dev
       - Tooltip.astro
       - Video.astro
   - **database**
-    - **data**
     - drizzle.ts
     - **loaders**
       - factory.ts
     - **migrations**
-    - **schemas**
+      - **meta**
+        - _journal.json
     - schemas.ts
+  - env.d.ts
   - **i18n**
     - ar.json
     - en.json
@@ -206,6 +209,8 @@ npm run dev
     - BaseLayout.astro
     - DocLayout.astro
   - **lib**
+    - **auth**
+      - auth.ts
     - **smtp**
       - smtp.config.ts
       - smtp.errors.ts
@@ -215,7 +220,6 @@ npm run dev
       - smtp.types.ts
       - smtp.validate.ts
   - **pages**
-    - **api**
     - **ar**
       - index.astro
     - **en**
@@ -295,7 +299,6 @@ npm run dev
           - table-of-contents.astro
       - index.astro
       - legal.astro
-  - **scripts**
   - **styles**
     - base.css
     - **components**
@@ -309,17 +312,28 @@ npm run dev
       - components.css
       - spacing.css
       - typography.css
-  - **utils**
 - tsconfig.json
 ```
+
+### Alias TypeScript (tsconfig.json)
+
+- `@/*` → `src/*`
+- `@database/*` → `src/database/*`
+- `@components/*` → `src/components/*`
+- `@layouts/*` → `src/layouts/*`
+- `@lib/*` → `src/lib/*`
+- `@styles/*` → `src/styles/*`
+- `@templates/*` → `src/components/templates/*`
+- `@assets/*` → `src/assets/*`
+- `@api/*` → `src/pages/api/*`
+- `@images/*` → `public/images/*`
+- `@smtp/*` → `src/lib/smtp/*`
 
 ## Authentification
 
 Better Auth est configuré avec des plugins pour OAuth, gestion de sessions, et plus.
 
 ## Base de données
-
-
 
 ## Variables d'environnement
 
@@ -335,4 +349,3 @@ Better Auth est configuré avec des plugins pour OAuth, gestion de sessions, et 
 - `SMTP_PASS`
 - `SMTP_FROM`
 - `PUBLIC_API_URL`
-
