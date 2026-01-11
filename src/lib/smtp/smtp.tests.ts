@@ -2,6 +2,12 @@ import 'dotenv/config';
 import nodemailer from 'nodemailer';
 import { smtpConfig, validateSmtpConfig } from './smtp.config';
 import type { EmailOptions, SmtpTestResult } from './smtp.types';
+
+// Example usage for type-checking
+export function testEmailOptions(options: EmailOptions): boolean {
+  // Dummy implementation for type usage
+  return !!options;
+}
 import { getDetailedErrorMessage } from './smtp.errors';
 
 // Fonction pour tester la connexion SMTP

@@ -171,7 +171,9 @@ const getLevel2RadioName = (parentId: string) => `${dropdownId}-level2-${parentI
 <script is:inline define:vars={{ dropdownId, openOnHover }}>
   // Script pour la détection de collision avec les bords de l'écran
   if (typeof window !== 'undefined') {
-    const dropdown = document.querySelector(`#${dropdownId}`)?.closest('.dropdown');
+    // Ensure dropdownId is defined
+    const id = typeof dropdownId !== 'undefined' ? dropdownId : 'dropdown-default';
+    const dropdown = document.querySelector(`#${id}`)?.closest('.dropdown');
     if (!dropdown) return;
     
     const menu = dropdown.querySelector('.dropdown-menu');

@@ -48,6 +48,7 @@ try {
 const currentUser = {
   name: 'Jane Doe',
   avatar: '/images/default-avatar.png',
+  email: 'jane@example.com',
 };
 ---
 
@@ -67,6 +68,7 @@ const currentUser = {
       icon: 'logout',
     }]}
   />
+  <Avatar src={currentUser.avatar} alt={currentUser.name} fallback={currentUser.name} size="sm" />
 ) : (
   <div class="user-auth-links">
     <Link href={loginRoute} style="button" color="primary" variant={variant}>
@@ -79,7 +81,7 @@ const currentUser = {
   </div>
 )}
 
-<script type="module">
+<script is:inline type="module">
     const SELECTOR = "[data-user-logout-button]";
     const INIT_ATTR = "data-logout-bound";
 

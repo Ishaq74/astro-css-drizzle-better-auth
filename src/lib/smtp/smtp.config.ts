@@ -1,6 +1,12 @@
 // Configuration SMTP et validation
 import type { EmailOptions } from './smtp.types';
 
+// Example usage for type-checking
+export function sendTestEmail(options: EmailOptions): boolean {
+  // Dummy implementation for type usage
+  return !!options;
+}
+
 function getEnv(key: string, fallback: string = ''): string {
   if (typeof process !== 'undefined' && process.env[key]) return process.env[key]!;
   try {

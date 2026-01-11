@@ -5,7 +5,7 @@ import path from 'path';
 /**
  * Génère la documentation des tokens et styles CSS
  */
-export async function generateStyles(lang: string, t: any): Promise<string> {
+export async function generateStyles(lang: Lang, t: any): Promise<string> {
   let out = `## ${t.sections.styles[lang]}\n\n`;
   
   const stylesPath = path.resolve(PATHS.root, 'src/styles');
