@@ -30,7 +30,13 @@ const classes = [
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
     line-height: var(--line-height-tight);
-    color: var(--color-text-primary);
+    color: var(--text-primary);
     margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .sheet-title {
+      font-size: var(--font-size-lg);
+    }
   }
 </style>

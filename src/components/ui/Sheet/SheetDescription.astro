@@ -29,7 +29,13 @@ const classes = [
   .sheet-description {
     font-size: var(--font-size-sm);
     line-height: var(--line-height-normal);
-    color: var(--color-text-secondary);
+    color: var(--text-secondary);
     margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .sheet-description {
+      font-size: var(--font-size-xs);
+    }
   }
 </style>
