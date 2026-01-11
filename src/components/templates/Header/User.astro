@@ -54,8 +54,9 @@ const currentUser = {
 {currentUser ? (
   <Dropdown
     variant={variant}
-    triggerLabel={currentUser.name}
-    triggerIcon={<Avatar src={currentUser.avatar} alt={currentUser.name} size="sm" />}
+    triggerLabel={
+      `<span class='user-trigger-avatar'><img src='${currentUser.avatar}' alt='${currentUser.name}' class='avatar avatar-sm' /> ${currentUser.name}</span>`
+    }
     items={[{
       label: t.profile,
       href: profileRoute,
