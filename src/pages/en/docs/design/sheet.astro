@@ -1,0 +1,300 @@
+---
+import DocLayout from '@layouts/DocLayout.astro';
+import SheetComponent from '@components/ui/Sheet/Sheet.astro';
+import SheetTrigger from '@components/ui/Sheet/SheetTrigger.astro';
+import SheetContent from '@components/ui/Sheet/SheetContent.astro';
+import SheetHeader from '@components/ui/Sheet/SheetHeader.astro';
+import SheetTitle from '@components/ui/Sheet/SheetTitle.astro';
+import SheetDescription from '@components/ui/Sheet/SheetDescription.astro';
+import SheetFooter from '@components/ui/Sheet/SheetFooter.astro';
+import SheetClose from '@components/ui/Sheet/SheetClose.astro';
+import Button from '@components/ui/Button.astro';
+import Table from '@components/ui/Table/Table.astro';
+import TableHeader from '@components/ui/Table/TableHeader.astro';
+import TableBody from '@components/ui/Table/TableBody.astro';
+import TableRow from '@components/ui/Table/TableRow.astro';
+import TableHead from '@components/ui/Table/TableHead.astro';
+import TableCell from '@components/ui/Table/TableCell.astro';
+---
+
+<DocLayout 
+  title="Sheet Panel" 
+  description="A sliding panel component that appears from the edge of the screen, perfect for navigation, forms, and detailed content."
+  variant="initial"
+>
+  <script src="@components/ui/Sheet/sheet.ts"></script>
+
+  <section>
+    <h2>Overview</h2>
+    <p>
+      The Sheet component creates an accessible sliding panel that overlays your content. 
+      It supports multiple sides (top, right, bottom, left), keyboard navigation, focus trapping, 
+      and works seamlessly with your design system tokens.
+    </p>
+  </section>
+
+  <section>
+    <h2>Basic Usage</h2>
+    <div class="example">
+      <SheetComponent>
+        <SheetTrigger>
+          <Button>Open Sheet</Button>
+        </SheetTrigger>
+        <SheetContent side="right">
+          <SheetHeader>
+            <SheetTitle>Sheet Title</SheetTitle>
+            <SheetDescription>
+              This is a description of the sheet panel content.
+            </SheetDescription>
+          </SheetHeader>
+          <div style="padding: var(--space-4);">
+            <p>Your content goes here...</p>
+          </div>
+          <SheetFooter>
+            <SheetClose>
+              <Button>Close</Button>
+            </SheetClose>
+          </SheetFooter>
+        </SheetContent>
+      </SheetComponent>
+    </div>
+    
+    <pre><code class="language-astro">{`---
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter, SheetClose } from '@components/ui/Sheet';
+import Button from '@components/ui/Button.astro';
+---
+
+<SheetComponent>
+  <SheetTrigger>
+    <Button>Open Sheet</Button>
+  </SheetTrigger>
+  <SheetContent side="right">
+    <SheetHeader>
+      <SheetTitle>Sheet Title</SheetTitle>
+      <SheetDescription>
+        This is a description of the sheet panel content.
+      </SheetDescription>
+    </SheetHeader>
+    <div style="padding: var(--space-4);">
+      <p>Your content goes here...</p>
+    </div>
+    <SheetFooter>
+      <SheetClose>
+        <Button>Close</Button>
+      </SheetClose>
+    </SheetFooter>
+  </SheetContent>
+</SheetComponent>`}</code></pre>
+  </section>
+
+  <section>
+    <h2>Sheet Props</h2>
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Default</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>variant</code></TableCell>
+          <TableCell>'initial' | 'retro' | 'modern' | 'futuristic'</TableCell>
+          <TableCell>'initial'</TableCell>
+          <TableCell>Visual style variant</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>className</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>''</TableCell>
+          <TableCell>Additional CSS classes</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </section>
+
+  <section>
+    <h2>SheetContent Props</h2>
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Default</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>side</code></TableCell>
+          <TableCell>'top' | 'right' | 'bottom' | 'left'</TableCell>
+          <TableCell>'right'</TableCell>
+          <TableCell>Side from which the sheet slides</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>variant</code></TableCell>
+          <TableCell>'initial' | 'retro' | 'modern' | 'futuristic'</TableCell>
+          <TableCell>'initial'</TableCell>
+          <TableCell>Visual style variant</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>className</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>''</TableCell>
+          <TableCell>Additional CSS classes</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </section>
+
+  <section>
+    <h2>Side Variations</h2>
+    
+    <h3>Right Side (Default)</h3>
+    <div class="example">
+      <SheetComponent>
+        <SheetTrigger>
+          <Button>Open from Right</Button>
+        </SheetTrigger>
+        <SheetContent side="right">
+          <SheetHeader>
+            <SheetTitle>Right Sheet</SheetTitle>
+            <SheetDescription>Opens from the right side</SheetDescription>
+          </SheetHeader>
+          <div style="padding: var(--space-4);">
+            <p>Content from the right...</p>
+          </div>
+        </SheetContent>
+      </SheetComponent>
+    </div>
+
+    <h3>Left Side</h3>
+    <div class="example">
+      <SheetComponent>
+        <SheetTrigger>
+          <Button>Open from Left</Button>
+        </SheetTrigger>
+        <SheetContent side="left">
+          <SheetHeader>
+            <SheetTitle>Left Sheet</SheetTitle>
+            <SheetDescription>Opens from the left side</SheetDescription>
+          </SheetHeader>
+          <div style="padding: var(--space-4);">
+            <p>Content from the left...</p>
+          </div>
+        </SheetContent>
+      </SheetComponent>
+    </div>
+
+    <h3>Top Side</h3>
+    <div class="example">
+      <SheetComponent>
+        <SheetTrigger>
+          <Button>Open from Top</Button>
+        </SheetTrigger>
+        <SheetContent side="top">
+          <SheetHeader>
+            <SheetTitle>Top Sheet</SheetTitle>
+            <SheetDescription>Opens from the top</SheetDescription>
+          </SheetHeader>
+          <div style="padding: var(--space-4);">
+            <p>Content from the top...</p>
+          </div>
+        </SheetContent>
+      </SheetComponent>
+    </div>
+
+    <h3>Bottom Side</h3>
+    <div class="example">
+      <SheetComponent>
+        <SheetTrigger>
+          <Button>Open from Bottom</Button>
+        </SheetTrigger>
+        <SheetContent side="bottom">
+          <SheetHeader>
+            <SheetTitle>Bottom Sheet</SheetTitle>
+            <SheetDescription>Opens from the bottom</SheetDescription>
+          </SheetHeader>
+          <div style="padding: var(--space-4);">
+            <p>Content from the bottom...</p>
+          </div>
+        </SheetContent>
+      </SheetComponent>
+    </div>
+  </section>
+
+  <section>
+    <h2>Accessibility</h2>
+    <ul>
+      <li><strong>Keyboard Navigation:</strong> ESC key closes the sheet</li>
+      <li><strong>Focus Trap:</strong> Tab key cycles through focusable elements within the sheet</li>
+      <li><strong>ARIA Attributes:</strong> role="dialog", aria-modal="true"</li>
+      <li><strong>Focus Management:</strong> Focus automatically moves to sheet when opened</li>
+      <li><strong>Screen Reader Support:</strong> Proper labeling with SheetTitle and SheetDescription</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Design Tokens</h2>
+    <p>The Sheet component uses the following design tokens:</p>
+    <ul>
+      <li><code>--color-surface</code> - Background color</li>
+      <li><code>--color-border</code> - Border color</li>
+      <li><code>--color-text-primary</code> - Title text color</li>
+      <li><code>--color-text-secondary</code> - Description text color</li>
+      <li><code>--shadow-lg</code> - Box shadow</li>
+      <li><code>--space-*</code> - Spacing tokens</li>
+      <li><code>--font-size-*</code> - Typography scale</li>
+    </ul>
+  </section>
+
+  <style>
+    .example {
+      padding: var(--space-6);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      margin: var(--space-4) 0;
+    }
+
+    pre {
+      background: var(--color-surface-secondary);
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      margin: var(--space-4) 0;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: var(--font-size-sm);
+    }
+
+    section {
+      margin-bottom: var(--space-8);
+    }
+
+    h2 {
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+    }
+
+    h3 {
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    ul {
+      padding-left: var(--space-6);
+    }
+
+    li {
+      margin-bottom: var(--space-2);
+    }
+  </style>
+</DocLayout>

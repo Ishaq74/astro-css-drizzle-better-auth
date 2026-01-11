@@ -1,0 +1,74 @@
+---
+/**
+ * SheetClose - Bouton pour fermer le sheet
+ * 
+ * @param {boolean} asChild - Applique le comportement au composant enfant
+ * @param {string} variant - Style variant (initial|retro|modern|futuristic)
+ * @param {string} color - Couleur (default|primary|secondary|accent)
+ * @param {string} className - Classes CSS supplémentaires
+ */
+
+interface Props {
+  asChild?: boolean;
+  variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
+  color?: 'default' | 'primary' | 'secondary' | 'accent';
+  className?: string;
+  [key: string]: any;
+}
+
+const {
+  asChild = false,
+  variant = 'initial',
+  color = 'default',
+  className = '',
+  ...htmlAttributes
+} = Astro.props as Props;
+
+const variantClass = variant !== 'initial' ? variant : '';
+const colorClass = color !== 'default' ? color : '';
+
+const classes = [
+  'sheet-close',
+  variantClass,
+  colorClass,
+  className,
+].filter(Boolean).join(' ');
+---
+
+{asChild ? (
+  <slot />
+) : (
+  <button
+    type="button"
+    class={classes}
+    data-sheet-close
+    aria-label="Close sheet"
+    {...htmlAttributes}
+  >
+    <slot />
+  </button>
+)}
+
+<style>
+  .sheet-close {
+    cursor: pointer;
+    padding: var(--button-padding-y) var(--button-padding-x);
+    border-radius: var(--button-border-radius);
+    border: var(--button-border-width) solid var(--button-border-color);
+    background: var(--button-bg);
+    color: var(--button-color);
+    font-size: var(--button-font-size);
+    font-weight: var(--button-font-weight);
+    transition: all 0.2s ease;
+  }
+
+  .sheet-close:hover {
+    background: var(--button-hover-bg);
+    color: var(--button-hover-color);
+  }
+
+  .sheet-close:focus-visible {
+    outline: 2px solid var(--button-focus-ring);
+    outline-offset: 2px;
+  }
+</style>

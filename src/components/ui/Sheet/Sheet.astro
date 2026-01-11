@@ -1,0 +1,41 @@
+---
+/**
+ * Sheet - Composant racine pour panneau coulissant
+ * 
+ * Panneau coulissant qui s'ouvre depuis le bord de l'écran.
+ * Construit au-dessus du Dialog component pour accessibilité.
+ * 
+ * @param {string} variant - Style variant (initial|retro|modern|futuristic)
+ * @param {string} className - Classes CSS supplémentaires
+ */
+
+interface Props {
+  variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
+  className?: string;
+  [key: string]: any;
+}
+
+const {
+  variant = 'initial',
+  className = '',
+  ...htmlAttributes
+} = Astro.props as Props;
+
+const variantClass = variant !== 'initial' ? `sheet-${variant}` : '';
+
+const classes = [
+  'sheet',
+  variantClass,
+  className,
+].filter(Boolean).join(' ');
+---
+
+<div class={classes} data-sheet {...htmlAttributes}>
+  <slot />
+</div>
+
+<style>
+  .sheet {
+    position: relative;
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+/**
+ * SheetContent - Contenu du panneau coulissant
+ * 
+ * @param {string} side - Côté d'ouverture (top|right|bottom|left)
+ * @param {string} variant - Style variant (initial|retro|modern|futuristic)
+ * @param {string} className - Classes CSS supplémentaires
+ */
+
+interface Props {
+  side?: 'top' | 'right' | 'bottom' | 'left';
+  variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
+  className?: string;
+  [key: string]: any;
+}
+
+const {
+  side = 'right',
+  variant = 'initial',
+  className = '',
+  ...htmlAttributes
+} = Astro.props as Props;
+
+const variantClass = variant !== 'initial' ? `sheet-${variant}` : '';
+const sideClass = `sheet-content-${side}`;
+
+const classes = [
+  'sheet-content',
+  sideClass,
+  variantClass,
+  className,
+].filter(Boolean).join(' ');
+---
+
+<div
+  class="sheet-overlay"
+  data-sheet-overlay
+  aria-hidden="true"
+></div>
+
+<div
+  class={classes}
+  data-sheet-content
+  data-side={side}
+  role="dialog"
+  aria-modal="true"
+  tabindex="-1"
+  {...htmlAttributes}
+>
+  <slot />
+</div>
+
+<style>
+  .sheet-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .sheet-overlay[data-state="open"] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sheet-content {
+    position: fixed;
+    z-index: 51;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  .sheet-content-right {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    border-left: 1px solid var(--color-border);
+    transform: translateX(100%);
+  }
+
+  .sheet-content-right[data-state="open"] {
+    transform: translateX(0);
+  }
+
+  .sheet-content-left {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    border-right: 1px solid var(--color-border);
+    transform: translateX(-100%);
+  }
+
+  .sheet-content-left[data-state="open"] {
+    transform: translateX(0);
+  }
+
+  .sheet-content-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    max-height: 80vh;
+    border-bottom: 1px solid var(--color-border);
+    transform: translateY(-100%);
+  }
+
+  .sheet-content-top[data-state="open"] {
+    transform: translateY(0);
+  }
+
+  .sheet-content-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    max-height: 80vh;
+    border-top: 1px solid var(--color-border);
+    transform: translateY(100%);
+  }
+
+  .sheet-content-bottom[data-state="open"] {
+    transform: translateY(0);
+  }
+
+  @media (min-width: 640px) {
+    .sheet-content-right,
+    .sheet-content-left {
+      max-width: 540px;
+    }
+  }
+</style>

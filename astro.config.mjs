@@ -16,5 +16,8 @@ i18n: {
   routing: {
     prefixDefaultLocale: true
   }
+},
+devToolbar: {
+  enabled: false
 }
 });

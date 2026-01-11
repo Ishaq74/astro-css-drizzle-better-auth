@@ -1,0 +1,44 @@
+---
+/**
+ * SheetFooter - Pied de page du sheet
+ * 
+ * @param {string} className - Classes CSS supplémentaires
+ */
+
+interface Props {
+  className?: string;
+  [key: string]: any;
+}
+
+const {
+  className = '',
+  ...htmlAttributes
+} = Astro.props as Props;
+
+const classes = [
+  'sheet-footer',
+  className,
+].filter(Boolean).join(' ');
+---
+
+<div class={classes} {...htmlAttributes}>
+  <slot />
+</div>
+
+<style>
+  .sheet-footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
+  }
+
+  @media (min-width: 640px) {
+    .sheet-footer {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+</style>

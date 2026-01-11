@@ -56,7 +56,7 @@ const currentLocale = Astro.currentLocale || 'fr';
 // Safe fallbacks from site identity
 const htmlLang = lang ?? currentLocale;
 const htmlDir = dir ?? (currentLocale === "ar" ? "rtl" : "ltr");
-const faviconName = favicon ?? "test.ico";
+const faviconName = favicon ?? "../../favicon.svg";
 
 ---
 
