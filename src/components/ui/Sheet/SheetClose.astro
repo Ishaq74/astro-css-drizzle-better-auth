@@ -24,7 +24,8 @@ const classes = [
 ].filter(Boolean).join(' ');
 ---
 
-<label for={htmlFor} class={classes} aria-label="Close sheet" {...htmlAttributes}>
+
+<label for={htmlFor} class={['sheet-close', 'button', 'initial', className].filter(Boolean).join(' ')} tabindex="0" role="button" aria-label="Close sheet" {...htmlAttributes}>
   <slot />
 </label>
 
