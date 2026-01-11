@@ -51,6 +51,7 @@ export const getDocNavConfig = (locale: string, t: any) => [
     items: [
       { label: t.docsSidebar.gallery, href: `/${locale}/docs/components/gallery` },
       { label: t.docsSidebar.slider, href: `/${locale}/docs/components/slider` },
+      { label: t.docsSidebar.sheet, href: `/${locale}/docs/design/sheet` },
     ]
   },
   {
