@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LoginForm from '../../components/auth/LoginForm.astro';
+import Link from '../../components/ui/Link.astro';
+
+const title = 'Connexion';
+const description = 'Connectez-vous à votre compte';
+---
+
+<BaseLayout title={title} description={description} lang="fr">
+  <main class="auth-page">
+    <div class="auth-container">
+      <div class="auth-header">
+        <h1>Connexion</h1>
+        <p class="auth-subtitle">Bienvenue ! Connectez-vous pour continuer</p>
+      </div>
+
+      <LoginForm variant="initial" />
+
+      <div class="auth-footer">
+        <p class="auth-alternate">
+          Pas encore de compte ?
+          <Link href="/fr/inscription" color="primary">S'inscrire</Link>
+        </p>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .auth-page {
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8, 2rem) var(--space-4, 1rem);
+    background: var(--bg-default, #ffffff);
+  }
+
+  .auth-container {
+    width: 100%;
+    max-width: 28rem;
+  }
+
+  .auth-header {
+    text-align: center;
+    margin-bottom: var(--space-8, 2rem);
+  }
+
+  .auth-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary, #111827);
+    margin-bottom: var(--space-2, 0.5rem);
+  }
+
+  .auth-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .auth-footer {
+    margin-top: var(--space-6, 1.5rem);
+    text-align: center;
+  }
+
+  .auth-alternate {
+    font-size: 0.875rem;
+    color: var(--text-secondary, #6b7280);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .auth-page {
+      background: var(--bg-default, #0f172a);
+    }
+
+    .auth-header h1 {
+      color: var(--text-primary, #f9fafb);
+    }
+
+    .auth-subtitle,
+    .auth-alternate {
+      color: var(--text-secondary, #9ca3af);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .auth-header h1 {
+      font-size: 1.75rem;
+    }
+
+    .auth-subtitle {
+      font-size: 0.875rem;
+    }
+  }
+</style>

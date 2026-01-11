@@ -3,6 +3,7 @@ import Brand from './Brand.astro';
 import Navigation from './Navigation.astro';
 import ThemeSwitch from './ThemeSwitch.astro';
 import LangChooser from './LangChooser.astro';
+import Button from '../../ui/Button.astro';
 
 interface Props {
   variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
@@ -22,6 +23,20 @@ const headerClass = [
   fixed && 'header-fixed',
   className
 ].filter(Boolean).join(' ');
+
+// Détecter la langue depuis l'URL
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fr') ? 'fr' : 
+             currentPath.startsWith('/es') ? 'es' :
+             currentPath.startsWith('/ar') ? 'ar' : 'en';
+
+const loginUrl = lang === 'fr' ? '/fr/connexion' : 
+                 lang === 'es' ? '/es/login' :
+                 lang === 'ar' ? '/ar/login' : '/en/login';
+
+const loginText = lang === 'fr' ? 'Connexion' :
+                  lang === 'es' ? 'Iniciar sesión' :
+                  lang === 'ar' ? 'تسجيل الدخول' : 'Login';
 ---
 
 <header class={headerClass}>
@@ -29,6 +44,9 @@ const headerClass = [
     <Brand variant={variant} />
     <Navigation variant={variant} />
     <div class="header-actions">
+      <Button href={loginUrl} color="primary" variant={variant} size="sm">
+        {loginText}
+      </Button>
       <LangChooser variant={variant} />
       <ThemeSwitch variant={variant} />
     </div>

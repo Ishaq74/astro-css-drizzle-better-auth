@@ -1,0 +1,125 @@
+---
+import FormGroup from '../ui/Form/FormGroup.astro';
+import Label from '../ui/Form/Label.astro';
+import Input from '../ui/Form/Input.astro';
+import PasswordInput from '../ui/Form/PasswordInput.astro';
+import Button from '../ui/Button.astro';
+import Alert from '../ui/Alert.astro';
+
+interface Props {
+  variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
+  className?: string;
+}
+
+const { variant = 'initial', className = '' } = Astro.props;
+---
+
+<form class={`auth-form register-form ${className}`} method="post" action="/api/auth/register">
+  <div class="form-content">
+    <FormGroup>
+      <Label htmlFor="username">Pseudo</Label>
+      <Input
+        id="username"
+        name="username"
+        type="text"
+        placeholder="MonPseudo"
+        required
+        variant={variant}
+      />
+    </FormGroup>
+
+    <FormGroup>
+      <Label htmlFor="email">Email</Label>
+      <Input
+        id="email"
+        name="email"
+        type="email"
+        placeholder="exemple@email.com"
+        required
+        variant={variant}
+      />
+    </FormGroup>
+
+    <FormGroup>
+      <Label htmlFor="password">Mot de passe</Label>
+      <PasswordInput
+        id="password"
+        name="password"
+        placeholder="••••••••"
+        required
+        variant={variant}
+      />
+      <small class="field-hint">Au moins 8 caractères</small>
+    </FormGroup>
+
+    <FormGroup>
+      <Label htmlFor="passwordConfirm">Confirmer le mot de passe</Label>
+      <PasswordInput
+        id="passwordConfirm"
+        name="passwordConfirm"
+        placeholder="••••••••"
+        required
+        variant={variant}
+      />
+    </FormGroup>
+
+    <div class="form-actions">
+      <Button type="submit" color="primary" variant={variant} className="submit-button">
+        S'inscrire
+      </Button>
+    </div>
+  </div>
+
+  <!-- Alert placeholders (à gérer avec JS côté client ou Better Auth) -->
+  <div class="alert-container" style="display: none;">
+    <Alert status="error" variant={variant}>
+      <span class="error-message"></span>
+    </Alert>
+  </div>
+
+  <div class="success-container" style="display: none;">
+    <Alert status="success" variant={variant}>
+      <span class="success-message"></span>
+    </Alert>
+  </div>
+</form>
+
+<style>
+  .auth-form {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 1rem);
+  }
+
+  .form-actions {
+    margin-top: var(--space-2, 0.5rem);
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+
+  .field-hint {
+    display: block;
+    margin-top: var(--space-1, 0.25rem);
+    font-size: 0.75rem;
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .alert-container,
+  .success-container {
+    margin-top: var(--space-4, 1rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .field-hint {
+      color: var(--text-secondary, #9ca3af);
+    }
+  }
+</style>
