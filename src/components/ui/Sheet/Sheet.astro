@@ -3,9 +3,9 @@
  * Sheet - Composant racine pour panneau coulissant (Pure CSS)
  * 
  * Panneau coulissant qui s'ouvre depuis le bord de l'écran.
- * Version pure CSS utilisant checkbox + label.
+ * Version pure CSS utilisant checkbox + :has() selector.
  * 
- * @param {string} id - ID unique pour le sheet
+ * @param {string} id - ID unique pour le checkbox
  * @param {string} variant - Style variant (initial|retro|modern|futuristic)
  * @param {string} className - Classes CSS supplémentaires
  */
@@ -33,17 +33,96 @@ const classes = [
 ].filter(Boolean).join(' ');
 ---
 
-<input type="checkbox" id={id} class="sheet-toggle" />
 <div class={classes} {...htmlAttributes}>
+  <input type="checkbox" id={id} class="sheet-toggle" />
   <slot />
 </div>
 
-<style is:global>
+<style>
+  /* Sheet container */
+  .sheet {
+    position: relative;
+  }
+
+  /* Checkbox caché */
   .sheet-toggle {
     display: none;
   }
-  
-  .sheet {
-    position: relative;
+
+  /* Overlay */
+  :global(.sheet-overlay) {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-overlay, rgba(0, 0, 0, 0.5));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-duration, 300ms) var(--transition-timing, ease-in-out);
+    z-index: 9998;
+    cursor: pointer;
+  }
+
+  /* Content de base */
+  :global(.sheet-content) {
+    position: fixed;
+    background-color: var(--color-surface, #ffffff);
+    box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+    transition: transform var(--transition-duration, 300ms) var(--transition-timing, ease-in-out);
+    z-index: 9999;
+    padding: var(--space-4, 1rem);
+    border: 1px solid var(--color-border, #e2e8f0);
+    overflow-y: auto;
+  }
+
+  /* Variantes par side */
+  :global(.sheet-content[data-side="right"]) {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    transform: translateX(100%);
+  }
+
+  :global(.sheet-content[data-side="left"]) {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    transform: translateX(-100%);
+  }
+
+  :global(.sheet-content[data-side="top"]) {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    max-height: 50vh;
+    transform: translateY(-100%);
+  }
+
+  :global(.sheet-content[data-side="bottom"]) {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    max-height: 50vh;
+    transform: translateY(100%);
+  }
+
+  /* État ouvert avec :has() */
+  .sheet:has(.sheet-toggle:checked) :global(.sheet-overlay) {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sheet:has(.sheet-toggle:checked) :global(.sheet-content) {
+    transform: translate(0);
+  }
+
+  /* Cursor pour trigger et close */
+  :global(.sheet-trigger),
+  :global(.sheet-close) {
+    cursor: pointer;
   }
 </style>

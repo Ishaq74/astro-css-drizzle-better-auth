@@ -2,72 +2,35 @@
 /**
  * SheetClose - Label pour fermer le sheet (Pure CSS)
  * 
- * @param {string} htmlFor - ID du checkbox du sheet
- * @param {string} variant - Style variant (initial|retro|modern|futuristic)
- * @param {string} color - Couleur (default|primary|secondary|accent)
+ * @param {string} htmlFor - ID du checkbox (doit correspondre à Sheet.id)
  * @param {string} className - Classes CSS supplémentaires
  */
 
 interface Props {
   htmlFor: string;
-  variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
-  color?: 'default' | 'primary' | 'secondary' | 'accent';
   className?: string;
   [key: string]: any;
 }
 
 const {
   htmlFor,
-  variant = 'initial',
-  color = 'default',
   className = '',
   ...htmlAttributes
 } = Astro.props as Props;
 
-const variantClass = variant !== 'initial' ? variant : '';
-const colorClass = color !== 'default' ? color : '';
-
 const classes = [
   'sheet-close',
-  variantClass,
-  colorClass,
   className,
 ].filter(Boolean).join(' ');
 ---
 
-<label
-  for={htmlFor}
-  class={classes}
-  aria-label="Close sheet"
-  {...htmlAttributes}
->
+<label for={htmlFor} class={classes} aria-label="Close sheet" {...htmlAttributes}>
   <slot />
 </label>
 
 <style>
   .sheet-close {
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--button-padding-y) var(--button-padding-x);
-    border-radius: var(--button-border-radius);
-    border: var(--button-border-width) solid var(--button-border-color);
-    background: var(--button-bg);
-    color: var(--button-color);
-    font-size: var(--button-font-size);
-    font-weight: var(--button-font-weight);
-    transition: all 0.2s ease;
-    user-select: none;
-  }
-
-  .sheet-close:hover {
-    background: var(--button-hover-bg);
-    color: var(--button-hover-color);
-  }
-
-  .sheet-close:focus-visible {
-    outline: 2px solid var(--button-focus-ring);
-    outline-offset: 2px;
+    display: inline-block;
   }
 </style>
