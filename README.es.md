@@ -72,8 +72,9 @@ npm install
 - astro.config.mjs
 - drizzle-dev.config.ts
 - drizzle-prod.config.ts
-- package-lock.json
 - package.json
+- pnpm-lock.yaml
+- pnpm-workspace.yaml
 - **public**
   - favicon.svg
   - **fonts**
@@ -177,6 +178,15 @@ npm install
       - Link.astro
       - Pagination.astro
       - ProgressBar.astro
+      - **Sheet**
+        - Sheet.astro
+        - SheetClose.astro
+        - SheetContent.astro
+        - SheetDescription.astro
+        - SheetFooter.astro
+        - SheetHeader.astro
+        - SheetTitle.astro
+        - SheetTrigger.astro
       - Skeleton.astro
       - **Slider**
         - Slider.astro
@@ -258,6 +268,7 @@ npm install
           - index.astro
           - kbd.astro
           - link.astro
+          - sheet.astro
           - switch.astro
           - table.astro
           - tabs.astro
@@ -297,6 +308,7 @@ npm install
           - index.astro
           - kbd.astro
           - link.astro
+          - sheet.astro
           - switch.astro
           - table.astro
           - tabs.astro
