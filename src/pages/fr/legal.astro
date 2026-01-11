@@ -327,7 +327,8 @@ import BaseLayout from '@layouts/BaseLayout.astro';
     </div>
 </section>
 </BaseLayout>
-<style>
+
+<style is:inline>
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   #faq-1720 {
@@ -642,7 +643,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 }
 </style>
 
-<script type="module">
+<script type="module" is:inline>
     const faqItems = Array.from(document.querySelectorAll('.cs-faq-item'));
         for (const item of faqItems) {
             const onClick = () => {

@@ -1,11 +1,18 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { getDrizzle } from "@database/drizzle";
+import { username } from "better-auth/plugins/username";
 
 export async function getAuth() {
   const db = await getDrizzle();
   return betterAuth({
     database: drizzleAdapter(db, { provider: "pg" }),
+    emailAndPassword: {
+      enabled: true,
+    },
+    plugins: [
+      username()
+    ]
   });
 }
 
@@ -27,6 +34,12 @@ if (url) {
   const db = drizzle(client, { schema });
   auth = betterAuth({
     database: drizzleAdapterSync(db, { provider: "pg" }),
+    emailAndPassword: {
+      enabled: true,
+    },
+    plugins: [
+      username()
+    ]
   });
 }
 

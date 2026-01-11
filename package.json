@@ -19,11 +19,11 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
-    "@astrojs/vercel": "^8.0.4",
+    "@astrojs/vercel": "^9.0.3",
     "@iconify-json/circle-flags": "^1.2.10",
     "@iconify-json/mdi": "^1.2.3",
-    "@iconify-json/openmoji": "^1.2.19",
-    "astro": "^5.16.6",
+    "@iconify-json/openmoji": "^1.2.20",
+    "astro": "^5.16.8",
     "astro-font": "^1.1.0",
     "astro-icon": "^1.1.5",
     "better-auth": "^1.4.10",
@@ -31,12 +31,14 @@
     "drizzle-orm": "^0.45.1",
     "nodemailer": "^7.0.12",
     "pg": "^8.16.3",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "@babel/preset-typescript": "^7.28.5"
   },
   "devDependencies": {
-    "@types/nodemailer": "^7.0.4",
+    "@types/nodemailer": "^7.0.5",
     "@types/pg": "^8.16.0",
     "drizzle-kit": "^0.31.8",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "@better-auth/cli": "^1.4.10"
   }
 }

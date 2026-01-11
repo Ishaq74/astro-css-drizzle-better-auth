@@ -13,6 +13,13 @@
       "when": 1768058293974,
       "tag": "0001_famous_tarantula",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1768146437478,
+      "tag": "0002_ambitious_lady_ursula",
+      "breakpoints": true
     }
   ]
 }
