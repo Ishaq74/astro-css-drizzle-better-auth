@@ -1,21 +1,24 @@
 ---
 /**
- * Sheet - Composant racine pour panneau coulissant
+ * Sheet - Composant racine pour panneau coulissant (Pure CSS)
  * 
  * Panneau coulissant qui s'ouvre depuis le bord de l'écran.
- * Construit au-dessus du Dialog component pour accessibilité.
+ * Version pure CSS utilisant checkbox + label.
  * 
+ * @param {string} id - ID unique pour le sheet
  * @param {string} variant - Style variant (initial|retro|modern|futuristic)
  * @param {string} className - Classes CSS supplémentaires
  */
 
 interface Props {
+  id: string;
   variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
   className?: string;
   [key: string]: any;
 }
 
 const {
+  id,
   variant = 'initial',
   className = '',
   ...htmlAttributes
@@ -30,11 +33,16 @@ const classes = [
 ].filter(Boolean).join(' ');
 ---
 
-<div class={classes} data-sheet {...htmlAttributes}>
+<input type="checkbox" id={id} class="sheet-toggle" />
+<div class={classes} {...htmlAttributes}>
   <slot />
 </div>
 
-<style>
+<style is:global>
+  .sheet-toggle {
+    display: none;
+  }
+  
   .sheet {
     position: relative;
   }

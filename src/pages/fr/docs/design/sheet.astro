@@ -19,28 +19,29 @@ import TableCell from '@components/ui/Table/TableCell.astro';
 
 <DocLayout 
   title="Panneau Sheet" 
-  description="Un composant de panneau coulissant qui apparaît depuis le bord de l'écran, parfait pour la navigation, les formulaires et le contenu détaillé."
+  description="Un composant de panneau coulissant en pur CSS qui apparaît depuis le bord de l'écran."
   variant="initial"
 >
-  <script src="@components/ui/Sheet/sheet.ts"></script>
-
   <section>
     <h2>Vue d'ensemble</h2>
     <p>
-      Le composant Sheet crée un panneau coulissant accessible qui se superpose à votre contenu. 
-      Il prend en charge plusieurs côtés (haut, droite, bas, gauche), la navigation au clavier, 
-      le piégeage du focus et fonctionne parfaitement avec les tokens de votre système de design.
+      Le composant Sheet crée un panneau coulissant accessible en <strong>pur CSS</strong>, sans JavaScript. 
+      Il utilise un checkbox caché et la pseudo-classe <code>:has()</code> pour gérer l'état ouvert/fermé. 
+      Supporte plusieurs côtés (haut, droite, bas, gauche) et fonctionne parfaitement avec les tokens de votre système de design.
+    </p>
+    <p>
+      <strong>🎉 Zéro JavaScript !</strong> Tout fonctionne avec CSS moderne uniquement.
     </p>
   </section>
 
   <section>
     <h2>Utilisation de base</h2>
     <div class="example">
-      <SheetComponent>
-        <SheetTrigger>
+      <SheetComponent id="sheet-demo-1">
+        <SheetTrigger htmlFor="sheet-demo-1">
           <Button>Ouvrir le Sheet</Button>
         </SheetTrigger>
-        <SheetContent side="right">
+        <SheetContent side="right" sheetId="sheet-demo-1">
           <SheetHeader>
             <SheetTitle>Titre du Sheet</SheetTitle>
             <SheetDescription>
@@ -51,7 +52,7 @@ import TableCell from '@components/ui/Table/TableCell.astro';
             <p>Votre contenu va ici...</p>
           </div>
           <SheetFooter>
-            <SheetClose>
+            <SheetClose htmlFor="sheet-demo-1">
               <Button>Fermer</Button>
             </SheetClose>
           </SheetFooter>
@@ -64,11 +65,11 @@ import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescri
 import Button from '@components/ui/Button.astro';
 ---
 
-<SheetComponent>
-  <SheetTrigger>
+<SheetComponent id="my-sheet">
+  <SheetTrigger htmlFor="my-sheet">
     <Button>Ouvrir le Sheet</Button>
   </SheetTrigger>
-  <SheetContent side="right">
+  <SheetContent side="right" sheetId="my-sheet">
     <SheetHeader>
       <SheetTitle>Titre du Sheet</SheetTitle>
       <SheetDescription>
@@ -79,7 +80,7 @@ import Button from '@components/ui/Button.astro';
       <p>Votre contenu va ici...</p>
     </div>
     <SheetFooter>
-      <SheetClose>
+      <SheetClose htmlFor="my-sheet">
         <Button>Fermer</Button>
       </SheetClose>
     </SheetFooter>
@@ -100,10 +101,56 @@ import Button from '@components/ui/Button.astro';
       </TableHeader>
       <TableBody>
         <TableRow>
+          <TableCell><code>id</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell><strong>Requis</strong> - ID unique pour le checkbox caché</TableCell>
+        </TableRow>
+        <TableRow>
           <TableCell><code>variant</code></TableCell>
           <TableCell>'initial' | 'retro' | 'modern' | 'futuristic'</TableCell>
           <TableCell>'initial'</TableCell>
           <TableCell>Variante de style visuel</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>className</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>''</TableCell>
+          <TableCell>Classes CSS supplémentaires</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </section>
+
+  <section>
+    <h2>Props de SheetTrigger & SheetClose</h2>
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Défaut</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>htmlFor</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell><strong>Requis</strong> - ID du checkbox (même que Sheet.id)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>variant</code></TableCell>
+          <TableCell>'initial' | 'retro' | 'modern' | 'futuristic'</TableCell>
+          <TableCell>'initial'</TableCell>
+          <TableCell>Variante de style visuel</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell><code>color</code></TableCell>
+          <TableCell>'default' | 'primary' | 'secondary' | 'accent'</TableCell>
+          <TableCell>'default'</TableCell>
+          <TableCell>Couleur du bouton</TableCell>
         </TableRow>
         <TableRow>
           <TableCell><code>className</code></TableCell>
@@ -127,6 +174,12 @@ import Button from '@components/ui/Button.astro';
         </TableRow>
       </TableHeader>
       <TableBody>
+        <TableRow>
+          <TableCell><code>sheetId</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>-</TableCell>
+          <TableCell><strong>Requis</strong> - ID du checkbox (même que Sheet.id)</TableCell>
+        </TableRow>
         <TableRow>
           <TableCell><code>side</code></TableCell>
           <TableCell>'top' | 'right' | 'bottom' | 'left'</TableCell>
@@ -154,11 +207,11 @@ import Button from '@components/ui/Button.astro';
     
     <h3>Côté droit (par défaut)</h3>
     <div class="example">
-      <SheetComponent>
-        <SheetTrigger>
+      <SheetComponent id="sheet-right">
+        <SheetTrigger htmlFor="sheet-right">
           <Button>Ouvrir depuis la droite</Button>
         </SheetTrigger>
-        <SheetContent side="right">
+        <SheetContent side="right" sheetId="sheet-right">
           <SheetHeader>
             <SheetTitle>Sheet droit</SheetTitle>
             <SheetDescription>S'ouvre depuis la droite</SheetDescription>
@@ -166,17 +219,22 @@ import Button from '@components/ui/Button.astro';
           <div style="padding: var(--space-4);">
             <p>Contenu depuis la droite...</p>
           </div>
+          <SheetFooter>
+            <SheetClose htmlFor="sheet-right">
+              <Button>Fermer</Button>
+            </SheetClose>
+          </SheetFooter>
         </SheetContent>
       </SheetComponent>
     </div>
 
     <h3>Côté gauche</h3>
     <div class="example">
-      <SheetComponent>
-        <SheetTrigger>
+      <SheetComponent id="sheet-left">
+        <SheetTrigger htmlFor="sheet-left">
           <Button>Ouvrir depuis la gauche</Button>
         </SheetTrigger>
-        <SheetContent side="left">
+        <SheetContent side="left" sheetId="sheet-left">
           <SheetHeader>
             <SheetTitle>Sheet gauche</SheetTitle>
             <SheetDescription>S'ouvre depuis la gauche</SheetDescription>
@@ -184,17 +242,22 @@ import Button from '@components/ui/Button.astro';
           <div style="padding: var(--space-4);">
             <p>Contenu depuis la gauche...</p>
           </div>
+          <SheetFooter>
+            <SheetClose htmlFor="sheet-left">
+              <Button>Fermer</Button>
+            </SheetClose>
+          </SheetFooter>
         </SheetContent>
       </SheetComponent>
     </div>
 
     <h3>Côté haut</h3>
     <div class="example">
-      <SheetComponent>
-        <SheetTrigger>
+      <SheetComponent id="sheet-top">
+        <SheetTrigger htmlFor="sheet-top">
           <Button>Ouvrir depuis le haut</Button>
         </SheetTrigger>
-        <SheetContent side="top">
+        <SheetContent side="top" sheetId="sheet-top">
           <SheetHeader>
             <SheetTitle>Sheet du haut</SheetTitle>
             <SheetDescription>S'ouvre depuis le haut</SheetDescription>
@@ -202,17 +265,22 @@ import Button from '@components/ui/Button.astro';
           <div style="padding: var(--space-4);">
             <p>Contenu depuis le haut...</p>
           </div>
+          <SheetFooter>
+            <SheetClose htmlFor="sheet-top">
+              <Button>Fermer</Button>
+            </SheetClose>
+          </SheetFooter>
         </SheetContent>
       </SheetComponent>
     </div>
 
     <h3>Côté bas</h3>
     <div class="example">
-      <SheetComponent>
-        <SheetTrigger>
+      <SheetComponent id="sheet-bottom">
+        <SheetTrigger htmlFor="sheet-bottom">
           <Button>Ouvrir depuis le bas</Button>
         </SheetTrigger>
-        <SheetContent side="bottom">
+        <SheetContent side="bottom" sheetId="sheet-bottom">
           <SheetHeader>
             <SheetTitle>Sheet du bas</SheetTitle>
             <SheetDescription>S'ouvre depuis le bas</SheetDescription>
@@ -220,6 +288,11 @@ import Button from '@components/ui/Button.astro';
           <div style="padding: var(--space-4);">
             <p>Contenu depuis le bas...</p>
           </div>
+          <SheetFooter>
+            <SheetClose htmlFor="sheet-bottom">
+              <Button>Fermer</Button>
+            </SheetClose>
+          </SheetFooter>
         </SheetContent>
       </SheetComponent>
     </div>
@@ -228,12 +301,26 @@ import Button from '@components/ui/Button.astro';
   <section>
     <h2>Accessibilité</h2>
     <ul>
-      <li><strong>Navigation au clavier :</strong> La touche ESC ferme le sheet</li>
-      <li><strong>Piège de focus :</strong> La touche Tab fait défiler les éléments focusables dans le sheet</li>
+      <li><strong>Pure CSS :</strong> Aucun JavaScript requis, fonctionne même si JS est désactivé</li>
+      <li><strong>Checkbox pattern :</strong> Utilise un input checkbox caché + label pour l'état</li>
+      <li><strong>Pseudo-classe :has() :</strong> CSS moderne pour détecter l'état checked</li>
       <li><strong>Attributs ARIA :</strong> role="dialog", aria-modal="true"</li>
-      <li><strong>Gestion du focus :</strong> Le focus se déplace automatiquement vers le sheet à l'ouverture</li>
+      <li><strong>Fermeture par overlay :</strong> Cliquer sur l'overlay (fond sombre) ferme automatiquement le sheet</li>
       <li><strong>Support des lecteurs d'écran :</strong> Étiquetage approprié avec SheetTitle et SheetDescription</li>
     </ul>
+  </section>
+
+  <section>
+    <h2>Comment ça marche ?</h2>
+    <p>Le Sheet Panel utilise une technique CSS pure ingénieuse :</p>
+    <ol>
+      <li>Un <code>checkbox</code> caché (display: none) stocke l'état ouvert/fermé</li>
+      <li>Le <code>SheetTrigger</code> est un <code>&lt;label&gt;</code> qui coche le checkbox</li>
+      <li>La pseudo-classe <code>:has(.sheet-toggle:checked)</code> détecte l'état</li>
+      <li>Le CSS applique les transformations (translateX/Y) selon l'état</li>
+      <li>Le <code>SheetClose</code> et l'overlay sont des labels qui décochent le checkbox</li>
+    </ol>
+    <p><strong>Avantages :</strong> Zéro JavaScript, performances optimales, fonctionne même avec JS désactivé !</p>
   </section>
 
   <section>

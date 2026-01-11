@@ -1,6 +1,6 @@
 ---
 /**
- * SheetContent - Contenu du panneau coulissant
+ * SheetContent - Contenu du panneau coulissant (Pure CSS)
  * 
  * @param {string} side - Côté d'ouverture (top|right|bottom|left)
  * @param {string} variant - Style variant (initial|retro|modern|futuristic)
@@ -8,6 +8,7 @@
  */
 
 interface Props {
+  sheetId: string;
   side?: 'top' | 'right' | 'bottom' | 'left';
   variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
   className?: string;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const {
+  sheetId,
   side = 'right',
   variant = 'initial',
   className = '',
@@ -32,23 +34,116 @@ const classes = [
 ].filter(Boolean).join(' ');
 ---
 
-<div
-  class="sheet-overlay"
-  data-sheet-overlay
-  aria-hidden="true"
-></div>
+<label class="sheet-overlay" for={sheetId}></label>
 
 <div
   class={classes}
-  data-sheet-content
-  data-side={side}
   role="dialog"
   aria-modal="true"
-  tabindex="-1"
   {...htmlAttributes}
 >
   <slot />
 </div>
+
+<style>
+  /* Overlay - se montre quand le checkbox est coché */
+  .sheet-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+    display: none;
+  }
+
+  /* Quand le checkbox est coché, afficher l'overlay */
+  input[type="checkbox"]:checked ~ .sheet-overlay {
+    opacity: 1;
+    pointer-events: auto;
+    display: block;
+  }
+
+  .sheet-content {
+    position: fixed;
+    z-index: 51;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  /* Right side (default) */
+  .sheet-content-right {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    border-left: 1px solid var(--color-border);
+    transform: translateX(100%);
+  }
+
+  input[type="checkbox"]:checked ~ .sheet-content-right {
+    transform: translateX(0);
+  }
+
+  /* Left side */
+  .sheet-content-left {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    border-right: 1px solid var(--color-border);
+    transform: translateX(-100%);
+  }
+
+  input[type="checkbox"]:checked ~ .sheet-content-left {
+    transform: translateX(0);
+  }
+
+  /* Top side */
+  .sheet-content-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    max-height: 80vh;
+    border-bottom: 1px solid var(--color-border);
+    transform: translateY(-100%);
+  }
+
+  input[type="checkbox"]:checked ~ .sheet-content-top {
+    transform: translateY(0);
+  }
+
+  /* Bottom side */
+  .sheet-content-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    max-height: 80vh;
+    border-top: 1px solid var(--color-border);
+    transform: translateY(100%);
+  }
+
+  input[type="checkbox"]:checked ~ .sheet-content-bottom {
+    transform: translateY(0);
+  }
+
+  @media (min-width: 640px) {
+    .sheet-content-right,
+    .sheet-content-left {
+      max-width: 540px;
+    }
+  }
+</style>
 
 <style>
   .sheet-overlay {

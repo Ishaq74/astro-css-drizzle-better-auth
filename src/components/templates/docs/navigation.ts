@@ -44,6 +44,7 @@ export const getDocNavConfig = (locale: string, t: any) => [
       { label: t.docsSidebar.skeleton, href: `/${locale}/docs/components/skeleton` },
       { label: t.docsSidebar.table, href: `/${locale}/docs/design/table` },
       { label: t.docsSidebar.timeline, href: `/${locale}/docs/components/timeline` },
+      { label: t.docsSidebar.sheet, href: `/${locale}/docs/design/sheet` },
     ]
   },
   {
@@ -51,7 +52,6 @@ export const getDocNavConfig = (locale: string, t: any) => [
     items: [
       { label: t.docsSidebar.gallery, href: `/${locale}/docs/components/gallery` },
       { label: t.docsSidebar.slider, href: `/${locale}/docs/components/slider` },
-      { label: t.docsSidebar.sheet, href: `/${locale}/docs/design/sheet` },
     ]
   },
   {

@@ -1,17 +1,15 @@
 ---
 /**
- * SheetTrigger - Bouton déclencheur pour ouvrir le sheet
+ * SheetTrigger - Label déclencheur pour ouvrir le sheet (Pure CSS)
  * 
- * @param {boolean} asChild - Applique le comportement au composant enfant
- * @param {string} htmlFor - ID du sheet associé
+ * @param {string} htmlFor - ID du checkbox du sheet
  * @param {string} variant - Style variant (initial|retro|modern|futuristic)
  * @param {string} color - Couleur (default|primary|secondary|accent)
  * @param {string} className - Classes CSS supplémentaires
  */
 
 interface Props {
-  asChild?: boolean;
-  htmlFor?: string;
+  htmlFor: string;
   variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
   color?: 'default' | 'primary' | 'secondary' | 'accent';
   className?: string;
@@ -19,7 +17,6 @@ interface Props {
 }
 
 const {
-  asChild = false,
   htmlFor,
   variant = 'initial',
   color = 'default',
@@ -38,23 +35,20 @@ const classes = [
 ].filter(Boolean).join(' ');
 ---
 
-{asChild ? (
+<label
+  for={htmlFor}
+  class={classes}
+  {...htmlAttributes}
+>
   <slot />
-) : (
-  <button
-    type="button"
-    class={classes}
-    data-sheet-trigger
-    data-for={htmlFor}
-    {...htmlAttributes}
-  >
-    <slot />
-  </button>
-)}
+</label>
 
 <style>
   .sheet-trigger {
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: var(--button-padding-y) var(--button-padding-x);
     border-radius: var(--button-border-radius);
     border: var(--button-border-width) solid var(--button-border-color);
@@ -63,6 +57,7 @@ const classes = [
     font-size: var(--button-font-size);
     font-weight: var(--button-font-weight);
     transition: all 0.2s ease;
+    user-select: none;
   }
 
   .sheet-trigger:hover {

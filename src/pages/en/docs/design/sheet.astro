@@ -22,25 +22,23 @@ import TableCell from '@components/ui/Table/TableCell.astro';
   description="A sliding panel component that appears from the edge of the screen, perfect for navigation, forms, and detailed content."
   variant="initial"
 >
-  <script src="@components/ui/Sheet/sheet.ts"></script>
-
   <section>
     <h2>Overview</h2>
     <p>
       The Sheet component creates an accessible sliding panel that overlays your content. 
-      It supports multiple sides (top, right, bottom, left), keyboard navigation, focus trapping, 
-      and works seamlessly with your design system tokens.
+      It's built with pure CSS (no JavaScript), using the checkbox pattern for state management.
+      It supports multiple sides (top, right, bottom, left) and works seamlessly with your design system tokens.
     </p>
   </section>
 
   <section>
     <h2>Basic Usage</h2>
     <div class="example">
-      <SheetComponent>
-        <SheetTrigger>
+      <SheetComponent id="sheet-basic">
+        <SheetTrigger htmlFor="sheet-basic">
           <Button>Open Sheet</Button>
         </SheetTrigger>
-        <SheetContent side="right">
+        <SheetContent side="right" sheetId="sheet-basic">
           <SheetHeader>
             <SheetTitle>Sheet Title</SheetTitle>
             <SheetDescription>
@@ -51,7 +49,7 @@ import TableCell from '@components/ui/Table/TableCell.astro';
             <p>Your content goes here...</p>
           </div>
           <SheetFooter>
-            <SheetClose>
+            <SheetClose htmlFor="sheet-basic">
               <Button>Close</Button>
             </SheetClose>
           </SheetFooter>
@@ -60,15 +58,22 @@ import TableCell from '@components/ui/Table/TableCell.astro';
     </div>
     
     <pre><code class="language-astro">{`---
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter, SheetClose } from '@components/ui/Sheet';
+import SheetComponent from '@components/ui/Sheet/Sheet.astro';
+import SheetTrigger from '@components/ui/Sheet/SheetTrigger.astro';
+import SheetContent from '@components/ui/Sheet/SheetContent.astro';
+import SheetHeader from '@components/ui/Sheet/SheetHeader.astro';
+import SheetTitle from '@components/ui/Sheet/SheetTitle.astro';
+import SheetDescription from '@components/ui/Sheet/SheetDescription.astro';
+import SheetFooter from '@components/ui/Sheet/SheetFooter.astro';
+import SheetClose from '@components/ui/Sheet/SheetClose.astro';
 import Button from '@components/ui/Button.astro';
 ---
 
-<SheetComponent>
-  <SheetTrigger>
+<SheetComponent id="my-sheet">
+  <SheetTrigger htmlFor="my-sheet">
     <Button>Open Sheet</Button>
   </SheetTrigger>
-  <SheetContent side="right">
+  <SheetContent side="right" sheetId="my-sheet">
     <SheetHeader>
       <SheetTitle>Sheet Title</SheetTitle>
       <SheetDescription>
@@ -79,12 +84,26 @@ import Button from '@components/ui/Button.astro';
       <p>Your content goes here...</p>
     </div>
     <SheetFooter>
-      <SheetClose>
+      <SheetClose htmlFor="my-sheet">
         <Button>Close</Button>
       </SheetClose>
     </SheetFooter>
   </SheetContent>
 </SheetComponent>`}</code></pre>
+  </section>
+
+  <section>
+    <h2>How it Works</h2>
+    <p>
+      The Sheet component uses a pure CSS approach with a hidden checkbox to manage open/closed state:
+    </p>
+    <ul>
+      <li><strong>Checkbox State:</strong> A hidden <code>&lt;input type="checkbox"&gt;</code> controls the sheet state</li>
+      <li><strong>Label Trigger:</strong> <code>&lt;SheetTrigger htmlFor="..."&gt;</code> uses a <code>&lt;label&gt;</code> to toggle the checkbox</li>
+      <li><strong>CSS Selectors:</strong> <code>input:checked ~ .sheet-content</code> shows the sheet when checkbox is checked</li>
+      <li><strong>Overlay Close:</strong> Clicking the overlay (also a <code>&lt;label&gt;</code>) unchecks the checkbox</li>
+      <li><strong>No JavaScript:</strong> Everything works with CSS sibling selectors and the <code>:checked</code> pseudo-class</li>
+    </ul>
   </section>
 
   <section>
@@ -99,6 +118,12 @@ import Button from '@components/ui/Button.astro';
         </TableRow>
       </TableHeader>
       <TableBody>
+        <TableRow>
+          <TableCell><code>id</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>required</TableCell>
+          <TableCell>Unique ID for checkbox binding</TableCell>
+        </TableRow>
         <TableRow>
           <TableCell><code>variant</code></TableCell>
           <TableCell>'initial' | 'retro' | 'modern' | 'futuristic'</TableCell>
@@ -116,6 +141,28 @@ import Button from '@components/ui/Button.astro';
   </section>
 
   <section>
+    <h2>SheetTrigger Props</h2>
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Default</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>htmlFor</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>required</TableCell>
+          <TableCell>ID of the checkbox (must match Sheet id)</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </section>
+
+  <section>
     <h2>SheetContent Props</h2>
     <Table>
       <TableHeader>
@@ -127,6 +174,12 @@ import Button from '@components/ui/Button.astro';
         </TableRow>
       </TableHeader>
       <TableBody>
+        <TableRow>
+          <TableCell><code>sheetId</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>required</TableCell>
+          <TableCell>ID for overlay label (must match Sheet id)</TableCell>
+        </TableRow>
         <TableRow>
           <TableCell><code>side</code></TableCell>
           <TableCell>'top' | 'right' | 'bottom' | 'left'</TableCell>
@@ -150,15 +203,37 @@ import Button from '@components/ui/Button.astro';
   </section>
 
   <section>
+    <h2>SheetClose Props</h2>
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Default</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell><code>htmlFor</code></TableCell>
+          <TableCell>string</TableCell>
+          <TableCell>required</TableCell>
+          <TableCell>ID of the checkbox (must match Sheet id)</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </section>
+
+  <section>
     <h2>Side Variations</h2>
     
     <h3>Right Side (Default)</h3>
     <div class="example">
-      <SheetComponent>
-        <SheetTrigger>
+      <SheetComponent id="sheet-right">
+        <SheetTrigger htmlFor="sheet-right">
           <Button>Open from Right</Button>
         </SheetTrigger>
-        <SheetContent side="right">
+        <SheetContent side="right" sheetId="sheet-right">
           <SheetHeader>
             <SheetTitle>Right Sheet</SheetTitle>
             <SheetDescription>Opens from the right side</SheetDescription>
@@ -172,11 +247,11 @@ import Button from '@components/ui/Button.astro';
 
     <h3>Left Side</h3>
     <div class="example">
-      <SheetComponent>
-        <SheetTrigger>
+      <SheetComponent id="sheet-left">
+        <SheetTrigger htmlFor="sheet-left">
           <Button>Open from Left</Button>
         </SheetTrigger>
-        <SheetContent side="left">
+        <SheetContent side="left" sheetId="sheet-left">
           <SheetHeader>
             <SheetTitle>Left Sheet</SheetTitle>
             <SheetDescription>Opens from the left side</SheetDescription>
@@ -190,11 +265,11 @@ import Button from '@components/ui/Button.astro';
 
     <h3>Top Side</h3>
     <div class="example">
-      <SheetComponent>
-        <SheetTrigger>
+      <SheetComponent id="sheet-top">
+        <SheetTrigger htmlFor="sheet-top">
           <Button>Open from Top</Button>
         </SheetTrigger>
-        <SheetContent side="top">
+        <SheetContent side="top" sheetId="sheet-top">
           <SheetHeader>
             <SheetTitle>Top Sheet</SheetTitle>
             <SheetDescription>Opens from the top</SheetDescription>
@@ -208,11 +283,11 @@ import Button from '@components/ui/Button.astro';
 
     <h3>Bottom Side</h3>
     <div class="example">
-      <SheetComponent>
-        <SheetTrigger>
+      <SheetComponent id="sheet-bottom">
+        <SheetTrigger htmlFor="sheet-bottom">
           <Button>Open from Bottom</Button>
         </SheetTrigger>
-        <SheetContent side="bottom">
+        <SheetContent side="bottom" sheetId="sheet-bottom">
           <SheetHeader>
             <SheetTitle>Bottom Sheet</SheetTitle>
             <SheetDescription>Opens from the bottom</SheetDescription>
@@ -228,11 +303,11 @@ import Button from '@components/ui/Button.astro';
   <section>
     <h2>Accessibility</h2>
     <ul>
-      <li><strong>Keyboard Navigation:</strong> ESC key closes the sheet</li>
-      <li><strong>Focus Trap:</strong> Tab key cycles through focusable elements within the sheet</li>
-      <li><strong>ARIA Attributes:</strong> role="dialog", aria-modal="true"</li>
-      <li><strong>Focus Management:</strong> Focus automatically moves to sheet when opened</li>
+      <li><strong>Pure CSS:</strong> No JavaScript required for basic functionality</li>
+      <li><strong>Semantic HTML:</strong> Uses native checkbox and label elements</li>
+      <li><strong>Keyboard Navigation:</strong> Tab key works naturally with labels and focusable content</li>
       <li><strong>Screen Reader Support:</strong> Proper labeling with SheetTitle and SheetDescription</li>
+      <li><strong>Click Outside to Close:</strong> Clicking the overlay closes the sheet</li>
     </ul>
   </section>
 

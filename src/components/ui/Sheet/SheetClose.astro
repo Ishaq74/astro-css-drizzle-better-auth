@@ -1,15 +1,15 @@
 ---
 /**
- * SheetClose - Bouton pour fermer le sheet
+ * SheetClose - Label pour fermer le sheet (Pure CSS)
  * 
- * @param {boolean} asChild - Applique le comportement au composant enfant
+ * @param {string} htmlFor - ID du checkbox du sheet
  * @param {string} variant - Style variant (initial|retro|modern|futuristic)
  * @param {string} color - Couleur (default|primary|secondary|accent)
  * @param {string} className - Classes CSS supplémentaires
  */
 
 interface Props {
-  asChild?: boolean;
+  htmlFor: string;
   variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
   color?: 'default' | 'primary' | 'secondary' | 'accent';
   className?: string;
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const {
-  asChild = false,
+  htmlFor,
   variant = 'initial',
   color = 'default',
   className = '',
@@ -35,23 +35,21 @@ const classes = [
 ].filter(Boolean).join(' ');
 ---
 
-{asChild ? (
+<label
+  for={htmlFor}
+  class={classes}
+  aria-label="Close sheet"
+  {...htmlAttributes}
+>
   <slot />
-) : (
-  <button
-    type="button"
-    class={classes}
-    data-sheet-close
-    aria-label="Close sheet"
-    {...htmlAttributes}
-  >
-    <slot />
-  </button>
-)}
+</label>
 
 <style>
   .sheet-close {
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: var(--button-padding-y) var(--button-padding-x);
     border-radius: var(--button-border-radius);
     border: var(--button-border-width) solid var(--button-border-color);
@@ -60,6 +58,7 @@ const classes = [
     font-size: var(--button-font-size);
     font-weight: var(--button-font-weight);
     transition: all 0.2s ease;
+    user-select: none;
   }
 
   .sheet-close:hover {
