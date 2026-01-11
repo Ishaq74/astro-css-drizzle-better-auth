@@ -1,0 +1,144 @@
+---
+import Avatar from '../../ui/Avatar/Avatar.astro';
+import Dropdown from '../../ui/Dropdown.astro';
+import Link from '../../ui/Link.astro';
+
+interface Props {
+  variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
+  lang?: string;
+}
+
+const { variant = 'initial', lang = 'en' } = Astro.props;
+
+// Détecter la langue depuis l'URL si non fournie
+const currentPath = Astro.url.pathname;
+const detectedLang = lang || (
+  currentPath.startsWith('/fr') ? 'fr' : 
+  currentPath.startsWith('/es') ? 'es' :
+  currentPath.startsWith('/ar') ? 'ar' : 'en'
+);
+
+// Routes multilingues
+const loginRoute = `/${detectedLang}/${detectedLang === 'fr' ? 'connexion' : 'login'}`;
+// const registerRoute = `/${detectedLang}/${detectedLang === 'fr' ? 'inscription' : 'register'}`;
+const profileRoute = `/${detectedLang}/${detectedLang === 'fr' ? 'profil' : 'profile'}`;
+
+
+// Chargement dynamique des traductions depuis src/i18n
+let t = {
+  login: 'Login',
+  register: 'Sign up',
+  profile: 'My profile',
+  logout: 'Log out',
+};
+try {
+  // @ts-ignore
+  t = (await import(`../../../i18n/${detectedLang}.json`)).default.user || t;
+} catch (e) {
+  // fallback en
+  try {
+    // @ts-ignore
+    t = (await import(`../../../i18n/en.json`)).default.user || t;
+  } catch {}
+}
+
+// TODO: Récupérer l'utilisateur depuis Better Auth
+// const currentUser = Astro.locals.user;
+// Pour le visuel, mock user (remplace null par un objet pour voir le menu connecté)
+const currentUser = {
+  name: 'Jane Doe',
+  avatar: '/images/default-avatar.png',
+};
+---
+
+{currentUser ? (
+  <Dropdown
+    variant={variant}
+    triggerLabel={currentUser.name}
+    triggerIcon={<Avatar src={currentUser.avatar} alt={currentUser.name} size="sm" />}
+    items={[{
+      label: t.profile,
+      href: profileRoute,
+    },
+    {
+      label: t.logout,
+      value: 'logout',
+      icon: 'logout',
+    }]}
+  />
+) : (
+  <div class="user-auth-links">
+    <Link href={loginRoute} style="button" color="primary" variant={variant}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      {t.login}
+    </Link>
+  </div>
+)}
+
+<script type="module">
+    const SELECTOR = "[data-user-logout-button]";
+    const INIT_ATTR = "data-logout-bound";
+
+    const navigateTo = (target) => {
+        if (target && typeof target === "string" && target.startsWith("/")) {
+            window.location.assign(target);
+        } else {
+            window.location.reload();
+        }
+    };
+
+    const handleSignOut = async (button) => {
+        const redirectTarget = button.getAttribute("data-redirect") || "/";
+        button.disabled = true;
+        button.dataset.state = "loading";
+
+        try {
+            const response = await fetch("/api/auth/sign-out", {
+                method: "POST",
+                headers: {
+                    "accept": "application/json",
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({}),
+                credentials: "include",
+            });
+
+            if (!response.ok) {
+                const payload = await response.json().catch(() => ({}));
+                const message = typeof payload?.message === "string" ? payload.message : "Logout failed";
+                throw new Error(message);
+            }
+
+            navigateTo(redirectTarget);
+        } catch (error) {
+            console.error("Sign-out failed", error);
+            button.disabled = false;
+            button.dataset.state = "error";
+        }
+    };
+
+    const initLogoutButtons = () => {
+        document.querySelectorAll(SELECTOR).forEach((node) => {
+            const button = node instanceof HTMLButtonElement ? node : null;
+            if (!button || button.getAttribute(INIT_ATTR) === "true") return;
+            button.setAttribute(INIT_ATTR, "true");
+
+            button.addEventListener("click", (event) => {
+                event.preventDefault();
+                if (button.disabled) return;
+                handleSignOut(button);
+            });
+        });
+    };
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initLogoutButtons, { once: true });
+    } else {
+        initLogoutButtons();
+    }
+
+    document.addEventListener("astro:after-swap", initLogoutButtons);
+</script>
