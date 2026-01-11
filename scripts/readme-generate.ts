@@ -29,12 +29,12 @@ async function generateReadmeForLang(lang: Lang) {
   mainContent += t.features[lang].join('\n') + '\n\n';
 
   mainContent += `## ${t.sections.techStack[lang]}\n\n`;
-  mainContent += await generateDeps(lang) + '\n\n';
+  mainContent += await generateDeps() + '\n\n';
 
   mainContent += `## ${t.sections.installation[lang]}\n\n`;
   mainContent += '```bash\n';
   mainContent += 'npm install\n';
-  mainContent += await generateScripts(lang, t);
+  mainContent += await generateScripts();
   mainContent += '```\n\n';
 
   mainContent += await generateStructure(lang, t);
@@ -48,7 +48,7 @@ async function generateReadmeForLang(lang: Lang) {
   mainContent += await generateDatabase(lang, t);
 
   mainContent += `\n## ${t.sections.env[lang]}\n\n`;
-  mainContent += await generateEnv(lang) + '\n';
+  mainContent += await generateEnv() + '\n';
 
   mainContent += `\n${await generateStyles(lang, t)}`;
 
