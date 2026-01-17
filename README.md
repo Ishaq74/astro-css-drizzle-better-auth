@@ -33,11 +33,11 @@ This project demonstrates a full-stack web application using modern technologies
 ## Tech Stack
 
 - **@astrojs/check**: `^0.9.6`
-- **@astrojs/vercel**: `^8.0.4`
+- **@astrojs/vercel**: `^9.0.3`
 - **@iconify-json/circle-flags**: `^1.2.10`
 - **@iconify-json/mdi**: `^1.2.3`
-- **@iconify-json/openmoji**: `^1.2.19`
-- **astro**: `^5.16.6`
+- **@iconify-json/openmoji**: `^1.2.20`
+- **astro**: `^5.16.8`
 - **astro-font**: `^1.1.0`
 - **astro-icon**: `^1.1.5`
 - **better-auth**: `^1.4.10`
@@ -46,6 +46,7 @@ This project demonstrates a full-stack web application using modern technologies
 - **nodemailer**: `^7.0.12`
 - **pg**: `^8.16.3`
 - **typescript**: `^5.9.3`
+- **@babel/preset-typescript**: `^7.28.5`
 
 ## Installation
 
@@ -109,6 +110,9 @@ npm install
   - readme-generate.ts
 - **src**
   - **components**
+    - **auth**
+      - LoginForm.astro
+      - RegisterForm.astro
     - **templates**
       - **docs**
         - MainDoc.astro
@@ -123,6 +127,7 @@ npm install
         - LangChooser.astro
         - Navigation.astro
         - ThemeSwitch.astro
+        - User.astro
     - **ui**
       - **Accordion**
         - Accordion.astro
@@ -176,6 +181,7 @@ npm install
       - Gallery.astro
       - Kbd.astro
       - Link.astro
+      - MenuDropdown.astro
       - Pagination.astro
       - ProgressBar.astro
       - **Sheet**
@@ -214,9 +220,11 @@ npm install
     - **migrations**
       - 0000_loving_blue_blade.sql
       - 0001_famous_tarantula.sql
+      - 0002_ambitious_lady_ursula.sql
       - **meta**
         - 0000_snapshot.json
         - 0001_snapshot.json
+        - 0002_snapshot.json
         - _journal.json
     - **schemas**
       - auth-schema.ts
@@ -268,6 +276,7 @@ npm install
           - index.astro
           - kbd.astro
           - link.astro
+          - menudropdown.astro
           - sheet.astro
           - switch.astro
           - table.astro
@@ -282,9 +291,11 @@ npm install
           - header.astro
           - table-of-contents.astro
       - index.astro
+      - login.astro
     - **es**
       - index.astro
     - **fr**
+      - connexion.astro
       - **docs**
         - **components**
           - accordion.astro
@@ -308,6 +319,7 @@ npm install
           - index.astro
           - kbd.astro
           - link.astro
+          - menudropdown.astro
           - sheet.astro
           - switch.astro
           - table.astro
@@ -363,12 +375,13 @@ Better Auth is configured with plugins for OAuth, session management, and more.
   - Table _user_ (const _user_)
     - Champ : _id_ `(text)`
     - Champ : _name_ `(text)`
-    - Champ : _pseudo_ `(text)`
     - Champ : _email_ `(text)`
     - Champ : _emailVerified_ `(boolean)`
     - Champ : _image_ `(text)`
     - Champ : _createdAt_ `(timestamp)`
     - Champ : _updatedAt_ `(timestamp)`
+    - Champ : _username_ `(text)`
+    - Champ : _displayUsername_ `(text)`
   - Table _account_ (const _account_)
     - Champ : _id_ `(text)`
     - Champ : _accountId_ `(text)`

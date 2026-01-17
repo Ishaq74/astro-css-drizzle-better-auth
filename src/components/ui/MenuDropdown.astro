@@ -1,0 +1,88 @@
+---
+// MenuDropdown.astro – UI component, design system compliant
+interface MenuDropdownItem {
+  label: string;
+  icon?: string;
+  href?: string;
+  disabled?: boolean;
+  children?: MenuDropdownItem[];
+}
+interface Props {
+  items: MenuDropdownItem[];
+  variant?: 'initial' | 'retro' | 'modern' | 'futuristic';
+  position?: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
+  triggerLabel?: string;
+  triggerIcon?: string;
+  className?: string;
+}
+const {
+  items,
+  variant = 'initial',
+  position = 'bottom-left',
+  triggerLabel = 'Menu',
+  triggerIcon,
+  className = '',
+} = Astro.props as Props;
+const dropdownClass = [
+  'dropdown',
+  variant !== 'initial' && `dropdown-${variant}`,
+  position && `dropdown-${position}`,
+  className,
+].filter(Boolean).join(' ');
+---
+
+<nav class={dropdownClass} aria-label="Dropdown menu">
+  <details>
+    <summary class="dropdown-trigger" aria-haspopup="menu" aria-expanded="false" tabindex="0">
+      {triggerIcon && <span class="trigger-icon">{triggerIcon}</span>}
+      <span class="trigger-label">{triggerLabel}</span>
+      <span class="trigger-arrow">▼</span>
+    </summary>
+    <ul class="dropdown-menu" role="menu">
+      {items.map((item) => (
+        item.children && item.children.length > 0 ? (
+          <li class="dropdown-submenu" role="none">
+            <details>
+              <summary class="dropdown-item has-submenu" aria-haspopup="menu" aria-expanded="false" tabindex="0">
+                {item.icon && <span class="item-icon">{item.icon}</span>}
+                <span class="item-label">{item.label}</span>
+                <span class="submenu-arrow">▶</span>
+              </summary>
+              <ul class="submenu-content" role="menu">
+                {item.children.map((child) => (
+                  <li role="none">
+                    {child.href ? (
+                      <a href={child.href} class="dropdown-item" role="menuitem" tabindex="0" rel={child.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                        {child.icon && <span class="item-icon">{child.icon}</span>}
+                        <span class="item-label">{child.label}</span>
+                      </a>
+                    ) : (
+                      <span class="dropdown-item" role="menuitem" tabindex="0">
+                        {child.icon && <span class="item-icon">{child.icon}</span>}
+                        <span class="item-label">{child.label}</span>
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </details>
+          </li>
+        ) : item.href ? (
+          <li role="none">
+            <a href={item.href} class="dropdown-item" role="menuitem" tabindex="0" rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+              {item.icon && <span class="item-icon">{item.icon}</span>}
+              <span class="item-label">{item.label}</span>
+            </a>
+          </li>
+        ) : (
+          <li role="none">
+            <span class="dropdown-item" role="menuitem" tabindex="0">
+              {item.icon && <span class="item-icon">{item.icon}</span>}
+              <span class="item-label">{item.label}</span>
+            </span>
+          </li>
+        )
+      ))}
+    </ul>
+  </details>
+</nav>

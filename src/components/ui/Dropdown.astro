@@ -168,11 +168,10 @@ const getLevel2RadioName = (parentId: string) => `${dropdownId}-level2-${parentI
   </div>
 </div>
 
-<script is:inline define:vars={{ dropdownId, openOnHover }}>
-  // Script pour la détection de collision avec les bords de l'écran
-  if (typeof window !== 'undefined') {
-    // Ensure dropdownId is defined
-    const dropdown = document.querySelector(`#${dropdownId}`)?.closest('.dropdown');
+<script is:inline type="module" define:vars={{ dropdownId, openOnHover }}>
+  // dropdownId is provided by Astro via `define:vars` — silence TS/IDE parsing
+  // @ts-ignore
+  const dropdown = document.querySelector(`#${dropdownId}`)?.closest('.dropdown');
     if (!dropdown) return;
     
     const menu = dropdown.querySelector('.dropdown-menu');
