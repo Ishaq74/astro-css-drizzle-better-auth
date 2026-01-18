@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "build:node": "astro build --node",
+    "preview:node": "astro preview --node",
     "astro": "astro",
+    "sonda:report": "node scripts/run-sonda.mjs ./dist ./reports",
     "readme:generate": "tsx scripts/readme-generate.ts",
     "db:check": "tsx scripts/db/db.check.ts",
     "db:compare": "tsx scripts/db/db.compare.ts",
@@ -16,6 +19,7 @@
     "db:generate": "tsx scripts/db/db.generate.ts",
     "db:seed": "tsx scripts/db/db.seed.ts",
     "smtp:check": "tsx src/lib/smtp/smtp.tests.ts"
+    
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -24,6 +28,7 @@
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/openmoji": "^1.2.20",
     "astro": "^5.16.8",
+    "@astrojs/node": "^9.5.2",
     "astro-font": "^1.1.0",
     "astro-icon": "^1.1.5",
     "better-auth": "^1.4.10",
@@ -39,6 +44,7 @@
     "@types/pg": "^8.16.0",
     "drizzle-kit": "^0.31.8",
     "tsx": "^4.21.0",
-    "@better-auth/cli": "^1.4.10"
+    "@better-auth/cli": "^1.4.10",
+    "sonda": "^0.10.1"
   }
 }

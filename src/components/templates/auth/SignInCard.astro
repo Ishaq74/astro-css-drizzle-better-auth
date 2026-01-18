@@ -1,0 +1,74 @@
+---
+import FormGroup from '@components/ui/Form/FormGroup.astro';
+import Label from '@components/ui/Form/Label.astro';
+import Input from '@components/ui/Form/Input.astro';
+import PasswordInput from '@components/ui/Form/PasswordInput.astro';
+import Button from '@components/ui/Button.astro';
+import Alert from '@components/ui/Alert.astro';
+import Link from '@components/ui/Link.astro';
+
+
+interface Props {
+  translations?: Record<string, any>;
+  title?: string;
+  status?: { type: 'success' | 'error'; message: string } | null;
+  lastEmail?: string;
+}
+
+const props = Astro.props as Props;
+const translations = props.translations ?? {};
+const t = (translations?.auth ?? translations) as Record<string, any>;
+const title = props.title ?? t.loginTitle ?? t.signIn ?? 'Connexion';
+const status = props.status ?? null;
+const lastEmail = props.lastEmail ?? '';
+
+const resolveRoute = (value: unknown, fallback: string) => {
+  return typeof value === 'string' && value.startsWith('/') ? value : fallback;
+};
+
+const registerUrl = resolveRoute(t.registerPageUrl ?? t.registerUrl ?? translations.registerPageUrl, '/register');
+const noAccountPrompt = t.noAccountPrompt ?? translations.noAccountPrompt ?? "Pas encore de compte ?";
+const registerLinkLabel = t.registerLinkLabel ?? t.signUp ?? translations.registerLinkLabel ?? 'Inscrivez-vous';
+const forgotPasswordUrl = resolveRoute(t.forgotPasswordUrl ?? t.forgotPasswordLink ?? translations.forgotPasswordUrl, '/forgot-password');
+const forgotPasswordLabel = t.forgotPassword ?? t.forgotPasswordLabel ?? translations.forgotPassword ?? 'Mot de passe oublié ?';
+---
+
+  <div class="card w-full max-w-md space-y-5 p-6">
+  <div class="flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground">
+    <span>{noAccountPrompt}</span>
+    <Link class="button ghost small" href={registerUrl}>{registerLinkLabel}</Link>
+  </div>
+
+  <header>
+    <p class="text-sm uppercase tracking-wide text-slate-500">{t.loginTitle ?? t.signIn ?? translations.loginTitle}</p>
+    <h1 class="text-2xl font-semibold text-slate-900">{title}</h1>
+  </header>
+
+  {status && (
+    <Alert status={status.type === 'error' ? 'error' : 'success'} aria-live="assertive">
+      {status.message}
+    </Alert>
+  )}
+
+  <form method="POST" class="space-y-4">
+    <FormGroup>
+      <Label htmlFor="email">{t.emailLabel ?? t.email ?? translations.email ?? 'Adresse email'}</Label>
+      <Input id="email" name="email" type="email" value={lastEmail} required autocomplete="email" />
+    </FormGroup>
+
+    <FormGroup>
+      <Label htmlFor="password">{t.passwordLabel ?? t.password ?? translations.password ?? 'Mot de passe'}</Label>
+      <PasswordInput id="password" name="password" required autocomplete="current-password" />
+    </FormGroup>
+
+    <div class="flex justify-end text-sm">
+      <Link href={forgotPasswordUrl} class="text-link font-medium">{forgotPasswordLabel}</Link>
+    </div>
+
+    <Button type="submit" class="w-full">{t.loginButton ?? t.signIn ?? translations.loginButton ?? 'Se connecter'}</Button>
+  </form>
+</div>
+
+<style>
+  .card { width:100%; max-width:28rem; margin:0 auto; }
+</style>

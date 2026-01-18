@@ -15,7 +15,8 @@
     "@assets/*": ["src/assets/*"],
     "@api/*": ["src/pages/api/*"],
     "@images/*": ["public/images/*"],
-    "@smtp/*": ["src/lib/smtp/*"]
+    "@smtp/*": ["src/lib/smtp/*"],
+    "@i18n/*": ["src/i18n/*"]
   }
 }
 }

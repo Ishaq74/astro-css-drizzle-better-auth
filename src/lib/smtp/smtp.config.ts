@@ -20,6 +20,8 @@ export const smtpConfig = {
   host: getEnv('SMTP_HOST', 'localhost'),
   port: parseInt(getEnv('SMTP_PORT', '587')),
   secure: getEnv('SMTP_SECURE', 'false') === 'true',
+  // Optional: force specific auth method (e.g. 'LOGIN') when server rejects PLAIN
+  authMethod: getEnv('SMTP_AUTH_METHOD', '') || undefined,
   auth: {
     user: getEnv('SMTP_USER', ''),
     pass: getEnv('SMTP_PASS', getEnv('SMTP_PASSWORD', ''))
@@ -41,7 +43,7 @@ export function validateSmtpConfig(): { isValid: boolean; errors: string[] } {
     errors.push('Le nom d\'utilisateur SMTP (SMTP_USER) n\'est pas configuré');
   }
   if (!smtpConfig.auth.pass || smtpConfig.auth.pass.trim() === '') {
-    errors.push('Le mot de passe SMTP (SMTP_PASSWORD) n\'est pas configuré');
+    errors.push('Le mot de passe SMTP (SMTP_PASS ou SMTP_PASSWORD) n\'est pas configuré');
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (smtpConfig.auth.user && !emailRegex.test(smtpConfig.auth.user)) {

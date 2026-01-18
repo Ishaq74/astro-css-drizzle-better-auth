@@ -29,6 +29,7 @@ export const getDocNavConfig = (locale: string, t: any) => [
       { label: t.docsSidebar.card, href: `/${locale}/docs/design/card` },
       { label: t.docsSidebar.dialog, href: `/${locale}/docs/design/dialog` },
       { label: t.docsSidebar.dropdown, href: `/${locale}/docs/design/dropdown` },
+      { label: t.docsSidebar.dropdown, href: `/${locale}/docs/design/menudropdown` },
       { label: t.docsSidebar.form, href: `/${locale}/docs/design/form` },
       { label: t.docsSidebar.tabs, href: `/${locale}/docs/design/tabs` },
       { label: t.docsSidebar.toast, href: `/${locale}/docs/design/toast` },
