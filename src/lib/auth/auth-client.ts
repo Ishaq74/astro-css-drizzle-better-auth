@@ -1,5 +1,5 @@
 
-import { createAuthClient } from "better-auth/react";
+import { createAuthClient } from "better-auth/client";
 import { organizationClient } from "better-auth/client/plugins";
 import { ac, roles } from "./permissions";
 
@@ -10,7 +10,7 @@ export const authClient = createAuthClient({
       roles,
     }),
   ],
-  baseURL: typeof window !== "undefined" ? undefined : process.env.BETTER_AUTH_URL,
+  baseURL: typeof window !== "undefined" ? undefined : (import.meta as any).env?.BETTER_AUTH_URL || (process as any).env?.BETTER_AUTH_URL,
 });
 
 // Méthodes utilitaires pour l'organisation
