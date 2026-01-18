@@ -15,7 +15,8 @@ if (user) {
 }
 
 const verifyEmailPage =
-  typeof translations.verifyEmailPageUrl === "string" && translations.verifyEmailPageUrl.startsWith("/")
+  typeof translations.verifyEmailPageUrl === "string" &&
+  translations.verifyEmailPageUrl.startsWith("/")
     ? translations.verifyEmailPageUrl
     : undefined;
 const pendingVerificationCookie = "pending_verification_email";
@@ -50,7 +51,10 @@ const rememberPendingEmail = (email: string) => {
 
 const normalizeErrorKey = (value: unknown) => {
   if (!value || typeof value !== "string") return "";
-  return value.trim().toLowerCase().replace(/[^a-z0-9]+/g, "_");
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_");
 };
 
 const errorMessages: Record<string, string> = {};
@@ -60,22 +64,33 @@ const registerErrorMessage = (key: string, message: string) => {
   errorMessages[normalized] = message;
 };
 
-const emailAlreadyExistsMessage = translations.auth.emailAlreadyExists ?? "Cet email est déjà utilisé.";
+const emailAlreadyExistsMessage =
+  translations.auth.emailAlreadyExists ?? "Cet email est déjà utilisé.";
 registerErrorMessage("email_already_exists", emailAlreadyExistsMessage);
 registerErrorMessage("user_already_exists", emailAlreadyExistsMessage);
-registerErrorMessage("User already exists. Use another email.", emailAlreadyExistsMessage);
+registerErrorMessage(
+  "User already exists. Use another email.",
+  emailAlreadyExistsMessage,
+);
 
-const emailSendFailedMessage = translations.auth.emailSendFailed ?? "Erreur lors de l’envoi de l’email.";
+const emailSendFailedMessage =
+  translations.auth.emailSendFailed ?? "Erreur lors de l’envoi de l’email.";
 registerErrorMessage("email_send_failed", emailSendFailedMessage);
 
-const passwordsDontMatchMessage = translations.auth.passwordsDontMatch ?? "Les mots de passe ne correspondent pas.";
+const passwordsDontMatchMessage =
+  translations.auth.passwordsDontMatch ??
+  "Les mots de passe ne correspondent pas.";
 registerErrorMessage("passwords_dont_match", passwordsDontMatchMessage);
 
-const passwordTooShortMessage = translations.auth.passwordTooShort ?? "Le mot de passe doit contenir au moins 8 caractères.";
+const passwordTooShortMessage =
+  translations.auth.passwordTooShort ??
+  "Le mot de passe doit contenir au moins 8 caractères.";
 registerErrorMessage("password_too_short", passwordTooShortMessage);
 registerErrorMessage("weak_password", passwordTooShortMessage);
 
-const passwordCompromisedMessage = translations.auth.passwordCompromised ?? "Ce mot de passe est compromis. Choisissez-en un autre.";
+const passwordCompromisedMessage =
+  translations.auth.passwordCompromised ??
+  "Ce mot de passe est compromis. Choisissez-en un autre.";
 registerErrorMessage("password_compromised", passwordCompromisedMessage);
 registerErrorMessage("password_breached", passwordCompromisedMessage);
 registerErrorMessage("password_pwned", passwordCompromisedMessage);
@@ -83,12 +98,17 @@ registerErrorMessage("pwned_password", passwordCompromisedMessage);
 registerErrorMessage("password_leaked", passwordCompromisedMessage);
 registerErrorMessage("haveibeenpwned_password", passwordCompromisedMessage);
 registerErrorMessage("have_i_been_pwned_password", passwordCompromisedMessage);
-registerErrorMessage("the password you entered has been compromised. please choose a different password.", passwordCompromisedMessage);
+registerErrorMessage(
+  "the password you entered has been compromised. please choose a different password.",
+  passwordCompromisedMessage,
+);
 
-const invalidCredentialsMessage = translations.auth.invalidCredentials ?? "Email ou mot de passe incorrect.";
+const invalidCredentialsMessage =
+  translations.auth.invalidCredentials ?? "Email ou mot de passe incorrect.";
 registerErrorMessage("invalid_credentials", invalidCredentialsMessage);
 
-const emailNotFoundMessage = translations.auth.emailNotFound ?? "Aucun compte trouvé avec cet email.";
+const emailNotFoundMessage =
+  translations.auth.emailNotFound ?? "Aucun compte trouvé avec cet email.";
 registerErrorMessage("email_not_found", emailNotFoundMessage);
 
 const resolveErrorMessage = (primary?: unknown, fallback?: unknown) => {
@@ -103,7 +123,9 @@ const resolveErrorMessage = (primary?: unknown, fallback?: unknown) => {
     }
     return fallback;
   }
-  return translations.auth.serverError ?? "Erreur serveur ou réponse inattendue.";
+  return (
+    translations.auth.serverError ?? "Erreur serveur ou réponse inattendue."
+  );
 };
 
 const codeFromUnknownError = (error: unknown) => {
@@ -135,40 +157,52 @@ if (request.method === "POST") {
   if (!name || !email || !password || !confirmPassword) {
     status = {
       type: "error",
-      message: translations.auth.invalidCredentials ?? "Champs manquants ou invalides.",
+      message:
+        translations.auth.invalidCredentials ??
+        "Champs manquants ou invalides.",
     };
   } else if (password !== confirmPassword) {
     status = {
       type: "error",
-      message: translations.auth.passwordsDontMatch ?? "Les mots de passe ne correspondent pas.",
+      message:
+        translations.auth.passwordsDontMatch ??
+        "Les mots de passe ne correspondent pas.",
     };
   } else if (password.length < 8) {
     status = {
       type: "error",
-      message: translations.auth.passwordTooShort ?? "Le mot de passe doit contenir au moins 8 caractères.",
+      message:
+        translations.auth.passwordTooShort ??
+        "Le mot de passe doit contenir au moins 8 caractères.",
     };
   } else {
     try {
       const auth = await getAuth();
-      if (!auth || typeof (auth as any).api?.signUpEmail !== 'function') {
-        throw new Error('Auth API not initialized');
+      if (!auth || typeof (auth as any).api?.signUpEmail !== "function") {
+        throw new Error("Auth API not initialized");
       }
-        // derive a safe username to satisfy DB NOT NULL constraints
-        const makeUsername = (str: string) => {
-          if (!str || typeof str !== 'string') return '';
-          const raw = str.trim().toLowerCase();
-          const slug = raw.replace(/[^a-z0-9]+/g, '').slice(0, 30);
-          if (slug.length > 0) return slug;
-          const local = (email && typeof email === 'string') ? email.split('@')[0].replace(/[^a-z0-9]+/g, '').slice(0, 30) : `user${Math.random().toString(36).slice(2,8)}`;
-          return local;
-        };
-        const username = makeUsername(name || email || 'user');
-        const displayUsername = name || username;
+      // derive a safe username to satisfy DB NOT NULL constraints
+      const makeUsername = (str: string) => {
+        if (!str || typeof str !== "string") return "";
+        const raw = str.trim().toLowerCase();
+        const slug = raw.replace(/[^a-z0-9]+/g, "").slice(0, 30);
+        if (slug.length > 0) return slug;
+        const local =
+          email && typeof email === "string"
+            ? email
+                .split("@")[0]
+                .replace(/[^a-z0-9]+/g, "")
+                .slice(0, 30)
+            : `user${Math.random().toString(36).slice(2, 8)}`;
+        return local;
+      };
+      const username = makeUsername(name || email || "user");
+      const displayUsername = name || username;
       const response = await (auth as any).api.signUpEmail({
         body: {
-            name,
-            username,
-            displayUsername,
+          name,
+          username,
+          displayUsername,
           email,
           password,
           confirmPassword,
@@ -203,17 +237,22 @@ if (request.method === "POST") {
       const code = codeFromUnknownError(error);
       status = {
         type: "error",
-        message: resolveErrorMessage(code, (error as { message?: string })?.message),
+        message: resolveErrorMessage(
+          code,
+          (error as { message?: string })?.message,
+        ),
       };
     }
   }
 }
 
-const pageTitle = translations.registerTitle ?? "Inscription";
+const pageTitle = translations.auth.registerTitle ?? "Inscription";
 ---
 
 <BaseLayout lang="fr" title={pageTitle}>
-  <section class="mx-auto flex min-h-[60vh] w-full max-w-5xl items-center justify-center px-4 py-16">
+  <section
+    class="mx-auto flex min-h-[60vh] w-full max-w-5xl items-center justify-center px-4 py-16"
+  >
     <SignUpCard
       translations={translations.auth}
       title={pageTitle}

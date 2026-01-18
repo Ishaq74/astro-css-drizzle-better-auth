@@ -46,8 +46,7 @@
     "terms": "شروط الاستخدام",
     "followUs": "تابعنا",
     "copyright": "جميع الحقوق محفوظة."
-  }
-  ,
+  },
   "auth": {
     "signIn": "تسجيل الدخول",
     "signUp": "إنشاء حساب",
@@ -72,7 +71,6 @@
     "tokenExpired": "انتهت صلاحية الرمز أو غير صالح",
     "unexpectedError": "حدث خطأ غير متوقع",
     "profile": "الملف الشخصي",
-    "updateProfile": "إدارة معلوماتك الشخصية وتتبع تسجيلات الدخول.",
     "invitation": "الدعوات",
     "lastActivity": "آخر نشاط",
     "organizations": "المؤسسات",
@@ -87,21 +85,19 @@
     "changePassword": "تغيير كلمة المرور",
     "success": "نجاح",
     "error": "خطأ",
-    "checkSpam": "إذا لم تصلك الرسالة، تحقق من مجلد الرسائل غير المرغوب فيها"
-    ,
+    "checkSpam": "إذا لم تصلك الرسالة، تحقق من مجلد الرسائل غير المرغوب فيها",
     "loginTitle": "تسجيل الدخول",
     "loginButton": "تسجيل الدخول",
-    "registerPageUrl": "/ar/inscription",
+    "registerPageUrl": "/ar/auth/inscription",
     "registerLinkLabel": "إنشاء حساب",
     "noAccountPrompt": "ليس لديك حساب بعد؟",
-    "forgotPasswordUrl": "/ar/نسيت-كلمة-المرور",
+    "forgotPasswordUrl": "/ar/auth/نسيت-كلمة-المرور",
     "forgotPasswordLabel": "هل نسيت كلمة المرور؟",
     "emailNotFound": "لم يتم العثور على حساب بهذا البريد الإلكتروني",
     "emailSendFailed": "فشل إرسال البريد الإلكتروني",
-    "emailNotVerified": "البريد الإلكتروني غير مؤكد",
-    "tooManyAttempts": "محاولات كثيرة جدًا، حاول مرة أخرى لاحقًا",
-    "serverError": "خطأ في الخادم، حاول مرة أخرى لاحقًا"
-    ,
+    "emailNotVerified": "لم يتم التحقق من بريدك الإلكتروني بعد. تحقق من صندوق الوارد الخاص بك",
+    "tooManyAttempts": "محاولات كثيرة جدًا. يرجى المحاولة مرة أخرى في بضع دقائق",
+    "serverError": "خطأ في الخادم، حاول مرة أخرى لاحقًا",
     "registerTitle": "إنشاء حساب",
     "registerButton": "إنشاء حساب",
     "nameLabel": "الاسم الكامل",
@@ -110,8 +106,49 @@
     "passwordTooShort": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
     "passwordCompromised": "يبدو أن كلمة المرور ظهرت في تسريب عام، اختر كلمة أخرى",
     "emailAlreadyExists": "يوجد حساب بالفعل بهذا البريد الإلكتروني",
-    "loginPageUrl": "/ar/connexion",
+    "loginPageUrl": "/ar/auth/connexion",
     "loginLinkLabel": "تسجيل الدخول",
-    "verifyEmailPageUrl": "/ar/verifier-email"
+    "verifyEmailPageUrl": "/ar/auth/verifier-email",
+    "forgotPasswordDescription": ".أدخل بريدك الإلكتروني لتلقي رابط إعادة التعيين",
+    "backToLogin": "العودة إلى تسجيل الدخول",
+    "resetPasswordDescription": ".اختر كلمة مرور آمنة جديدة",
+    "resetPasswordButton": "تغيير كلمة المرور",
+    "verifyEmailTitle": "تحقق من بريدك الإلكتروني",
+    "verifyEmailDescription": ".لقد أرسلنا للتو رابط تأكيد. انقر عليه لتفعيل حسابك",
+    "verifyEmailResendSuccess": ".تم إرسال بريد إلكتروني جديد",
+    "verifyEmailResendError": ".غير قادر على إرسال البريد الإلكتروني. يرجى المحاولة مرة أخرى في لحظة",
+    "verifyEmailCooldownMessage": ".يمكنك إعادة إرسال بريد إلكتروني في {seconds} ثانية",
+    "verifyEmailReady": ".يمكنك إعادة إرسال البريد الإلكتروني الآن",
+    "verifyEmailSending": "...جاري الإرسال",
+    "verifyEmailResendCta": "إعادة إرسال بريد التحقق",
+    "verifyEmailMissingEmail": ".غير قادر على العثور على بريدك الإلكتروني. الرجاء تسجيل الدخول أو التسجيل مرة أخرى",
+    "invitationsTitle": "الدعوات",
+    "resetTitle": "هل نسيت كلمة المرور؟",
+    "resetPasswordUrl": "/ar/auth/اعادة-تعيين-كلمة-المرور",
+    "emailMissing": "البريد الإلكتروني مطلوب",
+    "forgotSuccess": "تم إرسال البريد الإلكتروني",
+    "verifyEmailReminder": ""
+  },
+  "errors": {
+    "notFound": {
+      "title": "الصفحة غير موجودة",
+      "subtitle": "خطأ 404",
+      "message": "عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها",
+      "suggestions": "اقتراحات:",
+      "checkUrl": "تحقق من عنوان URL المدخل",
+      "returnHome": "العودة إلى الصفحة الرئيسية",
+      "contactSupport": "اتصل بالدعم",
+      "searchSite": "البحث في الموقع"
+    },
+    "serverError": {
+      "title": "خطأ في الخادم",
+      "subtitle": "خطأ 500",
+      "message": "عذراً، حدث خطأ داخلي. تم إخطار فريقنا ويعمل على حل المشكلة",
+      "whatToDo": "ماذا تفعل؟",
+      "tryAgain": "حاول مرة أخرى لاحقاً",
+      "returnHome": "العودة إلى الصفحة الرئيسية",
+      "contactSupport": "اتصل بالدعم",
+      "refresh": "تحديث الصفحة"
+    }
   }
 }

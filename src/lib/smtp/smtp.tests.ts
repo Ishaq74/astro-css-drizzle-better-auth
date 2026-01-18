@@ -14,16 +14,6 @@ import { getDetailedErrorMessage } from './smtp.errors';
 export async function testSmtpConnection(): Promise<SmtpTestResult> {
   const timestamp = new Date();
   try {
-    const validation = validateSmtpConfig();
-    if (!validation.isValid) {
-      return {
-        success: false,
-        message: 'Configuration SMTP invalide',
-        detailedMessage: `Erreurs de configuration:\n${validation.errors.join('\n')}`,
-        errorCode: 'CONFIG_INVALID',
-        timestamp
-      };
-    }
     const transporter = nodemailer.createTransport(smtpConfig);
     await Promise.race([
       transporter.verify(),

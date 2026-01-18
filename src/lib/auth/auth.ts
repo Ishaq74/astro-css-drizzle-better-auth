@@ -13,6 +13,13 @@ export async function getAuth() {
     emailAndPassword: {
       enabled: true,
       requireEmailVerification: true,
+      async sendResetPassword({ user, url, token }) {
+        await sendEmail({
+          to: user.email,
+          subject: "Réinitialisation de votre mot de passe",
+          text: `Cliquez sur le lien suivant pour réinitialiser votre mot de passe : ${url}`,
+        });
+      },
     },
     emailVerification: {
       sendVerificationEmail: async ({ user, url }) => {
@@ -56,9 +63,9 @@ export async function getAuth() {
       trustedOrigins: [process.env.BETTER_AUTH_URL],
       cookies: {
         attributes: {
-          sameSite: "lax",
-          secure: true,
-          httpOnly: true,
+          // sameSite: "lax",
+          // secure: true,
+          // httpOnly: true,
         }
       },
       cookiePrefix: "astro_",
@@ -67,16 +74,16 @@ export async function getAuth() {
         ipAddressHeaders: ["x-real-ip", "x-forwarded-for", "cf-connecting-ip"],
         disableIpTracking: false,
       },
-      onError: (error, ctx) => {
+      onError: (error: any, ctx: any) => {
         // Centraliser la gestion des erreurs API
         console.error("Better Auth API Error:", error);
       },
     },
     rateLimit: {
       enabled: true,
-      rules: [
-        { window: 60, max: 10 },
-      ],
+      // rules: [
+      //   { window: 60, max: 10 },
+      // ],
       storage: "database",
     },
     session: {
@@ -106,10 +113,10 @@ export async function getAuth() {
         },
       },
     },
-    onAPIError: (err, ctx) => {
-      // Centraliser la gestion des erreurs API
-      console.error("Better Auth API Error:", err);
-    },
+    // onAPIError: (err: any, ctx: any) => {
+    //   // Centraliser la gestion des erreurs API
+    //   console.error("Better Auth API Error:", err);
+    // },
     telemetry: {
       enabled: false,
       debug: false,
@@ -117,18 +124,18 @@ export async function getAuth() {
   });
   // Expose organization endpoints for easier usage
   (instance as any).organizationApi = {
-    create: (payload: any) => instance.api["organization/create"](payload),
-    setActive: (payload: any) => instance.api["organization/set-active"](payload),
-    update: (payload: any) => instance.api["organization/update"](payload),
-    delete: (payload: any) => instance.api["organization/delete"](payload),
-    inviteMember: (payload: any) => instance.api["organization/invite-member"](payload),
-    updateMemberRole: (payload: any) => instance.api["organization/update-member-role"](payload),
-    removeMember: (payload: any) => instance.api["organization/remove-member"](payload),
-    leave: (payload: any) => instance.api["organization/leave"](payload),
-    list: (payload: any) => instance.api["organization/list"](payload),
-    getFull: (payload: any) => instance.api["organization/get-full-organization"](payload),
-    listMembers: (payload: any) => instance.api["organization/list-members"](payload),
-    listUserInvitations: (payload: any) => instance.api["organization/list-user-invitations"](payload),
+    create: (payload: any) => (instance.api as any)["organization/create"](payload),
+    setActive: (payload: any) => (instance.api as any)["organization/set-active"](payload),
+    update: (payload: any) => (instance.api as any)["organization/update"](payload),
+    delete: (payload: any) => (instance.api as any)["organization/delete"](payload),
+    inviteMember: (payload: any) => (instance.api as any)["organization/invite-member"](payload),
+    updateMemberRole: (payload: any) => (instance.api as any)["organization/update-member-role"](payload),
+    removeMember: (payload: any) => (instance.api as any)["organization/remove-member"](payload),
+    leave: (payload: any) => (instance.api as any)["organization/leave"](payload),
+    list: (payload: any) => (instance.api as any)["organization/list"](payload),
+    getFull: (payload: any) => (instance.api as any)["organization/get-full-organization"](payload),
+    listMembers: (payload: any) => (instance.api as any)["organization/list-members"](payload),
+    listUserInvitations: (payload: any) => (instance.api as any)["organization/list-user-invitations"](payload),
   };
   return instance;
 }

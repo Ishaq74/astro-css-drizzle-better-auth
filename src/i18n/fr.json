@@ -82,6 +82,17 @@
     "tableOfContents": "Table des matières"
   },
   "docs": {
+    "ui": "UI",
+    "design": "Design",
+    "components": "Composants",
+    "data": "Données",
+    "layouts": "Layouts",
+    "entities": "Entités",
+    "colors": "Couleurs",
+    "typography": "Typographie",
+    "spacing": "Espacement",
+    "shadows": "Ombres",
+    "borders": "Bordures",
     "common": {
       "tableOfContents": "Table des matières",
       "installation": "Installation",
@@ -164,8 +175,7 @@
       "ariaLabelDesc": "Label d'accessibilité pour lecteurs d'écran",
       "classNameDesc": "Classes CSS additionnelles"
     }
-  }
-  ,
+  },
   "auth": {
     "signIn": "Se connecter",
     "signUp": "S'inscrire",
@@ -199,27 +209,25 @@
     "deleteOrganizationHint": "Disponible uniquement si vous êtes owner.",
     "confirmDeleteLabel": "Tapez SUPPRIMER pour confirmer",
     "confirmDeletePlaceholder": "SUPPRIMER",
-    "updateProfile": "Mettre à jour le profil",
+    "updateProfileLabel": "Mettre à jour le profil",
     "organization": "Organisation",
     "admin": "Administration",
     "changePassword": "Changer le mot de passe",
     "success": "Succès",
     "error": "Erreur",
-    "checkSpam": "Si vous ne voyez pas l'email, vérifiez vos spams"
-    ,
+    "checkSpam": "Si vous ne voyez pas l'email, vérifiez vos spams",
     "loginTitle": "Se connecter",
     "loginButton": "Se connecter",
-    "registerPageUrl": "/fr/inscription",
+    "registerPageUrl": "/fr/auth/inscription",
     "registerLinkLabel": "Créer un compte",
     "noAccountPrompt": "Pas encore de compte ?",
-    "forgotPasswordUrl": "/fr/mot-de-passe-oublie",
+    "forgotPasswordUrl": "/fr/auth/mot-de-passe-oublie",
     "forgotPasswordLabel": "Mot de passe oublié ?",
-    "emailNotFound": "Aucun compte trouvé avec cet email",
-    "emailSendFailed": "Échec de l'envoi de l'email",
-    "emailNotVerified": "Email non vérifié",
-    "tooManyAttempts": "Trop de tentatives, réessayez plus tard",
-    "serverError": "Erreur serveur, veuillez réessayer plus tard"
-    ,
+    "emailNotFound": "Aucun compte trouvé",
+    "emailSendFailed": "Erreur lors de l’envoi de l’email.",
+    "emailNotVerified": "Votre email n'est pas encore vérifié. Consultez votre boîte de réception.",
+    "tooManyAttempts": "Trop de tentatives. Réessayez dans quelques minutes.",
+    "serverError": "Erreur serveur, veuillez réessayer plus tard",
     "registerTitle": "Créer un compte",
     "registerButton": "Créer un compte",
     "nameLabel": "Nom complet",
@@ -228,8 +236,47 @@
     "passwordTooShort": "Le mot de passe doit contenir au moins 8 caractères",
     "passwordCompromised": "Ce mot de passe apparaît dans une fuite publique, choisissez-en un autre",
     "emailAlreadyExists": "Un compte existe déjà avec cet email",
-    "loginPageUrl": "/fr/connexion",
-    "loginLinkLabel": "Se connecter",
-    "verifyEmailPageUrl": "/fr/verifier-email"
+    "verifyEmailPageUrl": "/fr/auth/verifier-email",
+    "forgotPasswordDescription": "Entrez votre email pour recevoir un lien de réinitialisation.",
+    "backToLogin": "Retour à la connexion",
+    "resetPasswordDescription": "Choisissez un nouveau mot de passe sécurisé.",
+    "resetPasswordButton": "Changer le mot de passe",
+    "verifyEmailTitle": "Vérifiez votre boîte mail",
+    "verifyEmailDescription": "Nous venons d'envoyer un lien de confirmation. Cliquez dessus pour activer votre compte.",
+    "verifyEmailResendSuccess": "Un nouvel email vient d'être envoyé.",
+    "verifyEmailResendError": "Impossible d'envoyer l'email. Réessayez dans un instant.",
+    "verifyEmailCooldownMessage": "Vous pourrez renvoyer un email dans {seconds}s.",
+    "verifyEmailReady": "Vous pouvez renvoyer l'email maintenant.",
+    "verifyEmailSending": "Envoi...",
+    "verifyEmailResendCta": "Renvoyer l'email de vérification",
+    "verifyEmailMissingEmail": "Impossible de retrouver votre email. Reconnectez-vous ou recommencez l'inscription.",
+    "invitationsTitle": "Invitations",
+    "resetTitle": "Mot de passe oublié ?",
+    "resetPasswordUrl": "/fr/auth/reinitialiser-mot-de-passe",
+    "emailMissing": "Adresse email requise.",
+    "forgotSuccess": "Email envoyé.",
+    "verifyEmailReminder": ""
+  },
+  "errors": {
+    "notFound": {
+      "title": "Page non trouvée",
+      "subtitle": "Erreur 404",
+      "message": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
+      "suggestions": "Suggestions :",
+      "checkUrl": "Vérifiez l'URL saisie",
+      "returnHome": "Retourner à l'accueil",
+      "contactSupport": "Contacter le support",
+      "searchSite": "Rechercher sur le site"
+    },
+    "serverError": {
+      "title": "Erreur serveur",
+      "subtitle": "Erreur 500",
+      "message": "Désolé, une erreur interne s'est produite. Nos équipes ont été notifiées et travaillent à résoudre le problème.",
+      "whatToDo": "Que faire ?",
+      "tryAgain": "Réessayer plus tard",
+      "returnHome": "Retourner à l'accueil",
+      "contactSupport": "Contacter le support",
+      "refresh": "Actualiser la page"
+    }
   }
 }

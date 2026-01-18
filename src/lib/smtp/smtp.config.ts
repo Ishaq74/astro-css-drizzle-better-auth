@@ -12,7 +12,7 @@ function getEnv(key: string, fallback: string = ''): string {
   try {
     // @ts-ignore
     if (import.meta && import.meta.env && import.meta.env[key]) return import.meta.env[key];
-  } catch {}
+  } catch { }
   return fallback;
 }
 
@@ -21,7 +21,7 @@ export const smtpConfig = {
   port: parseInt(getEnv('SMTP_PORT', '587')),
   secure: getEnv('SMTP_SECURE', 'false') === 'true',
   // Optional: force specific auth method (e.g. 'LOGIN') when server rejects PLAIN
-  authMethod: getEnv('SMTP_AUTH_METHOD', '') || undefined,
+  authMethod: getEnv('SMTP_AUTH_METHOD', 'LOGIN'),
   auth: {
     user: getEnv('SMTP_USER', ''),
     pass: getEnv('SMTP_PASS', getEnv('SMTP_PASSWORD', ''))

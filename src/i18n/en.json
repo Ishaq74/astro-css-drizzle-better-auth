@@ -93,8 +93,7 @@
     "header": "Header",
     "footer": "Footer",
     "tableOfContents": "Table of Contents"
-  }
-  ,
+  },
   "auth": {
     "signIn": "Sign in",
     "signUp": "Sign up",
@@ -119,7 +118,6 @@
     "tokenExpired": "Token expired or invalid",
     "unexpectedError": "An unexpected error occurred",
     "profile": "Profile",
-    "updateProfile": "Manage your personal information and track your logins.",
     "invitation": "Invitations",
     "lastActivity": "Last activity",
     "organizations": "Organizations",
@@ -134,21 +132,20 @@
     "changePassword": "Change password",
     "success": "Success",
     "error": "Error",
-    "checkSpam": "If you don't see the email, check your spam folder"
-    ,
+    "checkSpam": "If you don't see the email, check your spam folder",
     "loginTitle": "Sign in to your account",
     "loginButton": "Sign in",
-    "registerPageUrl": "/register",
+    "loginPageUrl": "/en/auth/signin",
+    "registerPageUrl": "/en/auth/signup",
     "registerLinkLabel": "Create an account",
     "noAccountPrompt": "Don't have an account?",
-    "forgotPasswordUrl": "/forgot-password",
+    "forgotPasswordUrl": "/en/auth/forgot-password",
     "forgotPasswordLabel": "Forgot password?",
     "emailNotFound": "No account found with that email",
     "emailSendFailed": "Failed to send email",
-    "emailNotVerified": "Email not verified",
-    "tooManyAttempts": "Too many attempts, try again later",
-    "serverError": "Server error, please try again later"
-    ,
+    "emailNotVerified": "Your email is not verified yet. Check your inbox.",
+    "tooManyAttempts": "Too many attempts. Please try again in a few minutes.",
+    "serverError": "Server error, please try again later",
     "registerTitle": "Create your account",
     "registerButton": "Create account",
     "nameLabel": "Full name",
@@ -157,8 +154,48 @@
     "passwordTooShort": "Password must be at least 8 characters",
     "passwordCompromised": "This password appears in a public breach, choose another",
     "emailAlreadyExists": "An account with this email already exists",
-    "loginPageUrl": "/login",
     "loginLinkLabel": "Sign in",
-    "verifyEmailPageUrl": "/verify-email"
+    "verifyEmailPageUrl": "/en/auth/verify-email",
+    "forgotPasswordDescription": "Enter your email to receive a reset link.",
+    "backToLogin": "Back to login",
+    "resetPasswordDescription": "Choose a new secure password.",
+    "resetPasswordButton": "Change password",
+    "verifyEmailTitle": "Check your email",
+    "verifyEmailDescription": "We just sent a confirmation link. Click it to activate your account.",
+    "verifyEmailResendSuccess": "A new email has been sent.",
+    "verifyEmailResendError": "Unable to send email. Please try again in a moment.",
+    "verifyEmailCooldownMessage": "You can resend an email in {seconds}s.",
+    "verifyEmailReady": "You can resend the email now.",
+    "verifyEmailSending": "Sending...",
+    "verifyEmailResendCta": "Resend verification email",
+    "verifyEmailMissingEmail": "Unable to find your email. Please login or sign up again.",
+    "invitationsTitle": "Invitations",
+    "resetTitle": "Forgot password?",
+    "resetPasswordUrl": "/en/auth/reset-password",
+    "emailMissing": "Email address required.",
+    "forgotSuccess": "Email sent.",
+    "verifyEmailReminder": ""
+  },
+  "errors": {
+    "notFound": {
+      "title": "Page Not Found",
+      "subtitle": "Error 404",
+      "message": "Sorry, the page you're looking for doesn't exist or has been moved.",
+      "suggestions": "Suggestions:",
+      "checkUrl": "Check the URL you entered",
+      "returnHome": "Return to homepage",
+      "contactSupport": "Contact support",
+      "searchSite": "Search the site"
+    },
+    "serverError": {
+      "title": "Server Error",
+      "subtitle": "Error 500",
+      "message": "Sorry, an internal error occurred. Our team has been notified and is working to resolve the issue.",
+      "whatToDo": "What to do?",
+      "tryAgain": "Try again later",
+      "returnHome": "Return to homepage",
+      "contactSupport": "Contact support",
+      "refresh": "Refresh the page"
+    }
   }
 }

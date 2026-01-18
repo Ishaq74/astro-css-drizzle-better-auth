@@ -1,8 +1,8 @@
 ---
 import "@styles/global.css";
 import { AstroFont } from "astro-font";
-import Header from '@components/templates/Header/Header.astro';
-import Footer from '@components/templates/Footer/Footer.astro';
+import Header from "@components/templates/Header/Header.astro";
+import Footer from "@components/templates/Footer/Footer.astro";
 import verifyClientScript from "@components/templates/auth/verify-email.client.ts?url";
 import forgotClientScript from "@components/templates/auth/forgot-password.client.ts?url";
 
@@ -53,13 +53,12 @@ const siteTitle = "Default Title";
 const pageTitle = rawTitle ? `${siteTitle} > ${rawTitle}` : siteTitle;
 
 // Get current locale from Astro
-const currentLocale = Astro.currentLocale || 'fr';
+const currentLocale = Astro.currentLocale || "fr";
 
 // Safe fallbacks from site identity
 const htmlLang = lang ?? currentLocale;
 const htmlDir = dir ?? (currentLocale === "ar" ? "rtl" : "ltr");
 const faviconName = favicon ?? "../../favicon.svg";
-
 ---
 
 <!doctype html>
@@ -68,16 +67,19 @@ const faviconName = favicon ?? "../../favicon.svg";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    
+
     <!-- Script de thème AVANT tout le reste pour éviter le flash -->
     <script is:inline>
-      (function() {
-        const theme = localStorage.getItem('theme') || 
-          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', theme);
+      (function () {
+        const theme =
+          localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
-    
+
     <AstroFont
       config={[
         {
@@ -154,7 +156,11 @@ const faviconName = favicon ?? "../../favicon.svg";
     {cssFiles.map((file) => <link rel="stylesheet" href={file} />)}
 
     <!-- Scripts -->
-    {jsFiles.map((file) => (file ? <script is:inline async src={file} /> : null))}
+    {
+      jsFiles.map((file) =>
+        file ? <script is:inline async src={file} /> : null,
+      )
+    }
 
     <!-- Favicons -->
     <link rel="icon" href={`images/${faviconName}`} type="image/x-icon" />
@@ -165,11 +171,10 @@ const faviconName = favicon ?? "../../favicon.svg";
 
     <meta name="robots" content={robots} />
     <meta name="theme-color" content="#ffffff" />
-
   </head>
 
   <body>
-    <Header />
+    <Header lang={htmlLang} />
     <main>
       <slot />
     </main>
@@ -185,7 +190,7 @@ const faviconName = favicon ?? "../../favicon.svg";
     flex-direction: column;
     min-height: 100vh;
   }
-  
+
   main {
     flex: 1;
   }

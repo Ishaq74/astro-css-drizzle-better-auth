@@ -38,6 +38,7 @@ _يتم إنشاء هذا الملف تلقائيًا لتوفير سياق شا
 - **@iconify-json/mdi**: `^1.2.3`
 - **@iconify-json/openmoji**: `^1.2.20`
 - **astro**: `^5.16.8`
+- **@astrojs/node**: `^9.5.2`
 - **astro-font**: `^1.1.0`
 - **astro-icon**: `^1.1.5`
 - **better-auth**: `^1.4.10`
@@ -55,7 +56,10 @@ npm install
 - `npm run dev`: astro dev
 - `npm run build`: astro build
 - `npm run preview`: astro preview
+- `npm run build:node`: astro build --node
+- `npm run preview:node`: astro preview --node
 - `npm run astro`: astro
+- `npm run sonda:report`: node scripts/run-sonda.mjs ./dist ./reports
 - `npm run readme:generate`: tsx scripts/readme-generate.ts
 - `npm run db:check`: tsx scripts/db/db.check.ts
 - `npm run db:compare`: tsx scripts/db/db.compare.ts
@@ -90,6 +94,8 @@ npm install
 - README.es.md
 - README.fr.md
 - README.md
+- **reports**
+  - sonda-report.html
 - **scripts**
   - **db**
     - db.check.ts
@@ -108,12 +114,15 @@ npm install
     - i18n.ts
     - utils.ts
   - readme-generate.ts
+  - run-sonda.mjs
 - **src**
   - **components**
-    - **auth**
-      - LoginForm.astro
-      - RegisterForm.astro
     - **templates**
+      - **auth**
+        - forgot-password.client.ts
+        - SignInCard.astro
+        - SignUpCard.astro
+        - verify-email.client.ts
       - **docs**
         - MainDoc.astro
         - navigation.ts
@@ -240,7 +249,9 @@ npm install
     - DocLayout.astro
   - **lib**
     - **auth**
+      - auth-client.ts
       - auth.ts
+      - permissions.ts
     - **smtp**
       - smtp.config.ts
       - smtp.errors.ts
@@ -250,6 +261,12 @@ npm install
       - smtp.types.ts
       - smtp.validate.ts
   - **pages**
+    - **api**
+      - **auth**
+        - [...all].ts
+      - **auth-client**
+        - forgot-password.ts
+        - verification.ts
     - **ar**
       - index.astro
     - **en**
@@ -291,11 +308,18 @@ npm install
           - header.astro
           - table-of-contents.astro
       - index.astro
-      - login.astro
     - **es**
       - index.astro
     - **fr**
-      - connexion.astro
+      - **auth**
+        - connexion.astro
+        - inscription.astro
+        - invitations.astro
+        - legal.astro
+        - mot-de-passe-oublie.astro
+        - profil.astro
+        - reinitialiser-mot-de-passe.astro
+        - verifier-email.astro
       - **docs**
         - **components**
           - accordion.astro
@@ -334,7 +358,6 @@ npm install
           - header.astro
           - table-of-contents.astro
       - index.astro
-      - legal.astro
   - **styles**
     - base.css
     - **components**
@@ -364,6 +387,7 @@ npm install
 - `@api/*` → `src/pages/api/*`
 - `@images/*` → `public/images/*`
 - `@smtp/*` → `src/lib/smtp/*`
+- `@i18n/*` → `src/i18n/*`
 
 ## المصادقة
 
@@ -407,7 +431,9 @@ npm install
 - `SMTP_SECURE`
 - `SMTP_USER`
 - `SMTP_PASS`
+- `SMTP_PASSWORD`
 - `SMTP_FROM`
+- `RESEND_API_KEY`
 - `PUBLIC_API_URL`
 
 ## رموز CSS والأنماط
